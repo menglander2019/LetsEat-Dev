@@ -10,10 +10,6 @@ def home():
 def about():
     return {"message": "about"}
 
-@app.get("/createprofile")
-def createprofile():
-    return {"message": "createprofile"}
-
 @app.get("/login")
 def login():
     return {"message": "login page"}
@@ -21,6 +17,10 @@ def login():
 @app.get("/signup")
 def signup():
     return {"message": "signup page"}
+
+@app.get("/createprofile")
+def createprofile():
+    return {"message": "createprofile"}
 
 @app.get("/questionnaire")
 def questionnaire():
