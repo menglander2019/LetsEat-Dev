@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from backend.db.db_management import createUser
 
 app = FastAPI()
  
@@ -17,6 +18,10 @@ def login():
 @app.get("/signup")
 def signup():
     return {"message": "signup page"}
+
+@app.post("/signup/{user}-{pw}")
+def signup(user, pw):
+    createUser(user, pw)
 
 @app.get("/createprofile")
 def createprofile():
