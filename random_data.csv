@@ -1,3 +1,501 @@
-name,+,-,restrictions,cuisine
-Bob,"italian,mexican","indian,american",vegan,Poutineries (poutineries)
-Chuck,"chinese,american","mexican,vietnamese",,Cafes (cafes)
+name,current_day,+,-,restrictions,occasion,num_people,meal,price_range,cuisine,Classy,Loud,Groups,Kids,Garage,Street,WiFi,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,TV,Outdoor,Dancing,Working,Smoking,Bike,Casual,Moderate,Breakfast,Lunch,Dinner,Dessert,Brunch,Late,Trendy,Divey,Bar,ATTEND?
+Carl Oconner,SA,"['sandwiches', 'singaporean', 'bulgarian', 'hotdog', 'afghani']","['iberian', 'poutineries']",,family,4,dinner,$$,eritrean,1,-1,1,1,-1,1,1,0,-1,0,1,0,1,0,0,0,0,1,0,0,-1,0,0,-1,1,1,-1,-1,-1,0,-1
+Derrick Brown,SA,"['tradamerican', 'fondue', 'peruvian', 'singaporean', 'pizza']","['malaysian', 'mauritius']",,friends,3,breakfast,$,colombian,1,-1,-1,0,1,0,1,1,1,-1,0,0,1,1,-1,-1,0,1,1,0,-1,-1,0,-1,0,-1,1,-1,1,0,0
+Sheila Green,F,"['asianfusion', 'polish', 'gamemeat']","['puertorican', 'guamanian', 'southern', 'somali']",,friends,6,lunch,$$,himalayan,-1,0,1,-1,0,1,-1,1,0,-1,0,0,-1,-1,0,1,1,-1,0,0,-1,1,-1,0,0,1,0,-1,0,-1,-1
+Thomas Hiebert,F,"['dinnertheater', 'latin', 'taiwanese', 'scandinavian']","['bangladeshi', 'food_court']",,work,9,breakfast,$$$,tapas,0,0,1,1,1,0,-1,1,1,-1,1,0,0,1,1,1,0,0,-1,-1,0,1,1,-1,1,1,1,0,1,1,0
+Jeri Hayes,SU,"['gastropubs', 'hotdogs', 'salad']","['creperies', 'trinidadian', 'thai', 'burmese', 'armenian']",,friends,6,breakfast,$$$$,slovakian,-1,-1,-1,0,1,0,0,1,0,1,-1,1,0,0,0,-1,1,0,-1,0,0,1,1,0,1,-1,-1,1,0,1,0
+Daniel Alexander,SU,"['catalan', 'mediterranean']","['delis', 'argentine']",,work,7,breakfast,$$$,taiwanese,-1,0,-1,0,1,-1,-1,-1,-1,1,1,-1,-1,-1,-1,0,-1,1,1,1,-1,-1,-1,0,1,1,0,0,1,1,-1
+Joyce Rieser,R,"['tacos', 'syrian', 'latin']","['tuscan', 'brazilian', 'burgers', 'bbq', 'calabrian']",,family,7,breakfast,$$,uzbek,0,0,0,0,1,1,1,-1,-1,1,-1,0,0,1,1,0,0,-1,1,1,0,-1,1,-1,-1,-1,-1,0,-1,-1,1
+Brian Nelson,SA,"['argentine', 'hkcafe', 'scandinavian', 'syrian']","['laotian', 'irish']",,solo,5,dinner,$,szechuan,1,1,1,0,0,1,1,-1,0,0,-1,1,0,1,1,-1,-1,1,0,1,0,1,-1,-1,1,1,0,-1,-1,-1,0
+Mable Brooker,F,"['asianfusion', 'nicaraguan', 'modern_european', 'taiwanese', 'venezuelan']","['wraps', 'soup', 'cambodian', 'bulgarian', 'dinnertheater']",vegan,friends,2,dessert,$$$,dominican,0,1,0,-1,-1,-1,-1,1,0,0,0,1,-1,-1,0,-1,-1,0,0,1,-1,-1,1,-1,-1,0,-1,0,-1,1,1
+Karen Osorno,R,"['belgian', 'wraps']",['fishnchips'],vegetarian,work,4,lunch,$,taiwanese,1,-1,-1,-1,1,0,-1,-1,-1,0,-1,-1,1,1,-1,1,0,-1,1,-1,-1,-1,1,-1,1,1,0,1,0,1,-1
+Mary Veasey,F,['salad'],['kosher'],,solo,6,lunch,$$$,modern_european,-1,-1,1,1,-1,0,1,0,0,0,0,0,1,0,1,1,0,1,-1,0,-1,1,-1,-1,1,-1,0,-1,1,-1,1
+Billie Laigle,F,"['singaporean', 'burgers', 'hotdogs', 'creperies']","['colombian', 'kosher', 'honduran', 'soulfood', 'themedcafes']",,solo,2,breakfast,$,polynesian,1,1,0,0,1,-1,-1,0,-1,1,0,1,1,-1,1,-1,1,0,-1,0,-1,1,-1,0,0,-1,1,-1,0,1,-1
+Elaina Walker,M,"['burmese', 'seafood']","['afghani', 'asianfusion', 'fondue']",,friends,2,breakfast,$$$$,ukrainian,1,0,1,-1,-1,1,-1,-1,0,0,-1,0,1,1,1,0,0,0,1,1,1,-1,1,0,0,1,1,0,0,0,1
+Stephanie Hernandez,SU,"['hkcafe', 'tex-mex', 'chicken_wings']","['halal', 'conveyorsushi', 'supperclubs']",,friends,1,dinner,$$,russian,-1,-1,0,1,-1,0,-1,1,0,1,1,-1,-1,1,-1,1,0,0,-1,1,-1,1,1,1,-1,-1,1,-1,0,-1,0
+Henry Jenkins,T,"['calabrian', 'foodstands']",['turkish'],,friends,10,dessert,$$$$,italian,0,-1,0,1,-1,0,-1,0,0,0,0,0,1,-1,0,0,0,1,0,1,-1,1,1,0,-1,0,-1,-1,0,1,-1
+Michael Hanchett,T,"['ukrainian', 'poutineries', 'australian', 'thai']","['reunion', 'malaysian']",,date,4,lunch,$,cantonese,1,1,-1,-1,1,-1,-1,0,0,1,1,1,1,0,1,-1,0,-1,1,-1,0,1,1,1,-1,1,0,0,-1,1,-1
+Margie Vercher,M,"['russian', 'salvadoran']","['themedcafes', 'austrian', 'cheesesteaks', 'izakaya', 'popuprestaurants']",,work,8,dinner,$$$,ethiopian,-1,1,1,-1,0,1,0,-1,0,-1,-1,0,-1,1,0,0,1,-1,1,0,1,-1,-1,1,0,-1,-1,0,-1,-1,1
+Lynsey Pryor,R,"['laotian', 'salad', 'shanghainese', 'pizza', 'conveyorsushi']","['mediterranean', 'creperies', 'somali', 'hawaiian']",,solo,2,dinner,$$$$,cheesesteaks,-1,-1,0,0,1,-1,0,1,-1,1,0,0,0,0,0,1,1,-1,1,1,0,1,1,-1,-1,1,1,1,1,0,1
+Joseph Meyer,R,['chinese'],"['honduran', 'hotdog', 'scottish', 'hotdogs']",,date,2,dessert,$$$$,ukrainian,-1,0,-1,-1,1,1,1,1,1,1,-1,1,0,1,-1,1,0,1,0,0,0,1,0,-1,0,-1,0,0,1,1,-1
+Susan Shiplett,F,"['calabrian', 'indpak']","['spanish', 'salad', 'shanghainese', 'foodstands', 'pakistani']",,work,2,lunch,$$,izakaya,1,-1,-1,0,0,1,0,1,-1,1,0,-1,0,-1,-1,0,1,0,0,0,0,-1,1,-1,1,-1,1,1,0,-1,0
+Gordon Pruitt,M,"['southafrican', 'waffles', 'czech']","['taiwanese', 'foodstands', 'russian']",,work,7,lunch,$$,guamanian,1,0,0,1,-1,0,-1,-1,-1,1,1,1,-1,1,1,0,0,1,0,0,-1,1,-1,1,0,-1,1,0,1,-1,-1
+Arthur Parker,T,"['comfortfood', 'singaporean', 'vietnamese', 'arabian', 'wraps']","['gastropubs', 'laotian', 'cafes', 'cheesesteaks', 'srilankan']",,friends,10,lunch,$$$,teppanyaki,-1,1,1,1,1,-1,0,-1,0,0,0,-1,1,-1,-1,1,1,0,0,1,-1,1,1,1,-1,1,-1,0,1,0,0
+Roy Lang,SA,"['seafood', 'hkcafe']","['arabian', 'chicken_wings', 'argentine']",,family,6,dinner,$$$$,newamerican,0,0,1,1,1,0,0,0,-1,0,0,-1,1,0,-1,1,1,1,1,0,1,1,-1,0,1,1,1,1,-1,-1,1
+Louis Payne,T,['raw_food'],"['korean', 'cuban', 'gamemeat', 'vegan', 'lebanese']",,family,2,dessert,$$$$,filipino,1,-1,-1,0,-1,0,0,1,0,-1,-1,0,-1,1,0,0,0,0,-1,0,0,-1,0,1,-1,-1,-1,0,1,0,-1
+Jeffrey Harrold,W,"['pizza', 'argentine', 'cuban', 'gluten_free', 'spanish']","['syrian', 'tacos', 'japanese', 'gamemeat', 'szechuan']",,friends,9,dinner,$$,turkish,0,-1,-1,0,1,0,1,1,0,1,-1,-1,1,-1,0,1,0,1,1,-1,-1,0,1,0,1,0,1,-1,1,-1,0
+Lisa Stargel,T,"['gamemeat', 'buffets']","['shanghainese', 'czech', 'hotdogs', 'lebanese', 'diners']",,friends,8,dinner,$$,soup,1,1,-1,1,0,0,-1,0,0,-1,-1,-1,-1,1,1,0,-1,1,0,1,-1,-1,-1,1,0,-1,1,-1,-1,1,0
+Jonathan Jones,SU,"['puertorican', 'polish', 'brasseries', 'hkcafe', 'asianfusion']","['burmese', 'laotian', 'mauritius', 'hainan', 'comfortfood']",,work,6,breakfast,$$$,cafes,0,-1,1,1,-1,-1,1,1,1,0,-1,0,0,-1,-1,0,0,0,-1,-1,0,0,0,1,-1,-1,-1,-1,1,1,0
+Hugo Wafer,W,"['puertorican', 'chickenshop', 'vegetarian', 'soup']","['mongolian', 'korean', 'himalayan']",,friends,10,dinner,$$$$,mongolian,-1,1,1,0,1,0,-1,1,-1,-1,1,0,-1,-1,1,-1,1,-1,0,0,0,0,-1,1,-1,0,0,-1,1,1,1
+Leon Dickey,SU,['ukrainian'],"['modern_european', 'african', 'scandinavian', 'laotian', 'mauritius']",,date,2,dessert,$$,indpak,-1,-1,-1,1,0,-1,0,1,1,1,1,0,1,0,-1,-1,-1,-1,-1,0,-1,1,1,0,0,0,-1,0,0,-1,1
+Ramon Hall,M,"['afghani', 'pancakes', 'bbq', 'brazilian', 'supperclubs']",['japacurry'],,work,7,dessert,$$$$,irish,0,0,1,0,1,1,-1,-1,-1,1,1,0,-1,1,1,0,-1,1,0,1,0,0,1,1,-1,0,0,-1,-1,1,0
+Kathryn Richmond,M,"['eritrean', 'scandinavian', 'hotdog', 'czech', 'honduran']","['chicken_wings', 'raw_food', 'noodles']",,friends,2,lunch,$,srilankan,-1,-1,-1,0,0,-1,-1,1,-1,0,1,1,1,-1,1,0,1,1,-1,1,0,0,1,0,1,1,1,1,-1,-1,-1
+Caleb Mckeown,SU,"['szechuan', 'delis', 'fondue', 'australian']","['hainan', 'bbq', 'kosher']",,family,2,breakfast,$,uzbek,-1,-1,0,1,0,1,0,1,1,-1,1,0,-1,0,1,1,0,0,1,-1,0,1,1,0,1,-1,1,-1,1,0,-1
+Lizzie Holcomb,M,"['chinese', 'argentine']","['taiwanese', 'izakaya']",,date,3,dinner,$$$$,indonesian,-1,-1,1,-1,0,0,-1,0,1,1,-1,0,-1,1,-1,0,-1,1,1,0,1,-1,1,0,-1,-1,1,-1,0,1,0
+Frances Langford,R,"['ethiopian', 'soulfood', 'soup', 'kosher']","['cuban', 'arabian']",,solo,6,dessert,$,argentine,1,1,-1,1,1,-1,1,-1,-1,1,1,1,0,1,0,0,0,-1,1,0,-1,-1,1,-1,-1,0,1,-1,0,0,0
+Shaun Barns,F,"['tex-mex', 'catalan', 'waffles']","['southern', 'sardinian']",,family,10,dessert,$$$,kebab,-1,0,-1,1,0,1,1,1,1,-1,-1,0,1,1,1,1,1,1,1,-1,0,-1,1,1,1,1,1,0,0,1,1
+Angela Mack,W,"['dinnertheater', 'himalayan', 'haitian', 'gamemeat', 'breakfast_brunch']",['malaysian'],,date,5,dessert,$$$,arabian,1,0,0,1,1,0,-1,-1,-1,1,-1,0,0,0,1,0,0,-1,-1,-1,1,0,1,0,1,0,1,1,0,0,-1
+Harry Dagostino,R,"['british', 'lebanese', 'panasian', 'polynesian']","['shanghainese', 'cantonese']",,friends,10,dessert,$,lebanese,0,0,1,1,0,0,-1,0,-1,0,0,1,0,0,-1,-1,0,1,1,-1,-1,-1,-1,0,1,-1,1,0,0,0,1
+Kristina Johnson,M,"['german', 'fondue', 'hainan']","['australian', 'afghani', 'szechuan', 'bbq', 'shanghainese']",,date,6,dessert,$$$,southern,1,-1,0,-1,-1,1,1,-1,-1,1,1,1,1,0,-1,1,-1,1,1,-1,1,-1,-1,0,-1,1,0,0,-1,-1,0
+Bertha Dykeman,W,"['pancakes', 'ethiopian', 'noodles']",['turkish'],vegetarian,work,9,dinner,$$$$,newamerican,0,1,-1,1,1,-1,1,1,0,0,0,0,-1,0,-1,0,1,1,-1,-1,-1,0,1,-1,1,0,1,-1,-1,0,1
+Pedro Greely,SA,"['laotian', 'mauritius', 'vegan', 'izakaya', 'malaysian']","['singaporean', 'srilankan', 'basque']",,family,6,dinner,$$,cambodian,-1,-1,1,-1,1,0,1,0,1,-1,0,0,1,0,1,1,0,0,1,0,0,1,1,-1,0,1,-1,0,1,1,-1
+Ronald Frey,SU,"['fondue', 'guamanian', 'food_court', 'halal', 'cajun']","['steak', 'honduran']",,friends,8,breakfast,$$,conveyorsushi,0,-1,-1,1,-1,0,1,1,1,-1,-1,1,1,1,-1,-1,0,1,1,1,-1,1,-1,1,0,1,-1,0,-1,1,0
+John Cook,M,"['hotdogs', 'ethiopian', 'tapasmallplates']","['izakaya', 'mediterranean', 'delis', 'southern']",,work,3,dessert,$$$$,armenian,-1,0,-1,0,0,0,-1,1,1,0,0,0,1,1,0,-1,-1,1,0,-1,1,-1,-1,-1,1,1,-1,1,0,0,0
+Harold Mahan,R,"['seafood', 'thai', 'poutineries']","['iberian', 'hotpot', 'polish', 'creperies']",,work,10,lunch,$$$$,colombian,1,-1,1,-1,-1,-1,0,1,1,0,1,0,-1,1,0,-1,0,-1,1,0,1,-1,-1,0,0,0,0,0,-1,1,1
+Robert Menotti,SA,"['bulgarian', 'reunion', 'indpak']","['himalayan', 'slovakian', 'southafrican', 'hainan']",,family,5,lunch,$,scandinavian,-1,1,0,0,-1,1,1,1,0,1,0,0,-1,-1,1,1,-1,0,1,-1,-1,0,1,-1,0,0,-1,-1,-1,1,1
+Michelle Rosario,R,"['pakistani', 'persian', 'soulfood', 'buffets']","['kosher', 'foodstands']",,friends,8,dinner,$,guamanian,0,0,-1,-1,-1,0,0,-1,0,1,-1,0,1,0,-1,1,1,0,1,-1,1,-1,0,-1,-1,0,0,0,-1,1,1
+Eva Rosas,SA,"['arabian', 'gamemeat']","['tradamerican', 'egyptian', 'indpak']",,solo,7,breakfast,$$$,mongolian,0,0,-1,-1,-1,1,0,1,0,0,1,-1,-1,-1,1,1,1,-1,-1,-1,1,0,-1,1,-1,-1,-1,1,-1,0,0
+Dallas Campbell,W,['german'],['hawaiian'],,friends,5,breakfast,$$,argentine,1,0,-1,-1,1,-1,0,1,-1,0,1,-1,0,1,-1,1,-1,-1,1,0,1,-1,1,0,0,1,0,0,-1,-1,1
+Charlene George,W,['syrian'],"['laotian', 'puertorican', 'tuscan', 'polish', 'cambodian']",,work,5,lunch,$$$$,tapas,-1,-1,1,-1,0,1,0,-1,-1,1,-1,0,-1,0,0,1,1,-1,1,-1,-1,-1,-1,-1,0,-1,0,1,0,0,0
+Kenneth Schwartz,T,['german'],"['hainan', 'portuguese', 'halal', 'sandwiches']",vegan,work,2,lunch,$,szechuan,0,0,0,0,0,-1,0,0,1,1,1,1,0,0,-1,0,1,1,-1,0,0,1,-1,-1,-1,-1,1,0,0,-1,-1
+Rita Berger,W,"['polynesian', 'pakistani', 'themedcafes']","['soup', 'cheesesteaks', 'ukrainian', 'poutineries']",vegan,date,4,dinner,$$,indpak,-1,0,-1,-1,1,0,0,0,0,0,1,1,1,-1,1,-1,1,0,1,-1,0,-1,1,0,1,0,-1,-1,1,1,1
+Marilee Clark,F,"['filipino', 'colombian', 'burgers', 'turkish']","['portuguese', 'african', 'arabian']",,friends,6,lunch,$$$,halal,1,0,1,0,0,-1,-1,-1,1,1,-1,-1,-1,0,0,-1,1,0,0,0,0,-1,-1,-1,-1,1,0,0,-1,0,0
+Bruce Carden,M,"['portuguese', 'halal', 'german', 'thai', 'comfortfood']",['brasseries'],,solo,6,breakfast,$$,hkcafe,1,-1,-1,1,-1,-1,-1,-1,-1,0,0,-1,1,-1,-1,0,-1,1,-1,1,-1,1,0,-1,-1,1,-1,0,1,1,1
+Jerry Armor,F,"['venezuelan', 'moroccan']",['gamemeat'],,solo,9,dinner,$$,guamanian,0,1,1,-1,1,-1,0,1,-1,1,-1,-1,-1,1,-1,1,0,1,0,-1,-1,-1,-1,-1,0,1,1,-1,1,-1,1
+Leo Maddux,F,"['pizza', 'uzbek', 'czech']","['african', 'teppanyaki']",,friends,10,dessert,$$$,spanish,0,0,1,0,-1,-1,1,1,0,1,-1,-1,-1,-1,-1,0,-1,-1,1,1,-1,-1,0,0,-1,0,-1,-1,1,-1,1
+Jenny Spiller,SU,"['indpak', 'szechuan']","['soulfood', 'polynesian', 'japanese', 'raw_food']",,friends,7,breakfast,$$$,thai,-1,-1,-1,-1,0,-1,0,1,0,0,0,0,1,0,-1,1,0,0,0,1,-1,1,1,0,1,0,-1,1,0,-1,1
+Miriam Shanker,W,"['german', 'themedcafes', 'catalan']","['hawaiian', 'breakfast_brunch']",vegetarian,friends,3,lunch,$,eritrean,1,0,-1,0,0,-1,0,0,1,-1,-1,1,-1,-1,-1,-1,0,0,-1,0,0,-1,-1,-1,-1,1,1,0,0,1,-1
+Wilma Parsons,M,"['mideastern', 'bulgarian', 'sardinian']","['foodstands', 'soup', 'foodstands', 'czech', 'indonesian']",,work,6,dinner,$$$,cantonese,-1,1,1,-1,1,0,0,0,0,-1,1,-1,0,0,1,1,1,1,-1,0,-1,1,1,-1,1,0,0,1,-1,1,1
+Michael Santiago,W,"['diners', 'sicilian']","['waffles', 'armenian', 'izakaya', 'sushi']",,friends,4,dessert,$$$$,fondue,0,0,-1,-1,0,0,1,-1,1,0,0,1,1,0,0,0,1,1,0,1,-1,1,1,1,1,1,-1,-1,-1,-1,0
+Charles Nakken,SA,"['szechuan', 'cafes', 'waffles', 'afghani']","['tapas', 'french', 'diners']",,work,3,dessert,$$,cheesesteaks,1,-1,1,0,0,1,1,1,1,1,1,-1,1,-1,-1,0,1,-1,-1,-1,0,1,-1,-1,1,-1,0,1,0,1,0
+Janet Mraz,SU,"['foodstands', 'buffets', 'brazilian', 'cafes']","['creperies', 'pakistani']",vegetarian,date,9,breakfast,$$,spanish,0,0,-1,-1,-1,0,-1,0,-1,0,1,0,1,0,1,-1,1,-1,0,0,1,1,0,1,0,0,0,0,-1,0,1
+Hanh Jankowiak,F,"['somali', 'waffles', 'kebab']","['tradamerican', 'tacos', 'hkcafe']",,work,7,lunch,$$,lebanese,0,1,1,-1,1,-1,1,1,-1,-1,-1,0,0,1,0,-1,1,1,-1,1,-1,0,0,1,0,0,1,-1,-1,0,1
+Tommy Tovar,W,['peruvian'],"['hawaiian', 'tapasmallplates', 'salvadoran', 'indpak']",,date,7,dinner,$$$$,catalan,1,1,1,-1,0,1,0,1,-1,-1,0,1,-1,1,-1,-1,0,0,1,0,1,1,-1,0,1,1,1,-1,-1,0,1
+Jackie Pegues,W,"['food_court', 'cuban', 'falafel', 'haitian', 'spanish']","['noodles', 'catalan']",,work,9,dessert,$,ethiopian,1,1,1,-1,-1,-1,1,-1,1,0,-1,-1,0,0,1,-1,0,-1,1,-1,1,0,0,0,1,-1,0,0,-1,1,-1
+Antonio Lewis,SU,"['fishnchips', 'soulfood', 'conveyorsushi']",['southafrican'],,work,4,dessert,$,tradamerican,-1,1,-1,-1,-1,-1,0,-1,-1,1,-1,1,0,-1,-1,0,1,-1,0,0,0,-1,0,0,1,-1,1,0,-1,0,0
+Ana Coffman,F,"['belgian', 'panasian', 'hotdog', 'georgian']","['shanghainese', 'wraps']",,date,8,breakfast,$$,cuban,1,1,1,-1,0,0,1,0,-1,1,1,0,1,0,1,-1,0,-1,0,1,-1,1,0,1,1,1,1,0,-1,-1,0
+Joanne Schwartz,W,['szechuan'],"['basque', 'halal', 'singaporean']",gluten-free,family,9,breakfast,$$,tacos,0,1,0,-1,0,0,1,-1,1,0,1,1,0,1,-1,-1,1,1,1,1,-1,-1,1,1,-1,1,1,1,0,0,-1
+Babara Kennedy,F,"['japacurry', 'belgian', 'mediterranean', 'salvadoran']",['turkish'],,work,8,lunch,$$,taiwanese,0,1,0,-1,1,1,0,-1,0,0,0,1,0,-1,1,-1,0,-1,-1,1,0,-1,-1,0,0,-1,1,0,-1,-1,-1
+Judith Pitts,T,['gamemeat'],['fondue'],,date,3,dessert,$$$,moroccan,0,-1,0,-1,1,0,-1,0,1,1,1,-1,-1,1,-1,0,0,-1,0,0,0,1,0,-1,-1,0,0,1,-1,-1,1
+Flora Larkin,SA,"['diners', 'steak', 'dominican', 'laotian', 'reunion']","['australian', 'argentine', 'spanish', 'arabian', 'hotdogs']",,friends,2,lunch,$$$,chicken_wings,1,0,1,1,-1,-1,0,-1,-1,-1,1,-1,1,1,0,1,0,1,0,1,-1,0,0,-1,1,1,1,0,-1,0,-1
+Stephanie Cullen,SA,"['belgian', 'german', 'persian', 'salad', 'halal']","['dominican', 'popuprestaurants', 'poutineries', 'scandinavian']",,solo,3,dinner,$$$$,tradamerican,1,-1,1,1,1,-1,1,0,-1,1,0,1,-1,-1,-1,0,-1,-1,0,-1,0,1,-1,0,1,-1,0,-1,0,-1,-1
+Margaret Andrade,M,['austrian'],['hungarian'],pescatarian,friends,6,dinner,$$$$,turkish,0,-1,1,-1,1,-1,-1,-1,0,0,-1,1,-1,0,-1,0,0,0,-1,0,0,0,1,1,-1,-1,0,0,0,1,-1
+Cheri Williams,W,"['basque', 'tapas']","['bangladeshi', 'indpak', 'chicken_wings', 'japacurry']",vegan,work,2,breakfast,$$$,french,-1,0,0,-1,1,1,-1,-1,0,1,-1,1,1,0,-1,0,-1,-1,-1,0,-1,1,1,-1,1,1,1,-1,-1,-1,0
+Mary Brady,T,"['raw_food', 'bulgarian']","['taiwanese', 'iberian']",,date,10,dinner,$,japacurry,1,1,1,0,0,0,-1,1,0,-1,-1,1,0,1,-1,-1,0,0,-1,1,1,0,1,1,1,1,0,0,0,-1,0
+Lorriane Lennon,SA,"['diners', 'georgian', 'guamanian', 'poutineries']","['iberian', 'bulgarian', 'peruvian', 'pizza']",,work,2,dessert,$$$$,guamanian,-1,1,-1,1,0,1,0,1,0,0,-1,1,1,1,1,1,0,-1,0,-1,1,0,0,0,-1,0,1,0,1,0,1
+Clara Rascon,R,"['singaporean', 'german', 'vietnamese', 'korean', 'steak']","['honduran', 'shanghainese', 'cambodian']",,family,8,dinner,$$$,caribbean,-1,-1,1,0,1,-1,0,-1,-1,-1,1,1,-1,1,-1,1,0,0,-1,0,1,0,-1,0,-1,0,1,0,-1,-1,0
+Cheryl Unger,T,"['austrian', 'delis']","['hotdogs', 'bangladeshi', 'nicaraguan']",,solo,7,dessert,$,halal,-1,1,-1,0,-1,-1,-1,-1,-1,-1,1,0,0,0,1,0,-1,-1,0,0,1,0,-1,1,-1,-1,0,-1,1,1,-1
+Laura Benton,F,"['salvadoran', 'iberian']",['vietnamese'],,work,5,breakfast,$$,italian,1,1,0,1,0,-1,-1,-1,-1,1,-1,-1,1,-1,-1,0,1,-1,0,-1,-1,-1,1,0,-1,1,1,0,-1,0,-1
+Victoria Sweat,F,['hainan'],"['hawaiian', 'cajun', 'japacurry', 'uzbek', 'japanese']",,family,8,breakfast,$$$$,greek,0,0,-1,0,-1,-1,0,0,-1,-1,-1,-1,0,1,-1,-1,1,0,0,0,1,0,1,0,-1,1,1,0,-1,-1,-1
+Richard Campo,F,"['cafeteria', 'caribbean', 'kosher']","['bbq', 'diners', 'indonesian', 'african', 'venezuelan']",,friends,8,breakfast,$$$$,sicilian,0,1,-1,-1,0,-1,-1,-1,0,-1,-1,-1,1,1,0,0,1,0,1,0,1,0,0,1,1,1,-1,0,0,0,-1
+James Kelly,M,['fishnchips'],"['mediterranean', 'supperclubs', 'wraps', 'trinidadian', 'pancakes']",,friends,10,dinner,$$,sardinian,1,-1,1,1,0,0,1,1,1,1,1,1,1,-1,-1,1,0,1,-1,-1,0,-1,1,0,1,1,-1,0,-1,0,1
+Bradley Eury,R,['georgian'],"['popuprestaurants', 'vietnamese']",,solo,3,lunch,$,cafes,-1,-1,0,0,1,-1,-1,0,1,0,0,1,1,-1,-1,-1,1,-1,0,-1,1,0,0,1,1,-1,1,-1,-1,-1,1
+Devon Tinney,W,"['southern', 'vietnamese']","['honduran', 'puertorican']",,date,9,dessert,$$$$,korean,1,-1,-1,1,-1,1,1,-1,1,-1,0,-1,1,-1,0,0,1,1,1,0,-1,0,-1,1,-1,1,0,-1,0,-1,0
+Troy Shrader,R,"['mideastern', 'portuguese', 'haitian']","['tapas', 'newamerican']",,work,1,lunch,$,shanghainese,-1,-1,-1,1,-1,-1,1,-1,-1,1,-1,-1,1,-1,-1,1,-1,1,1,1,-1,1,1,0,0,0,1,0,-1,1,1
+Carlton Botz,T,"['tex-mex', 'hungarian', 'bulgarian', 'iberian', 'kebab']",['gamemeat'],,friends,3,dinner,$,gamemeat,-1,0,0,0,-1,-1,1,-1,-1,0,0,1,0,-1,0,0,0,0,0,1,-1,-1,1,0,0,0,-1,0,0,0,-1
+Deborah Allan,SA,"['dimsum', 'delis', 'salad', 'buffets']","['dinnertheater', 'colombian', 'sicilian', 'hawaiian', 'scandinavian']",,solo,3,dinner,$$,popuprestaurants,0,1,0,1,1,1,-1,-1,1,-1,0,0,0,0,-1,1,1,1,0,-1,0,-1,-1,-1,1,-1,1,0,1,-1,0
+Brian Tarango,T,"['conveyorsushi', 'scottish', 'breakfast_brunch', 'latin']","['mongolian', 'food_court', 'food_court', 'polish']",,date,5,lunch,$$$$,popuprestaurants,1,-1,1,1,1,-1,-1,1,0,0,1,1,-1,-1,-1,1,0,-1,1,1,1,-1,-1,-1,-1,1,-1,-1,1,1,-1
+Gabriel Ayers,SA,['tapasmallplates'],['hotdog'],,work,6,dessert,$$$,falafel,-1,0,-1,1,0,-1,0,-1,1,0,1,1,0,-1,-1,-1,0,0,-1,1,-1,1,1,-1,-1,1,-1,0,-1,-1,1
+George Peck,SA,"['hainan', 'vegan', 'greek', 'brasseries', 'austrian']","['burgers', 'hkcafe', 'tacos']",,work,2,lunch,$,senegalese,1,1,1,-1,-1,0,-1,1,-1,0,1,-1,-1,-1,-1,-1,0,-1,1,1,-1,1,0,1,1,1,1,-1,-1,1,1
+Lydia Marcus,F,"['australian', 'pizza', 'newmexican']","['kebab', 'pakistani']",,family,10,breakfast,$$$,laotian,0,1,1,-1,-1,0,-1,1,-1,1,-1,1,0,0,1,1,0,-1,-1,1,-1,0,1,1,-1,0,1,-1,1,1,0
+Brenda Sayle,W,"['polish', 'peruvian', 'scottish']","['halal', 'himalayan', 'scandinavian', 'sandwiches']",,date,4,dessert,$,arabian,1,-1,-1,1,1,1,-1,1,1,0,1,0,-1,0,-1,-1,-1,-1,0,0,1,0,1,1,1,-1,-1,-1,-1,0,-1
+Ressie Stewart,T,"['gastropubs', 'hkcafe', 'puertorican']","['czech', 'egyptian', 'african']",,work,10,dessert,$$$,gluten_free,-1,-1,0,1,-1,-1,0,1,1,-1,0,-1,1,-1,-1,1,0,-1,1,1,-1,1,0,1,-1,-1,1,0,1,0,1
+Christopher Krieger,F,['kosher'],['himalayan'],,friends,9,breakfast,$$$,german,1,0,0,1,0,1,-1,1,-1,0,-1,0,1,1,1,-1,-1,1,1,0,1,0,-1,-1,0,-1,1,0,0,0,-1
+Lucinda Mathes,T,['african'],"['hainan', 'salad']",,family,4,lunch,$$,tex-mex,0,1,0,0,0,0,1,0,-1,1,-1,-1,-1,-1,-1,0,-1,1,-1,-1,1,-1,0,0,1,1,-1,-1,0,0,-1
+Rebecca Rosario,M,"['scandinavian', 'comfortfood', 'moroccan', 'czech', 'creperies']","['german', 'pizza', 'ethiopian']",,solo,7,dinner,$$$,mideastern,0,0,1,-1,1,1,0,-1,0,1,-1,-1,-1,0,1,0,1,1,0,0,0,-1,-1,0,0,-1,0,0,0,-1,0
+Victor Mccartney,W,"['breakfast_brunch', 'colombian']","['polynesian', 'singaporean', 'belgian']",,date,7,breakfast,$$,laotian,-1,-1,-1,0,-1,1,0,0,1,-1,1,0,-1,1,0,0,0,-1,-1,1,0,0,1,0,0,1,0,0,-1,1,0
+Bernard Nolan,SA,"['mauritius', 'raw_food', 'themedcafes']","['hawaiian', 'greek']",vegan,work,8,dessert,$$$$,supperclubs,-1,-1,1,-1,1,-1,1,1,1,-1,0,1,1,-1,-1,0,1,-1,1,-1,-1,0,1,1,0,-1,-1,1,0,0,-1
+Kevin White,SU,['georgian'],"['egyptian', 'pakistani']",gluten-free,work,1,dessert,$$$$,indpak,1,-1,-1,1,1,1,0,-1,0,-1,1,1,0,-1,-1,-1,1,0,1,1,-1,1,-1,0,-1,0,-1,-1,0,-1,0
+Ian Schultz,T,"['russian', 'japacurry']",['soulfood'],,date,9,lunch,$$$$,polynesian,0,-1,-1,1,-1,1,-1,-1,-1,0,1,1,0,1,1,1,0,1,0,0,1,0,1,0,1,1,0,1,1,0,1
+John Englehart,SA,"['breakfast_brunch', 'hkcafe', 'somali', 'ethiopian', 'pizza']",['mediterranean'],,work,8,dinner,$$$,supperclubs,-1,1,0,-1,-1,0,-1,0,0,-1,-1,-1,-1,0,0,0,1,-1,0,1,-1,-1,-1,1,0,0,1,1,1,0,0
+Isabelle Kent,F,"['iberian', 'newamerican', 'modern_european', 'latin', 'japacurry']","['mideastern', 'cuban', 'greek', 'cheesesteaks']",,date,10,breakfast,$$,ramen,1,0,1,-1,0,-1,0,1,1,0,0,0,1,1,0,-1,1,-1,1,0,0,0,0,-1,1,0,-1,1,1,1,-1
+Keith Davis,T,"['calabrian', 'indonesian']","['dinnertheater', 'hotpot', 'hungarian', 'scandinavian']",,solo,1,lunch,$$$,breakfast_brunch,1,1,0,-1,1,-1,0,-1,1,0,0,0,1,-1,0,0,1,-1,-1,1,-1,0,-1,1,1,-1,-1,1,0,-1,0
+Kristy Mcclurkin,W,"['gluten_free', 'thai', 'kebab']","['popuprestaurants', 'creperies', 'hotdog', 'himalayan']",,work,9,breakfast,$$$,egyptian,-1,0,0,-1,0,0,-1,1,0,1,0,0,-1,1,-1,-1,1,1,-1,-1,0,-1,1,1,-1,1,-1,1,1,1,0
+Joyce Campbell,M,"['comfortfood', 'brazilian', 'tradamerican', 'gastropubs']","['hkcafe', 'cantonese', 'seafood', 'supperclubs']",,date,2,dinner,$$$,calabrian,1,0,-1,1,-1,-1,0,1,0,0,0,1,1,-1,0,1,1,1,1,0,-1,-1,-1,-1,1,-1,-1,1,1,0,-1
+Gordon Orr,SU,"['chicken_wings', 'seafood']","['egyptian', 'srilankan', 'laotian']",pescatarian,work,2,lunch,$$$$,brazilian,-1,1,-1,1,-1,1,1,-1,-1,-1,1,1,1,0,1,1,0,-1,1,-1,-1,0,-1,0,1,1,0,-1,1,-1,0
+Mao Simoneau,W,"['breakfast_brunch', 'japacurry', 'vegan', 'soulfood']",['tapas'],,friends,7,dessert,$$$$,noodles,1,-1,0,1,-1,1,0,1,1,0,1,-1,-1,-1,-1,0,0,-1,-1,1,0,0,0,-1,0,-1,0,1,1,1,-1
+Rodney Purifoy,SA,"['gluten_free', 'noodles']","['filipino', 'persian', 'modern_european', 'belgian', 'filipino']",,date,5,dessert,$$,puertorican,-1,0,1,1,-1,1,-1,-1,-1,0,-1,-1,-1,0,0,0,1,0,1,0,1,1,1,0,1,0,0,0,0,-1,-1
+Tracy Smith,W,"['hungarian', 'african', 'brasseries', 'persian']",['tuscan'],,work,6,lunch,$$$$,persian,-1,0,1,-1,1,1,1,0,1,1,1,-1,0,0,1,0,-1,-1,1,0,1,0,1,-1,1,-1,1,1,-1,-1,0
+Patricia Cherry,T,"['falafel', 'hotdog']",['brazilian'],pescatarian,friends,6,lunch,$,vietnamese,0,-1,1,1,0,-1,1,1,0,1,-1,0,-1,0,1,-1,-1,0,1,1,1,1,-1,-1,-1,-1,0,0,-1,1,0
+Elaine Shearer,M,"['british', 'persian', 'hotdog', 'filipino']","['wraps', 'chicken_wings', 'steak', 'reunion', 'falafel']",,friends,5,dinner,$,ukrainian,-1,0,1,0,0,1,-1,0,-1,0,-1,-1,-1,1,0,-1,0,0,-1,-1,0,0,0,1,-1,1,-1,0,0,0,-1
+Kristy Powell,W,"['cheesesteaks', 'senegalese', 'sushi']",['buffets'],,family,7,breakfast,$,mongolian,1,0,1,1,1,0,1,1,0,-1,0,1,1,0,0,0,0,-1,-1,1,-1,-1,1,0,-1,0,-1,1,-1,0,-1
+Darnell Johnson,T,"['ukrainian', 'cafeteria']","['soulfood', 'southafrican']",,work,9,dessert,$,french,1,0,-1,-1,-1,1,1,-1,-1,1,1,-1,0,-1,-1,0,1,1,-1,-1,0,1,1,-1,0,1,0,0,-1,-1,0
+Linda Arredondo,M,"['bbq', 'gamemeat', 'creperies', 'raw_food', 'calabrian']","['teppanyaki', 'basque', 'vietnamese', 'persian']",,date,8,lunch,$$,gluten_free,-1,0,-1,-1,0,-1,1,0,0,1,-1,1,0,-1,-1,-1,0,-1,-1,1,0,-1,-1,-1,0,0,1,-1,0,-1,-1
+Jennifer Tennant,SU,"['moroccan', 'brasseries', 'greek', 'hotdogs']","['calabrian', 'sardinian', 'venezuelan', 'diners', 'brazilian']",,friends,3,dessert,$$,soup,0,1,1,0,-1,-1,0,-1,1,-1,1,0,1,0,-1,-1,1,-1,0,-1,1,1,-1,1,1,1,-1,0,-1,-1,1
+Robert Ahearn,R,"['sushi', 'poutineries', 'cafes']","['eritrean', 'shanghainese', 'thai']",,date,6,dessert,$$,trinidadian,0,1,-1,1,-1,1,-1,1,0,-1,0,1,1,0,1,-1,0,-1,-1,0,0,1,1,-1,-1,-1,-1,-1,-1,0,-1
+Shirley Maurice,M,['mideastern'],"['vegan', 'scandinavian', 'cuban', 'french', 'egyptian']",,family,9,lunch,$$,cafeteria,0,1,0,-1,1,0,1,1,0,-1,1,1,0,-1,0,0,1,1,1,-1,1,1,1,1,0,1,0,1,-1,-1,0
+Anton Hamilton,T,"['persian', 'italian', 'izakaya', 'filipino', 'szechuan']","['moroccan', 'ramen', 'sandwiches', 'comfortfood', 'brazilian']",,date,4,breakfast,$$$,sandwiches,1,-1,-1,0,1,1,-1,1,-1,1,-1,1,-1,-1,0,1,0,1,-1,-1,1,1,0,1,0,1,0,-1,1,0,0
+Daniel Savage,M,"['thai', 'kebab', 'polynesian', 'uzbek']","['cambodian', 'georgian', 'persian', 'greek', 'mexican']",vegan,family,9,breakfast,$$$$,argentine,0,0,0,-1,0,1,1,0,1,0,1,1,1,-1,-1,-1,-1,0,-1,1,-1,-1,1,-1,0,0,-1,-1,1,1,0
+Franklin Mallory,T,['armenian'],"['reunion', 'ethiopian', 'gastropubs']",,work,3,breakfast,$,armenian,1,0,0,-1,-1,1,-1,-1,1,1,-1,0,0,1,-1,1,1,0,1,0,-1,-1,-1,0,0,0,1,-1,1,-1,0
+Betty Johnstone,SU,"['noodles', 'gastropubs', 'egyptian']","['italian', 'sandwiches', 'slovakian', 'argentine']",pescatarian,friends,1,breakfast,$$$,cambodian,1,-1,-1,0,-1,-1,-1,0,1,1,-1,0,1,-1,-1,-1,-1,-1,0,-1,-1,-1,1,-1,1,1,-1,-1,0,1,1
+Dawn Adam,R,"['irish', 'german', 'mongolian', 'cheesesteaks', 'shanghainese']","['mideastern', 'izakaya']",gluten-free,work,5,dinner,$$,lebanese,-1,0,0,0,-1,0,1,0,-1,-1,-1,1,-1,0,-1,1,1,-1,0,0,0,1,-1,-1,0,1,0,1,0,1,-1
+Maureen Easley,R,"['pancakes', 'dimsum', 'spanish', 'lebanese', 'hkcafe']","['burmese', 'tuscan', 'hainan', 'creperies']",,family,9,dessert,$$,burmese,0,-1,-1,-1,0,0,1,1,-1,1,-1,0,-1,1,-1,-1,1,-1,1,1,-1,1,-1,0,1,-1,1,0,0,1,0
+Jennifer Gomez,R,['cafeteria'],"['armenian', 'fishnchips', 'indonesian', 'asianfusion']",,work,5,dessert,$$$,diners,-1,0,0,-1,-1,-1,0,0,-1,-1,1,-1,1,1,1,1,0,-1,-1,1,-1,-1,0,0,1,-1,1,0,0,0,1
+Michael Jansson,F,"['filipino', 'honduran', 'vegan', 'malaysian', 'burgers']",['irish'],,friends,10,dinner,$,creperies,0,1,1,1,-1,-1,0,-1,0,1,-1,-1,1,0,0,-1,0,0,-1,-1,0,0,1,1,1,0,-1,1,-1,1,0
+Nancy Rowan,R,"['moroccan', 'haitian']","['bbq', 'scottish', 'russian', 'mauritius']",,solo,9,dinner,$$$,indpak,-1,1,-1,1,-1,0,1,-1,1,0,1,0,0,1,0,0,0,-1,-1,0,1,1,-1,0,1,1,0,-1,-1,-1,0
+Dave Hermes,SA,"['haitian', 'singaporean', 'burgers']",['creperies'],kosher,friends,2,dinner,$$,georgian,0,0,-1,0,1,0,1,1,1,-1,1,0,-1,0,-1,-1,0,0,-1,-1,-1,1,0,0,1,-1,0,-1,1,-1,-1
+Janelle Bon,SU,"['mauritius', 'argentine', 'creperies']","['gastropubs', 'sandwiches', 'modern_european']",,work,1,dinner,$$,georgian,0,1,0,0,0,0,-1,1,0,1,0,-1,1,-1,0,1,0,0,-1,-1,0,-1,-1,1,1,1,-1,-1,1,-1,1
+Penny Diaz,SA,"['ukrainian', 'cafeteria', 'hainan', 'argentine', 'lebanese']","['puertorican', 'african']",,friends,4,dessert,$$$,cafes,1,1,0,-1,0,0,1,1,-1,1,1,0,-1,1,-1,1,1,0,0,1,-1,0,0,0,0,-1,-1,0,0,0,0
+Michael Williams,T,['srilankan'],"['mediterranean', 'tuscan', 'iberian', 'sushi']",,friends,7,breakfast,$$$,gamemeat,1,-1,-1,0,-1,1,1,1,-1,1,0,-1,0,-1,0,1,-1,0,1,-1,1,0,-1,1,-1,0,1,1,1,1,0
+Lance Ott,T,"['food_court', 'izakaya', 'kosher']","['mexican', 'egyptian']",,solo,3,dinner,$$,dimsum,0,0,1,0,1,1,-1,0,-1,-1,1,-1,-1,-1,1,0,0,-1,-1,-1,-1,1,-1,0,-1,1,1,-1,1,-1,-1
+Shelby Lucena,SA,['hotdogs'],['spanish'],,date,1,dessert,$$$,tradamerican,1,-1,-1,0,1,1,0,1,-1,0,0,0,-1,-1,-1,1,0,1,-1,0,1,0,0,0,-1,-1,1,0,-1,-1,1
+Frank Taylor,SU,"['soulfood', 'austrian', 'sardinian', 'polynesian', 'hainan']",['afghani'],,friends,7,dessert,$$$,hawaiian,0,1,1,0,-1,1,0,-1,-1,-1,0,1,1,0,-1,1,1,0,0,-1,1,0,-1,1,-1,-1,1,1,1,0,-1
+Barbara Hancock,M,"['kosher', 'steak', 'falafel', 'southern', 'bulgarian']","['brazilian', 'afghani', 'african']",,work,9,breakfast,$$,mideastern,1,-1,0,1,0,1,0,-1,0,0,1,-1,-1,1,0,-1,-1,-1,0,1,1,-1,0,-1,0,1,0,1,0,0,0
+Joshua Hardman,R,"['brasseries', 'polish', 'afghani', 'conveyorsushi', 'pancakes']",['falafel'],,family,2,lunch,$,senegalese,-1,1,0,1,1,1,-1,-1,1,-1,-1,1,0,-1,0,1,1,1,0,1,0,-1,1,1,1,1,-1,1,-1,0,1
+Paul Jones,SU,"['foodstands', 'tapas', 'turkish', 'arabian', 'catalan']",['spanish'],kosher,work,8,lunch,$$$,brasseries,-1,1,-1,0,0,-1,0,1,0,1,1,0,-1,0,-1,-1,0,-1,0,0,1,0,-1,0,-1,0,0,1,1,-1,-1
+Florence Manuel,M,['soup'],['african'],,family,10,dinner,$,malaysian,-1,0,1,-1,0,0,-1,-1,-1,0,0,-1,0,1,0,-1,-1,1,-1,-1,-1,-1,0,1,0,-1,1,0,0,1,-1
+Sharon Neal,F,"['vegetarian', 'german']","['izakaya', 'armenian', 'cuban']",,friends,7,breakfast,$$,teppanyaki,0,1,1,-1,1,1,-1,0,-1,0,1,-1,1,1,0,1,0,-1,-1,-1,-1,0,1,1,1,1,0,-1,0,-1,0
+Melanie Cimini,T,"['uzbek', 'pakistani', 'bangladeshi', 'dominican']",['czech'],,date,9,dinner,$$$,chinese,-1,-1,0,0,-1,1,-1,0,-1,1,0,0,0,-1,-1,0,1,-1,0,-1,-1,1,-1,1,0,-1,-1,0,1,1,1
+Brenda Mayher,M,"['irish', 'burgers']","['mideastern', 'bbq', 'guamanian', 'slovakian']",,solo,10,breakfast,$$$,mauritius,1,0,-1,1,0,0,-1,-1,1,0,-1,-1,0,1,0,1,-1,1,1,1,-1,0,1,-1,1,-1,1,0,1,-1,-1
+Maria Baldwin,M,['french'],"['diners', 'tuscan', 'nicaraguan']",,solo,4,dinner,$,tex-mex,0,0,1,1,1,0,-1,-1,0,-1,0,0,0,0,-1,-1,-1,1,0,0,-1,0,1,0,1,-1,0,0,1,0,1
+Christina Coward,SA,"['calabrian', 'guamanian', 'japacurry', 'scandinavian']","['izakaya', 'honduran']",,work,4,breakfast,$,indonesian,0,1,-1,-1,1,-1,1,0,0,0,1,-1,0,-1,-1,-1,-1,1,-1,-1,-1,1,-1,-1,-1,0,1,-1,-1,-1,-1
+Seth Walker,SU,"['malaysian', 'sushi']","['kosher', 'afghani']",pescatarian,family,8,breakfast,$$,indonesian,-1,0,1,0,0,0,1,0,-1,0,-1,0,-1,0,-1,1,-1,-1,0,0,1,1,1,-1,0,0,0,-1,1,-1,0
+Dale Cianflone,T,['scandinavian'],"['armenian', 'vegetarian', 'waffles', 'cambodian']",,family,4,lunch,$,french,1,-1,0,-1,0,-1,-1,1,0,1,0,-1,1,1,0,-1,0,0,1,-1,-1,1,0,0,0,0,1,0,1,1,0
+Cecil Elam,W,"['thai', 'australian', 'bbq', 'diners']","['hungarian', 'mauritius', 'caribbean', 'steak']",vegan,friends,2,dinner,$$$$,haitian,0,1,1,-1,-1,0,-1,1,1,-1,-1,-1,-1,0,1,0,1,0,-1,0,0,1,0,1,1,1,1,0,1,0,0
+Michael Vidrine,T,"['soulfood', 'guamanian']","['cantonese', 'dimsum', 'shanghainese', 'nicaraguan', 'taiwanese']",,solo,7,dessert,$$,salvadoran,0,-1,-1,0,-1,0,0,1,-1,0,0,1,1,1,-1,0,1,0,1,-1,0,1,1,1,1,0,1,-1,0,1,0
+Alfred Herrera,R,"['comfortfood', 'laotian']","['spanish', 'pizza', 'cantonese']",,work,6,lunch,$,tuscan,-1,0,-1,-1,1,-1,-1,0,0,-1,0,-1,0,-1,-1,0,0,0,0,-1,-1,0,-1,1,-1,1,1,-1,0,0,0
+Theresa Gutierrez,SU,['belgian'],"['tradamerican', 'uzbek', 'pakistani']",,friends,3,dessert,$$$,ramen,0,0,1,0,0,-1,0,1,1,-1,-1,0,-1,-1,0,1,1,-1,0,-1,0,0,-1,0,0,-1,0,1,1,-1,0
+Antony Mcnorton,SU,['arabian'],"['italian', 'supperclubs']",,family,1,dessert,$,burmese,-1,-1,1,0,1,1,0,1,1,0,0,0,1,-1,1,1,1,1,1,-1,0,0,0,-1,0,1,0,0,1,0,1
+Donald Wright,F,['sardinian'],"['salad', 'tuscan', 'trinidadian', 'portuguese']",kosher,solo,2,dessert,$,hungarian,-1,-1,-1,0,-1,1,-1,1,-1,0,-1,1,1,1,0,-1,1,1,1,0,0,-1,0,0,1,-1,-1,-1,0,0,-1
+Linda Crane,W,"['moroccan', 'tapasmallplates', 'steak', 'georgian', 'teppanyaki']","['cantonese', 'japanese', 'noodles', 'hotdogs', 'salad']",,family,5,breakfast,$$$$,noodles,1,0,0,0,1,1,-1,1,1,-1,-1,1,-1,1,1,1,1,1,-1,1,1,0,1,-1,-1,0,0,-1,1,-1,-1
+Bernice Musson,F,['szechuan'],['burgers'],,date,5,dinner,$,kosher,0,0,1,-1,1,-1,0,0,1,0,-1,1,1,0,1,1,-1,-1,0,1,-1,-1,1,-1,0,-1,0,1,1,0,0
+James Feazel,R,['cafeteria'],"['reunion', 'polynesian', 'bbq', 'eritrean']",,family,6,dinner,$$$$,burgers,1,-1,1,0,0,1,-1,0,1,0,-1,1,1,0,-1,0,1,-1,1,1,-1,-1,1,0,-1,0,0,0,-1,0,1
+Sonya Remis,W,"['senegalese', 'tradamerican', 'mongolian', 'tapasmallplates']","['delis', 'belgian', 'bulgarian', 'panasian']",,friends,2,breakfast,$,srilankan,0,1,1,-1,-1,1,1,0,0,-1,0,0,1,1,0,0,0,1,1,1,-1,0,1,1,1,1,-1,1,0,0,-1
+Myra Jimenez,SA,"['senegalese', 'soulfood', 'polish']","['chicken_wings', 'caribbean', 'mediterranean', 'venezuelan', 'taiwanese']",kosher,family,3,dinner,$$,burmese,0,-1,0,-1,1,1,1,1,0,0,-1,1,1,-1,0,0,-1,1,-1,0,1,-1,1,0,0,1,-1,1,1,0,0
+Francisco Brock,F,"['kosher', 'nicaraguan', 'soup', 'southern']","['basque', 'hainan', 'srilankan', 'vietnamese', 'breakfast_brunch']",,work,6,dessert,$$$,sardinian,0,0,-1,0,1,-1,0,-1,-1,1,-1,1,0,1,0,0,0,-1,0,-1,-1,-1,1,1,-1,0,-1,-1,1,1,-1
+Connie Elliott,SU,"['taiwanese', 'polynesian', 'noodles', 'austrian', 'burgers']","['fondue', 'irish']",,friends,6,dinner,$,tradamerican,0,-1,-1,-1,1,0,-1,1,0,1,-1,0,1,-1,0,-1,-1,-1,0,1,1,-1,1,0,0,-1,-1,-1,0,0,-1
+Eric Bowling,R,"['kebab', 'delis', 'asianfusion', 'indonesian', 'gastropubs']","['seafood', 'caribbean', 'catalan', 'steak']",,solo,9,breakfast,$$$$,japanese,1,1,-1,-1,0,-1,1,0,1,0,-1,-1,-1,0,-1,1,1,0,-1,1,0,1,0,1,-1,1,1,1,1,0,0
+Jeremy Gomez,W,"['gamemeat', 'syrian', 'soulfood', 'latin']","['arabian', 'ukrainian', 'dinnertheater']",,friends,9,dinner,$$$,peruvian,-1,-1,-1,1,-1,0,0,0,-1,0,-1,0,-1,1,1,-1,0,-1,1,-1,0,-1,0,0,-1,1,0,1,0,-1,1
+Charles Ives,M,"['burmese', 'greek', 'tradamerican', 'gamemeat', 'arabian']","['halal', 'fishnchips', 'polynesian', 'catalan']",vegetarian,work,6,dessert,$$$,hotdogs,1,1,0,-1,1,-1,0,-1,0,1,1,0,0,0,1,0,1,-1,0,-1,0,1,1,1,0,-1,1,-1,1,0,0
+Virginia Rodriguez,SU,"['eritrean', 'nicaraguan', 'tacos']","['sandwiches', 'catalan', 'sicilian', 'catalan', 'argentine']",,solo,3,breakfast,$,diners,-1,-1,0,0,-1,0,-1,0,1,1,-1,-1,-1,0,1,-1,0,0,-1,1,-1,0,-1,1,1,0,-1,0,-1,1,0
+Denise Irish,R,"['scandinavian', 'burmese', 'pizza', 'honduran']","['pakistani', 'japanese', 'persian', 'dinnertheater']",,work,6,lunch,$$$,georgian,0,-1,-1,0,0,-1,0,0,0,1,0,1,1,1,0,0,-1,1,0,0,0,1,1,1,0,0,1,-1,0,1,-1
+Mattie Green,W,['greek'],"['salad', 'cajun', 'guamanian', 'hkcafe']",,friends,8,lunch,$,czech,-1,-1,0,1,0,-1,0,-1,1,0,-1,0,-1,0,-1,0,-1,1,0,1,0,0,-1,-1,-1,1,-1,-1,-1,-1,0
+Troy Mcdonald,W,"['guamanian', 'belgian']",['tapas'],,solo,5,lunch,$,bangladeshi,0,-1,1,0,0,-1,0,1,1,0,-1,-1,0,0,1,-1,1,1,-1,1,1,0,0,-1,1,0,-1,-1,-1,1,-1
+Carrie Burgess,W,"['hungarian', 'hotpot', 'spanish', 'tradamerican', 'persian']","['arabian', 'izakaya', 'mauritius', 'bangladeshi']",,date,9,breakfast,$$$,diners,1,-1,0,1,-1,-1,-1,-1,1,-1,0,0,-1,0,1,1,-1,-1,-1,-1,-1,1,-1,-1,0,0,0,0,-1,-1,-1
+Felicia Wells,SA,"['somali', 'portuguese', 'afghani', 'noodles']","['soulfood', 'cambodian', 'popuprestaurants']",,solo,3,breakfast,$$$$,spanish,-1,1,-1,-1,0,0,1,1,-1,1,-1,0,1,-1,1,-1,-1,-1,1,-1,0,0,-1,-1,-1,1,1,-1,1,0,0
+Reggie Wall,SA,"['hotdogs', 'calabrian', 'hotpot', 'austrian']","['themedcafes', 'laotian']",pescatarian,date,10,breakfast,$,tex-mex,0,0,1,1,-1,1,0,1,0,1,0,1,1,0,0,0,-1,0,0,1,0,0,-1,1,1,1,1,-1,-1,1,-1
+Gladys Foy,T,"['diners', 'fondue', 'afghani', 'caribbean', 'portuguese']","['laotian', 'izakaya']",,friends,8,lunch,$$$$,afghani,-1,1,-1,0,0,-1,1,0,0,-1,1,1,0,0,-1,0,0,0,0,0,0,0,1,1,-1,1,-1,0,0,-1,0
+Gary Brann,T,"['sandwiches', 'cambodian', 'chinese', 'singaporean', 'izakaya']","['british', 'egyptian', 'eritrean', 'cafeteria', 'breakfast_brunch']",vegetarian,friends,10,dinner,$$$,japacurry,-1,1,0,1,0,1,0,-1,0,-1,-1,-1,1,-1,-1,-1,-1,-1,0,-1,1,0,1,1,-1,1,1,0,0,0,1
+Mary Snelson,M,"['mauritius', 'sardinian']","['poutineries', 'mexican', 'singaporean']",,friends,9,dinner,$$$$,scandinavian,-1,0,1,1,0,1,-1,0,0,0,0,1,-1,1,1,0,0,-1,-1,-1,-1,0,0,1,0,-1,-1,1,-1,-1,-1
+Karen Phelps,W,"['mediterranean', 'nicaraguan', 'singaporean', 'spanish']","['tapas', 'tacos', 'southafrican']",,solo,9,lunch,$$$$,pakistani,0,1,1,0,0,-1,-1,-1,1,0,0,0,-1,1,-1,0,-1,-1,-1,-1,0,1,0,0,-1,-1,1,0,0,0,1
+Claude Winget,W,"['sushi', 'korean', 'hotpot', 'cheesesteaks', 'modern_european']","['haitian', 'calabrian']",,solo,8,breakfast,$,armenian,0,0,-1,1,-1,-1,-1,-1,0,1,-1,0,1,1,-1,-1,-1,0,-1,0,1,-1,1,0,-1,-1,-1,-1,-1,-1,-1
+Michael Fuller,R,"['japacurry', 'bbq', 'salad', 'hotdogs']","['nicaraguan', 'bulgarian', 'irish']",gluten-free,family,2,dinner,$$$$,senegalese,-1,0,1,0,1,1,0,0,1,-1,1,0,1,0,0,1,1,1,-1,-1,1,1,0,-1,0,0,0,-1,0,0,-1
+Joann Sandoval,R,"['irish', 'popuprestaurants']","['wraps', 'cafes', 'moroccan', 'hainan', 'colombian']",,date,4,dinner,$$$,pancakes,0,0,1,1,1,1,1,1,-1,1,0,-1,1,1,1,1,0,0,-1,0,-1,0,1,1,-1,1,-1,0,-1,1,1
+Nidia Taylor,SA,"['british', 'poutineries', 'izakaya']",['puertorican'],vegetarian,solo,10,lunch,$$$,burgers,1,1,0,-1,-1,0,0,1,1,-1,0,-1,0,0,-1,0,1,0,1,-1,1,0,-1,1,0,-1,0,1,-1,-1,-1
+Mary Burtch,W,"['japanese', 'haitian', 'scottish', 'african', 'hotdog']","['southern', 'chickenshop', 'sardinian']",,date,1,breakfast,$,newamerican,-1,-1,-1,-1,1,0,-1,1,1,0,0,-1,-1,0,0,0,0,0,-1,0,0,1,1,-1,0,0,-1,0,1,0,-1
+Brenda Griffin,T,"['indpak', 'pizza', 'guamanian', 'irish']","['soulfood', 'mauritius', 'latin', 'haitian']",,work,9,breakfast,$$$$,kebab,1,-1,-1,-1,-1,0,-1,1,0,1,-1,0,1,0,0,0,0,1,0,-1,0,0,1,0,0,0,1,0,1,0,1
+Arnold Lynn,R,['ramen'],"['salad', 'basque']",,work,9,dinner,$$$,cambodian,-1,0,0,-1,1,0,1,1,1,1,-1,0,1,0,1,-1,1,1,-1,1,0,1,0,1,1,0,0,1,-1,1,1
+Jose Cavazos,SA,"['soup', 'pakistani', 'french', 'chicken_wings']",['foodstands'],,solo,6,dessert,$,mauritius,0,0,-1,-1,0,0,0,0,0,0,-1,0,1,-1,1,0,-1,-1,-1,1,-1,-1,-1,-1,0,0,0,1,-1,-1,-1
+Richard Perry,R,['peruvian'],['mideastern'],,solo,2,dinner,$$$,argentine,0,-1,-1,0,0,1,0,0,1,1,-1,0,-1,0,-1,-1,-1,0,-1,1,0,0,1,0,0,1,1,1,-1,0,0
+William Culnane,M,"['eritrean', 'uzbek', 'hawaiian', 'argentine']","['szechuan', 'cajun', 'seafood']",,solo,6,dessert,$$,modern_european,-1,0,0,0,1,1,-1,0,0,-1,-1,-1,-1,1,0,-1,0,0,-1,-1,1,-1,0,1,-1,-1,1,1,-1,0,1
+Marie Amante,SU,"['trinidadian', 'pancakes', 'cafeteria', 'colombian']","['argentine', 'dinnertheater']",,work,3,breakfast,$,polynesian,-1,0,0,1,-1,0,1,-1,1,0,1,1,-1,1,1,1,0,-1,1,-1,1,1,1,0,1,0,0,-1,1,-1,0
+Richard Freeman,R,['indpak'],"['cuban', 'szechuan']",,date,1,dessert,$$$$,vegetarian,1,1,-1,1,1,-1,0,1,-1,1,-1,-1,0,0,-1,1,0,-1,1,-1,1,1,-1,-1,-1,0,-1,0,-1,1,1
+Andrea Farrell,W,['irish'],"['calabrian', 'indpak', 'turkish', 'japanese']",,solo,7,breakfast,$$,shanghainese,1,0,-1,0,0,0,1,1,-1,-1,0,-1,0,-1,-1,1,-1,-1,-1,-1,-1,0,-1,0,0,-1,0,0,-1,0,1
+Nancy Webber,M,"['mongolian', 'malaysian', 'panasian', 'sushi']","['cambodian', 'fondue']",,work,10,lunch,$,honduran,-1,0,1,-1,-1,-1,0,1,1,-1,-1,0,0,1,1,0,0,0,0,1,0,0,1,0,1,0,1,-1,0,0,1
+Michelle Tillman,W,['irish'],['bangladeshi'],,family,3,lunch,$$$,hungarian,1,1,-1,-1,1,-1,1,1,1,-1,0,-1,1,0,1,-1,0,1,1,1,-1,-1,-1,1,-1,1,1,1,1,1,0
+Patrick Leverett,M,"['vegetarian', 'ethiopian', 'southern']","['waffles', 'vegan', 'hungarian', 'cantonese']",,date,8,lunch,$$$,poutineries,1,1,1,1,1,0,1,1,1,-1,1,0,1,0,0,1,1,-1,-1,0,1,1,0,-1,1,1,-1,0,1,0,-1
+Jerome Ferrari,T,"['southern', 'chickenshop', 'trinidadian', 'pancakes']","['seafood', 'uzbek', 'austrian', 'falafel']",,work,9,dinner,$$$$,wraps,1,1,0,0,1,1,-1,0,0,1,-1,0,1,-1,-1,1,1,1,-1,1,1,1,0,-1,-1,-1,-1,-1,-1,1,0
+Joyce Magana,F,"['trinidadian', 'newamerican', 'brazilian', 'himalayan', 'irish']","['iberian', 'falafel', 'hawaiian', 'eritrean']",,solo,2,dessert,$$$$,pizza,1,0,0,0,1,1,-1,1,0,0,-1,-1,-1,1,1,-1,-1,1,0,0,-1,1,1,-1,0,-1,-1,1,-1,1,0
+William Sayers,R,"['himalayan', 'egyptian', 'salvadoran', 'calabrian', 'colombian']",['mediterranean'],,family,2,dessert,$,ramen,1,1,-1,-1,-1,-1,0,-1,1,0,1,0,0,1,-1,1,-1,1,-1,-1,0,0,0,1,1,1,-1,1,1,1,-1
+Marina Jones,T,"['cafeteria', 'hotdogs']","['bangladeshi', 'spanish', 'creperies', 'gamemeat']",,family,9,lunch,$$$$,polynesian,-1,1,1,1,-1,0,-1,0,-1,-1,1,1,-1,0,1,0,-1,1,0,0,-1,0,-1,0,1,0,-1,0,0,0,0
+Sean Brown,SA,"['filipino', 'spanish', 'wraps']","['noodles', 'argentine']",kosher,work,3,dessert,$$$$,cheesesteaks,-1,1,-1,1,1,0,-1,1,1,1,-1,-1,0,0,-1,1,1,0,1,0,0,-1,1,-1,1,1,0,0,-1,-1,1
+Chris Davis,F,"['waffles', 'czech', 'gluten_free', 'spanish']","['hotpot', 'bangladeshi', 'puertorican', 'hungarian', 'srilankan']",,solo,6,breakfast,$$,portuguese,0,-1,1,0,-1,-1,1,1,0,-1,-1,1,0,-1,1,0,1,1,0,1,1,-1,0,1,1,0,1,0,1,0,1
+Anna Santana,W,"['themedcafes', 'kosher', 'tuscan']","['newamerican', 'burgers', 'hotdogs', 'persian']",,work,9,dinner,$,conveyorsushi,0,0,-1,1,-1,0,-1,0,0,1,1,0,-1,-1,1,1,1,1,1,0,0,0,0,1,1,0,0,-1,1,1,-1
+Natalie Carrizales,SU,"['argentine', 'bbq']","['gastropubs', 'foodstands', 'hawaiian', 'bangladeshi', 'trinidadian']",,solo,3,lunch,$$,tuscan,0,-1,-1,0,0,0,0,0,0,1,0,1,1,0,0,0,-1,0,0,0,0,-1,0,0,-1,0,0,-1,1,1,-1
+May Mccauley,W,['argentine'],"['mediterranean', 'polish']",,solo,3,lunch,$,sushi,1,1,-1,1,-1,1,1,-1,1,1,-1,1,0,0,-1,1,0,-1,0,0,1,-1,1,-1,-1,0,0,-1,1,1,0
+Wilma Long,F,['calabrian'],"['mauritius', 'trinidadian', 'tapasmallplates', 'pizza']",,solo,3,lunch,$$$$,egyptian,-1,0,1,0,-1,-1,0,0,-1,1,1,0,1,-1,0,1,1,-1,-1,1,1,1,-1,-1,1,1,-1,0,-1,-1,1
+Angela Jones,M,"['brasseries', 'hotdogs']","['peruvian', 'guamanian', 'seafood', 'hainan', 'argentine']",,friends,7,breakfast,$$,bbq,0,-1,0,-1,-1,-1,1,-1,1,0,-1,-1,0,1,-1,-1,-1,0,1,0,1,0,-1,-1,1,0,-1,0,1,0,0
+Edith Palmer,R,['gluten_free'],['newamerican'],,friends,4,dinner,$$$$,diners,1,-1,0,-1,1,-1,1,1,1,1,0,1,0,-1,-1,1,0,0,0,0,-1,1,0,1,1,1,0,1,0,1,1
+Betty Waller,T,"['filipino', 'salvadoran', 'waffles']","['brazilian', 'indpak', 'puertorican']",,friends,5,dinner,$$$$,scandinavian,-1,1,1,0,1,0,1,0,1,1,0,-1,1,0,1,0,0,0,-1,-1,1,0,1,1,0,-1,0,1,0,0,0
+Jennifer Biser,SA,['italian'],"['hungarian', 'filipino']",pescatarian,friends,8,lunch,$$$,argentine,0,1,1,-1,1,1,1,-1,0,0,-1,0,0,-1,-1,-1,1,0,0,1,0,-1,1,-1,-1,1,1,0,-1,-1,1
+Margaret Field,M,"['halal', 'armenian', 'eritrean', 'falafel', 'cafeteria']",['bangladeshi'],,family,1,lunch,$$,mauritius,1,0,0,-1,0,-1,-1,1,1,1,0,0,0,0,0,-1,0,1,1,-1,0,1,0,1,-1,1,1,0,0,-1,-1
+Oscar Roberts,M,['tradamerican'],"['salad', 'pizza', 'dinnertheater']",,family,4,breakfast,$$$$,laotian,0,0,0,0,-1,-1,1,-1,1,0,-1,0,-1,-1,1,-1,0,-1,0,1,0,-1,1,0,-1,-1,1,1,1,-1,1
+Elizabeth Clayton,W,['singaporean'],"['trinidadian', 'catalan', 'southafrican', 'salvadoran', 'calabrian']",gluten-free,date,1,dessert,$$$$,steak,0,0,-1,0,-1,0,-1,1,1,1,0,0,1,0,-1,0,-1,1,1,1,-1,-1,-1,-1,-1,1,0,1,1,-1,1
+Alice Edwards,R,"['burgers', 'caribbean', 'japacurry']","['spanish', 'singaporean', 'hotdog', 'arabian', 'izakaya']",vegan,family,8,dessert,$,shanghainese,-1,1,0,0,-1,-1,1,0,-1,0,-1,-1,0,-1,0,-1,1,1,-1,-1,1,1,-1,0,-1,-1,0,0,-1,-1,1
+Ruth Ziech,F,"['pakistani', 'belgian']","['mexican', 'korean', 'noodles']",pescatarian,solo,5,dessert,$$$,tacos,1,1,1,-1,0,-1,-1,-1,0,0,1,0,-1,0,1,0,-1,0,0,1,-1,0,-1,1,-1,0,-1,1,-1,-1,-1
+Nancy Rouse,SU,['french'],"['persian', 'asianfusion', 'foodstands']",,solo,10,breakfast,$,poutineries,1,-1,0,1,1,-1,0,1,1,1,-1,1,0,1,0,-1,-1,0,-1,1,0,0,1,0,0,0,1,0,-1,0,-1
+Esteban Baez,R,"['pancakes', 'senegalese']","['hotdog', 'southafrican', 'egyptian']",,date,1,dessert,$$$$,szechuan,0,0,0,0,-1,-1,-1,0,1,0,0,-1,-1,0,-1,0,0,0,-1,-1,0,0,1,0,0,-1,1,-1,1,1,0
+Stephanie Clark,W,"['honduran', 'buffets', 'polynesian', 'persian']","['venezuelan', 'argentine', 'malaysian', 'chicken_wings']",,solo,7,breakfast,$$$$,mongolian,-1,0,-1,1,0,-1,1,-1,0,1,0,1,-1,-1,0,-1,1,1,0,1,-1,0,0,1,0,-1,0,0,1,0,0
+Ryan Gasiewski,F,['cafes'],"['dinnertheater', 'burgers', 'bulgarian']",,friends,7,lunch,$,korean,0,-1,1,1,1,-1,1,1,-1,1,0,-1,-1,1,-1,-1,1,0,-1,0,0,-1,0,-1,1,-1,1,-1,0,0,-1
+Fred Bishop,W,"['comfortfood', 'filipino', 'caribbean', 'chicken_wings']",['sardinian'],,solo,2,breakfast,$$$$,fishnchips,1,1,0,0,1,1,-1,-1,1,1,-1,0,0,1,0,0,-1,-1,1,1,1,0,1,0,0,1,1,-1,1,0,0
+Katherine Miles,M,['vietnamese'],['delis'],kosher,work,5,dinner,$$$,ramen,-1,1,1,1,1,-1,0,1,-1,-1,0,-1,-1,-1,-1,-1,1,-1,0,-1,0,-1,1,0,-1,0,-1,1,1,-1,1
+Roscoe Holmes,F,"['dimsum', 'irish', 'uzbek', 'greek']","['egyptian', 'pizza', 'lebanese', 'chickenshop']",,family,5,dessert,$,himalayan,-1,1,1,-1,1,-1,1,0,-1,0,0,-1,-1,1,-1,1,1,1,1,1,0,-1,-1,1,0,1,-1,0,1,-1,1
+Herbert Chavez,W,"['dinnertheater', 'colombian', 'themedcafes', 'himalayan']","['japacurry', 'vegan', 'newmexican', 'chickenshop']",,work,5,breakfast,$$,cafes,0,0,0,-1,-1,-1,0,1,1,0,0,0,-1,0,-1,0,-1,0,1,0,1,0,-1,1,1,-1,1,0,0,-1,0
+David Chambers,SA,"['hainan', 'vegan', 'filipino', 'mongolian']",['hkcafe'],,family,8,breakfast,$,diners,1,1,0,-1,-1,1,-1,0,0,1,-1,1,0,0,0,0,1,0,1,0,0,1,1,1,0,-1,-1,0,-1,0,0
+Bonita Housel,F,"['gastropubs', 'catalan', 'malaysian', 'cafeteria']","['supperclubs', 'laotian', 'puertorican', 'french']",,solo,7,breakfast,$$$$,izakaya,1,1,-1,1,1,1,1,0,-1,0,1,1,-1,-1,1,1,0,1,1,0,-1,-1,1,0,1,1,1,1,0,0,0
+Veda Hathaway,SA,['brasseries'],"['food_court', 'polynesian', 'buffets']",,date,8,breakfast,$$$,filipino,-1,0,1,1,-1,1,-1,0,1,0,1,0,0,0,1,1,-1,1,0,1,-1,0,1,1,1,-1,1,-1,1,-1,-1
+Garry Adkins,W,['nicaraguan'],"['irish', 'cantonese', 'burmese', 'dinnertheater']",,solo,6,lunch,$,gluten_free,0,1,-1,-1,0,1,0,-1,1,1,1,1,-1,0,1,-1,0,-1,-1,0,-1,0,-1,-1,-1,1,-1,-1,0,0,0
+Richard Larson,R,"['southern', 'cafeteria', 'basque']",['catalan'],,work,5,dessert,$$$,brazilian,-1,-1,1,0,1,1,0,-1,0,-1,0,1,-1,-1,0,-1,-1,0,0,0,-1,0,-1,-1,1,0,-1,-1,1,1,1
+Adalberto Penn,SU,"['bulgarian', 'cheesesteaks']",['dinnertheater'],,work,9,dinner,$$$,czech,1,-1,-1,1,1,-1,1,0,1,1,-1,0,1,-1,-1,-1,1,-1,1,-1,1,0,1,0,0,1,0,1,0,-1,-1
+Charles Timme,F,"['ethiopian', 'tuscan', 'laotian']","['irish', 'singaporean', 'dominican', 'newamerican']",,date,2,breakfast,$,vegan,0,-1,0,0,0,-1,-1,-1,1,0,-1,0,1,1,-1,0,-1,0,-1,-1,0,1,1,1,-1,0,0,0,0,-1,1
+Joi Hall,M,"['pancakes', 'asianfusion', 'mongolian', 'russian']","['somali', 'puertorican']",,friends,9,breakfast,$$$$,foodstands,1,0,-1,0,-1,1,-1,-1,-1,1,0,0,-1,-1,0,-1,0,-1,1,-1,-1,-1,0,1,1,0,0,-1,1,1,1
+Mary Case,F,"['egyptian', 'italian', 'argentine']",['himalayan'],,solo,7,dessert,$$$,buffets,0,-1,0,-1,0,0,-1,0,-1,0,0,-1,0,-1,0,1,1,-1,0,0,-1,1,1,1,0,0,1,-1,-1,0,1
+Pablo Hunt,SA,['korean'],"['indpak', 'cajun', 'egyptian']",pescatarian,date,9,dinner,$,tapas,-1,-1,1,1,-1,1,-1,-1,-1,-1,0,0,1,0,-1,-1,-1,0,-1,1,1,1,-1,-1,0,0,1,-1,-1,0,1
+James Martz,F,"['russian', 'lebanese', 'vegetarian', 'belgian', 'waffles']","['themedcafes', 'vegan']",,family,8,dinner,$$$$,japanese,-1,0,1,-1,1,1,0,1,1,0,1,0,1,1,0,1,0,-1,1,0,0,0,1,-1,-1,1,-1,0,1,-1,-1
+Jan Bartlett,SA,"['vegan', 'peruvian', 'russian', 'cafes']",['portuguese'],vegan,work,7,dessert,$$,caribbean,0,0,0,1,-1,-1,1,1,0,-1,1,-1,-1,1,-1,1,0,1,-1,-1,1,0,1,1,-1,0,-1,0,-1,1,0
+Myra Moore,M,"['pancakes', 'mexican']",['chinese'],,work,5,dessert,$$$,teppanyaki,-1,0,-1,-1,-1,0,0,1,-1,1,-1,0,-1,1,1,1,1,1,-1,-1,-1,0,-1,-1,-1,-1,-1,1,-1,0,-1
+Jacob Stcharles,F,"['hungarian', 'poutineries', 'bulgarian', 'honduran', 'bbq']","['uzbek', 'japacurry', 'reunion']",,work,6,dinner,$$$,ethiopian,0,0,-1,-1,0,-1,-1,0,-1,-1,1,-1,0,1,1,1,0,1,-1,0,-1,0,1,-1,0,1,0,-1,0,1,-1
+Anita Despard,SA,"['mexican', 'hainan', 'brasseries']","['peruvian', 'basque', 'honduran', 'tuscan']",pescatarian,family,2,lunch,$,teppanyaki,-1,0,0,1,1,0,0,0,1,1,1,0,-1,1,0,-1,0,1,0,1,-1,-1,1,1,-1,-1,-1,0,1,-1,-1
+Gary Gleason,T,"['modern_european', 'vegan', 'mediterranean', 'dimsum', 'wraps']","['calabrian', 'hainan']",,friends,6,dinner,$$,gastropubs,1,-1,-1,1,-1,-1,1,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,-1,-1,-1,0,0,-1,1,1,0,0,0
+Patricia Ervin,F,"['teppanyaki', 'comfortfood', 'italian', 'mexican']","['cuban', 'calabrian']",,work,3,dessert,$$$,thai,-1,0,0,1,1,0,-1,1,0,-1,0,-1,-1,1,1,1,-1,1,0,-1,-1,0,0,-1,0,1,-1,0,0,-1,0
+Anna Yen,SU,"['australian', 'izakaya', 'ramen', 'soulfood']","['ethiopian', 'tapas', 'gastropubs', 'popuprestaurants']",vegan,family,9,breakfast,$,southafrican,-1,1,-1,-1,-1,0,0,0,0,1,-1,0,1,1,0,1,0,1,0,1,0,1,0,-1,-1,-1,0,0,0,1,-1
+Dion Billups,SU,"['chickenshop', 'scandinavian']","['chicken_wings', 'tuscan', 'japanese', 'indpak']",,friends,5,dinner,$$$,szechuan,1,0,0,0,1,0,1,-1,0,0,1,-1,0,0,-1,0,0,1,0,1,0,1,1,1,-1,0,0,-1,0,0,-1
+Marla Davis,SA,"['persian', 'themedcafes', 'uzbek', 'modern_european']",['shanghainese'],,date,6,dinner,$$$,fishnchips,-1,1,-1,1,0,1,1,0,0,1,0,-1,1,0,0,1,-1,0,1,1,1,1,-1,0,-1,1,0,0,1,1,0
+Jaqueline Wentz,W,"['ethiopian', 'hungarian', 'argentine', 'lebanese']","['food_court', 'japanese', 'tacos']",,solo,5,breakfast,$$$$,vegetarian,0,-1,-1,0,1,1,0,1,0,1,1,0,-1,0,1,1,1,0,-1,-1,0,-1,1,-1,0,-1,-1,0,0,1,1
+Larry Williams,SU,"['poutineries', 'basque', 'newmexican', 'szechuan']",['themedcafes'],pescatarian,work,7,breakfast,$,hotdog,0,0,-1,1,1,0,-1,-1,-1,0,-1,-1,-1,0,-1,0,1,0,1,0,0,0,1,-1,1,0,1,0,-1,-1,0
+Lisa Stebbins,T,"['malaysian', 'hotpot']","['nicaraguan', 'chinese', 'hotdog']",,work,6,breakfast,$$,kosher,-1,0,-1,1,0,1,0,-1,0,0,1,-1,1,-1,-1,1,0,1,1,-1,1,1,-1,-1,-1,1,0,0,0,-1,1
+Cecil Spradley,T,['slovakian'],"['newmexican', 'falafel']",,friends,5,lunch,$$$$,themedcafes,-1,1,-1,0,1,1,-1,-1,1,0,1,0,0,-1,-1,1,-1,-1,-1,-1,1,1,-1,0,0,1,0,0,0,0,1
+Laurel Brackley,F,"['diners', 'british', 'japanese', 'trinidadian']","['himalayan', 'burmese']",vegan,work,1,dinner,$$$$,salvadoran,0,-1,-1,0,1,1,-1,-1,1,0,0,1,-1,-1,-1,0,0,1,0,-1,-1,1,0,-1,1,-1,0,1,1,0,0
+Ann Church,W,"['falafel', 'lebanese']","['dimsum', 'venezuelan']",,work,10,breakfast,$$$$,tacos,0,-1,1,1,1,0,0,0,-1,0,1,-1,0,1,0,1,-1,0,-1,-1,0,1,0,0,-1,-1,1,0,1,-1,-1
+Nicole Dark,T,"['themedcafes', 'kebab']","['delis', 'vegetarian', 'vegan', 'japanese']",,family,7,dessert,$$$,cambodian,0,0,1,0,-1,-1,0,0,1,-1,1,0,0,1,-1,-1,-1,1,0,-1,1,0,1,0,-1,1,0,-1,1,-1,1
+Ryan Bibeau,SU,['noodles'],"['raw_food', 'hawaiian']",,date,8,dinner,$,dimsum,0,-1,0,1,1,-1,-1,-1,1,0,0,-1,-1,-1,-1,1,-1,1,1,1,1,0,0,0,-1,1,-1,-1,-1,-1,1
+David Williams,F,"['fishnchips', 'delis', 'eritrean']","['ramen', 'sushi']",,date,6,breakfast,$$,singaporean,1,0,1,0,-1,0,1,0,1,1,1,-1,1,0,-1,-1,-1,1,1,0,0,-1,0,-1,0,-1,0,1,0,-1,0
+Mario Willie,T,"['british', 'asianfusion', 'australian', 'italian', 'french']",['food_court'],pescatarian,solo,5,breakfast,$,soulfood,0,0,0,1,0,-1,1,0,0,1,0,-1,-1,0,1,0,0,0,1,1,1,1,0,0,-1,1,1,1,0,-1,1
+Victoria Schroer,SU,"['scandinavian', 'foodstands', 'cambodian', 'argentine']","['vegan', 'falafel', 'taiwanese']",,friends,10,dessert,$$$,seafood,1,0,0,-1,0,1,-1,-1,0,-1,1,1,0,-1,0,0,1,0,1,1,-1,0,1,0,0,0,0,-1,1,1,0
+Eunice Correll,SU,['syrian'],"['mongolian', 'polish']",,date,9,lunch,$$$,spanish,-1,-1,0,-1,0,1,1,1,1,-1,1,1,-1,-1,-1,-1,0,0,-1,0,-1,1,0,-1,0,-1,1,-1,-1,-1,1
+Harold Lahay,W,"['foodstands', 'guamanian', 'fishnchips']",['uzbek'],,family,6,breakfast,$$,indonesian,0,0,-1,0,0,-1,0,-1,-1,-1,0,-1,0,1,-1,0,1,1,0,-1,-1,1,0,-1,0,-1,-1,-1,1,1,0
+Angel Youngblood,T,['burmese'],"['salvadoran', 'arabian', 'comfortfood']",,family,10,dinner,$,mexican,0,0,1,-1,-1,0,-1,0,-1,1,0,1,1,0,0,-1,-1,0,1,-1,1,-1,-1,-1,-1,-1,1,0,1,1,0
+Lee Smith,M,"['burmese', 'thai']","['eritrean', 'hainan', 'georgian']",,work,4,lunch,$,cajun,1,1,1,1,1,0,-1,-1,0,1,0,0,-1,-1,-1,1,0,0,-1,0,1,0,0,-1,-1,1,1,-1,1,0,-1
+Brian Samuel,F,"['gluten_free', 'british']","['polynesian', 'somali', 'seafood']",,work,8,breakfast,$,singaporean,0,1,1,1,0,0,-1,1,1,0,1,0,-1,0,-1,0,1,-1,-1,1,1,-1,-1,0,-1,1,1,0,0,0,-1
+Diane Crump,R,['dinnertheater'],"['izakaya', 'austrian', 'guamanian']",,solo,10,breakfast,$$$,french,1,1,-1,1,0,-1,0,1,0,1,0,1,0,1,-1,0,1,1,0,-1,-1,-1,1,1,0,0,1,1,1,-1,0
+Gary Li,M,"['trinidadian', 'vegetarian', 'indpak']","['somali', 'polish']",,family,2,dinner,$,soulfood,0,1,0,-1,-1,0,-1,0,-1,-1,-1,1,1,0,-1,0,-1,0,-1,1,-1,1,0,-1,0,1,0,0,-1,0,0
+Steven Wright,R,['pancakes'],['newmexican'],,family,10,dinner,$$$,diners,1,1,0,-1,0,0,-1,0,-1,0,1,1,0,1,1,-1,1,0,0,-1,0,0,1,-1,-1,0,1,-1,-1,1,0
+Kristi Filion,SU,"['hainan', 'chicken_wings', 'irish', 'ethiopian', 'syrian']","['hungarian', 'austrian']",,friends,7,dinner,$$$$,indonesian,0,0,0,-1,1,1,-1,-1,-1,0,1,0,0,-1,1,1,-1,1,1,-1,1,0,0,0,1,0,1,-1,1,1,0
+Paula Wunderlich,T,"['wraps', 'vietnamese', 'slovakian', 'salvadoran', 'szechuan']","['pizza', 'ethiopian']",,solo,4,breakfast,$$$,sardinian,1,1,0,1,1,1,1,0,0,-1,1,1,0,1,1,0,-1,-1,-1,0,1,0,0,0,-1,0,1,1,0,-1,-1
+James Panchik,W,"['vietnamese', 'polynesian', 'australian', 'indonesian']","['chickenshop', 'mexican', 'basque']",,friends,7,lunch,$$$,japacurry,1,1,-1,0,1,0,1,1,1,0,-1,1,-1,-1,0,-1,-1,1,1,-1,-1,0,0,0,0,0,-1,-1,0,0,1
+James Seifert,W,"['armenian', 'belgian', 'italian', 'tuscan', 'vegetarian']",['trinidadian'],,family,3,lunch,$$,haitian,0,1,0,1,-1,0,0,-1,0,1,-1,0,-1,0,0,0,0,0,-1,0,1,1,-1,1,0,1,1,0,-1,-1,0
+Eleanor Sanchez,M,['sushi'],"['newamerican', 'reunion', 'cafeteria', 'latin']",,friends,2,dessert,$$,ramen,1,0,1,0,-1,1,1,0,-1,0,-1,-1,-1,-1,1,0,-1,0,1,0,1,-1,0,0,-1,0,0,0,0,1,0
+Isabel Valle,SA,['food_court'],"['salvadoran', 'buffets']",,work,2,dinner,$$$$,dinnertheater,0,1,1,0,0,1,-1,-1,0,0,-1,0,1,-1,-1,1,0,0,-1,-1,-1,-1,-1,0,-1,1,0,0,0,-1,0
+Thomas Gagliano,F,"['italian', 'portuguese', 'popuprestaurants', 'chicken_wings']","['salvadoran', 'armenian', 'venezuelan', 'scottish']",,work,5,dinner,$$$$,fishnchips,-1,-1,1,0,0,1,0,-1,1,1,1,-1,1,1,1,0,0,-1,0,-1,1,0,0,0,-1,-1,1,0,0,0,-1
+Brian Deal,SU,"['mexican', 'brazilian', 'izakaya', 'kosher', 'vegetarian']","['lebanese', 'korean', 'british']",,work,4,breakfast,$$,breakfast_brunch,0,1,1,1,-1,-1,0,-1,-1,1,-1,0,-1,1,0,1,1,0,0,0,-1,-1,0,1,1,0,-1,1,-1,0,0
+Joshua Fox,M,['belgian'],['wraps'],,solo,3,dinner,$$$,egyptian,1,0,-1,-1,-1,0,0,-1,0,1,1,-1,-1,-1,-1,0,0,1,0,0,0,0,1,1,0,0,-1,0,0,-1,-1
+Leonard Stefanatos,R,"['iberian', 'hotpot', 'southern', 'southafrican']","['trinidadian', 'wraps', 'malaysian', 'izakaya', 'australian']",,solo,8,dessert,$$$,haitian,-1,0,0,0,-1,-1,-1,-1,1,1,1,-1,0,1,1,0,-1,1,0,-1,1,-1,-1,0,0,0,0,1,0,-1,1
+Joe Borrell,M,"['uzbek', 'sushi', 'hungarian', 'indpak', 'basque']","['tacos', 'falafel', 'caribbean']",kosher,solo,1,dinner,$,bangladeshi,1,-1,-1,1,1,-1,1,-1,1,0,0,0,1,-1,1,1,0,1,0,-1,0,1,-1,0,0,1,1,-1,1,-1,1
+Raymond Hinnant,W,['uzbek'],"['breakfast_brunch', 'modern_european', 'foodstands', 'dimsum']",,family,3,dinner,$$$,syrian,0,-1,1,1,-1,-1,1,-1,-1,0,0,-1,0,1,1,1,1,1,0,-1,-1,1,0,-1,-1,-1,0,0,1,1,-1
+Robert Granthan,R,"['delis', 'fishnchips', 'polish', 'hainan', 'food_court']","['hawaiian', 'mexican', 'sicilian']",,date,7,lunch,$$$$,noodles,-1,-1,0,-1,0,0,-1,1,-1,0,-1,0,-1,-1,0,1,-1,1,0,-1,1,0,0,0,1,1,-1,1,-1,0,1
+Mozell Patterson,F,['ramen'],"['polish', 'tapasmallplates', 'fishnchips', 'filipino', 'lebanese']",,solo,6,dessert,$$$$,nicaraguan,0,0,-1,-1,-1,1,0,0,-1,0,1,1,0,1,1,0,-1,0,1,-1,-1,0,-1,0,-1,0,0,-1,-1,1,0
+Donna Braggs,SA,"['basque', 'hotdogs', 'modern_european', 'sicilian']","['arabian', 'delis', 'tapasmallplates']",vegan,family,3,dinner,$,buffets,1,1,-1,0,1,-1,0,0,0,1,0,1,1,-1,-1,0,1,0,-1,-1,-1,1,0,-1,-1,-1,1,0,-1,0,0
+Daniel Orduna,SA,"['somali', 'hawaiian']","['reunion', 'salvadoran', 'vietnamese', 'tradamerican', 'eritrean']",,friends,8,lunch,$$$,lebanese,-1,0,-1,-1,0,-1,0,0,0,-1,0,1,1,1,1,-1,-1,0,0,0,-1,1,-1,1,1,-1,1,0,0,0,0
+Virginia Martinez,R,"['dominican', 'uzbek', 'asianfusion', 'eritrean']","['breakfast_brunch', 'cheesesteaks', 'chinese', 'pakistani']",,friends,4,breakfast,$$,tuscan,1,0,-1,1,-1,-1,0,0,1,1,1,-1,1,-1,1,0,0,0,1,1,1,1,-1,0,1,1,0,-1,0,1,0
+Valene Moore,SA,['supperclubs'],"['izakaya', 'fondue', 'laotian', 'newmexican']",,friends,10,lunch,$$,cheesesteaks,1,0,1,0,-1,-1,0,-1,0,0,0,0,0,1,0,0,1,-1,0,-1,1,0,-1,1,0,1,0,-1,0,-1,0
+Theresa Hodgkins,M,['iberian'],"['japacurry', 'dimsum', 'venezuelan', 'thai']",,family,3,breakfast,$$$$,french,0,0,-1,1,1,-1,-1,-1,1,0,0,-1,0,0,1,1,0,1,-1,0,1,1,1,0,-1,1,0,-1,0,1,1
+Joseph Leonard,W,['sushi'],"['french', 'polish', 'dominican', 'mediterranean']",,family,5,breakfast,$$,taiwanese,-1,-1,1,-1,1,0,0,1,1,1,1,0,1,0,0,1,1,1,0,0,-1,0,1,0,0,1,1,1,-1,1,-1
+William Steib,M,"['burgers', 'tuscan', 'dominican']",['gluten_free'],,solo,2,dessert,$$$$,egyptian,0,0,-1,-1,1,1,1,1,1,0,1,1,0,1,1,0,0,1,1,0,-1,0,1,-1,0,-1,0,0,1,1,0
+Lawrence Brandenberger,SU,"['themedcafes', 'armenian', 'vietnamese', 'pakistani', 'tapasmallplates']","['hainan', 'cuban', 'hotdogs', 'italian', 'sardinian']",,solo,7,dinner,$$$$,newmexican,1,1,0,1,1,0,0,1,0,-1,1,0,1,0,0,0,-1,0,0,1,0,1,-1,0,-1,-1,0,0,1,0,0
+Daniel Garcia,SU,"['tradamerican', 'peruvian', 'hainan']","['soup', 'tex-mex', 'tex-mex', 'haitian', 'pizza']",,solo,7,dessert,$,southafrican,1,-1,1,-1,-1,-1,-1,-1,-1,-1,1,0,1,0,0,-1,0,-1,-1,1,-1,0,0,1,-1,0,0,-1,1,-1,1
+Shannon Brucculeri,M,"['newamerican', 'gastropubs', 'caribbean', 'pancakes']","['conveyorsushi', 'modern_european', 'asianfusion', 'conveyorsushi', 'southern']",,family,3,dessert,$,cafes,1,1,1,1,-1,0,0,-1,0,-1,1,1,-1,0,0,0,0,-1,-1,-1,1,0,1,0,1,1,1,1,0,-1,0
+Ashley Cross,W,['foodstands'],"['ukrainian', 'diners', 'egyptian', 'somali', 'reunion']",gluten-free,family,4,dinner,$,peruvian,0,1,1,-1,0,0,0,-1,1,0,0,0,1,0,-1,1,-1,1,-1,1,-1,0,-1,0,1,0,1,0,1,-1,1
+Elizabeth Plant,SU,"['hainan', 'cantonese', 'african', 'laotian', 'puertorican']","['sicilian', 'himalayan', 'basque', 'calabrian', 'nicaraguan']",,solo,6,breakfast,$$$,scandinavian,1,0,1,-1,1,1,0,1,-1,0,-1,-1,-1,-1,-1,0,-1,1,0,0,0,1,-1,0,0,1,1,-1,-1,1,1
+Florence Dejong,SU,"['tex-mex', 'hotdogs']","['panasian', 'conveyorsushi']",,work,5,dessert,$$,ethiopian,0,-1,-1,-1,-1,-1,1,1,1,0,-1,1,0,1,0,-1,0,1,-1,0,0,-1,-1,-1,0,-1,0,0,0,-1,-1
+Addie Mohseni,W,['afghani'],"['uzbek', 'scottish', 'soup', 'russian', 'chicken_wings']",pescatarian,work,10,breakfast,$,dinnertheater,0,0,-1,1,0,1,-1,-1,1,0,-1,0,0,-1,1,-1,1,-1,1,0,-1,0,1,1,0,1,-1,1,0,1,-1
+Nancy Callaghan,M,"['food_court', 'popuprestaurants', 'teppanyaki', 'ukrainian', 'polynesian']","['poutineries', 'chickenshop']",vegan,solo,5,breakfast,$$,ethiopian,1,-1,0,0,-1,-1,-1,-1,-1,0,1,1,1,0,1,1,-1,1,0,0,0,1,1,1,-1,-1,-1,-1,0,1,-1
+Adam Coburn,T,['dimsum'],"['sandwiches', 'hainan']",,friends,3,breakfast,$$,cafeteria,0,-1,1,1,0,1,0,-1,-1,-1,-1,1,-1,-1,0,0,-1,-1,-1,1,0,-1,-1,0,-1,0,0,0,0,-1,1
+Michael Blevins,M,"['dominican', 'fishnchips']",['ramen'],,date,2,dessert,$$,cuban,1,-1,-1,1,0,-1,1,-1,1,1,-1,-1,-1,0,0,-1,0,1,-1,1,-1,1,-1,0,-1,-1,0,1,1,0,1
+Marion Francis,W,"['czech', 'conveyorsushi', 'dominican', 'falafel']","['salvadoran', 'lebanese', 'szechuan', 'irish', 'shanghainese']",,solo,4,dessert,$$$$,sushi,-1,1,1,0,-1,-1,0,1,-1,1,-1,1,0,-1,-1,-1,0,1,0,-1,0,0,1,0,1,1,1,0,-1,0,0
+Kim Billings,M,"['indonesian', 'honduran', 'chinese', 'sicilian']","['steak', 'african', 'scottish', 'themedcafes']",,family,10,breakfast,$$$,caribbean,-1,-1,1,1,-1,-1,0,0,0,1,1,0,-1,0,-1,-1,0,-1,1,0,1,1,-1,0,1,-1,-1,0,0,1,-1
+James Wilbert,W,"['buffets', 'teppanyaki', 'bbq']","['cafes', 'sicilian', 'kebab', 'italian', 'mexican']",kosher,family,8,lunch,$,gastropubs,0,-1,-1,1,1,0,-1,0,0,0,0,1,0,1,-1,1,-1,-1,1,-1,1,0,-1,-1,-1,-1,1,1,1,-1,-1
+John Draper,SA,"['moroccan', 'conveyorsushi', 'bangladeshi']",['szechuan'],,date,1,lunch,$,ethiopian,0,0,1,0,0,-1,0,1,-1,0,-1,1,1,-1,1,-1,-1,0,-1,1,-1,0,0,1,-1,0,1,-1,0,-1,1
+Brooke Dukich,SU,"['lebanese', 'hkcafe', 'polish', 'modern_european', 'soulfood']","['mideastern', 'japanese', 'ramen']",,solo,1,breakfast,$$,moroccan,0,0,1,-1,1,1,-1,-1,1,-1,0,0,-1,0,1,-1,-1,1,0,0,0,0,0,0,-1,-1,-1,1,-1,-1,0
+Julia Davila,R,"['teppanyaki', 'creperies']","['fondue', 'egyptian']",,work,5,dessert,$$$,mongolian,0,-1,-1,-1,0,1,1,-1,1,1,0,1,-1,1,-1,0,1,1,0,0,0,0,1,-1,-1,0,0,1,0,-1,0
+Wendy Curran,SU,"['ethiopian', 'eritrean', 'falafel', 'tacos', 'hotdogs']","['seafood', 'seafood']",,work,8,dinner,$,portuguese,0,0,1,0,-1,1,0,1,0,1,0,-1,-1,1,0,-1,-1,1,1,0,0,1,1,0,0,0,1,0,0,-1,1
+Jeanne Loggins,SU,['tapas'],"['foodstands', 'senegalese', 'puertorican', 'mauritius']",,work,1,dinner,$$$,halal,0,-1,0,0,0,0,-1,0,-1,1,1,-1,-1,0,0,1,1,1,0,1,-1,1,1,0,0,1,0,-1,1,-1,-1
+Juana Conner,SU,['burmese'],['cambodian'],gluten-free,date,5,breakfast,$$,gastropubs,1,1,0,0,0,1,0,0,-1,1,1,1,1,-1,-1,1,1,1,1,-1,1,0,0,-1,1,1,1,0,-1,-1,0
+Charles Clark,M,"['szechuan', 'syrian', 'mediterranean', 'creperies']","['singaporean', 'korean', 'vietnamese', 'kebab']",,date,4,dinner,$$$,puertorican,1,0,-1,-1,-1,-1,1,-1,1,1,1,1,1,-1,0,-1,0,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,1,0,0
+Ronald Green,F,['singaporean'],"['steak', 'izakaya']",,friends,1,lunch,$$$$,chickenshop,-1,-1,-1,-1,-1,1,1,0,1,1,0,0,-1,1,0,0,1,0,1,0,-1,-1,1,-1,1,0,0,1,1,-1,-1
+Mariann Pierson,M,"['indpak', 'kosher', 'hkcafe']",['popuprestaurants'],pescatarian,work,3,dessert,$$$,shanghainese,1,1,-1,-1,1,-1,-1,1,1,-1,0,1,0,0,-1,0,1,0,0,1,1,1,0,-1,1,1,-1,0,0,0,0
+Yolanda Jones,F,['czech'],"['mediterranean', 'filipino', 'himalayan', 'asianfusion']",,friends,8,lunch,$,malaysian,1,0,0,0,-1,0,-1,1,1,1,1,1,0,0,0,1,1,1,0,-1,0,0,0,-1,1,0,-1,1,-1,1,-1
+Billy Rose,T,"['lebanese', 'scandinavian', 'pizza', 'laotian']","['indonesian', 'vegan', 'comfortfood', 'czech']",,family,1,breakfast,$$,szechuan,-1,0,0,1,0,1,-1,-1,0,0,1,0,1,1,0,0,1,0,0,1,0,-1,-1,0,-1,1,-1,0,0,-1,-1
+Kristin Hardy,SA,"['hawaiian', 'supperclubs', 'creperies']","['seafood', 'catalan', 'food_court']",,friends,2,dessert,$$$$,brasseries,0,1,1,0,1,-1,0,1,-1,-1,-1,0,-1,1,1,1,1,0,1,-1,-1,0,-1,0,0,-1,-1,1,-1,-1,1
+Anna Joy,SA,"['basque', 'mongolian', 'hkcafe', 'ethiopian']",['chinese'],,work,1,breakfast,$,sardinian,1,-1,-1,1,-1,1,1,-1,1,0,-1,-1,-1,-1,0,-1,1,-1,-1,1,-1,0,0,-1,-1,1,-1,1,0,-1,-1
+Joel Johnson,M,"['japacurry', 'chinese']","['noodles', 'moroccan', 'sardinian', 'tradamerican', 'thai']",,solo,3,breakfast,$$$$,seafood,0,1,1,0,0,0,0,-1,0,-1,-1,1,-1,-1,0,-1,1,1,-1,-1,0,1,0,0,-1,1,1,1,-1,-1,-1
+Robert Underdahl,W,['szechuan'],"['mexican', 'bangladeshi', 'eritrean']",,date,7,breakfast,$$$$,peruvian,1,1,0,-1,-1,1,1,0,0,1,0,1,1,0,-1,0,-1,-1,0,-1,0,0,0,0,0,0,1,1,-1,1,1
+Betty Smith,SU,"['singaporean', 'bbq', 'szechuan', 'kosher']","['iberian', 'spanish']",,family,2,breakfast,$$$$,izakaya,-1,0,0,0,1,1,1,0,0,-1,-1,1,0,0,1,-1,1,-1,0,-1,1,-1,-1,-1,0,0,-1,-1,1,1,0
+Beth Butler,R,"['mideastern', 'argentine', 'vietnamese']","['raw_food', 'cambodian', 'mediterranean', 'greek', 'italian']",,date,7,dessert,$$$$,bulgarian,1,1,1,0,0,0,0,-1,-1,1,0,1,1,-1,0,1,1,1,0,1,-1,1,1,0,-1,0,-1,-1,0,1,-1
+Scott Lopez,T,"['szechuan', 'foodstands', 'falafel']","['hawaiian', 'fondue']",,work,8,breakfast,$$$,senegalese,1,0,-1,1,1,1,1,1,1,1,1,0,-1,1,-1,1,-1,1,1,-1,0,-1,-1,0,-1,0,1,1,1,1,1
+Ben Fletcher,R,"['mexican', 'syrian', 'teppanyaki', 'argentine']","['chicken_wings', 'newmexican', 'chicken_wings', 'british', 'vietnamese']",,work,8,breakfast,$$$,trinidadian,-1,1,1,1,-1,1,0,1,-1,0,0,0,0,1,0,0,1,1,1,-1,-1,1,1,-1,-1,0,-1,-1,0,0,1
+Jonathan Goodpasture,W,"['cantonese', 'polynesian', 'somali', 'venezuelan']","['tradamerican', 'buffets', 'ethiopian', 'hkcafe']",,friends,5,dessert,$,taiwanese,0,-1,-1,1,1,1,0,-1,0,0,-1,-1,-1,1,1,1,-1,-1,1,1,-1,1,-1,0,1,-1,-1,0,0,0,1
+Lee Roman,SU,['british'],"['honduran', 'caribbean', 'austrian']",vegan,family,8,dessert,$$,african,-1,1,0,0,-1,0,0,-1,0,1,1,1,0,-1,-1,0,0,0,-1,0,1,0,-1,1,-1,0,1,0,-1,0,-1
+Patricia Washington,T,"['halal', 'conveyorsushi', 'diners', 'bangladeshi']","['hkcafe', 'sicilian', 'hkcafe', 'georgian']",kosher,date,10,dessert,$$$,delis,-1,0,-1,0,0,-1,1,-1,0,-1,1,-1,0,-1,-1,0,0,1,0,-1,-1,-1,0,0,0,1,0,0,1,-1,-1
+Robert Mathew,SA,"['haitian', 'hawaiian']","['newmexican', 'syrian', 'sicilian']",,date,7,dessert,$$$$,mauritius,-1,0,-1,1,0,1,-1,1,1,1,-1,0,-1,1,0,0,-1,1,0,1,0,1,0,1,-1,-1,1,-1,-1,-1,-1
+Arnold Eyler,T,['bbq'],"['iberian', 'food_court', 'popuprestaurants', 'szechuan', 'kosher']",vegetarian,work,1,dessert,$$$,reunion,1,1,0,0,0,0,1,0,0,1,0,0,-1,0,0,0,1,1,1,0,-1,0,1,-1,1,1,0,1,1,0,1
+Manuel Williams,SU,"['poutineries', 'popuprestaurants']","['hainan', 'chinese', 'southern']",,date,1,dessert,$$$$,hkcafe,1,1,1,1,1,0,-1,-1,1,0,0,1,-1,1,-1,-1,0,0,1,0,0,-1,1,1,-1,-1,0,1,1,1,-1
+Thurman Shetler,SU,"['diners', 'georgian', 'laotian']","['senegalese', 'austrian', 'portuguese']",,date,6,dessert,$,tex-mex,0,0,-1,0,1,0,1,1,0,1,-1,0,-1,-1,1,1,1,0,1,1,-1,0,-1,0,-1,0,1,1,1,-1,-1
+Tiffany Vanzee,W,"['raw_food', 'hotdog']",['indonesian'],,solo,2,lunch,$$$,calabrian,1,0,-1,-1,1,1,1,-1,1,-1,1,-1,1,0,-1,-1,0,-1,-1,1,1,-1,-1,1,1,-1,-1,0,1,-1,0
+Jack Benthall,M,"['senegalese', 'pakistani', 'cheesesteaks']","['comfortfood', 'hainan', 'sushi', 'tradamerican']",,date,6,dessert,$,bbq,0,0,-1,0,0,1,-1,1,0,0,0,-1,-1,0,-1,-1,0,0,0,0,1,0,1,-1,1,-1,0,0,1,-1,1
+David Robinson,M,"['portuguese', 'spanish']","['nicaraguan', 'georgian', 'trinidadian', 'vietnamese', 'seafood']",,solo,7,breakfast,$$$,peruvian,1,0,1,1,0,-1,-1,0,0,1,-1,1,-1,0,-1,0,-1,-1,-1,-1,0,0,1,0,0,0,-1,-1,1,-1,1
+James Edmunds,SA,"['supperclubs', 'mauritius', 'sushi', 'dominican', 'fishnchips']","['tapasmallplates', 'cambodian', 'panasian', 'australian']",,date,2,dessert,$$$,portuguese,-1,1,1,0,-1,1,1,-1,0,-1,1,0,-1,1,1,1,-1,-1,1,-1,0,0,0,1,0,0,-1,-1,0,1,1
+Mary Mcmahon,M,"['basque', 'portuguese', 'guamanian']","['diners', 'soup', 'creperies']",,friends,3,dinner,$,pizza,1,0,0,0,0,1,-1,0,1,0,0,0,0,0,0,1,1,0,1,0,-1,0,1,1,1,0,0,-1,-1,1,1
+Jaclyn Contreras,SA,['breakfast_brunch'],['hotdogs'],,date,7,lunch,$$$,cuban,-1,0,1,-1,-1,1,0,-1,0,0,0,-1,1,-1,0,-1,-1,-1,1,-1,-1,-1,-1,1,0,-1,1,0,1,0,-1
+Evelyn Vining,F,['shanghainese'],['japanese'],,friends,4,lunch,$$,seafood,-1,0,0,-1,0,1,1,-1,-1,-1,-1,-1,-1,0,-1,1,0,-1,1,0,1,-1,-1,-1,-1,1,1,-1,1,-1,0
+Yvonne Stevens,F,['southafrican'],"['slovakian', 'creperies', 'nicaraguan']",,solo,6,dinner,$,singaporean,0,-1,1,-1,1,0,-1,0,1,1,1,1,1,0,0,-1,1,1,0,1,-1,-1,0,-1,0,1,0,-1,0,1,1
+Tiffany Neuman,T,"['sardinian', 'cheesesteaks', 'spanish', 'tapas']","['scandinavian', 'fishnchips']",,friends,2,breakfast,$,cajun,0,0,1,1,1,1,1,-1,1,0,0,-1,0,-1,-1,0,0,0,1,1,-1,0,-1,-1,1,1,1,-1,1,0,-1
+Peggy Earnest,SA,"['halal', 'japacurry', 'hotdog', 'taiwanese', 'food_court']",['polish'],kosher,friends,1,dinner,$$,turkish,-1,-1,1,0,1,1,0,1,1,0,0,-1,-1,1,1,0,0,1,0,1,1,0,0,0,1,-1,-1,0,1,1,-1
+Mary Williams,W,"['chickenshop', 'caribbean', 'hainan', 'themedcafes']","['fishnchips', 'british']",,work,1,lunch,$,bangladeshi,1,1,0,0,1,-1,0,0,-1,1,1,0,1,0,0,-1,1,-1,0,-1,0,1,1,0,-1,1,0,0,0,1,-1
+Jewell Hoffman,T,"['czech', 'conveyorsushi']","['noodles', 'hawaiian']",,date,4,lunch,$$,guamanian,0,-1,1,1,-1,1,0,0,1,-1,0,1,1,1,1,1,-1,-1,1,0,1,1,1,-1,-1,1,0,0,-1,1,0
+Andrew Lynch,SU,['moroccan'],"['egyptian', 'singaporean']",kosher,friends,3,lunch,$,persian,1,0,-1,1,1,1,1,0,-1,0,-1,0,-1,1,1,-1,0,-1,1,1,-1,0,1,0,-1,1,0,-1,0,0,-1
+Karen Crandell,W,"['cheesesteaks', 'thai', 'raw_food', 'themedcafes']","['newamerican', 'filipino']",,family,1,breakfast,$,gluten_free,1,0,0,1,0,0,-1,1,-1,0,0,1,1,0,0,0,1,0,-1,0,-1,-1,-1,0,1,-1,1,1,1,0,1
+Charles Reinke,SU,"['honduran', 'vietnamese']","['reunion', 'cuban']",,family,3,lunch,$$,kebab,1,0,-1,1,0,1,1,1,0,1,0,1,1,0,0,0,1,1,0,1,0,-1,-1,-1,-1,-1,-1,-1,-1,1,0
+Ronald Richards,T,"['mediterranean', 'irish', 'gastropubs', 'trinidadian']","['calabrian', 'sandwiches', 'japacurry', 'ramen']",,solo,3,dessert,$$,bulgarian,1,1,0,-1,-1,-1,0,-1,0,1,1,0,0,-1,0,1,-1,-1,-1,0,1,0,-1,0,1,-1,0,0,0,-1,0
+Edith Mcmanus,T,"['tuscan', 'pizza']","['salad', 'vietnamese', 'mediterranean', 'soup']",,work,3,breakfast,$$$$,vietnamese,-1,0,-1,-1,0,1,-1,1,-1,0,-1,-1,0,1,-1,1,1,1,-1,1,-1,1,1,0,-1,-1,1,-1,0,-1,1
+Maurice Haynes,W,['kebab'],"['brasseries', 'indonesian', 'himalayan', 'ethiopian', 'popuprestaurants']",,friends,5,dessert,$,kebab,-1,-1,1,0,-1,0,-1,1,0,1,-1,-1,1,-1,-1,1,0,1,1,-1,-1,-1,0,1,-1,0,-1,-1,1,0,0
+Mary Adrian,W,"['modern_european', 'pizza', 'hotdogs', 'popuprestaurants']","['mexican', 'turkish', 'cafes', 'slovakian']",,work,4,lunch,$$$,japanese,-1,1,1,0,1,1,0,0,1,-1,1,-1,0,0,0,1,0,0,-1,-1,-1,-1,1,-1,1,-1,1,1,-1,1,-1
+Herman Wright,W,"['cambodian', 'korean']","['venezuelan', 'indonesian', 'austrian']",,solo,4,dessert,$,kosher,1,-1,1,1,-1,0,1,0,-1,0,1,1,-1,-1,-1,-1,0,-1,-1,-1,1,-1,-1,0,-1,1,0,1,-1,-1,0
+Bart Alfaro,F,"['nicaraguan', 'cambodian']","['waffles', 'ukrainian', 'italian', 'bangladeshi', 'southafrican']",,family,9,dinner,$$$,tradamerican,-1,-1,-1,0,0,1,1,1,1,-1,1,-1,1,-1,0,-1,1,1,-1,-1,1,-1,0,-1,1,1,-1,0,-1,0,-1
+Walter Nickl,T,"['ramen', 'irish', 'scandinavian']","['basque', 'brazilian']",,solo,1,dinner,$$$,pancakes,0,1,1,1,1,0,1,-1,0,-1,0,0,-1,-1,0,-1,0,1,1,1,1,1,1,1,1,0,-1,-1,-1,1,1
+Norma Wagner,W,['ethiopian'],"['popuprestaurants', 'argentine', 'eritrean']",,date,9,lunch,$$,soup,0,1,-1,1,1,1,-1,1,1,1,-1,-1,1,1,0,0,0,0,0,-1,-1,0,1,-1,0,0,-1,0,0,-1,-1
+Hattie Halbert,W,"['vegetarian', 'australian', 'ethiopian']","['tapas', 'persian', 'szechuan', 'persian', 'southern']",,family,10,breakfast,$$$,panasian,0,-1,1,1,1,0,0,-1,0,-1,0,1,0,0,1,-1,-1,0,0,0,1,0,-1,-1,0,-1,1,1,-1,0,-1
+Michael Hicks,T,"['dominican', 'gastropubs', 'supperclubs', 'armenian', 'vegetarian']","['sardinian', 'gamemeat', 'tapas', 'gluten_free']",,family,4,dessert,$,cajun,-1,0,1,0,1,-1,0,1,-1,1,1,1,-1,-1,1,1,1,0,-1,0,1,1,-1,1,0,1,0,0,0,-1,-1
+Stephanie Hill,M,"['german', 'laotian', 'portuguese']","['poutineries', 'british', 'calabrian', 'somali', 'syrian']",,family,4,breakfast,$$$$,srilankan,1,0,-1,0,-1,0,-1,1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,0,0,1,1,0,-1,0,1,-1,1,1,-1,-1
+Roger Daniels,W,"['chinese', 'gamemeat', 'malaysian']","['dinnertheater', 'georgian', 'irish', 'breakfast_brunch']",,date,2,lunch,$$,seafood,1,0,1,-1,-1,1,1,1,-1,0,0,-1,-1,-1,1,0,0,0,-1,-1,1,1,-1,1,-1,-1,1,0,1,0,1
+Elaine Miller,F,"['themedcafes', 'popuprestaurants']","['vietnamese', 'hotdog', 'salad', 'venezuelan']",,solo,5,dessert,$$$$,tapasmallplates,-1,-1,1,-1,0,0,1,0,1,0,-1,-1,0,-1,1,0,1,0,0,-1,1,1,-1,-1,-1,1,0,0,-1,1,1
+Richard Montminy,T,"['fondue', 'venezuelan', 'czech']","['hkcafe', 'ethiopian', 'african']",,solo,2,dessert,$,venezuelan,1,-1,1,1,-1,1,0,-1,-1,1,0,0,-1,1,1,1,1,1,0,1,0,0,-1,-1,1,-1,-1,1,-1,-1,1
+Luigi Fitzgerald,R,"['trinidadian', 'southern']","['mideastern', 'falafel', 'ramen']",kosher,work,3,lunch,$$$,guamanian,1,0,-1,-1,-1,1,-1,0,0,-1,0,-1,1,1,0,1,1,-1,1,1,0,1,1,0,0,0,-1,-1,0,0,-1
+Gregory Marter,SA,"['salvadoran', 'kebab', 'foodstands', 'italian']",['kosher'],,solo,5,dinner,$$$$,newamerican,1,0,0,-1,-1,-1,0,1,-1,-1,1,1,1,0,-1,-1,1,0,1,1,-1,0,1,1,0,-1,-1,0,1,1,-1
+Blanca Goudeau,M,"['moroccan', 'sandwiches', 'wraps', 'southern']","['vietnamese', 'cantonese', 'panasian', 'peruvian']",,family,1,dinner,$$,persian,-1,0,-1,1,1,-1,0,0,0,1,-1,0,1,0,0,1,0,0,0,0,1,-1,-1,0,0,1,1,-1,1,0,0
+Carrie Parker,SU,"['guamanian', 'armenian', 'african', 'wraps']","['hotdogs', 'creperies', 'peruvian', 'british']",vegetarian,date,7,lunch,$$$,afghani,-1,0,0,1,1,0,-1,0,0,-1,0,0,-1,0,0,1,-1,-1,-1,1,1,0,0,1,0,-1,1,0,1,0,-1
+Peggy Helton,R,['brazilian'],"['mexican', 'buffets', 'scottish', 'kosher', 'fondue']",kosher,date,6,lunch,$,izakaya,0,-1,1,-1,0,-1,-1,1,0,-1,-1,-1,1,1,1,0,-1,0,0,1,1,1,0,1,-1,-1,0,1,1,-1,-1
+Lavonne Gordon,SU,"['vietnamese', 'polish', 'fishnchips', 'chicken_wings']","['sicilian', 'mideastern', 'senegalese', 'puertorican', 'greek']",,solo,5,dinner,$$,seafood,-1,1,1,1,0,-1,0,1,1,0,-1,0,0,1,0,1,-1,1,1,-1,1,1,-1,1,0,1,1,0,1,1,-1
+Melvin Isley,SU,"['soulfood', 'malaysian']","['indpak', 'conveyorsushi']",,family,6,dessert,$,moroccan,-1,-1,0,0,0,0,1,1,1,0,0,1,0,1,0,0,1,-1,0,-1,1,0,-1,0,1,1,0,1,1,0,-1
+Mack Martinez,R,"['tapas', 'teppanyaki', 'salvadoran']","['persian', 'tradamerican', 'cajun', 'buffets']",,solo,7,breakfast,$$,sardinian,0,-1,-1,1,-1,0,-1,0,0,0,-1,0,-1,0,1,0,-1,0,1,0,1,1,0,0,1,1,-1,0,0,-1,1
+Bonnie Sreaves,T,"['japacurry', 'gastropubs', 'himalayan']","['reunion', 'soulfood']",gluten-free,date,3,lunch,$$,noodles,-1,-1,-1,-1,-1,-1,1,1,-1,-1,-1,-1,-1,-1,0,0,1,0,1,0,1,0,1,-1,1,-1,0,0,-1,1,1
+Sanjuanita Hayes,SA,['bbq'],"['tacos', 'hkcafe']",,work,9,dessert,$$$$,korean,-1,1,1,-1,1,0,1,-1,0,0,-1,0,1,0,0,0,-1,-1,1,-1,1,-1,0,0,0,1,1,1,1,-1,0
+Ralph Mcneal,F,['arabian'],"['srilankan', 'indonesian', 'halal', 'panasian', 'soup']",,family,6,breakfast,$$,kebab,-1,1,-1,0,0,1,0,1,0,1,1,1,-1,-1,1,-1,0,0,0,1,-1,0,-1,-1,0,0,1,-1,1,1,1
+David Mccracken,T,"['bbq', 'hawaiian', 'kosher']","['seafood', 'mexican', 'slovakian']",,solo,3,dinner,$$$,syrian,1,0,-1,1,-1,0,-1,1,0,1,1,1,0,0,0,1,0,0,-1,0,-1,1,-1,0,-1,-1,1,-1,-1,-1,0
+Bret Taylor,R,"['scandinavian', 'laotian', 'korean', 'mauritius', 'armenian']","['dimsum', 'vegetarian', 'scottish']",,date,10,breakfast,$,irish,1,0,1,-1,0,1,0,-1,1,0,0,-1,1,0,-1,1,1,-1,1,0,-1,-1,1,-1,-1,1,0,-1,1,1,0
+Eugenia Williams,F,"['soup', 'dimsum', 'izakaya', 'newmexican', 'wraps']","['taiwanese', 'burmese', 'hotdog', 'vegetarian', 'mongolian']",,family,3,lunch,$,conveyorsushi,0,-1,-1,1,0,1,0,0,-1,1,1,0,1,-1,0,0,0,1,1,-1,0,-1,-1,0,1,-1,0,1,0,1,1
+Monty Logan,T,['honduran'],['cantonese'],,solo,3,dinner,$$$$,hotpot,0,-1,-1,-1,-1,0,-1,0,1,0,0,1,0,0,0,1,0,1,-1,1,-1,-1,0,-1,-1,1,0,0,1,-1,0
+Michael Shank,R,"['brasseries', 'asianfusion', 'falafel']",['tex-mex'],,family,2,dessert,$$,chinese,1,-1,-1,-1,-1,-1,0,1,0,1,0,-1,0,-1,0,1,0,0,-1,0,1,1,-1,1,0,1,1,-1,0,0,0
+Mike Waldman,T,"['comfortfood', 'reunion', 'british']","['venezuelan', 'argentine', 'mauritius', 'themedcafes', 'catalan']",,date,8,dessert,$$$,popuprestaurants,-1,0,1,1,-1,-1,-1,0,0,1,-1,1,0,1,-1,1,0,-1,1,0,-1,0,0,-1,1,1,1,1,-1,0,0
+Angie Jordan,SU,"['african', 'lebanese', 'indonesian', 'senegalese', 'bulgarian']","['hungarian', 'waffles', 'tapas']",,friends,9,lunch,$$$,mexican,-1,1,-1,0,0,1,0,-1,-1,1,-1,-1,-1,0,-1,-1,0,-1,0,-1,1,1,-1,1,-1,1,1,0,0,1,1
+Cassi Deutsch,T,"['gamemeat', 'kebab']","['polynesian', 'senegalese', 'cafes']",vegan,work,9,dinner,$$$,reunion,0,-1,-1,1,-1,0,0,1,-1,0,1,0,0,0,-1,1,-1,0,0,1,-1,-1,1,1,-1,1,0,0,-1,0,1
+Susan Rozell,R,"['eritrean', 'buffets', 'dinnertheater', 'salvadoran', 'scandinavian']","['brazilian', 'dominican']",,date,7,breakfast,$$$,cambodian,1,1,-1,-1,-1,-1,1,1,1,0,0,-1,1,1,1,0,0,1,-1,-1,0,-1,1,0,1,-1,0,0,0,-1,-1
+Deb Cart,R,"['greek', 'trinidadian', 'indonesian', 'supperclubs', 'persian']","['turkish', 'haitian']",,friends,2,breakfast,$$,malaysian,0,0,-1,-1,1,-1,1,1,-1,-1,0,1,0,0,-1,0,0,-1,-1,-1,1,-1,-1,0,-1,-1,-1,1,1,0,0
+Ann Wilson,F,"['gastropubs', 'mexican', 'buffets']","['trinidadian', 'tacos', 'newmexican']",,family,10,lunch,$$$$,persian,1,0,1,-1,1,-1,-1,0,0,0,-1,1,0,0,0,0,1,-1,1,1,-1,-1,-1,-1,-1,0,0,-1,-1,-1,0
+Jose Murphy,F,"['laotian', 'german']","['cheesesteaks', 'calabrian', 'hotdog', 'singaporean']",,solo,5,dessert,$$$$,chinese,-1,-1,-1,-1,-1,-1,0,0,0,0,0,-1,1,0,-1,0,-1,1,-1,0,-1,1,-1,1,1,1,1,0,1,-1,0
+Deborah Levy,SU,['laotian'],"['scottish', 'conveyorsushi', 'honduran']",,friends,1,dessert,$$$,tex-mex,1,1,-1,0,0,1,0,-1,0,0,-1,1,1,-1,-1,1,-1,-1,1,1,1,1,0,1,-1,-1,-1,1,0,-1,0
+Kevin Gauthier,M,"['mideastern', 'hotdogs']","['japanese', 'thai', 'seafood']",,date,9,dinner,$$$,bbq,0,0,-1,-1,1,1,1,0,1,-1,1,-1,1,-1,0,-1,1,0,0,1,-1,-1,1,1,-1,-1,0,1,1,0,1
+Gary Mcgrady,SA,"['cheesesteaks', 'bulgarian', 'persian']","['japanese', 'shanghainese', 'pizza', 'soup']",,family,2,dinner,$$$$,fondue,-1,1,-1,0,1,-1,1,1,-1,1,-1,-1,1,0,1,0,-1,1,-1,1,0,-1,-1,-1,1,0,0,0,-1,-1,1
+Evelyn Hodge,R,"['teppanyaki', 'puertorican', 'russian', 'vietnamese', 'raw_food']","['modern_european', 'fishnchips', 'mideastern', 'modern_european', 'venezuelan']",,family,10,lunch,$$,bbq,-1,-1,-1,-1,1,1,1,-1,-1,0,0,0,1,-1,-1,-1,0,0,0,-1,0,0,0,0,-1,1,0,1,1,1,0
+Michael Gallagher,T,['hkcafe'],"['persian', 'latin', 'salvadoran', 'halal', 'vietnamese']",,solo,10,lunch,$$$,nicaraguan,-1,0,-1,-1,1,-1,1,0,0,-1,-1,-1,1,1,1,0,1,-1,-1,1,0,-1,-1,-1,-1,0,0,-1,0,1,-1
+Esperanza Braun,M,"['hawaiian', 'sandwiches']",['british'],,friends,7,dessert,$,noodles,-1,1,1,-1,0,1,0,0,0,0,1,1,-1,0,-1,0,0,-1,0,1,1,-1,0,0,-1,1,-1,0,0,1,0
+Jodie Daly,SA,"['austrian', 'bulgarian', 'australian', 'brazilian', 'buffets']","['ethiopian', 'calabrian']",,date,1,breakfast,$$$$,venezuelan,1,-1,-1,-1,-1,1,1,0,0,1,1,0,1,0,0,1,-1,1,-1,0,1,-1,0,0,0,0,-1,1,-1,-1,0
+Patsy Mulac,M,"['arabian', 'foodstands']","['comfortfood', 'creperies', 'belgian', 'newmexican']",,family,3,breakfast,$,eritrean,1,1,-1,1,-1,0,-1,-1,-1,0,0,1,1,-1,-1,-1,-1,1,1,0,1,1,0,1,1,0,-1,-1,0,1,0
+Ryan Berry,M,"['french', 'hotdogs', 'irish', 'african', 'colombian']","['soup', 'srilankan', 'mideastern', 'italian']",,family,3,lunch,$,halal,0,1,-1,-1,1,-1,-1,-1,-1,-1,0,-1,0,1,-1,1,0,-1,1,-1,1,1,-1,-1,0,1,0,-1,-1,0,1
+Benny Cooper,M,"['comfortfood', 'vegetarian', 'wraps', 'italian']","['portuguese', 'armenian', 'dinnertheater', 'panasian']",,solo,6,breakfast,$$$$,tacos,1,0,0,0,-1,0,-1,1,0,0,0,1,1,0,1,-1,1,1,0,-1,0,1,1,0,-1,0,0,1,0,0,1
+Diane Kozak,R,"['thai', 'conveyorsushi', 'sicilian']","['shanghainese', 'sushi']",,family,3,breakfast,$$$,thai,0,1,-1,0,0,0,0,-1,1,1,1,1,0,1,-1,-1,0,0,1,1,1,-1,1,0,-1,-1,0,0,1,1,1
+David Gilbert,SA,['pakistani'],['laotian'],,work,3,dessert,$$$,arabian,-1,1,-1,-1,-1,0,1,-1,0,-1,1,-1,-1,1,1,0,1,0,1,-1,1,1,1,0,-1,1,0,-1,-1,1,0
+William Mitchell,W,"['german', 'scandinavian', 'indonesian', 'portuguese', 'himalayan']",['chinese'],,date,2,dinner,$,hotdog,0,-1,1,0,1,1,-1,0,0,-1,-1,0,1,-1,1,1,0,-1,1,-1,-1,1,1,1,0,-1,1,-1,-1,0,0
+Aaron Pless,W,"['wraps', 'chickenshop', 'fondue']","['reunion', 'uzbek', 'cheesesteaks', 'cantonese', 'sandwiches']",,family,8,breakfast,$$$,korean,0,0,1,0,-1,-1,0,0,-1,0,-1,1,0,1,-1,1,-1,1,1,1,1,1,0,-1,1,0,1,1,-1,1,1
+Michelle Hughes,F,"['raw_food', 'creperies', 'bangladeshi', 'venezuelan', 'nicaraguan']","['hawaiian', 'tacos', 'slovakian', 'argentine', 'peruvian']",,family,3,breakfast,$$$,haitian,1,1,-1,1,-1,0,0,0,0,0,-1,1,-1,1,-1,0,1,0,0,-1,0,1,0,1,0,1,1,-1,0,-1,1
+Karen Duckett,R,"['chickenshop', 'southafrican', 'hotdog']","['breakfast_brunch', 'mauritius']",,work,8,dessert,$$,calabrian,-1,0,-1,1,0,1,0,-1,1,1,-1,1,1,1,1,-1,-1,0,0,-1,1,1,0,1,1,-1,1,1,-1,-1,-1
+Maureen Smith,M,"['fishnchips', 'cafeteria', 'spanish', 'modern_european', 'ukrainian']","['taiwanese', 'georgian']",vegetarian,solo,5,dinner,$$$$,german,0,1,-1,1,-1,0,0,0,0,0,1,-1,-1,-1,-1,1,0,1,0,1,0,1,1,-1,0,-1,-1,-1,0,0,-1
+Aubrey Wilson,W,"['bulgarian', 'austrian', 'syrian', 'eritrean']",['creperies'],,work,10,dinner,$$$$,belgian,0,-1,1,0,1,1,-1,0,1,-1,1,1,0,0,1,-1,-1,0,0,-1,-1,-1,1,1,0,0,1,0,0,0,-1
+Melanie Hahn,M,"['armenian', 'delis', 'creperies', 'egyptian']","['chickenshop', 'soup', 'slovakian']",kosher,solo,3,breakfast,$$,pancakes,1,0,-1,0,1,1,-1,0,-1,0,0,1,-1,0,0,1,0,-1,-1,-1,-1,1,0,1,0,0,1,-1,1,-1,0
+Christine Jaudon,SA,"['filipino', 'salad', 'steak']","['diners', 'halal', 'food_court', 'sardinian', 'breakfast_brunch']",,solo,1,breakfast,$$$,fishnchips,0,1,-1,0,0,1,-1,0,0,-1,1,1,1,1,-1,1,-1,1,-1,-1,-1,0,-1,0,0,-1,1,-1,-1,-1,1
+Dorinda Getter,F,"['bulgarian', 'poutineries', 'themedcafes']",['sushi'],,family,6,lunch,$$$$,turkish,0,1,-1,1,0,1,-1,-1,1,0,1,-1,0,0,-1,-1,0,0,1,-1,0,0,1,0,1,-1,0,1,-1,0,-1
+John Rovero,F,['egyptian'],"['slovakian', 'peruvian']",,date,9,dessert,$$$$,hotpot,1,-1,-1,1,0,1,-1,-1,0,0,-1,0,0,-1,1,-1,0,-1,0,1,-1,-1,-1,0,1,1,-1,-1,1,1,-1
+Frank Ladieu,W,"['colombian', 'ramen', 'egyptian', 'dinnertheater', 'turkish']","['modern_european', 'trinidadian', 'eritrean']",,family,2,breakfast,$$$$,trinidadian,1,-1,1,-1,-1,1,1,1,-1,0,0,1,1,-1,0,0,1,1,1,1,1,1,0,0,0,0,-1,0,0,1,0
+Billy Langford,W,"['tradamerican', 'southern', 'cajun', 'iberian']","['gluten_free', 'kebab', 'newmexican', 'hotpot']",vegetarian,date,3,lunch,$$,themedcafes,0,1,1,1,0,1,-1,0,0,-1,-1,1,1,1,-1,-1,0,1,0,0,0,-1,-1,1,0,1,-1,0,0,1,1
+Patricia Lopez,T,"['taiwanese', 'iberian', 'gastropubs', 'mediterranean', 'eritrean']","['burgers', 'australian', 'japanese', 'asianfusion', 'sushi']",,work,9,breakfast,$$$,wraps,1,1,0,1,1,0,1,1,-1,0,0,1,-1,-1,-1,1,0,1,-1,-1,0,0,-1,0,-1,1,1,1,-1,1,1
+Tommy Prouty,M,['tapas'],['gastropubs'],,friends,9,dinner,$,latin,0,-1,-1,1,0,1,-1,-1,1,0,-1,-1,0,-1,-1,-1,1,1,-1,-1,0,-1,-1,1,-1,-1,-1,-1,0,-1,-1
+Robin Howell,R,"['african', 'popuprestaurants', 'foodstands']","['thai', 'french', 'hungarian', 'fondue', 'british']",,work,4,dinner,$$$,soup,-1,1,-1,0,-1,0,1,1,1,1,-1,0,1,1,0,0,0,-1,1,-1,-1,-1,-1,1,0,1,1,-1,0,1,-1
+Jason Stockton,F,"['hainan', 'italian']",['tacos'],,date,6,dinner,$$,hotdogs,-1,0,1,-1,-1,-1,0,-1,-1,0,0,-1,-1,-1,1,0,-1,0,1,-1,1,0,1,-1,0,-1,0,0,0,0,-1
+Charles Reich,SA,"['vegan', 'delis', 'supperclubs', 'gamemeat', 'newmexican']","['scottish', 'steak', 'ethiopian']",,solo,3,lunch,$$$,seafood,0,0,-1,1,1,-1,1,-1,1,0,1,1,0,-1,0,-1,0,-1,1,1,0,0,1,1,1,1,1,0,1,0,1
+Eldon Howard,M,"['georgian', 'syrian', 'gamemeat', 'colombian', 'brasseries']",['brazilian'],,friends,2,dinner,$,greek,1,-1,1,0,0,0,-1,1,-1,1,0,1,1,-1,1,0,1,0,-1,1,1,0,0,-1,-1,-1,1,-1,1,1,1
+Willie Bird,SA,"['pizza', 'peruvian', 'singaporean', 'sushi', 'latin']","['japanese', 'italian', 'ramen']",,solo,3,dessert,$$$,bulgarian,1,-1,1,-1,1,0,0,1,0,-1,-1,1,1,-1,-1,-1,0,0,-1,-1,-1,1,0,-1,-1,-1,-1,1,1,-1,1
+Muriel Butler,T,"['szechuan', 'sicilian']","['newamerican', 'sandwiches', 'izakaya']",,family,6,breakfast,$,greek,0,1,1,1,-1,-1,-1,0,0,-1,0,1,-1,0,-1,-1,1,1,0,0,-1,-1,0,1,-1,1,0,-1,0,-1,1
+Todd Abbott,SA,"['fondue', 'sicilian', 'haitian', 'japanese']","['german', 'spanish', 'conveyorsushi']",,friends,6,breakfast,$,japanese,1,1,-1,1,1,0,0,0,1,1,1,-1,1,1,-1,0,1,-1,-1,0,1,1,1,-1,1,-1,-1,0,-1,1,-1
+Stephen Gore,W,['hotdog'],"['syrian', 'vegetarian', 'korean', 'creperies', 'brazilian']",vegan,date,5,lunch,$$,guamanian,-1,1,0,-1,0,-1,-1,-1,0,0,-1,0,0,-1,0,0,-1,0,1,0,1,-1,0,0,1,0,0,0,0,0,0
+Maria Anderson,M,"['soup', 'tapasmallplates', 'creperies', 'guamanian', 'pancakes']",['panasian'],,work,6,lunch,$$,turkish,0,0,0,1,0,-1,0,0,1,1,-1,1,-1,-1,0,-1,-1,1,0,1,1,0,-1,-1,0,1,1,0,-1,0,-1
+Sheila Price,SU,"['singaporean', 'latin', 'mediterranean', 'kosher']","['shanghainese', 'peruvian', 'uzbek']",pescatarian,solo,8,dinner,$,afghani,0,1,-1,1,0,0,-1,1,-1,-1,1,-1,1,1,-1,-1,0,0,0,0,1,0,-1,1,0,1,1,0,-1,0,0
+Leah Jean,W,"['hawaiian', 'turkish', 'sandwiches', 'polynesian', 'panasian']","['salad', 'czech', 'portuguese', 'indpak']",,friends,7,dessert,$,himalayan,1,1,0,0,1,1,0,0,0,1,1,1,-1,1,0,0,-1,0,1,-1,0,1,-1,1,1,-1,0,0,0,1,1
+John Goodrum,SA,"['guamanian', 'soulfood']","['supperclubs', 'soup']",,work,6,dessert,$,polish,-1,1,0,1,-1,1,0,-1,0,0,-1,0,-1,-1,1,1,1,0,1,1,1,0,0,-1,1,1,1,1,-1,1,0
+Monica Witherspoon,M,"['georgian', 'asianfusion', 'comfortfood', 'delis', 'chickenshop']","['polish', 'seafood', 'cantonese', 'australian', 'diners']",vegan,solo,5,dinner,$$$,french,0,-1,0,1,0,1,1,-1,1,1,1,1,-1,1,1,1,1,-1,1,1,0,1,0,0,0,0,-1,1,-1,-1,0
+Emily Manning,SA,"['fishnchips', 'portuguese']",['salvadoran'],,family,9,lunch,$$,mediterranean,1,-1,-1,-1,-1,1,0,0,-1,1,0,0,0,0,-1,1,1,-1,-1,-1,1,1,0,1,0,0,0,-1,-1,1,1
+Rita Allison,F,"['russian', 'chicken_wings', 'cantonese']","['supperclubs', 'poutineries', 'scandinavian', 'australian']",,solo,6,dessert,$$$,mauritius,-1,1,0,-1,1,0,1,0,1,0,1,0,-1,0,-1,-1,0,1,-1,-1,0,1,0,-1,-1,1,0,1,1,1,-1
+Milton Hall,SU,"['kosher', 'hkcafe', 'indpak', 'pizza']","['supperclubs', 'raw_food', 'conveyorsushi']",,friends,4,breakfast,$,german,0,-1,1,1,0,0,1,1,1,-1,0,0,1,-1,1,0,1,-1,-1,0,-1,-1,1,0,-1,-1,0,-1,-1,0,-1
+Lucille Moralez,F,"['hotpot', 'haitian', 'malaysian']","['brasseries', 'chickenshop', 'bbq']",,solo,9,breakfast,$,iberian,-1,0,-1,1,-1,1,-1,-1,0,0,-1,0,-1,0,0,1,0,-1,-1,-1,0,0,0,0,0,0,-1,-1,0,1,-1
+John Lyman,SA,['korean'],['cambodian'],,date,8,breakfast,$$$,seafood,0,1,0,0,0,0,0,-1,-1,0,1,-1,0,1,0,-1,1,1,-1,1,0,-1,-1,1,0,0,1,0,0,0,1
+Fredrick Hernandez,T,"['halal', 'gamemeat']",['calabrian'],,solo,8,dinner,$$$,dimsum,-1,1,0,-1,1,1,1,1,-1,0,0,1,0,1,0,0,0,-1,-1,0,1,0,-1,1,0,-1,1,-1,1,-1,0
+Kathy Williams,R,"['seafood', 'chicken_wings', 'indpak', 'szechuan', 'hotpot']","['tapas', 'turkish', 'japanese', 'hungarian', 'srilankan']",,work,6,dinner,$$$,uzbek,0,1,-1,1,-1,1,1,-1,1,1,-1,-1,1,-1,1,1,-1,1,1,0,1,0,1,-1,1,0,-1,1,0,1,1
+Kerry Robinson,SU,"['southern', 'izakaya']",['newmexican'],kosher,friends,2,dessert,$$,latin,0,-1,1,0,0,0,0,0,-1,0,1,-1,-1,1,0,0,-1,0,0,1,0,-1,0,1,0,1,1,1,-1,0,-1
+Gladys Scheunemann,F,"['persian', 'polynesian']","['cuban', 'vietnamese', 'filipino', 'iberian']",,date,3,dinner,$$,tex-mex,1,-1,1,0,-1,-1,-1,1,-1,0,1,-1,1,0,1,0,-1,1,-1,-1,0,0,1,0,1,1,-1,1,1,1,1
+Alexander Porter,F,['malaysian'],"['gluten_free', 'puertorican', 'tuscan', 'ethiopian', 'georgian']",,friends,1,dessert,$$$,food_court,1,-1,1,0,0,1,-1,1,1,0,-1,-1,0,-1,1,0,1,0,0,0,0,0,1,-1,0,1,0,-1,-1,0,-1
+Margarita Richardson,SU,"['singaporean', 'hainan', 'armenian', 'sicilian']","['trinidadian', 'teppanyaki', 'vietnamese']",,family,3,dessert,$$,colombian,0,-1,1,-1,-1,1,0,1,-1,-1,1,1,0,-1,0,0,1,-1,-1,1,0,0,-1,1,1,1,0,1,1,1,1
+Tyler Hernandez,SU,"['polynesian', 'mongolian', 'czech', 'diners']","['moroccan', 'argentine']",,date,6,dessert,$$,supperclubs,-1,1,-1,1,0,-1,0,-1,-1,-1,-1,0,1,1,1,-1,0,1,0,0,1,0,-1,0,-1,-1,0,1,-1,-1,1
+Margaret Zaragoza,W,"['hainan', 'cajun', 'asianfusion', 'chickenshop', 'syrian']","['vietnamese', 'burmese', 'catalan', 'korean', 'guamanian']",,family,8,lunch,$$,tradamerican,1,1,1,1,0,0,0,1,0,0,1,1,0,-1,0,-1,0,1,0,-1,0,-1,0,1,-1,-1,-1,1,0,0,1
+Katie Mize,T,"['bangladeshi', 'dinnertheater', 'french']","['polynesian', 'poutineries', 'mauritius', 'tradamerican']",,date,2,lunch,$$$,reunion,-1,0,1,-1,-1,0,1,1,1,1,-1,1,-1,0,0,0,1,1,0,1,-1,1,0,0,1,0,-1,-1,0,1,-1
+George Kelly,T,['cantonese'],['tacos'],,friends,5,dinner,$$$$,chicken_wings,-1,0,-1,-1,0,0,0,1,1,-1,0,1,-1,1,-1,0,0,0,0,1,1,-1,0,1,0,1,0,-1,0,0,1
+Colin Jenkins,SA,['poutineries'],"['polish', 'british', 'themedcafes', 'sushi', 'sicilian']",,friends,3,lunch,$$$$,foodstands,-1,1,-1,-1,-1,1,0,0,1,1,-1,1,0,0,0,0,1,1,1,1,1,0,0,0,1,0,0,0,-1,1,1
+Paul Ellis,F,"['izakaya', 'syrian']","['himalayan', 'bulgarian', 'asianfusion', 'foodstands', 'comfortfood']",,family,1,breakfast,$$,trinidadian,-1,-1,0,0,1,1,1,1,0,1,-1,-1,0,1,-1,-1,1,1,1,0,0,0,1,1,-1,1,-1,1,0,-1,1
+Peggy Flores,R,"['syrian', 'modern_european']","['southern', 'afghani', 'soup', 'filipino']",,friends,1,dessert,$$$,slovakian,0,-1,1,0,-1,0,1,-1,-1,0,1,0,-1,1,-1,0,0,1,0,0,1,0,-1,-1,1,1,-1,0,0,1,0
+Donald Edwards,W,"['tapas', 'irish', 'turkish', 'themedcafes', 'honduran']","['basque', 'belgian', 'dimsum', 'soup', 'venezuelan']",,work,2,dessert,$$$,georgian,1,1,1,0,0,1,-1,1,-1,-1,-1,-1,0,-1,1,-1,0,-1,1,1,1,0,0,0,0,0,1,1,1,0,-1
+Willie Hilderbrandt,T,['senegalese'],"['filipino', 'trinidadian', 'tapasmallplates', 'singaporean']",,solo,8,breakfast,$$$,fishnchips,1,-1,1,0,1,-1,1,-1,-1,-1,-1,0,-1,1,0,1,-1,0,0,0,1,1,1,-1,-1,0,0,1,1,-1,0
+Cynthia Haynie,F,['ramen'],"['cafeteria', 'kebab', 'salad', 'themedcafes']",,work,9,dinner,$$$,catalan,0,-1,1,1,-1,-1,-1,-1,0,1,1,-1,-1,0,1,-1,-1,-1,-1,0,0,0,-1,-1,-1,1,-1,-1,1,-1,-1
+Jennifer Trammell,F,"['noodles', 'steak']","['tradamerican', 'trinidadian', 'indonesian', 'afghani', 'belgian']",,solo,9,dessert,$$,soup,1,-1,-1,1,-1,0,0,0,1,0,1,1,1,0,0,-1,1,-1,-1,1,0,-1,0,1,0,0,0,-1,1,-1,0
+Lawrence Wolford,W,"['turkish', 'tapasmallplates', 'austrian', 'colombian']",['cheesesteaks'],gluten-free,work,1,dessert,$,comfortfood,0,1,0,0,1,1,1,-1,-1,0,0,1,0,-1,-1,1,1,0,1,1,1,0,1,0,1,0,1,-1,-1,0,0
+Clinton Wyckoff,T,['gastropubs'],"['caribbean', 'uzbek', 'eritrean', 'pancakes']",,friends,4,breakfast,$$$,hawaiian,-1,1,-1,0,0,1,0,1,-1,0,-1,0,0,1,-1,1,0,0,1,0,1,0,-1,0,1,1,-1,-1,-1,0,1
+Clara Mcgowan,T,"['teppanyaki', 'vegetarian', 'czech', 'polynesian', 'chicken_wings']","['bbq', 'soulfood']",,solo,6,dinner,$$,hkcafe,-1,0,0,1,1,-1,-1,0,1,-1,-1,-1,0,1,0,0,1,1,1,0,-1,-1,-1,-1,1,-1,1,0,-1,0,1
+Margie Leggett,SA,['portuguese'],['cajun'],,solo,9,breakfast,$$,caribbean,1,-1,1,-1,0,0,0,1,0,1,0,1,-1,-1,-1,0,1,0,-1,-1,-1,-1,-1,-1,1,-1,0,0,1,-1,-1
+Kathleen Baisley,M,"['slovakian', 'ukrainian', 'hotdog']",['mediterranean'],,work,2,dinner,$,srilankan,-1,1,-1,0,-1,1,-1,1,-1,-1,1,0,0,-1,-1,-1,-1,1,0,-1,0,-1,1,1,1,-1,1,-1,1,1,0
+Barbara Manahan,W,"['greek', 'buffets', 'chinese']","['polynesian', 'hotdog']",pescatarian,solo,10,dessert,$$$$,tuscan,0,-1,0,-1,0,-1,0,-1,0,-1,1,-1,-1,-1,0,0,0,0,1,1,0,0,-1,0,-1,-1,-1,-1,-1,0,0
+Oma Workman,SA,"['calabrian', 'mongolian', 'tradamerican']","['british', 'irish']",vegan,family,1,dinner,$$$$,bulgarian,0,0,1,1,0,0,0,-1,-1,-1,1,1,0,0,-1,-1,-1,-1,0,-1,-1,1,-1,-1,-1,1,0,-1,1,1,-1
+Joseph Berlin,W,"['french', 'calabrian']","['vegetarian', 'uzbek']",,date,3,breakfast,$$$,japacurry,1,-1,-1,0,-1,-1,0,-1,1,-1,1,1,-1,0,1,1,0,-1,1,0,0,1,-1,0,0,-1,-1,-1,-1,-1,0
+Darcie Beyer,R,['argentine'],"['tradamerican', 'taiwanese']",,work,1,dessert,$$,newamerican,-1,-1,1,0,-1,1,-1,1,0,-1,1,1,1,1,0,0,-1,0,1,0,0,1,0,-1,0,-1,1,-1,0,1,0
+Julie Roy,SA,"['eritrean', 'pizza']","['wraps', 'seafood', 'polish', 'wraps', 'cantonese']",,date,9,lunch,$$$$,nicaraguan,0,1,1,0,1,-1,0,0,1,-1,0,-1,1,0,-1,-1,0,1,0,1,0,0,1,1,1,0,0,-1,1,0,1
+Doris Wike,T,"['hotpot', 'foodstands', 'cafes', 'italian', 'calabrian']","['mauritius', 'british', 'srilankan']",,friends,8,dinner,$$$$,calabrian,0,1,1,1,-1,1,-1,1,-1,0,1,0,1,1,1,1,-1,0,0,0,1,0,-1,1,1,0,0,1,0,-1,1
+Winfred Jones,W,"['scottish', 'gluten_free']",['delis'],,work,9,dessert,$$$,popuprestaurants,-1,-1,-1,0,-1,1,1,1,-1,-1,1,0,0,1,0,0,1,0,-1,1,-1,1,-1,0,-1,1,0,0,-1,1,1
+Michael Broderick,W,"['tacos', 'falafel', 'vegan', 'modern_european']","['popuprestaurants', 'buffets']",,family,7,dessert,$$$,reunion,-1,0,0,0,1,0,-1,-1,-1,1,-1,0,-1,0,-1,0,0,1,1,1,-1,-1,0,-1,-1,1,1,1,-1,-1,-1
+Geraldine Lopez,SA,"['sandwiches', 'southafrican', 'southern', 'filipino', 'burmese']","['sardinian', 'cantonese', 'srilankan']",,friends,8,dessert,$$$,iberian,-1,0,1,-1,-1,1,-1,-1,0,-1,1,1,-1,0,0,-1,1,0,0,-1,0,1,0,-1,1,-1,1,1,0,1,1
+Ulysses Hirschfeld,R,['caribbean'],['russian'],,family,2,lunch,$,asianfusion,1,-1,0,-1,1,0,1,-1,-1,1,-1,-1,0,1,1,1,1,0,0,1,1,0,0,0,1,0,0,-1,-1,-1,0
+Wade Mathews,SU,"['armenian', 'popuprestaurants', 'cantonese']","['teppanyaki', 'kebab', 'tapas', 'cafeteria', 'cambodian']",,date,5,lunch,$,puertorican,0,1,-1,0,0,1,-1,0,1,0,-1,-1,1,1,1,1,1,1,1,-1,1,0,1,-1,-1,1,1,0,1,1,-1
+William Schilling,R,"['sardinian', 'chicken_wings', 'hotdog', 'tapas', 'sicilian']",['georgian'],,family,1,dinner,$$$$,german,-1,-1,-1,-1,-1,1,-1,0,1,0,-1,0,-1,-1,-1,-1,0,-1,1,1,0,-1,-1,1,0,0,0,1,1,0,1
+Phyllis Fisher,F,"['japacurry', 'tuscan']",['southern'],kosher,work,8,lunch,$$$,caribbean,1,1,0,1,-1,0,-1,-1,1,1,-1,1,-1,1,1,-1,1,-1,1,0,0,-1,1,0,1,-1,0,0,-1,0,0
+Reginald Budde,R,"['russian', 'scandinavian', 'shanghainese']","['delis', 'japanese', 'salad']",vegetarian,solo,8,lunch,$$$$,latin,0,-1,-1,-1,0,-1,0,-1,-1,1,0,-1,0,1,-1,-1,1,1,1,0,-1,0,0,0,1,0,-1,0,-1,-1,0
+Regina Wilson,F,"['korean', 'noodles']","['dimsum', 'bangladeshi']",,solo,6,lunch,$$$$,poutineries,1,0,-1,-1,-1,1,-1,0,0,0,1,-1,0,-1,-1,0,-1,-1,0,-1,-1,1,0,0,-1,1,0,1,-1,0,-1
+Barbara Wilkerson,F,"['sicilian', 'mauritius', 'popuprestaurants']","['breakfast_brunch', 'conveyorsushi', 'steak', 'sandwiches', 'gastropubs']",,date,9,dessert,$$,tradamerican,-1,0,0,-1,-1,0,0,0,0,0,0,0,-1,-1,0,-1,0,1,1,-1,-1,-1,0,-1,1,1,-1,0,0,1,0
+Beverly Costello,T,"['hkcafe', 'guamanian', 'persian', 'southern', 'argentine']","['russian', 'southafrican', 'haitian']",,date,1,dessert,$$,greek,1,-1,-1,0,1,0,1,0,1,1,1,0,0,-1,-1,1,0,1,0,0,-1,1,1,0,-1,1,1,0,1,0,0
+Richard Reyna,W,['moroccan'],"['steak', 'cantonese', 'wraps']",,friends,8,lunch,$,vegan,0,-1,1,0,-1,-1,0,1,0,0,-1,-1,1,-1,0,0,0,-1,-1,1,-1,0,-1,0,1,0,1,0,0,1,-1
+David Guardado,W,['basque'],"['pancakes', 'srilankan']",,family,9,dessert,$,seafood,1,1,0,1,1,-1,1,1,-1,1,0,0,-1,0,-1,0,-1,-1,1,-1,-1,-1,0,-1,1,-1,1,-1,-1,-1,1
+Whitley Jarquin,SA,"['korean', 'hungarian', 'modern_european']",['iberian'],,work,10,lunch,$$,shanghainese,1,0,-1,1,0,0,1,0,-1,-1,1,0,-1,0,0,-1,-1,0,0,1,1,-1,1,0,1,-1,1,-1,0,-1,0
+Nicholas Ovando,SU,"['slovakian', 'hotdogs', 'cambodian']","['puertorican', 'mexican', 'reunion', 'cantonese', 'soup']",,date,10,lunch,$$$$,mongolian,1,-1,0,0,0,1,0,1,0,1,0,0,1,0,0,0,-1,1,0,1,1,-1,1,-1,0,1,1,1,1,0,1
+David Price,T,"['australian', 'pizza', 'burgers', 'cambodian', 'spanish']","['srilankan', 'reunion']",,friends,3,breakfast,$$$,cheesesteaks,-1,0,-1,-1,0,1,0,0,0,-1,-1,-1,0,0,-1,0,0,0,-1,0,1,-1,0,1,-1,-1,-1,-1,1,0,0
+Teddy Rivera,SA,"['pakistani', 'southern']","['persian', 'southafrican', 'gastropubs', 'vegan', 'foodstands']",vegan,date,4,lunch,$$$$,trinidadian,1,0,0,-1,-1,1,1,1,-1,1,0,0,1,1,0,0,0,0,1,1,-1,0,1,1,1,0,1,-1,0,-1,0
+Elsie Esposito,M,"['french', 'armenian', 'srilankan', 'russian', 'halal']",['themedcafes'],,date,5,dessert,$$$,kosher,0,1,0,-1,-1,1,1,1,0,0,0,-1,-1,1,1,-1,1,0,-1,0,-1,0,0,0,-1,-1,-1,0,-1,-1,1
+Richard Key,T,"['caribbean', 'cafeteria', 'steak', 'poutineries']","['indpak', 'dominican', 'syrian']",pescatarian,solo,5,dinner,$$$,ramen,0,0,1,-1,-1,-1,0,1,1,1,1,-1,1,1,0,-1,-1,-1,0,-1,0,0,0,0,1,0,1,-1,1,1,1
+Susan Bienenstock,M,"['mideastern', 'german']","['mauritius', 'czech']",,date,2,lunch,$$$$,falafel,0,1,-1,-1,1,1,-1,0,1,1,1,-1,-1,-1,1,-1,0,0,0,1,-1,-1,0,-1,1,-1,1,0,1,0,0
+Rachel Williams,R,"['portuguese', 'egyptian', 'falafel', 'hotdogs']","['poutineries', 'peruvian', 'newamerican']",,work,5,breakfast,$,salad,1,0,0,1,1,0,1,1,0,-1,0,1,-1,-1,-1,0,-1,0,-1,1,1,1,-1,1,0,-1,-1,0,-1,1,0
+Leona Clark,W,"['southafrican', 'pizza', 'hawaiian', 'sicilian', 'izakaya']","['bulgarian', 'gamemeat']",,solo,8,dinner,$,salad,-1,-1,1,1,-1,-1,0,-1,0,0,0,-1,0,1,-1,-1,-1,1,1,-1,1,0,0,1,0,1,0,-1,0,0,0
+Malinda Ho,M,"['cambodian', 'chinese', 'gamemeat', 'bangladeshi']",['colombian'],,solo,5,lunch,$$$,hotdog,0,1,-1,-1,0,1,0,-1,1,0,0,1,0,-1,0,0,0,0,0,0,-1,0,-1,1,1,0,-1,-1,0,0,0
+Jon Berry,F,"['indonesian', 'hotpot', 'brasseries', 'caribbean', 'supperclubs']","['haitian', 'izakaya', 'hotdogs']",,solo,10,breakfast,$$$$,belgian,1,-1,1,0,1,-1,0,0,1,-1,0,-1,-1,1,1,-1,0,1,1,0,1,-1,1,1,-1,1,-1,1,-1,0,-1
+Dorothy Albarado,F,"['teppanyaki', 'mexican']","['austrian', 'cafes', 'buffets', 'mongolian']",,date,4,breakfast,$,salvadoran,1,0,1,-1,-1,0,-1,1,0,1,-1,-1,-1,1,1,0,0,-1,-1,1,-1,0,0,1,1,1,0,0,1,-1,1
+Marilyn Lynn,F,"['cuban', 'colombian', 'bbq', 'thai']","['newmexican', 'soup', 'vietnamese']",,work,8,breakfast,$$$$,salad,1,0,0,-1,1,0,-1,-1,0,0,-1,0,0,-1,0,1,1,-1,0,0,-1,1,1,1,1,-1,-1,0,-1,-1,-1
+John Pettigrew,R,"['belgian', 'hotdog']","['delis', 'kebab']",,solo,7,lunch,$$$,vegetarian,-1,1,-1,1,0,0,1,1,-1,-1,1,1,0,-1,1,0,-1,-1,0,1,1,0,0,1,-1,-1,-1,1,0,-1,1
+Gary Hardison,SA,"['bbq', 'kebab', 'sicilian']","['buffets', 'diners', 'colombian']",,friends,6,dinner,$$$,ramen,-1,-1,0,0,1,0,-1,1,-1,1,0,0,1,1,-1,-1,0,0,-1,0,1,1,0,-1,0,1,1,0,0,-1,-1
+Mary Martinez,W,"['brazilian', 'gamemeat', 'british', 'popuprestaurants']","['japanese', 'supperclubs', 'japacurry', 'mexican']",,friends,5,breakfast,$$$$,malaysian,1,-1,0,1,-1,0,-1,1,1,1,0,1,1,1,1,-1,-1,1,0,0,1,0,-1,1,-1,-1,0,0,1,1,1
+Rose Craig,SU,"['italian', 'vietnamese']","['thai', 'bulgarian', 'honduran', 'hkcafe']",kosher,work,10,dessert,$$,brazilian,-1,1,-1,0,0,0,1,0,-1,-1,1,1,1,-1,0,0,0,1,-1,1,1,1,1,1,0,1,0,0,1,0,1
+Mary Spencer,T,"['lebanese', 'sandwiches', 'afghani']","['hotpot', 'izakaya', 'themedcafes', 'slovakian', 'hotpot']",,solo,2,dessert,$,brazilian,-1,1,-1,1,0,-1,0,1,-1,0,1,1,1,0,-1,0,1,-1,0,0,-1,-1,-1,1,-1,0,0,0,0,0,-1
+Steve Voss,W,"['salad', 'australian', 'afghani', 'asianfusion', 'food_court']","['tuscan', 'supperclubs', 'caribbean', 'themedcafes', 'conveyorsushi']",vegan,solo,7,dessert,$$,haitian,-1,0,1,-1,1,-1,1,-1,1,1,1,-1,1,1,0,0,0,-1,1,0,1,-1,1,-1,-1,-1,-1,-1,1,0,-1
+Julia Uribe,M,"['korean', 'bbq']",['gamemeat'],,solo,6,lunch,$,japacurry,1,1,0,-1,0,-1,-1,-1,0,1,-1,-1,1,1,1,0,-1,-1,-1,1,-1,0,0,-1,1,0,-1,1,0,0,1
+David Walker,SU,"['calabrian', 'brazilian', 'russian']","['german', 'hainan', 'cafeteria', 'fishnchips', 'seafood']",vegetarian,date,6,breakfast,$,hkcafe,0,1,-1,-1,-1,0,1,1,0,1,1,1,0,1,-1,1,-1,0,-1,1,0,0,0,1,-1,-1,-1,1,0,0,1
+Clayton Myers,R,"['raw_food', 'soup']","['pizza', 'catalan', 'vietnamese', 'taiwanese']",,date,1,dessert,$$$$,slovakian,0,0,1,-1,0,0,-1,0,0,0,1,-1,1,-1,-1,-1,1,-1,0,1,-1,-1,-1,1,-1,1,-1,1,0,1,1
+Steven Jones,T,"['mauritius', 'cafes', 'vegan']",['cheesesteaks'],,family,8,dessert,$,bulgarian,1,0,-1,-1,1,-1,0,-1,1,-1,0,0,0,-1,1,0,1,-1,1,-1,-1,1,-1,1,-1,-1,-1,-1,0,0,1
+Tanya Tucker,SA,['cambodian'],"['persian', 'greek', 'african', 'indpak', 'korean']",,solo,10,breakfast,$$,mexican,1,1,0,-1,-1,1,0,-1,-1,-1,1,-1,-1,1,-1,1,-1,0,0,1,0,-1,-1,1,-1,-1,0,1,-1,-1,1
+Frances Edwards,R,"['creperies', 'moroccan', 'bbq']","['italian', 'portuguese', 'ukrainian', 'hungarian', 'cambodian']",,date,1,dinner,$,conveyorsushi,-1,1,-1,1,-1,0,-1,-1,0,-1,-1,-1,-1,1,1,0,1,-1,0,0,-1,-1,0,0,-1,0,-1,1,-1,0,0
+Olive Brunke,F,"['popuprestaurants', 'haitian', 'bbq', 'poutineries', 'laotian']","['sushi', 'german', 'cafeteria', 'szechuan', 'burgers']",,work,9,breakfast,$$$,somali,-1,1,0,1,0,-1,-1,1,0,-1,0,1,0,0,0,1,1,0,1,0,1,0,0,-1,-1,0,0,0,-1,1,0
+William Miller,SU,"['delis', 'tuscan', 'iberian']",['argentine'],,work,4,lunch,$$$,soulfood,-1,1,1,0,0,0,-1,-1,-1,1,0,1,1,-1,0,1,-1,0,-1,-1,-1,0,-1,-1,1,0,-1,-1,0,-1,0
+Timothy Ybarra,SA,"['cheesesteaks', 'conveyorsushi', 'southern', 'vietnamese']","['irish', 'kebab', 'filipino']",,friends,7,lunch,$$,burgers,0,0,-1,-1,-1,-1,1,-1,1,-1,0,1,0,1,1,0,1,-1,-1,0,0,-1,1,-1,-1,1,0,0,-1,-1,0
+Anthony Savage,SA,"['burgers', 'gamemeat', 'sicilian', 'venezuelan', 'popuprestaurants']",['mauritius'],,solo,9,lunch,$,latin,0,0,-1,0,0,-1,-1,0,-1,-1,0,-1,0,-1,-1,0,-1,-1,0,-1,1,1,-1,-1,0,-1,1,0,0,-1,0
+Eldon Torres,SA,"['french', 'colombian']","['newamerican', 'foodstands', 'german']",,solo,6,dessert,$$$,modern_european,0,-1,0,0,1,-1,-1,1,0,0,0,1,-1,0,-1,-1,0,-1,0,-1,1,1,-1,0,1,-1,1,1,-1,1,1
+Rose Todd,W,"['vegetarian', 'polish', 'gastropubs', 'pancakes']","['guamanian', 'armenian', 'ethiopian']",,friends,1,breakfast,$$$,delis,0,1,0,1,1,1,0,0,1,0,1,0,0,1,1,1,0,0,1,1,0,1,1,-1,-1,0,0,-1,0,-1,-1
+Kelly Lussier,M,"['russian', 'halal', 'french']","['burgers', 'gluten_free', 'panasian', 'australian', 'guamanian']",,work,7,dinner,$$$$,teppanyaki,1,1,1,0,0,1,-1,-1,1,1,-1,1,-1,0,-1,0,0,1,0,0,1,-1,0,-1,1,0,0,1,-1,0,-1
+Richard Velez,SU,['pancakes'],"['persian', 'sardinian']",,date,7,breakfast,$$$$,panasian,0,1,1,-1,0,1,0,0,1,0,0,-1,1,-1,1,0,-1,-1,0,0,1,0,1,1,1,0,-1,0,1,1,1
+Ed Clark,SA,"['venezuelan', 'polish']","['latin', 'buffets', 'hotdogs', 'themedcafes', 'tuscan']",,work,10,lunch,$$$$,raw_food,1,1,-1,-1,1,-1,0,1,0,1,0,0,-1,0,0,1,0,-1,-1,1,1,-1,1,1,0,-1,-1,-1,1,0,-1
+Phil Schneider,SA,"['basque', 'greek']","['asianfusion', 'catalan', 'british', 'portuguese', 'turkish']",,work,6,dinner,$,british,-1,1,1,1,1,1,-1,1,0,-1,1,1,1,0,-1,1,0,0,-1,-1,-1,1,-1,1,-1,-1,0,-1,1,0,1
+Danielle Lindner,F,"['colombian', 'vegan', 'asianfusion', 'soulfood']","['calabrian', 'ramen', 'tradamerican']",,friends,1,breakfast,$$$$,hawaiian,-1,0,1,1,0,-1,1,0,1,1,0,-1,0,1,1,-1,1,0,0,-1,-1,-1,1,1,-1,0,1,0,-1,1,-1
+Jeremy Chung,M,"['brazilian', 'newamerican', 'fondue', 'raw_food', 'egyptian']",['moroccan'],,friends,4,dinner,$$$,cheesesteaks,1,0,-1,0,-1,0,1,0,0,-1,-1,0,-1,-1,1,1,1,0,0,1,1,1,0,-1,0,1,0,0,0,1,0
+Victor Witte,R,"['chinese', 'fondue', 'kosher']",['eritrean'],,family,1,dinner,$$,ethiopian,1,-1,1,-1,0,1,-1,1,1,0,-1,0,1,0,1,-1,1,0,-1,0,0,1,1,0,-1,0,1,-1,0,-1,1
+Brian Bartlett,M,"['fondue', 'indpak', 'venezuelan', 'nicaraguan']","['salad', 'raw_food', 'arabian']",,family,1,dessert,$,italian,-1,1,-1,0,-1,1,0,1,-1,-1,1,-1,-1,0,-1,1,-1,1,1,1,-1,-1,0,-1,-1,1,-1,0,1,-1,0
+William Lee,W,"['newamerican', 'british']","['syrian', 'thai', 'venezuelan', 'hotdog']",,friends,1,dessert,$,dimsum,0,0,1,-1,-1,1,0,1,1,-1,1,1,-1,-1,1,1,0,0,1,1,1,1,1,1,0,-1,1,1,1,-1,1
+Johnny Carroll,SU,"['lebanese', 'breakfast_brunch', 'cambodian', 'colombian', 'ethiopian']","['mexican', 'calabrian', 'russian', 'french', 'kosher']",,friends,5,breakfast,$$$,portuguese,-1,1,-1,1,-1,0,0,0,1,0,1,-1,1,1,-1,0,-1,1,1,-1,0,-1,-1,1,-1,0,1,0,1,-1,1
+Mark Reasoner,T,"['supperclubs', 'laotian']",['themedcafes'],,solo,9,dessert,$$$$,korean,-1,0,1,-1,0,0,-1,0,0,-1,0,1,1,0,-1,0,1,0,-1,0,-1,1,1,-1,-1,-1,-1,-1,0,0,0
+Kathleen Huynh,F,"['basque', 'hungarian', 'comfortfood', 'tacos']","['buffets', 'falafel', 'cambodian', 'trinidadian']",,work,4,breakfast,$$,austrian,1,-1,0,1,-1,1,-1,1,0,0,0,0,1,1,1,0,0,-1,1,0,1,0,-1,0,-1,1,0,0,1,1,-1
+Troy Phillips,T,"['sushi', 'afghani', 'tex-mex']","['cambodian', 'steak', 'sicilian']",gluten-free,work,9,dinner,$$$,egyptian,0,0,0,0,0,0,1,0,0,0,1,0,1,0,-1,-1,0,1,1,-1,1,1,1,-1,1,-1,-1,1,-1,-1,0
+James Hosmer,T,"['cuban', 'kebab']","['turkish', 'italian', 'british']",,friends,6,breakfast,$,chinese,-1,-1,0,1,-1,0,-1,0,1,0,0,0,1,0,0,-1,0,-1,1,1,-1,0,1,-1,1,1,0,1,0,1,-1
+Susan Bingham,M,"['gastropubs', 'foodstands', 'african', 'guamanian', 'panasian']","['latin', 'himalayan']",,friends,1,breakfast,$$$,chickenshop,1,-1,0,-1,-1,-1,-1,1,1,0,1,0,-1,0,-1,-1,1,1,0,0,-1,1,-1,0,0,-1,-1,-1,0,-1,1
+Anthony Dooley,W,"['hotdogs', 'hotdog', 'cafes']","['cantonese', 'delis', 'waffles', 'tex-mex', 'soulfood']",,date,7,lunch,$$$,tex-mex,0,0,-1,0,-1,-1,-1,-1,0,0,0,-1,-1,-1,1,1,-1,-1,-1,-1,-1,0,-1,-1,0,-1,0,1,1,0,1
+Oren Field,R,['somali'],"['hkcafe', 'hotdog']",,family,7,breakfast,$$,eritrean,1,0,1,1,-1,0,1,0,1,-1,0,-1,0,1,0,-1,1,0,0,-1,-1,-1,-1,1,0,0,0,1,0,-1,0
+Phillip Pickhardt,F,['caribbean'],"['pizza', 'mauritius', 'gamemeat', 'colombian', 'modern_european']",,date,3,dessert,$$,somali,-1,0,-1,-1,-1,1,0,0,1,0,-1,0,0,-1,-1,1,0,-1,0,1,0,-1,1,-1,0,-1,-1,-1,1,1,0
+Tiffany Dean,SU,"['syrian', 'southern']","['burmese', 'hainan', 'chicken_wings']",,work,4,lunch,$,portuguese,1,1,1,1,0,0,1,1,0,-1,0,0,-1,-1,-1,0,0,-1,-1,1,1,0,-1,0,1,0,-1,1,1,0,1
+Judith Kelly,T,"['french', 'nicaraguan']","['cheesesteaks', 'honduran', 'honduran']",,solo,1,dessert,$,hotpot,-1,-1,0,0,0,0,0,-1,-1,0,1,0,1,0,1,-1,1,1,1,-1,1,0,1,1,-1,1,1,0,0,0,1
+Paul Gennaro,W,"['hawaiian', 'salvadoran', 'afghani']","['syrian', 'hotdogs', 'spanish']",,work,9,lunch,$$$,italian,0,1,1,0,-1,-1,1,0,1,-1,1,-1,0,1,-1,-1,0,1,0,1,0,1,1,-1,-1,-1,0,1,0,1,1
