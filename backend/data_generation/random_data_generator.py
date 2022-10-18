@@ -3,7 +3,8 @@ import random
 import names
 from data_gen_constants import *
 
-cuisine_list = cuisines.split('\n')
+# cuisine_list = cuisines.split('\n')
+cuisine_groups_list = list(cuisine_groups)
 
 # generates a list of cuisines the user likes
 def generate_positives():
@@ -11,7 +12,7 @@ def generate_positives():
     positives = []
     i = 0
     while i < num_positives:
-        cuisine = cuisine_list[int(random.random() * (len(cuisine_list)))]
+        cuisine = cuisine_groups_list[int(random.random() * (len(cuisine_groups_list)))]
         if cuisine not in positives:
             positives.append(cuisine)
             i += 1
@@ -23,7 +24,7 @@ def generate_negatives(positives):
     negatives = []
     i = 0
     while i < num_negatives:
-        cuisine = cuisine_list[int(random.random() * (len(cuisine_list)))]
+        cuisine = cuisine_groups_list[int(random.random() * (len(cuisine_groups_list)))]
         if cuisine not in positives:
             negatives.append(cuisine)
             i += 1
@@ -50,7 +51,8 @@ with open('random_data.csv', 'w', encoding='UTF8') as f:
         occasion = occasions[int(random.random() * len(occasions))]
         if restriction == -1:
             restriction = ''
-        cuisine = cuisine_list[int(random.random() * (len(cuisine_list)))]
+        cuisine = cuisine_groups_list[int(random.random() * len(cuisine_groups_list))]
+        # cuisine = cuisine_list[int(random.random() * (len(cuisine_list)))]
         num_people = int(random.random() * num_pot_people) + 1
         meal = meals[int(random.random() * len(meals))]
         price_range = price_ranges[int(random.random() * len(price_ranges))]
