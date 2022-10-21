@@ -3,8 +3,8 @@ import random
 import names
 from data_gen_constants import *
 
-# cuisine_list = cuisines.split('\n')
 cuisine_groups_list = list(cuisine_groups)
+restaurant_cuisines_list = list(cuisine_groups.values())
 
 # generates a list of cuisines the user likes
 def generate_positives():
@@ -51,13 +51,47 @@ with open('random_data.csv', 'w', encoding='UTF8') as f:
         occasion = occasions[int(random.random() * len(occasions))]
         if restriction == -1:
             restriction = ''
-        cuisine = cuisine_groups_list[int(random.random() * len(cuisine_groups_list))]
-        # cuisine = cuisine_list[int(random.random() * (len(cuisine_list)))]
-        num_people = int(random.random() * num_pot_people) + 1
+        cuisine_group = restaurant_cuisines_list[int(random.random() * len(restaurant_cuisines_list))]
+        cuisines = []
+        # generates a random number between 0 and 99 that will determine if the restaurant has 1, 2, or 3 cuisines associated with it
+        num_cuisines = random.random() * 10
+        if num_cuisines < 0.5:
+            cuisines.append(cuisine_group[int(random.random() * len(cuisine_group))])
+        # will generate two cuisines for a restaurant ~80% of the time
+        elif num_cuisines < 9:
+            cuisines.append(cuisine_group[int(random.random() * len(cuisine_group))])
+            second_cuisine = cuisine_group[int(random.random() * len(cuisine_group))]
+            # ensures that both cuisines are different
+            while second_cuisine in cuisines:
+                second_cuisine = cuisine_group[int(random.random() * len(cuisine_group))]
+            cuisines.append(second_cuisine)
+        # generates three cuisines ~5% of the time
+        else:
+            cuisines.append(cuisine_group[int(random.random() * len(cuisine_group))])
+            second_cuisine = cuisine_group[int(random.random() * len(cuisine_group))]
+            # ensures that both cuisines are different
+            while second_cuisine in cuisines:
+                second_cuisine = cuisine_group[int(random.random() * len(cuisine_group))]
+            cuisines.append(second_cuisine)
+            third_cuisine = cuisine_group[int(random.random() * len(cuisine_group))]
+            # ensures that the third cuisine is different
+            while third_cuisine in cuisines:
+                third_cuisine = cuisine_group[int(random.random() * len(cuisine_group))]
+            cuisines.append(third_cuisine)
+        # sets the occasion and number of people properly
+        if occasion == 'solo':
+            num_people = 1
+        elif occasion == 'date':
+            num_people = 2
+        else:
+            num_people = int(random.random() * num_pot_people) + 1
+            # prevents occasions that are work/family/friends related from having only 1 person
+            while num_people == 1:
+                num_people = int(random.random() * num_pot_people) + 1
         meal = meals[int(random.random() * len(meals))]
         price_range = price_ranges[int(random.random() * len(price_ranges))]
         
-        row = [names.get_full_name(), day, positive_cuisines, negative_cuisines, restriction, occasion, num_people, meal, price_range, cuisine]
+        row = [names.get_full_name(), day, positive_cuisines, negative_cuisines, restriction, occasion, num_people, meal, price_range, cuisines]
 
         for j in range(scraped_column_ct):
             column_val = int(random.random() * 3) - 1

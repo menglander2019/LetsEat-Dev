@@ -1,6 +1,6 @@
-header = ['name', 'current_day', '+', '-', 'restrictions', 'occasion', 'num_people', 'meal', 'price_range', 'cuisine', 'Classy', 'Loud', 'Groups', 'Kids','Garage',
+header = ['name', 'current_day', '+', '-', 'restrictions', 'occasion', 'num_people', 'meal', 'price_range', 'cuisine', 'Classy', 'Loud', 'Moderate', 'Groups', 'Kids','Garage',
         'Street', 'WiFi','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','TV','Outdoor',
-        'Dancing','Working','Smoking','Bike','Casual','Moderate','Breakfast','Lunch','Dinner','Dessert',
+        'Dancing','Working','Smoking','Bike','Casual','Breakfast','Lunch','Dinner','Dessert',
         'Brunch','Late','Trendy', 'Divey','Bar', 'ATTEND?']
         
 data = [['Bob', 'italian,mexican', 'indian,american', 'vegan', 'italian'],
@@ -16,7 +16,7 @@ meals = ['breakfast', 'lunch', 'dinner', 'dessert']
 
 price_ranges = ['$', '$$', '$$$', '$$$$']
 
-num_rows = 500
+num_rows = 20
 num_pot_positives = 5
 num_pot_negatives = 5
 
@@ -26,45 +26,47 @@ scraped_column_ct = 31
 
 num_pot_people = 10
 
-middle_eastern = ['afghani', 'arabian', 'mideastern', 'halal', 'kebab', 'kosher', 'falafel', 'lebanese', 'persian', 'syrian']
+middle_eastern = ['afghani', 'arabian', 'mideastern', 'halal', 'kebab', 'kosher', 'falafel', 'lebanese', 'persian', 'syrian', 'pakistani']
 african = ['african', 'senegalese', 'southafrican', 'eritrean', 'ethiopian', 'egyptian', 'moroccan', 'somali']
-american = ['newamerican', 'tradamerican', 'bbq', 'burgers', 'diners', 'cajun', 'cheesesteaks', 'chickenshop', 'chicken_wings', 'comfortfood', 'delis', 'diners', 'hotdogs', 'food_court', 'hotdog', 'soulfood', 'southern', 'steak', 'tex-mex']
-south_american = ['argentine', 'brazilian', 'colombian', 'venezuelan', 'peruvian']
-latin_american = ['honduran', 'mexican', 'latin', 'salvadoran', 'argentine', 'latin', 'brazilian', 'tacos', 'newmexican', 'nicaraguan']
+american = ['newamerican', 'tradamerican', 'hawaiian', 'bbq', 'burgers', 'diners', 'cajun', 'cheesesteaks', 'chickenshop', 'chicken_wings', 'comfortfood', 'delis', 'diners', 'hotdogs', 'food_court', 'hotdog', 'soulfood', 'southern', 'steak', 'tex-mex']
+mexican = ['mexican', 'tacos', 'newmexican']
+latin_american = ['honduran', 'peruvian', 'venezuelan', 'salvadoran', 'colombian', 'argentine', 'latin', 'brazilian', 'nicaraguan']
 italian = ['italian', 'pizza', 'calabrian', 'sardinian', 'sicilian', 'tuscan']
-chinese = ['cantonese', 'chinese', 'dimsum', 'hainan', 'shanghainese', 'szechuan', 'hkcafe', 'noodles', 'hotpot', 'taiwanese']
-japanese = ['japanese', 'conveyorsushi', 'izakaya', 'japacurry', 'ramen', 'teppanyaki', 'sushi']
-southern_asian = ['bangladeshi', 'cambodian', 'filipino', 'indonesian', 'laotian', 'malaysian', 'pakistani', 'singaporean', 'thai', 'vietnamese']
-french = ['brasseries', 'creperies', 'french']
+chinese = ['cantonese', 'chinese', 'dimsum', 'asianfusion', 'hainan', 'shanghainese', 'szechuan', 'hkcafe', 'noodles', 'hotpot', 'taiwanese']
+japanese = ['japanese', 'conveyorsushi', 'izakaya', 'asianfusion', 'japacurry', 'ramen', 'teppanyaki', 'sushi']
+southern_central_asian = ['bangladeshi', 'uzbek', 'mongolian', 'asianfusion', 'cambodian', 'filipino', 'indonesian', 'korean', 'laotian', 'malaysian', 'singaporean', 'thai', 'vietnamese']
+french = ['brasseries', 'creperies', 'french', 'reunion']
 eastern_europe = ['bulgarian', 'burmese', 'georgian', 'russian', 'slovakian', 'turkish', 'ukrainian']
-central_europe = ['austrian', 'czech', 'german', 'hungarian', 'polish']
+central_europe = ['austrian', 'scandinavian', 'belgian', 'czech', 'german', 'hungarian', 'polish', 'modern_european']
 caribbean = ['dominican', 'haitian', 'puertorican', 'trinidadian', 'caribbean', 'cuban']
-mediterranean = ['mediterranean', 'greek']
-oceania = ['guamanian', 'australian', 'polynesian']
+mediterranean = ['mediterranean', 'greek', 'armenian']
+# oceania = ['guamanian', 'australian', 'polynesian']
 indian = ['himalayan', 'indpak', 'srilankan']
-united_kingdom = ['scottish', 'irish', 'british', 'fishnchips']
-spain = ['tapas', 'tapasmallplates', 'spanish']
-other = ['armenian', 'asianfusion', 'belgian', 'fondue', 'foodstands', 'mauritius', 'hawaiian', 'korean', 'modern_european', 'mongolian', 'panasian', 'portuguese', 'poutineries', 'scandinavian', 'uzbek']
+# united_kingdom = ['scottish', 'irish', 'british', 'fishnchips']
+spanish = ['tapas', 'tapasmallplates', 'portuguese', 'spanish', 'catalan']
+
+restaurant_types = ['']
 
 cuisine_groups = {
     "mideastern": middle_eastern,
     "african": african,
     "american": american,
-    "southamerican": south_american,
+    "mexican": mexican,
+    #"southamerican": south_american,
     "latinamerican": latin_american,
     "italian": italian,
     "chinese": chinese,
     "japanese": japanese,
-    "southasian": southern_asian,
+    "southcentralasian": southern_central_asian,
     "french": french,
     "easteuropean": eastern_europe,
     "centraleuropean": central_europe,
     "caribbean": caribbean,
     "mediterranean": mediterranean,
-    "oceania": oceania,
+    #"oceania": oceania,
     "indian": indian,
-    "uk": united_kingdom,
-    "spain": spain
+    #"uk": united_kingdom,
+    "spanish": spanish
 }
 
 # list of all cuisine options on yelp (may need to be adjusted for what the API returns)
@@ -232,9 +234,7 @@ wraps"""
 # Cafes (cafes)
 # Themed Cafes (themedcafes)
 # Cafeteria (cafeteria)
-# Catalan (catalan)
 # Dinner Theater (dinnertheater)
-# Reunion (reunion)
 # Game Meat (gamemeat)
 # Gastropubs (gastropubs)
 # Gluten-Free (gluten_free)
@@ -246,7 +246,6 @@ wraps"""
 # Seafood (seafood)
 # Soup (soup)
 # Supper Clubs (supperclubs)
-# Uzbek (uzbek)
 # Vegan (vegan)
 # Vegetarian (vegetarian)
 # Waffles (waffles)
