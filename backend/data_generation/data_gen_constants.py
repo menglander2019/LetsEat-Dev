@@ -16,7 +16,7 @@ meals = ['breakfast', 'lunch', 'dinner', 'dessert']
 
 price_ranges = ['$', '$$', '$$$', '$$$$']
 
-num_rows = 20
+num_rows = 200
 num_pot_positives = 5
 num_pot_negatives = 5
 
