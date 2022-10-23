@@ -11,7 +11,7 @@ function CreateAccount() {
         <div className="container">
             <div className="col-md-5 mt-4 mx-auto">
                 <h1 className="display-3 text-center">LetsEat</h1>
-                <h3 className="text-center mt-3">Sign up for free to explore new restaurants.</h3>
+                <h3 className="text-center mt-3">Sign up for free to find your new favorite food spot.</h3>
                 <div className="row mt-3">
                     <div className="question">
                         <label for="email">Enter your email</label>

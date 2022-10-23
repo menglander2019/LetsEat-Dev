@@ -15,7 +15,7 @@ function Home() {
                 </div>
                 <div className="row">
                     <div className="col">
-                        <h2 className="text-center">Explore new restaurants near you.</h2>
+                        <h2 className="text-center">We match your preferences to the restaurants near you.</h2>
                     </div>
                 </div>
                 <div>
@@ -25,7 +25,10 @@ function Home() {
                     <Link to="/createaccount">
                         <span>Create Account</span>
                     </Link><br />
-                    <Link to="/createprofile">
+                    <Link to="/edit/account">
+                        <span>Edit Account</span>
+                    </Link><br />
+                    <Link to="/edit/preferences">
                         <span>Profile Questions</span>
                     </Link><br />
                     <Link to="/searchquestions">

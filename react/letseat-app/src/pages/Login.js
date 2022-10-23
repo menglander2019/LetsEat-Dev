@@ -5,26 +5,25 @@ import { Link } from 'react-router-dom'
 function CreateAccount() {
 
     const handleSubmitButton = () => {
-        alert("Account Create!")
+        alert("Log In!")
     }
 
     return (
         <div className="container">
             <div className="col-md-5 mt-4 mx-auto">
-                <div className="row mt-3">
+                <div className="row mt-4">
                     <div className="col-md-12 mx-auto">
-                        <h3 className="mt-3">Welcome to LetsEat</h3>
-                        <label for="email">Email</label>
+                        <h3>Welcome to LetsEat</h3>
+                    </div>
+                </div>
+                <div className="row mt-2">
+                    <div className="col-md-12 mx-auto">
+                        <label for="email">Log In</label>
                         <input type="text" id="email" className="login-box form-control w-100" placeholder="Enter your email"></input>
+                        <input type="text" id="password" className="login-box  form-control w-100" placeholder="Enter your password"></input>
                     </div>
                 </div>
-                <div className="row mt-3">
-                    <div className="col-md-12 mx-auto">
-                        <label for="password">Password</label>
-                        <input type="text" id="password" className="login-box  form-control w-100" placeholder="Create a password"></input>
-                    </div>
-                </div>
-                <div className="row mt-4 mb-5">
+                <div className="row mt-4">
                     <div className="col-md-12 mx-auto">
                         <button 
                             id="submit"
@@ -34,7 +33,7 @@ function CreateAccount() {
                         </button>
                     </div>
                 </div>
-                <div className="row mt-3">
+                <div className="row mt-4">
                     <div className="col-md-12 mx-auto">
                         <p>
                             Don't have an account?

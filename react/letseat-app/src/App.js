@@ -6,6 +6,7 @@ import ProfileQuestions from './pages/ProfileQuestions';
 import SearchQuestions from './pages/SearchQuestions';
 import CreateAccount from './pages/CreateAccount';
 import Login from './pages/Login';
+import EditAccount from './pages/EditAccount';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/createaccount" element={<CreateAccount />} />
-          <Route path="/createprofile" element={<ProfileQuestions />} />
+          <Route path="/edit/account" element={<EditAccount />} />
+          <Route path="/edit/preferences" element={<ProfileQuestions />} />
           <Route path="/searchquestions" element={<SearchQuestions />} />
           <Route path="/restaurantsearch" element={<Restaurant />} />
         </Routes>
