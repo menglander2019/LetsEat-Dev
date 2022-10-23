@@ -19,6 +19,9 @@ function Home() {
                     </div>
                 </div>
                 <div>
+                    <Link to="/login">
+                        <span>Login</span>
+                    </Link><br />
                     <Link to="/createaccount">
                         <span>Create Account</span>
                     </Link><br />

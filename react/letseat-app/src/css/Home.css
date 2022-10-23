@@ -55,8 +55,8 @@ label {
     background-color: #87ae73;
     border-color: #87ae73;
     border-radius: 14px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-size:1.1rem;
 }
 
@@ -82,15 +82,21 @@ label {
     font-size:1.2rem;
 }
 
+.restaurant-image {
+    width: 800px;
+    height: 350px;
+    object-fit: cover;
+    object-position: center;
+}
+
 .input-box {
     padding-top: 14px;
     padding-bottom: 14px;
     border-color: black;
 }
 
-.restaurant-image {
-    width: 800px;
-    height: 350px;
-    object-fit: cover;
-    object-position: center;
+.login-box {
+    padding-top: 22px;
+    padding-bottom: 14px;
+    border-color: black;
 }
