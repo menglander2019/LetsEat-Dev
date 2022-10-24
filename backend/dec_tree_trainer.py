@@ -14,7 +14,7 @@ le = LabelEncoder()
 input = raw_data.drop(['name', 'ATTEND?'], axis='columns')
 output = raw_data['ATTEND?']
 
-# trains the decision tree with randomly generated data
+# trains the decision tree with randomly generated data and returns it along with its encoder
 def train_dec_tree():
     print("TRAINING DEC TREE...")
     
@@ -39,7 +39,7 @@ def train_dec_tree():
     dec_tree.fit(cleaned_train_x, y_train)
     print("DONE!")
 
-    return dec_tree
+    return [dec_tree, encoder]
 
 def predict(dec_tree, X):
     return dec_tree.predict(X)

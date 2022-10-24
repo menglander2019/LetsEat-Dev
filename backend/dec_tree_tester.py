@@ -1,6 +1,5 @@
 def test_dec_tree():
     features = []
-    name = input("What is your name? ")
     day = input("What's the current day? ")
     positives = input("What cuisines do you prefer? ")
     negatives = input("What cuisines do you dislike? ")
@@ -15,6 +14,6 @@ def test_dec_tree():
     meal = input("What meal will it be for? ")
     price_range = input("What is your price range? ")
 
-    return [name, day, positives, negatives, restrictions, occasion, num_people, meal, price_range]
+    return [day, positives, negatives, restrictions, occasion, num_people, meal, price_range]
 
 
