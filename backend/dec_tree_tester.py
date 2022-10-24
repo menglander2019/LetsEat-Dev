@@ -1,10 +1,4 @@
-from dec_tree_trainer import train_dec_tree
-
-if __name__ == "__main__":
-    print("TRAINING DEC TREE...")
-    dec_tree = train_dec_tree()
-    print("DONE!")
-    
+def test_dec_tree():
     features = []
     name = input("What is your name? ")
     day = input("What's the current day? ")
@@ -21,4 +15,6 @@ if __name__ == "__main__":
     meal = input("What meal will it be for? ")
     price_range = input("What is your price range? ")
 
-    
+    return [name, day, positives, negatives, restrictions, occasion, num_people, meal, price_range]
+
+

@@ -16,6 +16,8 @@ output = raw_data['ATTEND?']
 
 # trains the decision tree with randomly generated data
 def train_dec_tree():
+    print("TRAINING DEC TREE...")
+    
     X_train, X_test, y_train, y_test = train_test_split(input, output, test_size=0.25)
 
     encoder = ce.HashingEncoder(cols=['+', '-', 'cuisine', 'current_day', 'restrictions', 'occasion', 'meal', 'price_range'])
@@ -35,5 +37,9 @@ def train_dec_tree():
 
     dec_tree = xgb.XGBClassifier()
     dec_tree.fit(cleaned_train_x, y_train)
+    print("DONE!")
 
     return dec_tree
+
+def predict(dec_tree, X):
+    return dec_tree.predict(X)

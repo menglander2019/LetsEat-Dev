@@ -39,7 +39,7 @@ ATTRIBUTES = ['Classy',
 DATABASE = r"YelpScrapeData.db"
 TRUE_CLASS = "css-1p9ibgf"
 FALSE_CLASS = "css-qyp8bo"
-ADDRESS_TO_WEBDRIVER = "/Users/sarahstevens/OneDrive/Documents/College/Fall 2022/CSCI4243W/LetsEat/LetsEat-Dev/yelp/chromedriver 6"
+ADDRESS_TO_WEBDRIVER = "/Users/maxenglander/Documents/2022-23_School_Shit/FALL/SD/LetsEat-Dev/yelp/chromedriver 6"
 
 #create database. this should not be called unless i accidently delete the database or we change it 
 def createTable():
@@ -87,20 +87,54 @@ def checkExistance(rest_id):
     
 #adds the restaurant to our database and queries attributes to add to database and add website
 def scrape(rest_id, url):
+
+    rest_attr_dict = {
+        'Classy': 0,
+        'Loud': 0,
+        'Groups': 0,
+        'Kids': 0,
+        'Garage': 0,
+        'Street': 0, 
+        'WiFi': 0,
+        'Monday': 0,
+        'Tuesday': 0,
+        'Wednesday': 0,
+        'Thursday': 0,
+        'Friday': 0,
+        'Saturday': 0,
+        'Sunday': 0,
+        'TV': 0,
+        'Outdoor': 0,
+        'Dancing': 0,
+        'Working': 0,
+        'Smoking': 0,
+        'Bike': 0,
+        'Casual': 0,
+        'Moderate': 0,
+        'Breakfast': 0,
+        'Lunch': 0,
+        'Dinner': 0,
+        'Dessert': 0,
+        'Brunch': 0,
+        'Late': 0,
+        'Trendy': 0, 
+        'Divey': 0,
+        'Bar': 0
+    }
  
     #open chrome to scrape website
     driver = webdriver.Chrome(ADDRESS_TO_WEBDRIVER)
     driver.get(url)
     
     #open connection 
-    try:
-        conn = sqlite3.connect(DATABASE)
-        c = conn.cursor()
-    except Error as e:
-        print(e)
+    # try:
+    #     conn = sqlite3.connect(DATABASE)
+    #     c = conn.cursor()
+    # except Error as e:
+    #     print(e)
 
     #add restaurant to database
-    c.execute('INSERT INTO attributes (restaurant_id) VALUES((?))', (rest_id,))
+    #c.execute('INSERT INTO attributes (restaurant_id) VALUES((?))', (rest_id,))
 
     #access attributes by clicking button on yelp page
     buttons = driver.find_elements(By.TAG_NAME, 'button')
@@ -114,10 +148,11 @@ def scrape(rest_id, url):
         for i in range(len(all_pos_attributes)):
             #update database so attribute as 1
             if ATTRIBUTES[j] in all_pos_attributes[i].text:
-                c.execute('''UPDATE attributes
-                          SET '''+ATTRIBUTES[j]+''' = 1
-                          WHERE restaurant_id = (?);''',
-                          (rest_id,))  
+                # c.execute('''UPDATE attributes
+                #           SET '''+ATTRIBUTES[j]+''' = 1
+                #           WHERE restaurant_id = (?);''',
+                #           (rest_id,))  
+                rest_attr_dict[ATTRIBUTES[j]] = 1
                           
     #search for attributes the restaurant does not have
     all_neg_attributes = driver.find_elements(By.CLASS_NAME, FALSE_CLASS)
@@ -125,33 +160,35 @@ def scrape(rest_id, url):
         for i in range(len(all_neg_attributes)):
             #update database so attribute as -1
             if ATTRIBUTES[j] in all_neg_attributes[i].text:
-                c.execute('''UPDATE attributes
-                          SET '''+ATTRIBUTES[j]+''' = -1
-                          WHERE restaurant_id = (?);''',
-                          (rest_id,))  
+                # c.execute('''UPDATE attributes
+                #           SET '''+ATTRIBUTES[j]+''' = -1
+                #           WHERE restaurant_id = (?);''',
+                #           (rest_id,))  
+                rest_attr_dict[ATTRIBUTES[j]] = -1
 
     #search for website on yelp page
-    siteForDB = url
-    try:
-        website = driver.find_element(By.PARTIAL_LINK_TEXT, "http://")
-        siteForDB = website.text
-    except:
-        try:
-            website = driver.find_element(By.PARTIAL_LINK_TEXT, "https://")
-            siteForDB = website.text
-        except:
-            #if website is not found, add yelp url to database
-            print("Cannot retrieve website")
+    # siteForDB = url
+    # try:
+    #     website = driver.find_element(By.PARTIAL_LINK_TEXT, "http://")
+    #     siteForDB = website.text
+    # except:
+    #     try:
+    #         website = driver.find_element(By.PARTIAL_LINK_TEXT, "https://")
+    #         siteForDB = website.text
+    #     except:
+    #         #if website is not found, add yelp url to database
+    #         print("Cannot retrieve website")
        
-    #add url to website column of database 
-    c.execute('''UPDATE attributes
-              SET website = (?)
-              WHERE restaurant_id = (?);''',
-              (siteForDB, rest_id,)) 
+    # #add url to website column of database 
+    # c.execute('''UPDATE attributes
+    #           SET website = (?)
+    #           WHERE restaurant_id = (?);''',
+    #           (siteForDB, rest_id,)) 
     
-    #close connection
-    conn.commit()
-    conn.close() 
+    # #close connection
+    # conn.commit()
+    # conn.close() 
+    return rest_attr_dict
     
 #prints contents of database FOR TESTING ONLY 
 def printDB():
@@ -177,7 +214,7 @@ def printDB():
     conn.close() 
 
 
-createTable()
+# createTable()
 def main(business_id, url):
     if(checkExistance(business_id)==False):
         scrape(business_id, url)
