@@ -14,8 +14,9 @@ le = LabelEncoder()
 input = raw_data.drop(['name', 'ATTEND?'], axis='columns')
 output = raw_data['ATTEND?']
 
-if __name__ == '__main__':
-    X_train, X_test, y_train, y_test = train_test_split(input, output, test_size=0.25, random_state=0)
+# trains the decision tree with randomly generated data
+def train_dec_tree():
+    X_train, X_test, y_train, y_test = train_test_split(input, output, test_size=0.25)
 
     encoder = ce.HashingEncoder(cols=['+', '-', 'cuisine', 'current_day', 'restrictions', 'occasion', 'meal', 'price_range'])
     encoder.fit(X_train, y_train)
@@ -30,7 +31,9 @@ if __name__ == '__main__':
 
     # print(train_t)
 
+    # print(cleaned_train_x)
+
     dec_tree = xgb.XGBClassifier()
     dec_tree.fit(cleaned_train_x, y_train)
 
-    print("DEC TREE Accuracy: " + str(dec_tree.score(cleaned_test_x, y_test)))
+    return dec_tree
