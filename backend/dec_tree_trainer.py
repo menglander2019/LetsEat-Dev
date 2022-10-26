@@ -22,8 +22,7 @@ def train_dec_tree():
 
     encoder = ce.HashingEncoder(cols=['+', '-', 'cuisine', 'current_day', 'restrictions', 'occasion', 'meal', 'price_range'])
     encoder.fit(X_train, y_train)
-    cleaned_train_x = encoder.transform(X_train).to_numpy()
-    cleaned_test_x = encoder.transform(X_test).to_numpy()
+    cleaned_train_x = encoder.transform(X_train)
 
     # encoder = DecisionTreeEncoder(random_state=0)
     # encoder.fit(X_train, y_train)
@@ -37,7 +36,6 @@ def train_dec_tree():
 
     dec_tree = xgb.XGBClassifier()
     print("TRAINING DATA:")
-    print(cleaned_train_x)
     dec_tree.fit(cleaned_train_x, y_train)
     print("DONE!")
 
