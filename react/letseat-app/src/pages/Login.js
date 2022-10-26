@@ -13,7 +13,7 @@ function CreateAccount() {
             <div className="col-md-5 mt-4 mx-auto">
                 <div className="row mt-4">
                     <div className="col-md-12 mx-auto">
-                        <h3>Welcome to LetsEat</h3>
+                        <h3>Welcome to LetsEat!</h3>
                     </div>
                 </div>
                 <div className="row mt-2">
