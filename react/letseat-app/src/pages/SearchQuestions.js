@@ -71,25 +71,25 @@ function SearchQuestions() {
                     <div className="row mt-3">
                         <div className="question">
                             <label for="answerOptions">What is the occasion?</label>
-                            <ButtonCreate answerOptions={questionBank[0].answers} questionNumber={0} colNumber={3} onClickFunction={handleAnswerClick} />
+                            <ButtonCreate answerOptions={questionBank[0].answers} questionNumber={0} colNumber={6} onClickFunction={handleAnswerClick} />
                         </div>
                     </div>
                     <div className="row mt-3">
                         <div className="question">
                             <label for="answerOptions">How many people?</label>
-                            <ButtonCreate answerOptions={questionBank[1].answers} questionNumber={1} colNumber={3} onClickFunction={handleAnswerClick} />
+                            <ButtonCreate answerOptions={questionBank[1].answers} questionNumber={1} colNumber={6} onClickFunction={handleAnswerClick} />
                         </div>
                     </div>
                     <div className="row mt-3">
                         <div className="question">
                             <label for="answerOptions">What type of meal?</label>
-                            <ButtonCreate answerOptions={questionBank[2].answers} questionNumber={2} colNumber={3} onClickFunction={handleAnswerClick} />
+                            <ButtonCreate answerOptions={questionBank[2].answers} questionNumber={2} colNumber={6} onClickFunction={handleAnswerClick} />
                         </div>
                     </div>
                     <div className="row mt-3">
                         <div className="question">
                             <label for="answerOptions">What is the price range?</label>
-                            <ButtonCreate answerOptions={questionBank[3].answers} questionNumber={3} colNumber={3} onClickFunction={handleAnswerClick} />
+                            <ButtonCreate answerOptions={questionBank[3].answers} questionNumber={3} colNumber={6} onClickFunction={handleAnswerClick} />
                         </div>
                     </div>
                     <div className="row mt-3">

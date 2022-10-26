@@ -10,7 +10,7 @@ function CreateAccount() {
 
     return (
         <div className="container">
-            <div className="col-md-5 mt-4 mx-auto">
+            <div className="col-md-4 mt-4 login-container mx-auto">
                 <div className="row mt-4">
                     <div className="col-md-12 mx-auto">
                         <h3>Welcome to LetsEat!</h3>
@@ -19,8 +19,8 @@ function CreateAccount() {
                 <div className="row mt-2">
                     <div className="col-md-12 mx-auto">
                         <label for="email">Log In</label>
-                        <input type="text" id="email" className="login-box form-control w-100" placeholder="Enter your email"></input>
-                        <input type="text" id="password" className="login-box  form-control w-100" placeholder="Enter your password"></input>
+                        <input type="text" id="email" className="login-box form-control w-100 mt-3" placeholder="Enter email"></input>
+                        <input type="text" id="password" className="login-box form-control w-100 mt-3" placeholder="Enter password"></input>
                     </div>
                 </div>
                 <div className="row mt-4">

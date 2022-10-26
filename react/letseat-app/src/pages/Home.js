@@ -14,8 +14,8 @@ function Home() {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col">
-                        <h2 className="text-center">We match your preferences to the restaurants near you.</h2>
+                    <div className="col-md-6">
+                        <h2>Discover your new perfect restaurant</h2>
                     </div>
                 </div>
                 <div>

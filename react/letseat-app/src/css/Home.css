@@ -12,12 +12,16 @@
 }
 
 body {
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 h1 {
     color: #6d8a5e;
     font-family: 'Sf-Pro-Bold';
+}
+
+h2 {
+    color:#161616
 }
 
 p {
@@ -39,9 +43,9 @@ label {
     font-family: 'SF-Pro-Regular';
     font-size: 1.1rem;
     color: black;
-    background-color: white;
-    border-radius: 14px;
+    background-color: #ececec;
     padding: 6%;
+    border-radius: 8px;
     margin-top: 15px;
 }
 
@@ -54,14 +58,14 @@ label {
 .btn.submit {
     background-color: #87ae73;
     border-color: #87ae73;
-    border-radius: 14px;
+    border-radius: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
     font-size:1.1rem;
 }
 
 .btn.submit:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 12px 40px 0 rgba(0,0,0,0.19);    
 }
 
 .btn.tryAgain {
@@ -90,13 +94,28 @@ label {
 }
 
 .input-box {
-    padding-top: 14px;
-    padding-bottom: 14px;
-    border-color: black;
+    background-color: #ececec;
+    border-color: #ececec;
+    padding-top: 16px;
+    padding-bottom: 8px;
+    font-weight: 500;
 }
 
 .login-box {
-    padding-top: 20px;
-    padding-bottom: 14px;
-    border-color: black;
+    background-color: #ececec;
+    border-color: #ececec;
+    padding-top: 16px;
+    padding-bottom: 8px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.login-container {
+    background-color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 12px 40px 0 rgba(0,0,0,0.19);   
+    padding-top: 5%; 
+    padding-bottom: 5%; 
+    padding-left: 5%; 
+    padding-right: 5%; 
 }

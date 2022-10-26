@@ -32,7 +32,7 @@ function CreateAccount() {
                     <div className="col-md-12 mx-auto">
                         <label for="password">Update Your Password</label>
                         <input type="text" id="password" className="login-box form-control w-100" placeholder="Enter your new password"></input>
-                        <input type="text" id="password" className="login-box form-control w-100" placeholder="Retype your new password"></input>
+                        <input type="text" id="password" className="login-box form-control w-100 mt-3" placeholder="Retype your new password"></input>
                     </div>
                 </div>
                 <div className="row mt-4">
