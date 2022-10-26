@@ -24,6 +24,10 @@ h2 {
     color:#161616
 }
 
+.color-theme {
+    color: #6d8a5e;
+}
+
 p {
     font-family: 'SF-Pro-Regular';
     font-size: 1.1rem;
