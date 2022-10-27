@@ -15,7 +15,7 @@ function Home() {
                 </div>
                 <div className="row">
                     <div className="col-md-6">
-                        <h2>Discover your new perfect restaurant</h2>
+                        <h2>Discover your new favorite restaurant</h2>
                     </div>
                 </div>
                 <div>

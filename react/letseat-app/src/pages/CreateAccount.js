@@ -11,11 +11,11 @@ function CreateAccount() {
         <div className="container">
             <div className="col-md-5 mt-4 mx-auto">
                 <h1 className="display-3 text-center">LetsEat</h1>
-                <h3 className="text-center mt-3">Sign up for free to find your new favorite food spot.</h3>
+                <h3 className="text-center mt-3">Sign up for free to find your new favorite restaurant.</h3>
                 <div className="row mt-3">
                     <div className="question">
                         <label for="email">Enter your email</label>
-                        <input type="text" id="email" className="input-box form-control w-100" placeholder="Enter your email"></input>
+                        <input type="text" id="email" className="input-box form-control w-100" placeholder="Enter an email"></input>
                         <small id="nameHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                 </div>

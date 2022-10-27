@@ -19,20 +19,20 @@ function CreateAccount() {
                 <div className="row mt-3">
                     <div className="col-md-12 mx-auto">
                         <label for="email">Update Your Email Address (Populate with user email)</label>
-                        <input type="text" id="email" className="login-box form-control w-100" placeholder="Enter your email"></input>
+                        <input type="text" id="email" className="login-box form-control w-100" placeholder="Enter email"></input>
                     </div>
                 </div>
                 <div className="row mt-3">
                     <div className="col-md-12 mx-auto">
                         <label for="email">Update Your Name(Populate with user name)</label>
-                        <input type="text" id="email" className="login-box form-control w-100" placeholder="Enter your new username"></input>
+                        <input type="text" id="email" className="login-box form-control w-100" placeholder="Enter new username"></input>
                     </div>
                 </div>
                 <div className="row mt-3">
                     <div className="col-md-12 mx-auto">
                         <label for="password">Update Your Password</label>
-                        <input type="text" id="password" className="login-box form-control w-100" placeholder="Enter your new password"></input>
-                        <input type="text" id="password" className="login-box form-control w-100 mt-3" placeholder="Retype your new password"></input>
+                        <input type="text" id="password" className="login-box form-control w-100" placeholder="Enter new password"></input>
+                        <input type="text" id="password" className="login-box form-control w-100 mt-3" placeholder="Retype new password"></input>
                     </div>
                 </div>
                 <div className="row mt-4">

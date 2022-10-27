@@ -26,25 +26,27 @@ function Restaurant() {
 
     return (
         <div className="container">
-            <div className="col-md-6 mt-4 mx-auto">
-            {   displayRestaurant == 0
-                ? (
-                    <h1>Confirmed!</h1>
-                ) :
-                (
-                    <div>
-                        <RestaurantCard jsonData={parseRestaurantData(TestData, restaurantIndex)} />
-                        <div className="row mt-4 mb-5">
-                            <div className="col-md-6 mx-auto">
-                                <button type="button" className="btn tryAgain w-100" onClick={nextRestaurant}>Try Again</button>
-                            </div>
-                            <div className="col-md-6 mx-auto">
-                                <button type="button" className="btn confirm w-100" onClick={confirmRestaurant}>I'm Going!</button>
+            <div className="h-100 d-flex align-items-center">
+                <div className="col-md-6 mt-4 mx-auto">
+                {   displayRestaurant == 0
+                    ? (
+                        <h1>Confirmed!</h1>
+                    ) :
+                    (
+                        <div>
+                            <RestaurantCard jsonData={parseRestaurantData(TestData, restaurantIndex)} />
+                            <div className="row mt-4 mb-5">
+                                <div className="col-md-6 mx-auto">
+                                    <button type="button" className="btn tryAgain w-100" onClick={nextRestaurant}>Try Again</button>
+                                </div>
+                                <div className="col-md-6 mx-auto">
+                                    <button type="button" className="btn confirm w-100" onClick={confirmRestaurant}>I'm Going!</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                )
-            }
+                    )
+                }
+                </div>
             </div>
         </div>
     );
