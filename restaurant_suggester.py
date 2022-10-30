@@ -10,11 +10,18 @@ offline_scraped_info = ['T' 'italian' '' '' 'date' '2' 'dinner' '3' 'italian,win
  '1' '1' '1' '1' '0' '0' '0' '0' '0' '1' '1' '1' '1' '-1' '-1' '-1' '-1'
  '-1' '1' '0' '0' '0' '1' '0' '0' '0' '0' '0' '1']
 
-def test_dec_tree():
-    features = []
+def get_inputs():
     day = input("What's the current day?\n")
-    positives = input("What cuisines do you prefer?\n")
-    negatives = input("What cuisines do you dislike?\n")
+    positive1 = input("What cuisines do you prefer?\n")
+    positive2 = input("What cuisines do you prefer?\n")
+    positive3 = input("What cuisines do you prefer?\n")
+    positive4 = input("What cuisines do you prefer?\n")
+    positive5 = input("What cuisines do you prefer?\n")
+    negative1 = input("What cuisines do you dislike?\n")
+    negative2 = input("What cuisines do you dislike?\n")
+    negative3 = input("What cuisines do you dislike?\n")
+    negative4 = input("What cuisines do you dislike?\n")
+    negative5 = input("What cuisines do you dislike?\n")
     restrictions = input("Any dietary restrictions?\n")
     occasion = input("What is the occasion?\n")
     if occasion == "solo":
@@ -26,43 +33,47 @@ def test_dec_tree():
     meal = input("What meal will it be for?\n")
     price_range = input("What is your price range?\n")
 
-    return [day, positives, negatives, restrictions, occasion, num_people, meal, price_range]
+    return [day, positive1, positive2, positive3, positive4, positive5, negative1, negative2, negative3, negative4, negative5, restrictions, occasion, num_people, meal, price_range]
 
 
 if __name__ == "__main__":
     dec_tree_info = train_dec_tree()
     dec_tree = dec_tree_info[0]
     encoder = dec_tree_info[1]
-    # user_features = test_dec_tree()
+    user_features = get_inputs()
     # restaurants = get_restaurant_list('20037', '4000', user_features[7], user_features[1])
     restaurants = offline_rest_info
-    # print("FOR OFFLINE:")
-    # print(restaurants)
-    # print("DONE OFFLINE")
     for restaurant in restaurants:
-        try:
-            # temp_user_features = user_features
-            # id = restaurant.get('id')
-            # url = restaurant.get('url')
-            # scraped_info = scrape(id, url)
-            # category_list = restaurant.get('categories')
-            # categories = []
-            # for j in range(len(category_list)):
-            #     categories.append(category_list[j].get('alias'))
-            # temp_user_features.append(','.join(categories))
-            # total_features = numpy.array(temp_user_features + list(scraped_info.values()))
-            total_features = ['T', 'italian', 'none', 'none', 'none', 'none', 'mexican', 'none', 'none', 'none', 'none', 'none', 'date', '2', 'dinner', '3', 'italian', 'wine_bars', 'none', '1', '1', 
-                                        '1', '1', '1', '1', '0', '0', '0', '0', '0', '1', '1', '1', '1', '-1', '-1', '-1', '-1',
-                                        '-1', '1', '0', '0', '0', '1', '0', '0', '0', '0', '0', '1']
-            # total_features = numpy.array([['T', 'italian', '', '', 'date', '2', 'dinner', '3', 'italian,wine_bars', '1', '1', 
-            #                               '1', '1', '1', '1', '0', '0', '0', '0', '0', '1', '1', '1', '1', '-1', '-1', '-1', '-1',
-            #                               '-1', '1', '0', '0', '0', '1', '0', '0', '0', '0', '0', '1']])
-            cols = {'current_day': total_features[0], 'positive1': total_features[1], 'positive2': total_features[2], 'positive3': total_features[3], 'positive4': total_features[4], 'positive5': total_features[5], 'negative1': total_features[6], 'negative2': total_features[7], 'negative3': total_features[8], 'negative4': total_features[9], 'negative5': total_features[10], 'restrictions': total_features[11], 'occasion': total_features[12], 'num_people': int(total_features[13]), 'meal': total_features[14], 'price_range': int(total_features[15]), 'cuisine1': total_features[16], 'cuisine2': total_features[17], 'cuisine3': total_features[18], 'Classy': int(total_features[19]), 'Loud': int(total_features[20]), 'Moderate': int(total_features[21]), 'Groups': int(total_features[22]), 'Kids': int(total_features[23]), 'Garage': int(total_features[24]), 'Street': int(total_features[25]), 'WiFi': int(total_features[26]), 'Monday': int(total_features[27]), 'Tuesday': int(total_features[28]), 'Wednesday': int(total_features[29]), 'Thursday': int(total_features[30]), 'Friday': int(total_features[31]), 'Saturday': int(total_features[32]), 'Sunday': int(total_features[33]), 'TV': int(total_features[34]), 'Outdoor': int(total_features[35]), 'Dancing': int(total_features[36]), 'Working': int(total_features[37]), 'Smoking': int(total_features[38]), 'Bike': int(total_features[39]), 'Casual': int(total_features[40]), 'Breakfast': int(total_features[41]), 'Lunch': int(total_features[42]), 'Dinner': int(total_features[43]), 'Dessert': int(total_features[44]), 'Brunch': int(total_features[45]), 'Late': int(total_features[46]), 'Trendy': int(total_features[47]), 'Divey': int(total_features[48]), 'Bar': int(total_features[49])}
-            row = pd.DataFrame(data=cols, index=[0])
-            print(row)
-            total_features_encoded = encoder.transform(row)
-            print(total_features_encoded)
-            print(restaurant.get('name') + " prediction: " + dec_tree.predict(total_features_encoded, output_margin=False, validate_features=True))
-        except Exception as e:
-            print("EXCEPTION: " + str(e))
-            break
+        temp_user_features = user_features
+        id = restaurant.get('id')
+        url = restaurant.get('url')
+        scraped_info = scrape(id, url)
+        category_list = restaurant.get('categories')
+        categories = []
+        for j in range(len(category_list)):
+            categories.append(category_list[j].get('alias'))
+        temp_user_features.append(categories)
+        total_features = numpy.array(temp_user_features + list(scraped_info.values()))
+        print("total features: " + str(total_features))
+        # total_features = ['T', 'italian', '', '', '', '', 'mexican', '', '', '', '', '', 'date', '2', 'dinner', '3', 'italian', 'wine_bars', '', '1', '1', 
+        #                             '1', '1', '1', '1', '0', '0', '0', '0', '0', '1', '1', '1', '1', '-1', '-1', '-1', '-1',
+        #                             '-1', '1', '0', '0', '0', '1', '0', '0', '0', '0', '0', '1']
+
+        cols = {'current_day': total_features[0], 'positive1': total_features[1], 'positive2': total_features[2], 'positive3': total_features[3], 
+                'positive4': total_features[4], 'positive5': total_features[5], 'negative1': total_features[6], 'negative2': total_features[7], 
+                'negative3': total_features[8], 'negative4': total_features[9], 'negative5': total_features[10], 'restrictions': total_features[11], 
+                'occasion': total_features[12], 'num_people': int(total_features[13]), 'meal': total_features[14], 'price_range': int(total_features[15]), 
+                'cuisine1': total_features[16], 'cuisine2': total_features[17], 'cuisine3': total_features[18], 'Classy': int(total_features[19]), 
+                'Loud': int(total_features[20]), 'Moderate': int(total_features[21]), 'Groups': int(total_features[22]), 'Kids': int(total_features[23]), 
+                'Garage': int(total_features[24]), 'Street': int(total_features[25]), 'WiFi': int(total_features[26]), 'Monday': int(total_features[27]), 
+                'Tuesday': int(total_features[28]), 'Wednesday': int(total_features[29]), 'Thursday': int(total_features[30]), 'Friday': int(total_features[31]), 
+                'Saturday': int(total_features[32]), 'Sunday': int(total_features[33]), 'TV': int(total_features[34]), 'Outdoor': int(total_features[35]), 
+                'Dancing': int(total_features[36]), 'Working': int(total_features[37]), 'Smoking': int(total_features[38]), 'Bike': int(total_features[39]), 
+                'Casual': int(total_features[40]), 'Breakfast': int(total_features[41]), 'Lunch': int(total_features[42]), 'Dinner': int(total_features[43]), 
+                'Dessert': int(total_features[44]), 'Brunch': int(total_features[45]), 'Late': int(total_features[46]), 'Trendy': int(total_features[47]), 
+                'Divey': int(total_features[48]), 'Bar': int(total_features[49])}
+        row = pd.DataFrame(data=cols, index=[0])
+        row = row.astype('string')
+        total_features_encoded = encoder.transform(row)
+        print(restaurant.get('name') + " prediction: " + str(dec_tree.predict(total_features_encoded)))
+        

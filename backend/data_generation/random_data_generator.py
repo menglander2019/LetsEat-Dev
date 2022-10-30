@@ -79,10 +79,10 @@ with open('random_data.csv', 'w', encoding='UTF8') as f:
         negative_cuisines = generate_negatives(positive_cuisines)
 
         positive1 = positive_cuisines[0]
-        positive2 = 'none'
-        positive3 = 'none'
-        positive4 = 'none'
-        positive5 = 'none'
+        positive2 = ''
+        positive3 = ''
+        positive4 = ''
+        positive5 = ''
         if len(positive_cuisines) > 1:
             positive2 = positive_cuisines[1]
         if len(positive_cuisines) > 2:
@@ -93,10 +93,10 @@ with open('random_data.csv', 'w', encoding='UTF8') as f:
             positive5 = positive_cuisines[4]
         
         negative1 = negative_cuisines[0]
-        negative2 = 'none'
-        negative3 = 'none'
-        negative4 = 'none'
-        negative5 = 'none'
+        negative2 = ''
+        negative3 = ''
+        negative4 = ''
+        negative5 = ''
         if len(negative_cuisines) > 1:
             negative2 = negative_cuisines[1]
         if len(negative_cuisines) > 2:
@@ -111,14 +111,14 @@ with open('random_data.csv', 'w', encoding='UTF8') as f:
 
         occasion = occasions[int(random.random() * len(occasions))]
         if restriction == -1:
-            restriction = 'none'
+            restriction = ''
         cuisine_group = restaurant_cuisines_list[int(random.random() * len(restaurant_cuisines_list))]
 
         # generates the cuisines for the random restaurant
         cuisines = generate_restaurant_cuisines()
         cuisine1 = cuisines[0]
-        cuisine2 = 'none'
-        cuisine3 = 'none'
+        cuisine2 = ''
+        cuisine3 = ''
         if len(cuisines) == 3:
             cuisine2 = cuisines[1]
             cuisine3 = cuisines[2]
