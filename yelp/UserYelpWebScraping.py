@@ -14,13 +14,13 @@ import random
 ADDRESS_TO_WEBDRIVER = "/Users/sarahstevens/OneDrive/Documents/College/Fall 2022/CSCI4243W/LetsEat/LetsEat-Dev/yelp/chromedriver 9"
 CLASS = "raw__09f24__T4Ezm"
 DATABASE = r"ScrapedUserData.db"
-occasions = ['date+night']#, 'friend','friends', 'family', 'clients', 'solo']
+occasions = ['date+night', 'friend','friends', 'family', 'clients', 'solo']
 restrictionsList = ['vegan', 'vegetarian', 'gluten-free', 'kosher', 'pescatarian']
 
 
 def get_reviews(yelpUrl, rest_id):
 
-    for q in occasions:#+restrictionsList:
+    for q in occasions+restrictionsList:
        
        #open connection 
         try:
