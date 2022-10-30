@@ -1,4 +1,4 @@
-header = ['name', 'current_day', '+', '-', 'restrictions', 'occasion', 'num_people', 'meal', 'price_range', 'cuisine', 'Classy', 'Loud', 'Moderate', 'Groups', 'Kids','Garage',
+header = ['name', 'current_day', 'positive1', 'positive2', 'positive3', 'positive4', 'positive5', 'negative1', 'negative2', 'negative3', 'negative4', 'negative5', 'restrictions', 'occasion', 'num_people', 'meal', 'price_range', 'cuisine1', 'cuisine2', 'cuisine3', 'Classy', 'Loud', 'Moderate', 'Groups', 'Kids','Garage',
         'Street', 'WiFi','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','TV','Outdoor',
         'Dancing','Working','Smoking','Bike','Casual','Breakfast','Lunch','Dinner','Dessert',
         'Brunch','Late','Trendy', 'Divey','Bar', 'ATTEND?']
@@ -16,7 +16,7 @@ meals = ['breakfast', 'lunch', 'dinner', 'dessert']
 
 price_ranges = ['$', '$$', '$$$', '$$$$']
 
-num_rows = 200
+num_rows = 20
 num_pot_positives = 5
 num_pot_negatives = 5
 

@@ -2,7 +2,7 @@ import xgboost as xgb
 import pandas as pd
 import category_encoders as ce
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from feature_engine.encoding import DecisionTreeEncoder
 
 
@@ -18,28 +18,22 @@ output = raw_data['ATTEND?']
 def train_dec_tree():
     print("TRAINING DEC TREE...")
     
+    # splits the data into training and testing data
     X_train, X_test, y_train, y_test = train_test_split(input, output, test_size=0.25)
 
-    encoder = ce.HashingEncoder(cols=['+', '-', 'cuisine', 'current_day', 'restrictions', 'occasion', 'meal', 'price_range'])
-    encoder.fit(X_train, y_train)
-    cleaned_train_x = encoder.transform(X_train)
+    # utilizes OneHotEncoder to convert categorical values
+    onehot_encoder = OneHotEncoder(sparse=False, handle_unknown = 'ignore')
+    encoded_train_X = onehot_encoder.fit_transform(X_train)
+    print(encoded_train_X)
 
-    # encoder = DecisionTreeEncoder(random_state=0)
-    # encoder.fit(X_train, y_train)
-
-    # train_t = encoder.transform(X_train)
-    # test_t = encoder.transform(X_test)
-
-    # print(train_t)
-
-    # print(cleaned_train_x)
-
+    # creates the decision tree classifier model and fits it to the converted training data
     dec_tree = xgb.XGBClassifier()
     print("TRAINING DATA:")
-    dec_tree.fit(cleaned_train_x, y_train)
+    dec_tree.fit(encoded_train_X, y_train)
+    print("TEST PREDICTION: " + str(dec_tree.predict(encoded_train_X)))
     print("DONE!")
 
-    return [dec_tree, encoder]
+    return [dec_tree, onehot_encoder]
 
 def predict(dec_tree, X):
     return dec_tree.predict(X)
