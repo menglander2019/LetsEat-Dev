@@ -37,12 +37,15 @@ def get_inputs():
 
 
 if __name__ == "__main__":
+    # trains the decision tree and returns the tree along with the proper encoder
     dec_tree_info = train_dec_tree()
     dec_tree = dec_tree_info[0]
     encoder = dec_tree_info[1]
+    # gets the user input for profile information (used for testing)
     user_features = get_inputs()
     # restaurants = get_restaurant_list('20037', '4000', user_features[7], user_features[1])
     restaurants = offline_rest_info
+    # iterates through each restaurant, scraping data and making predictions
     for restaurant in restaurants:
         temp_user_features = user_features
         id = restaurant.get('id')
@@ -59,6 +62,7 @@ if __name__ == "__main__":
         #                             '1', '1', '1', '1', '0', '0', '0', '0', '0', '1', '1', '1', '1', '-1', '-1', '-1', '-1',
         #                             '-1', '1', '0', '0', '0', '1', '0', '0', '0', '0', '0', '1']
 
+        # sets up a dataframe with the proper feature names and values
         cols = {'current_day': total_features[0], 'positive1': total_features[1], 'positive2': total_features[2], 'positive3': total_features[3], 
                 'positive4': total_features[4], 'positive5': total_features[5], 'negative1': total_features[6], 'negative2': total_features[7], 
                 'negative3': total_features[8], 'negative4': total_features[9], 'negative5': total_features[10], 'restrictions': total_features[11], 
@@ -74,6 +78,8 @@ if __name__ == "__main__":
                 'Divey': int(total_features[48]), 'Bar': int(total_features[49])}
         row = pd.DataFrame(data=cols, index=[0])
         row = row.astype('string')
+        # encodes the categorical features using the encoder that trained the decision tree
         total_features_encoded = encoder.transform(row)
+        # makes a prediction as to whether the user would attend this restaurant or not
         print(restaurant.get('name') + " prediction: " + str(dec_tree.predict(total_features_encoded)))
         

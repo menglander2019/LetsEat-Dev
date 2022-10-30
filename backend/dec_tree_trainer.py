@@ -23,9 +23,6 @@ def train_dec_tree():
     # utilizes OneHotEncoder to convert categorical values
     onehot_encoder = OneHotEncoder(sparse=False, handle_unknown = 'ignore')
     encoded_train_X = onehot_encoder.fit_transform(X_train)
-    print(type(encoded_train_X))
-
-    encoded_test_X = onehot_encoder.transform(X_test)
 
     # creates the decision tree classifier model and fits it to the converted training data
     dec_tree = xgb.XGBClassifier()
