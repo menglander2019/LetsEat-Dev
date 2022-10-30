@@ -2,8 +2,9 @@ import requests
 import YelpWebscraping
 from datetime import datetime
 import time
+import UserYelpWebScraping
 
-API_KEY= None
+API_KEY= "NIeApqUv-eXDl1Uk9Lp1tdYbkmwQqlAWIrE87BI6ntY1RAktDOUG2nadraL9hYnRr6qMDPwcanx4c_A_qKOZykBQmP4gmvpOe61Q4lPxLnejZc8VFxWEnBv4haYwY3Yx"
 
 headers = {
     'Authorization': 'Bearer %s' % API_KEY,
@@ -15,6 +16,8 @@ def updateDB(response):
     businesses = response.get('businesses')
     for i in range(len(businesses)):
         YelpWebscraping.main(businesses[i].get('id'), businesses[i].get('url'))
+        url = businesses[i].get('url')
+        #UserYelpWebScraping.get_reviews(url, businesses[i].get('id')) #We do not need this for functionality, only to fill database
 
 #get list of restaurants based on parameters
 def request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes):
@@ -26,14 +29,14 @@ def request_businesses_list(zipcode, distance, dollars, open_at, categories, att
     
     #add parameters to API call
     params = {
-        'term': 'restaurants',
+       'term': 'restaurants', #food vs restaurants
         'location': zipcode,
         'radius': distance,
         'price': dollars,
         'open_at': str(int(unix)),
         'categories': categories,
         'attributes': attributes,
-        'limit': 5
+        'limit': 1
     }
     
     #request API data
@@ -63,6 +66,7 @@ def parse_results(businesses):
             print("\t"+j)
         print()
     YelpWebscraping.printDB()
+    UserYelpWebScraping.printDB()
 
 #use businessId to get json results for that business
 def return_business(businessId):
@@ -75,16 +79,18 @@ def main():
     #this is test code. in real life, request_businesses_list is directly called
     zipcode = '20037'
     distance = '4000' #in meters, cannot exeed 4000
-    dollars = '3'
+    dollars = '2'
     open_at = '1664468447' #in unix nums 
-    categories = 'italian'
+    categories = None
     attributes = None
     
     response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
     
     #print results to verify
     businesses = response.get('businesses')
-    parse_results(businesses)
+    #parse_results(businesses)
+    
+    YelpWebscraping.printDB()
     
 
 if __name__ == '__main__':

@@ -39,7 +39,7 @@ ATTRIBUTES = ['Classy',
 DATABASE = r"YelpScrapeData.db"
 TRUE_CLASS = "css-1p9ibgf"
 FALSE_CLASS = "css-qyp8bo"
-ADDRESS_TO_WEBDRIVER = "/Users/sarahstevens/OneDrive/Documents/College/Fall 2022/CSCI4243W/LetsEat/LetsEat-Dev/yelp/chromedriver 6"
+ADDRESS_TO_WEBDRIVER = "/Users/sarahstevens/OneDrive/Documents/College/Fall 2022/CSCI4243W/LetsEat/LetsEat-Dev/yelp/chromedriver 9"
 
 #create database. this should not be called unless i accidently delete the database or we change it 
 def createTable():
@@ -51,7 +51,7 @@ def createTable():
     #create table
     c.execute('''CREATE TABLE IF NOT EXISTS attributes (
         [restaurant_id] NVARCHAR(50) PRIMARY KEY,
-        [website] NVARCHAR(50) )''')
+        [website] NVARCHAR(200) )''')
     
     #add column for each attribute
     for i in range(len(ATTRIBUTES)):
@@ -113,7 +113,10 @@ def scrape(rest_id, url):
     for j in range(len(ATTRIBUTES)):
         for i in range(len(all_pos_attributes)):
             #update database so attribute as 1
-            if ATTRIBUTES[j] in all_pos_attributes[i].text:
+            searchAttribute = ATTRIBUTES[j]
+            if(ATTRIBUTES[j] == 'WiFi'):
+                searchAttribute = 'Wi-Fi'
+            if searchAttribute in all_pos_attributes[i].text:
                 c.execute('''UPDATE attributes
                           SET '''+ATTRIBUTES[j]+''' = 1
                           WHERE restaurant_id = (?);''',
@@ -124,6 +127,9 @@ def scrape(rest_id, url):
     for j in range(len(ATTRIBUTES)):
         for i in range(len(all_neg_attributes)):
             #update database so attribute as -1
+            searchAttribute = ATTRIBUTES[j]
+            if(ATTRIBUTES[j] == 'WiFi'):
+                searchAttribute = 'Wi-Fi'
             if ATTRIBUTES[j] in all_neg_attributes[i].text:
                 c.execute('''UPDATE attributes
                           SET '''+ATTRIBUTES[j]+''' = -1
