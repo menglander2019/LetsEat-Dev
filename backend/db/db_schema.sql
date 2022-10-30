@@ -17,6 +17,7 @@ CREATE TABLE userPreferences
     userID int(8) not null,
     positivePreferences varchar(250) not null,
     negativePreferences varchar(250) not null,
+    restrictions varchar(250) not null,
     foreign key (userID) references userProfile(userID),
     primary key (userID)
 );

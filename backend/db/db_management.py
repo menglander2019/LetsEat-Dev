@@ -6,12 +6,11 @@ mydb = mysql.connector.connect(host='localhost',
                                          user='root',
                                          password='196468maX!')
 
-def createUser(user, pw):
+# Database: Users
+def createUser(email, pw, name, dob, gender, pos, neg, restr):
     id = int(random.random() * 100000000)
-    print(id)
     
     try:
-
         c = mydb.cursor()
         c.execute('SELECT * FROM userProfile WHERE userID = %s', (id,))
         result = c.fetchone()
@@ -21,15 +20,21 @@ def createUser(user, pw):
             c.execute('SELECT * FROM userProfile WHERE userID = %s', (id,))
             result = c.fetchone()
 
-        c.execute('SELECT * FROM userProfile WHERE email = %s', (user,))
+        c.execute('SELECT * FROM userProfile WHERE email = %s', (email,))
         result = c.fetchone()
 
         if result is not None:
             return {"message": "ERROR: User already exists!"}
 
         user_insertion_query = "INSERT INTO userProfile VALUES (%s, %s, %s, %s, %s, %s)"
-        record = (id, user, pw, '2000-01-01', 'man', 'bob')
-        c.execute(user_insertion_query, record)
+        # dob format: 2000-01-01
+        user_record = (id, email, pw, dob, gender, name)
+        c.execute(user_insertion_query, user_record)
+
+        preference_insertion_query = "INSERT INTO userPreferences VALUES (%s, %s, %s, %s)"
+        preference_record = (id, pos, neg, restr)
+        c.execute(preference_insertion_query, preference_record)
+
         mydb.commit()
         c.close
         return {"message": "User successfully created!"}

@@ -19,9 +19,9 @@ def login():
 def signup():
     return {"message": "signup page"}
 
-@app.post("/signup/user/{user}/pw/{pw}")
-def signup(user, pw):
-    return createUser(user, pw)
+@app.post("/signup/email/{email}/pw/{pw}/name/{name}/dob/{dob}/gender/{gender}/pos/{pos}/neg/{neg}/restr/{restr}")
+def signup(email, pw, name, dob, gender, pos, neg, restr):
+    return createUser(email, pw, name, dob, gender, pos, neg, restr)
 
 @app.get("/createprofile")
 def createprofile():
