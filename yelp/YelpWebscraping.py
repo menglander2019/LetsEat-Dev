@@ -39,7 +39,7 @@ ATTRIBUTES = ['Classy',
 DATABASE = r"YelpScrapeData.db"
 TRUE_CLASS = "css-1p9ibgf"
 FALSE_CLASS = "css-qyp8bo"
-ADDRESS_TO_WEBDRIVER = "/Users/maxenglander/Documents/2022-23_School_Shit/FALL/SD/LetsEat-Dev/yelp/chromedriver 6"
+ADDRESS_TO_WEBDRIVER = "/Users/maxenglander/Documents/2022-23_School_Shit/FALL/SD/LetsEat-Dev/yelp/chromedriver 2"
 
 #create database. this should not be called unless i accidently delete the database or we change it 
 def createTable():

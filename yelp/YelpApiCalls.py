@@ -79,6 +79,7 @@ def get_restaurant_list(zip, dist, price_range, cuisines):
     open_at = '1664468447' #in unix nums 
     categories = cuisines
     attributes = None
+    print(cuisines)
     
     response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
     
