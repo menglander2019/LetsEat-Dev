@@ -15,7 +15,7 @@ API_URL = "https://api.yelp.com/v3/businesses/search"
 def updateDB(response):
     businesses = response.get('businesses')
     for i in range(len(businesses)):
-        YelpWebscraping.main(businesses[i].get('id'), businesses[i].get('url'))
+        YelpWebscraping.main(businesses[i].get('id'), businesses[i].get('url'), businesses[i].get('categories'))
         url = businesses[i].get('url')
         #UserYelpWebScraping.get_reviews(url, businesses[i].get('id')) #We do not need this for functionality, only to fill database
 
@@ -36,14 +36,15 @@ def request_businesses_list(zipcode, distance, dollars, open_at, categories, att
         'open_at': str(int(unix)),
         'categories': categories,
         'attributes': attributes,
-        'limit': 1
+        'limit': 20
     }
     
     #request API data
     response = requests.request('GET', API_URL, headers=headers, params=params)
     
     #add restaurants from API call to webscraping db
-    updateDB(response.json())
+    #@MAX if you need to webscrape again just uncomment this 
+    #updateDB(response.json())
 
     return response.json()
 
@@ -67,6 +68,7 @@ def parse_results(businesses):
         print()
     YelpWebscraping.printDB()
     UserYelpWebScraping.printDB()
+    
 
 #use businessId to get json results for that business
 def return_business(businessId):
@@ -90,7 +92,7 @@ def main():
     businesses = response.get('businesses')
     #parse_results(businesses)
     
-    YelpWebscraping.printDB()
+    #YelpWebscraping.printDB()
     
 
 if __name__ == '__main__':

@@ -3,6 +3,9 @@ from sqlite3 import Error
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+import pandas as pd
+from glob import glob; from os.path import expanduser
+
 #These are the attributes relevant to the Machine Learning algorithm
 ATTRIBUTES = ['Classy',
                   'Loud',
@@ -51,7 +54,10 @@ def createTable():
     #create table
     c.execute('''CREATE TABLE IF NOT EXISTS attributes (
         [restaurant_id] NVARCHAR(50) PRIMARY KEY,
-        [website] NVARCHAR(200) )''')
+        [website] NVARCHAR(200), 
+        [cuisine1] NVARCHAR(50),
+        [cuisine2] NVARCHAR(50),
+        [cuisine3] NVARCHAR(50) )''')
     
     #add column for each attribute
     for i in range(len(ATTRIBUTES)):
@@ -79,6 +85,12 @@ def checkExistance(rest_id):
     conn.commit()
     conn.close() 
     
+    #write to csv
+    conn = sqlite3.connect(DATABASE)
+    cursor = conn.cursor()
+    clients = pd.read_sql('SELECT * FROM attributes' ,conn)
+    clients.to_csv('scrapedRestaurants.csv', index=False)
+    
     #return whether we found the list
     if(result == []):
         return False
@@ -86,7 +98,7 @@ def checkExistance(rest_id):
 
     
 #adds the restaurant to our database and queries attributes to add to database and add website
-def scrape(rest_id, url):
+def scrape(rest_id, url, categories):
  
     #open chrome to scrape website
     driver = webdriver.Chrome(ADDRESS_TO_WEBDRIVER)
@@ -101,6 +113,15 @@ def scrape(rest_id, url):
 
     #add restaurant to database
     c.execute('INSERT INTO attributes (restaurant_id) VALUES((?))', (rest_id,))
+    
+    #add cuisine types to database
+    for j in range(len(categories)):
+        catName = 'cuisine'+str(j+1)
+        alias = categories[j].get('alias')
+        c.execute('''UPDATE attributes
+            SET '''+catName+''' = (?)
+            WHERE restaurant_id = (?);''',
+            (alias, rest_id, )) 
 
     #access attributes by clicking button on yelp page
     buttons = driver.find_elements(By.TAG_NAME, 'button')
@@ -183,8 +204,8 @@ def printDB():
     conn.close() 
 
 
-createTable()
-def main(business_id, url):
+#createTable()
+def main(business_id, url, categories):
     if(checkExistance(business_id)==False):
-        scrape(business_id, url)
+        scrape(business_id, url, categories)
     #printDB()
