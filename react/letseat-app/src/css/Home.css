@@ -91,6 +91,11 @@ label {
     color: white;
 }
 
+.btn.answerOption.selected {
+    background-color: #87ae73;
+    color: white;
+}
+
 .btn.submit {
     background-color: #87ae73;
     border-color: #87ae73;
