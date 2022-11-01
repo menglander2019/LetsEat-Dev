@@ -1,0 +1,921 @@
+{
+    "businesses": [
+        {
+            "id": "no3EVuDJlxO52sPUOFPVTg",
+            "alias": "l-ardente-washington",
+            "name": "L'Ardente",
+            "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/D0_bF5pz2KY3x9K42TNAmA/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/l-ardente-washington?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 326,
+            "categories": [
+                {
+                    "alias": "italian",
+                    "title": "Italian"
+                }
+            ],
+            "rating": 4.5,
+            "coordinates": {
+                "latitude": 38.89891904977066,
+                "longitude": -77.01407410000002
+            },
+            "transactions": [],
+            "location": {
+                "address1": "200 Massachusetts Ave NW",
+                "address2": null,
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20001",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "200 Massachusetts Ave NW",
+                    "Washington, DC 20001"
+                ]
+            },
+            "phone": "+12024480450",
+            "display_phone": "(202) 448-0450",
+            "distance": 594.7666933115164
+        },
+        {
+            "id": "kVCCVqIikApTuD_SGHBwHg",
+            "alias": "unconventional-diner-washington-3",
+            "name": "Unconventional Diner",
+            "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/ZEo-5W3nWS3wE21a7VwoRQ/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/unconventional-diner-washington-3?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 1844,
+            "categories": [
+                {
+                    "alias": "newamerican",
+                    "title": "American (New)"
+                },
+                {
+                    "alias": "breakfast_brunch",
+                    "title": "Breakfast & Brunch"
+                }
+            ],
+            "rating": 4.5,
+            "coordinates": {
+                "latitude": 38.906139,
+                "longitude": -77.0238
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "price": "$$",
+            "location": {
+                "address1": "1207 9th St NW",
+                "address2": "",
+                "address3": null,
+                "city": "Washington, DC",
+                "zip_code": "20001",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "1207 9th St NW",
+                    "Washington, DC 20001"
+                ]
+            },
+            "phone": "+12028470122",
+            "display_phone": "(202) 847-0122",
+            "distance": 1543.155524828394
+        },
+        {
+            "id": "ZQmeDA4ZkM6F1dr2HNVWXA",
+            "alias": "cane-washington-3",
+            "name": "Cane",
+            "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/ohbZe6vtFHFN_ZW8n91mYw/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/cane-washington-3?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 431,
+            "categories": [
+                {
+                    "alias": "caribbean",
+                    "title": "Caribbean"
+                }
+            ],
+            "rating": 4.5,
+            "coordinates": {
+                "latitude": 38.9,
+                "longitude": -77.00032
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "price": "$$",
+            "location": {
+                "address1": "403 H St NE",
+                "address2": null,
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20002",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "403 H St NE",
+                    "Washington, DC 20002"
+                ]
+            },
+            "phone": "+12026752011",
+            "display_phone": "(202) 675-2011",
+            "distance": 624.5875418271106
+        },
+        {
+            "id": "SpCeYPhky4gsWa9-IBtw2A",
+            "alias": "a-baked-joint-washington-9",
+            "name": "A Baked Joint",
+            "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/icxZ7C4Zf0PT5Vw2QfArWw/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/a-baked-joint-washington-9?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 2226,
+            "categories": [
+                {
+                    "alias": "coffee",
+                    "title": "Coffee & Tea"
+                },
+                {
+                    "alias": "breakfast_brunch",
+                    "title": "Breakfast & Brunch"
+                },
+                {
+                    "alias": "sandwiches",
+                    "title": "Sandwiches"
+                }
+            ],
+            "rating": 4.5,
+            "coordinates": {
+                "latitude": 38.902465,
+                "longitude": -77.017275
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "price": "$",
+            "location": {
+                "address1": "430 K St NW",
+                "address2": "",
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20001",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "430 K St NW",
+                    "Washington, DC 20001"
+                ]
+            },
+            "phone": "+12024086985",
+            "display_phone": "(202) 408-6985",
+            "distance": 873.1389439131408
+        },
+        {
+            "id": "axeT144_-6Z4Hui-lDbAUQ",
+            "alias": "the-smith-washington-2",
+            "name": "The Smith",
+            "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/9pZsMcOBQUoR4oW72uh4cA/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/the-smith-washington-2?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 1191,
+            "categories": [
+                {
+                    "alias": "newamerican",
+                    "title": "American (New)"
+                },
+                {
+                    "alias": "breakfast_brunch",
+                    "title": "Breakfast & Brunch"
+                },
+                {
+                    "alias": "cocktailbars",
+                    "title": "Cocktail Bars"
+                }
+            ],
+            "rating": 4.0,
+            "coordinates": {
+                "latitude": 38.897666,
+                "longitude": -77.024307
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "price": "$$",
+            "location": {
+                "address1": "901 F St NW",
+                "address2": null,
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20004",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "901 F St NW",
+                    "Washington, DC 20004"
+                ]
+            },
+            "phone": "+12028684900",
+            "display_phone": "(202) 868-4900",
+            "distance": 1487.5235751634514
+        },
+        {
+            "id": "9InADBAW39uie1tlUNRN7w",
+            "alias": "sundevich-washington-7",
+            "name": "SUNdeVICH",
+            "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/_fjdYd8SW48rKFa0497M8g/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/sundevich-washington-7?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 25,
+            "categories": [
+                {
+                    "alias": "sandwiches",
+                    "title": "Sandwiches"
+                },
+                {
+                    "alias": "salad",
+                    "title": "Salad"
+                }
+            ],
+            "rating": 5.0,
+            "coordinates": {
+                "latitude": 38.89786,
+                "longitude": -77.011554
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "location": {
+                "address1": "601 New Jersey Ave NW",
+                "address2": null,
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20001",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "601 New Jersey Ave NW",
+                    "Washington, DC 20001"
+                ]
+            },
+            "phone": "+12027508128",
+            "display_phone": "(202) 750-8128",
+            "distance": 457.355516601136
+        },
+        {
+            "id": "R-IGoudMDc5VX9MEPTU7ew",
+            "alias": "laos-in-town-washington-3",
+            "name": "Laos In Town",
+            "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/VwYYBgmL3RyTVp_w2CSpPw/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/laos-in-town-washington-3?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 408,
+            "categories": [
+                {
+                    "alias": "laotian",
+                    "title": "Laotian"
+                },
+                {
+                    "alias": "breakfast_brunch",
+                    "title": "Breakfast & Brunch"
+                },
+                {
+                    "alias": "beergardens",
+                    "title": "Beer Gardens"
+                }
+            ],
+            "rating": 4.5,
+            "coordinates": {
+                "latitude": 38.902842618477194,
+                "longitude": -77.00229728650758
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "price": "$$",
+            "location": {
+                "address1": "250 K St NE",
+                "address2": "",
+                "address3": null,
+                "city": "Washington, DC",
+                "zip_code": "20002",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "250 K St NE",
+                    "Washington, DC 20002"
+                ]
+            },
+            "phone": "+12028646620",
+            "display_phone": "(202) 864-6620",
+            "distance": 520.8322984194812
+        },
+        {
+            "id": "iORMLvXAbFbe9xLDlT_C6g",
+            "alias": "baan-siam-washington",
+            "name": "Baan Siam",
+            "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/7GwiikVlPjzMks3a6cNRVw/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/baan-siam-washington?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 367,
+            "categories": [
+                {
+                    "alias": "thai",
+                    "title": "Thai"
+                },
+                {
+                    "alias": "wine_bars",
+                    "title": "Wine Bars"
+                },
+                {
+                    "alias": "beerbar",
+                    "title": "Beer Bar"
+                }
+            ],
+            "rating": 4.5,
+            "coordinates": {
+                "latitude": 38.90147950746981,
+                "longitude": -77.01634228634687
+            },
+            "transactions": [
+                "delivery"
+            ],
+            "price": "$$",
+            "location": {
+                "address1": "425 I St NW",
+                "address2": "",
+                "address3": null,
+                "city": "Washington, DC",
+                "zip_code": "20001",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "425 I St NW",
+                    "Washington, DC 20001"
+                ]
+            },
+            "phone": "+12025885889",
+            "display_phone": "(202) 588-5889",
+            "distance": 772.3309243721727
+        },
+        {
+            "id": "jWhCkGX4FrkUCn_W9KV__g",
+            "alias": "milk-and-honey-washington",
+            "name": "Milk & Honey",
+            "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/U6Aj7kezFb9tWANNJhC7cQ/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/milk-and-honey-washington?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 154,
+            "categories": [
+                {
+                    "alias": "seafood",
+                    "title": "Seafood"
+                },
+                {
+                    "alias": "breakfast_brunch",
+                    "title": "Breakfast & Brunch"
+                },
+                {
+                    "alias": "cafes",
+                    "title": "Cafes"
+                }
+            ],
+            "rating": 4.0,
+            "coordinates": {
+                "latitude": 38.9003623,
+                "longitude": -76.99083499999999
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "price": "$$",
+            "location": {
+                "address1": "1116 H St NE",
+                "address2": null,
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20002",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "1116 H St NE",
+                    "Washington, DC 20002"
+                ]
+            },
+            "phone": "+12023881815",
+            "display_phone": "(202) 388-1815",
+            "distance": 1442.8071065942888
+        },
+        {
+            "id": "8pWrgtRGn4BqcOWb8ExxcA",
+            "alias": "boqueria-penn-quarter-washington-4",
+            "name": "Boqueria Penn Quarter",
+            "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/5eKKJY8SljFU0vOrRqS4aA/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/boqueria-penn-quarter-washington-4?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 357,
+            "categories": [
+                {
+                    "alias": "spanish",
+                    "title": "Spanish"
+                },
+                {
+                    "alias": "tapas",
+                    "title": "Tapas Bars"
+                },
+                {
+                    "alias": "tapasmallplates",
+                    "title": "Tapas/Small Plates"
+                }
+            ],
+            "rating": 4.5,
+            "coordinates": {
+                "latitude": 38.89952852762722,
+                "longitude": -77.0233928613015
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "price": "$$",
+            "location": {
+                "address1": "777 9th St NW",
+                "address2": "",
+                "address3": null,
+                "city": "Washington, DC",
+                "zip_code": "20001",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "777 9th St NW",
+                    "Washington, DC 20001"
+                ]
+            },
+            "phone": "+12025523268",
+            "display_phone": "(202) 552-3268",
+            "distance": 1378.9195921483342
+        },
+        {
+            "id": "9QuPQIT_tio6zK8TSxY4WA",
+            "alias": "cafe-fili-washington",
+            "name": "Cafe Fili",
+            "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/OSVgJYn34rxA_kGdu4guow/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/cafe-fili-washington?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 78,
+            "categories": [
+                {
+                    "alias": "mediterranean",
+                    "title": "Mediterranean"
+                },
+                {
+                    "alias": "newamerican",
+                    "title": "American (New)"
+                },
+                {
+                    "alias": "mideastern",
+                    "title": "Middle Eastern"
+                }
+            ],
+            "rating": 4.5,
+            "coordinates": {
+                "latitude": 38.899059543718536,
+                "longitude": -77.003305
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "location": {
+                "address1": "701 2nd St NE",
+                "address2": "",
+                "address3": null,
+                "city": "Washington, DC",
+                "zip_code": "20002",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "701 2nd St NE",
+                    "Washington, DC 20002"
+                ]
+            },
+            "phone": "+12026292816",
+            "display_phone": "(202) 629-2816",
+            "distance": 397.20691319225335
+        },
+        {
+            "id": "uDeOuGCBMFgGE0c5WjxH1g",
+            "alias": "gypsy-kitchen-washington",
+            "name": "Gypsy Kitchen",
+            "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/CNNAw486qYhKGKnGAhQ0jg/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/gypsy-kitchen-washington?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 452,
+            "categories": [
+                {
+                    "alias": "tapasmallplates",
+                    "title": "Tapas/Small Plates"
+                },
+                {
+                    "alias": "mediterranean",
+                    "title": "Mediterranean"
+                }
+            ],
+            "rating": 4.5,
+            "coordinates": {
+                "latitude": 38.91488,
+                "longitude": -77.03155
+            },
+            "transactions": [
+                "delivery"
+            ],
+            "location": {
+                "address1": "1825 14th St NW",
+                "address2": null,
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20009",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "1825 14th St NW",
+                    "Washington, DC 20009"
+                ]
+            },
+            "phone": "+12027650500",
+            "display_phone": "(202) 765-0500",
+            "distance": 2624.416855122867
+        },
+        {
+            "id": "H0pwrVQsgRra0aM3zyIBzA",
+            "alias": "china-boy-washington",
+            "name": "China Boy",
+            "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/L2XHCfondz1ATI-fapk7ag/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/china-boy-washington?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 481,
+            "categories": [
+                {
+                    "alias": "chinese",
+                    "title": "Chinese"
+                },
+                {
+                    "alias": "asianfusion",
+                    "title": "Asian Fusion"
+                },
+                {
+                    "alias": "delis",
+                    "title": "Delis"
+                }
+            ],
+            "rating": 4.0,
+            "coordinates": {
+                "latitude": 38.90037,
+                "longitude": -77.01957
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "price": "$",
+            "location": {
+                "address1": "815 6th St NW",
+                "address2": "",
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20001",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "815 6th St NW",
+                    "Washington, DC 20001"
+                ]
+            },
+            "phone": "+12023711661",
+            "display_phone": "(202) 371-1661",
+            "distance": 1043.980073229974
+        },
+        {
+            "id": "6Qhmt1jo7BMcFcp41fPFVg",
+            "alias": "the-hamilton-washington",
+            "name": "The Hamilton",
+            "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/JlhL-9F4-3sBPwbn0jpZIg/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/the-hamilton-washington?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 2896,
+            "categories": [
+                {
+                    "alias": "seafood",
+                    "title": "Seafood"
+                },
+                {
+                    "alias": "newamerican",
+                    "title": "American (New)"
+                },
+                {
+                    "alias": "musicvenues",
+                    "title": "Music Venues"
+                }
+            ],
+            "rating": 4.0,
+            "coordinates": {
+                "latitude": 38.8974544016632,
+                "longitude": -77.0320804809509
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "price": "$$",
+            "location": {
+                "address1": "600 14th St NW",
+                "address2": "",
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20005",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "600 14th St NW",
+                    "Washington, DC 20005"
+                ]
+            },
+            "phone": "+12027871000",
+            "display_phone": "(202) 787-1000",
+            "distance": 2153.2804220337453
+        },
+        {
+            "id": "puCn1vQ1S-bLyfe7gRnRpQ",
+            "alias": "wasai-washington",
+            "name": "Wasai",
+            "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/OMxDOzWCzhlcQ1nZsuv9ig/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/wasai-washington?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 37,
+            "categories": [
+                {
+                    "alias": "chinese",
+                    "title": "Chinese"
+                }
+            ],
+            "rating": 4.5,
+            "coordinates": {
+                "latitude": 38.89905,
+                "longitude": -77.02222
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "location": {
+                "address1": "716 7th St NW",
+                "address2": null,
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20001",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "716 7th St NW",
+                    "Washington, DC 20001"
+                ]
+            },
+            "phone": "",
+            "display_phone": "",
+            "distance": 1292.6143946552559
+        },
+        {
+            "id": "Z0v0NOziKoF6g_NzO68Z6g",
+            "alias": "reren-washington",
+            "name": "Reren",
+            "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/L6-oMQehR8i1uLXur3dslw/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/reren-washington?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 2132,
+            "categories": [
+                {
+                    "alias": "ramen",
+                    "title": "Ramen"
+                },
+                {
+                    "alias": "asianfusion",
+                    "title": "Asian Fusion"
+                }
+            ],
+            "rating": 4.0,
+            "coordinates": {
+                "latitude": 38.900318145752,
+                "longitude": -77.0215911865234
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "price": "$$",
+            "location": {
+                "address1": "817 7th St NW",
+                "address2": null,
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20001",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "817 7th St NW",
+                    "Washington, DC 20001"
+                ]
+            },
+            "phone": "+12022903677",
+            "display_phone": "(202) 290-3677",
+            "distance": 1236.7263902372179
+        },
+        {
+            "id": "G5O1G0d2xbNxBnoamZbVYQ",
+            "alias": "dubliner-restaurant-and-pub-washington",
+            "name": "Dubliner Restaurant & Pub",
+            "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/X3EX1JsGCiuZ3UdtTL60jQ/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/dubliner-restaurant-and-pub-washington?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 703,
+            "categories": [
+                {
+                    "alias": "irish",
+                    "title": "Irish"
+                },
+                {
+                    "alias": "irish_pubs",
+                    "title": "Irish Pub"
+                },
+                {
+                    "alias": "venues",
+                    "title": "Venues & Event Spaces"
+                }
+            ],
+            "rating": 3.5,
+            "coordinates": {
+                "latitude": 38.8971526,
+                "longitude": -77.009472
+            },
+            "transactions": [
+                "delivery"
+            ],
+            "price": "$$",
+            "location": {
+                "address1": "4 F St NW",
+                "address2": "",
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20001",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "4 F St NW",
+                    "Washington, DC 20001"
+                ]
+            },
+            "phone": "+12027373773",
+            "display_phone": "(202) 737-3773",
+            "distance": 408.91407114414307
+        },
+        {
+            "id": "Y929LC3IxB0FI4yDjMULYQ",
+            "alias": "king-street-oyster-bar-washington-2",
+            "name": "King Street Oyster Bar",
+            "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/bgsM-IFXUZ95VHS3stQmbA/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/king-street-oyster-bar-washington-2?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 406,
+            "categories": [
+                {
+                    "alias": "seafood",
+                    "title": "Seafood"
+                },
+                {
+                    "alias": "breakfast_brunch",
+                    "title": "Breakfast & Brunch"
+                },
+                {
+                    "alias": "tradamerican",
+                    "title": "American (Traditional)"
+                }
+            ],
+            "rating": 4.0,
+            "coordinates": {
+                "latitude": 38.905764810395986,
+                "longitude": -77.00806956564587
+            },
+            "transactions": [
+                "delivery"
+            ],
+            "price": "$$",
+            "location": {
+                "address1": "22 M St NE",
+                "address2": null,
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20002",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "22 M St NE",
+                    "Washington, DC 20002"
+                ]
+            },
+            "phone": "+12026218513",
+            "display_phone": "(202) 621-8513",
+            "distance": 587.772507280297
+        },
+        {
+            "id": "6DfvePESplgO-68S_O08BQ",
+            "alias": "rumi-s-kitchen-washington",
+            "name": "Rumi’s Kitchen",
+            "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/qyC8sJi14usKk7qRmZZ6KQ/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/rumi-s-kitchen-washington?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 360,
+            "categories": [
+                {
+                    "alias": "persian",
+                    "title": "Persian/Iranian"
+                }
+            ],
+            "rating": 4.5,
+            "coordinates": {
+                "latitude": 38.9040351,
+                "longitude": -77.0213156
+            },
+            "transactions": [
+                "delivery"
+            ],
+            "location": {
+                "address1": "640 L St NW",
+                "address2": "",
+                "address3": null,
+                "city": "Washington, DC",
+                "zip_code": "20001",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "640 L St NW",
+                    "Washington, DC 20001"
+                ]
+            },
+            "phone": "+12029009106",
+            "display_phone": "(202) 900-9106",
+            "distance": 1224.0376460713248
+        },
+        {
+            "id": "yezzRoh4t6Mxw1pPWP-SVQ",
+            "alias": "district-rico-washington-5",
+            "name": "District Rico",
+            "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/oFqB7ppC8RnBTgQQIZAekQ/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/district-rico-washington-5?adjust_creative=zQXigI7LgZAT12wMOc08kg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=zQXigI7LgZAT12wMOc08kg",
+            "review_count": 305,
+            "categories": [
+                {
+                    "alias": "peruvian",
+                    "title": "Peruvian"
+                }
+            ],
+            "rating": 4.0,
+            "coordinates": {
+                "latitude": 38.900365,
+                "longitude": -77.011819
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "price": "$$",
+            "location": {
+                "address1": "91 H St NW",
+                "address2": "",
+                "address3": "",
+                "city": "Washington, DC",
+                "zip_code": "20001",
+                "country": "US",
+                "state": "DC",
+                "display_address": [
+                    "91 H St NW",
+                    "Washington, DC 20001"
+                ]
+            },
+            "phone": "+12028425007",
+            "display_phone": "(202) 842-5007",
+            "distance": 373.4320922420429
+        }
+    ],
+    "total": 3800,
+    "region": {
+        "center": {
+            "longitude": -77.007507,
+            "latitude": 38.900497
+        }
+    }
+}
