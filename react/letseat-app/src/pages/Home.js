@@ -7,18 +7,47 @@ import '../css/Home.css';
 function Home() {
     return (
         <div className="container">
-            <div className="col-md-8 mt-4 mx-auto">
+            <div className="col-md-12 mt-4">
                 <div className="row mt-3">
-                    <div className="col">
-                        <h1 className="display-3 text-center">LetsEat</h1>
+                    <div className="col-md-8">
+                        <h2 className="text-center">LetsEat</h2>
+                    </div>
+                    <div className="col-md-2">
+                        <Link to="/login">
+                            <button 
+                                id="submit"
+                                className="btn btn-primary w-100">
+                                Sign In
+                            </button>
+                        </Link>
+                    </div>
+                    <div className="col-md-2">
+                        <Link to="/login">
+                            <button 
+                                id="submit"
+                                className="btn btn-primary w-100">
+                                Sign Up
+                            </button>
+                        </Link>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-md-6">
-                        <h2>Discover your new favorite restaurant</h2>
+                <div className="row mt-5">
+                    <div className="col-md-12">
+                        <h1 className="display-3 text-center">Discover your new favorite restaurant</h1>
                     </div>
                 </div>
-                <div>
+                <div className="row mt-4">
+                    <div className="col-md-6 mx-auto">
+                        <Link to="/login">
+                            <button 
+                                id="submit"
+                                className="btn btn-primary home-login w-100">
+                                Get Started
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+                <div className="row mt-5">
                     <Link to="/login">
                         <span>Login</span>
                     </Link><br />

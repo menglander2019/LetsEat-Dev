@@ -74,6 +74,22 @@ label {
     font-weight: 500;
 }
 
+.btn.home-login {
+    background-color: black;
+    color: white;
+    border-color: black;
+    border-radius: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size:1.2rem;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn.home-login:focus {
+    background-color: black;
+    transform: scale(0.9);
+}
+
 .btn.answerOption {
     font-family: 'SF-Pro-Regular';
     font-size: 1.1rem;
@@ -85,10 +101,12 @@ label {
     margin-top: 15px;
 }
 
+.btn.answerOption:focus {
+    border-color: #ececec;
+}
+
 .btn.answerOption:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    background-color: #87ae73;
-    color: white;
 }
 
 .btn.answerOption.selected {

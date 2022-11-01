@@ -21,10 +21,14 @@ function ProfileQuestions() {
         setQuestionIndex((questionIndex) => questionIndex - 1)
     }
 
+    const handleSubmitButton = () => {
+        alert("Profile Create!")
+    }
+
     const answerClicked = (e) => {
         var questionID = e.currentTarget.getAttribute("id");
         var clickedChoice = e.target;
-        
+
         if (clickedChoice.classList.contains("selected")) {
             // Deselect Answer
             clickedChoice.classList.remove("selected");
@@ -35,12 +39,9 @@ function ProfileQuestions() {
             // Send Selection to Fast API
         }
     }
-    const handleSubmitButton = () => {
-        alert("Profile Create!")
-    }
 
     var cuisineChoices = ["American", "Mexican", "French", "Chinese", "Japanese", "Italian", "Korean", "Thai"]
-    var allergyChoices = ["Gluten", "Eggs", "Dairy", "Peanuts"]
+    var allergyChoices = ["Gluten", "Eggs", "Dairy", "Peanuts", "N/A"]
     var numQuestions = 3
 
     return (
