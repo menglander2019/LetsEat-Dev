@@ -1,7 +1,11 @@
-header = ['name', 'current_day', 'positive1', 'positive2', 'positive3', 'positive4', 'positive5', 'negative1', 'negative2', 'negative3', 'negative4', 'negative5', 'restrictions', 'occasion', 'num_people', 'meal', 'price_range', 'cuisine1', 'cuisine2', 'cuisine3', 'Classy', 'Loud', 'Moderate', 'Groups', 'Kids','Garage',
-        'Street', 'WiFi','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','TV','Outdoor',
-        'Dancing','Working','Smoking','Bike','Casual','Breakfast','Lunch','Dinner','Dessert',
-        'Brunch','Late','Trendy', 'Divey','Bar', 'ATTEND?']
+header = ['name', 'current_day', 'middle_eastern', 'african', 'american', 'mexican', 'latin_american', 'italian', 'chinese', 
+        'japanese', 'southern_central_asian', 'french', 'eastern_europe', 'central_europe', 'caribbean', 'mediterranean', 'indian', 
+        'spanish', 'restrictions', 'occasion', 'num_people', 'meal', 'price_range', 'rest_middle_eastern', 'rest_african', 'rest_american', 
+        'rest_mexican', 'rest_latin_american', 'rest_italian', 'rest_chinese', 'rest_japanese', 'rest_southern_central_asian',
+        'rest_french', 'rest_eastern_europe', 'rest_central_europe', 'rest_caribbean', 'rest_mediterranean', 'rest_indian', 'rest_spanish',
+        'Classy', 'Loud', 'Moderate', 'Groups', 'Kids','Garage', 'Street', 'WiFi','Monday','Tuesday','Wednesday',
+        'Thursday','Friday','Saturday','Sunday','TV','Outdoor','Dancing','Working','Smoking','Bike','Casual',
+        'Breakfast','Lunch','Dinner','Dessert','Brunch','Late','Trendy', 'Divey','Bar', 'ATTEND?']
         
 data = [['Bob', 'italian,mexican', 'indian,american', 'vegan', 'italian'],
         ['Chuck', 'chinese,american', 'mexican,vietnamese', '', 'mexican']]
@@ -17,8 +21,9 @@ meals = ['breakfast', 'lunch', 'dinner', 'dessert']
 price_ranges = ['$', '$$', '$$$', '$$$$']
 
 num_rows = 20
-num_pot_positives = 5
-num_pot_negatives = 5
+num_pot_positives = 8
+num_pot_negatives = 8
+num_umbrella_terms = 16
 
 restriction_pct = 0.17
 
@@ -45,7 +50,24 @@ indian = ['himalayan', 'indpak', 'srilankan']
 # united_kingdom = ['scottish', 'irish', 'british', 'fishnchips']
 spanish = ['tapas', 'tapasmallplates', 'portuguese', 'spanish', 'catalan']
 
-restaurant_types = ['']
+restaurant_types = {
+        'middle_eastern': middle_eastern, 
+        'african': african, 
+        'american': american, 
+        'mexican': mexican, 
+        'latin_american': latin_american, 
+        'italian': italian, 
+        'chinese': chinese, 
+        'japanese': japanese, 
+        'southern_central_asian': southern_central_asian, 
+        'french': french, 
+        'eastern_europe': eastern_europe, 
+        'central_europe': central_europe, 
+        'caribbean': caribbean, 
+        'mediterranean': mediterranean, 
+        'indian': indian, 
+        'spanish': spanish
+}
 
 cuisine_groups = {
     "mideastern": middle_eastern,

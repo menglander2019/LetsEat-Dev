@@ -1,6 +1,7 @@
 from backend.dec_tree_trainer import train_dec_tree
 from yelp.YelpApiCalls import get_restaurant_list
 from yelp.YelpWebscraping import scrape
+from backend.data_generation.data_gen_constants import header, num_umbrella_terms, restaurant_types
 import numpy
 import category_encoders as ce
 import pandas as pd
@@ -34,7 +35,33 @@ def get_inputs():
     meal = input("What meal will it be for?\n")
     price_range = input("What is your price range?\n")
 
-    return [day, positive1, positive2, positive3, positive4, positive5, negative1, negative2, negative3, negative4, negative5, restrictions, occasion, num_people, meal, price_range]
+    cuisine_preferences = {}
+    for i in range(num_umbrella_terms):
+        cuisine_preferences[header[i+2]] = 0
+
+    if positive1 in cuisine_preferences:
+        cuisine_preferences[positive1] = 1
+    if positive2 in cuisine_preferences:
+        cuisine_preferences[positive2] = 1
+    if positive3 in cuisine_preferences:
+        cuisine_preferences[positive3] = 1
+    if positive4 in cuisine_preferences:
+        cuisine_preferences[positive4] = 1
+    if positive5 in cuisine_preferences:
+        cuisine_preferences[positive5] = 1
+
+    if negative1 in cuisine_preferences:
+        cuisine_preferences[negative1] = -1
+    if negative2 in cuisine_preferences:
+        cuisine_preferences[negative2] = -1
+    if negative3 in cuisine_preferences:
+        cuisine_preferences[negative3] = -1
+    if negative4 in cuisine_preferences:
+        cuisine_preferences[negative4] = -1
+    if negative5 in cuisine_preferences:
+        cuisine_preferences[negative5] = -1
+
+    return [day] + list(cuisine_preferences.values()) + [restrictions, occasion, num_people, meal, price_range]
 
 
 if __name__ == "__main__":
@@ -44,7 +71,12 @@ if __name__ == "__main__":
     encoder = dec_tree_info[1]
     # gets the user input for profile information (used for testing)
     user_features = get_inputs()
-    restaurants = get_restaurant_list('20037', '4000', user_features[15], ','.join(filter(None, user_features[1:6])))
+    cuisines = []
+    # searches through the positive preferences and adds them to the list of cuisines the user wants
+    for i in range(1, num_umbrella_terms+1):
+        if user_features[i] == 1:
+            cuisines.append(header[i+1])
+    restaurants = get_restaurant_list('20037', '4000', user_features[21], ','.join(filter(None, cuisines)))
      # iterates through each restaurant, scraping data and making predictions
     for restaurant in restaurants:
         temp_user_features = copy.deepcopy(user_features)
@@ -53,26 +85,22 @@ if __name__ == "__main__":
         scraped_info = scrape(id, url)
         category_list = restaurant.get('categories')
         categories = []
-        for j in range(len(category_list)):
-            temp_user_features.append(category_list[j].get('alias'))
-        # fills in blanks for any cuisine types that weren't scraped (3 minimum)
-        for k in range(3 - len(category_list)):
-            temp_user_features.append('')
+        # iterates through each umbrella term to see if the scraped restaurant fits into that umbrella and sets to 1 if it finds it and 0 if not
+        for type in restaurant_types.keys():
+            found_type = False
+            for category in category_list:
+                if category.get('alias') in restaurant_types[type]:
+                    found_type = True
+            if found_type:
+                temp_user_features.append(1)
+            else:
+                temp_user_features.append(0)
+        # appends the collected values based on the user profile and the scraped restaurant values
         total_features = numpy.array(temp_user_features + list(scraped_info.values()))
+        cols = {}
         # sets up a dataframe with the proper feature names and values
-        cols = {'current_day': total_features[0], 'positive1': total_features[1], 'positive2': total_features[2], 'positive3': total_features[3], 
-                'positive4': total_features[4], 'positive5': total_features[5], 'negative1': total_features[6], 'negative2': total_features[7], 
-                'negative3': total_features[8], 'negative4': total_features[9], 'negative5': total_features[10], 'restrictions': total_features[11], 
-                'occasion': total_features[12], 'num_people': int(total_features[13]), 'meal': total_features[14], 'price_range': int(total_features[15]), 
-                'cuisine1': total_features[16], 'cuisine2': total_features[17], 'cuisine3': total_features[18], 'Classy': int(total_features[19]), 
-                'Loud': int(total_features[20]), 'Moderate': int(total_features[21]), 'Groups': int(total_features[22]), 'Kids': int(total_features[23]), 
-                'Garage': int(total_features[24]), 'Street': int(total_features[25]), 'WiFi': int(total_features[26]), 'Monday': int(total_features[27]), 
-                'Tuesday': int(total_features[28]), 'Wednesday': int(total_features[29]), 'Thursday': int(total_features[30]), 'Friday': int(total_features[31]), 
-                'Saturday': int(total_features[32]), 'Sunday': int(total_features[33]), 'TV': int(total_features[34]), 'Outdoor': int(total_features[35]), 
-                'Dancing': int(total_features[36]), 'Working': int(total_features[37]), 'Smoking': int(total_features[38]), 'Bike': int(total_features[39]), 
-                'Casual': int(total_features[40]), 'Breakfast': int(total_features[41]), 'Lunch': int(total_features[42]), 'Dinner': int(total_features[43]), 
-                'Dessert': int(total_features[44]), 'Brunch': int(total_features[45]), 'Late': int(total_features[46]), 'Trendy': int(total_features[47]), 
-                'Divey': int(total_features[48]), 'Bar': int(total_features[49])}
+        for i in range(len(total_features)):
+            cols[header[i+1]] = total_features[i]
         row = pd.DataFrame(data=cols, index=[0])
         row = row.astype('string')
         # encodes the categorical features using the encoder that trained the decision tree

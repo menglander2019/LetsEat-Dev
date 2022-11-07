@@ -3,6 +3,9 @@ from sqlite3 import Error
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+import pandas as pd
+from glob import glob; from os.path import expanduser
+
 #These are the attributes relevant to the Machine Learning algorithm
 ATTRIBUTES = ['Classy',
                   'Loud',
@@ -51,7 +54,10 @@ def createTable():
     #create table
     c.execute('''CREATE TABLE IF NOT EXISTS attributes (
         [restaurant_id] NVARCHAR(50) PRIMARY KEY,
-        [website] NVARCHAR(50) )''')
+        [website] NVARCHAR(200), 
+        [cuisine1] NVARCHAR(50),
+        [cuisine2] NVARCHAR(50),
+        [cuisine3] NVARCHAR(50) )''')
     
     #add column for each attribute
     for i in range(len(ATTRIBUTES)):
@@ -78,6 +84,12 @@ def checkExistance(rest_id):
     #close connections
     conn.commit()
     conn.close() 
+    
+    #write to csv
+    conn = sqlite3.connect(DATABASE)
+    cursor = conn.cursor()
+    clients = pd.read_sql('SELECT * FROM attributes' ,conn)
+    clients.to_csv('scrapedRestaurants.csv', index=False)
     
     #return whether we found the list
     if(result == []):
@@ -127,14 +139,23 @@ def scrape(rest_id, url):
     driver.get(url)
     
     #open connection 
-    # try:
-    #     conn = sqlite3.connect(DATABASE)
-    #     c = conn.cursor()
-    # except Error as e:
-    #     print(e)
+    try:
+        conn = sqlite3.connect(DATABASE)
+        c = conn.cursor()
+    except Error as e:
+        print(e)
 
     #add restaurant to database
-    #c.execute('INSERT INTO attributes (restaurant_id) VALUES((?))', (rest_id,))
+    c.execute('INSERT INTO attributes (restaurant_id) VALUES((?))', (rest_id,))
+    
+    #add cuisine types to database
+    # for j in range(len(categories)):
+    #     catName = 'cuisine'+str(j+1)
+    #     alias = categories[j].get('alias')
+    #     c.execute('''UPDATE attributes
+    #         SET '''+catName+''' = (?)
+    #         WHERE restaurant_id = (?);''',
+    #         (alias, rest_id, )) 
 
     #access attributes by clicking button on yelp page
     buttons = driver.find_elements(By.TAG_NAME, 'button')
@@ -147,18 +168,23 @@ def scrape(rest_id, url):
     for j in range(len(ATTRIBUTES)):
         for i in range(len(all_pos_attributes)):
             #update database so attribute as 1
-            if ATTRIBUTES[j] in all_pos_attributes[i].text:
-                # c.execute('''UPDATE attributes
-                #           SET '''+ATTRIBUTES[j]+''' = 1
-                #           WHERE restaurant_id = (?);''',
-                #           (rest_id,))  
-                rest_attr_dict[ATTRIBUTES[j]] = 1
+            searchAttribute = ATTRIBUTES[j]
+            if(ATTRIBUTES[j] == 'WiFi'):
+                searchAttribute = 'Wi-Fi'
+            if searchAttribute in all_pos_attributes[i].text:
+                c.execute('''UPDATE attributes
+                          SET '''+ATTRIBUTES[j]+''' = 1
+                          WHERE restaurant_id = (?);''',
+                          (rest_id,))  
                           
     #search for attributes the restaurant does not have
     all_neg_attributes = driver.find_elements(By.CLASS_NAME, FALSE_CLASS)
     for j in range(len(ATTRIBUTES)):
         for i in range(len(all_neg_attributes)):
             #update database so attribute as -1
+            searchAttribute = ATTRIBUTES[j]
+            if(ATTRIBUTES[j] == 'WiFi'):
+                searchAttribute = 'Wi-Fi'
             if ATTRIBUTES[j] in all_neg_attributes[i].text:
                 # c.execute('''UPDATE attributes
                 #           SET '''+ATTRIBUTES[j]+''' = -1
@@ -214,8 +240,8 @@ def printDB():
     conn.close() 
 
 
-# createTable()
-def main(business_id, url):
+## createTable()
+def main(business_id, url, categories):
     if(checkExistance(business_id)==False):
-        scrape(business_id, url)
+        scrape(business_id, url, categories)
     #printDB()
