@@ -3,8 +3,20 @@ import { useEffect, useState } from 'react'
 
 function CreateAccount() {
 
-    const handleSubmitButton = () => {
-        alert("Account Create!")
+    async function handleSubmitButton(event) {
+
+        let url = "http://localhost:8000/signup/email/fake@email.com/pw/1234/name/Smith/dob/2000-01-01/gender/male/pos/italian,chinese/neg/mexican/restr/vegan"
+        let res = await fetch(url, {
+            method: 'POST',
+        });
+
+        if (res.ok) {
+
+            let text = await res.text();
+            alert("success");
+        } else {
+            alert("fail");
+        }
     }
 
     return (
@@ -68,7 +80,7 @@ function CreateAccount() {
                         <button 
                             id="submit"
                             className="btn btn-primary submit w-100"
-                            onClick={handleSubmitButton}>
+                            onClick={event => handleSubmitButton(event)}>
                             Sign Up
                         </button>
                     </div>
