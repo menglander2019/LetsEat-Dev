@@ -33,7 +33,7 @@ function Restaurant() {
                         <h1>Confirmed!</h1>
                     ) :
                     (
-                        <div>
+                        <>
                             <RestaurantCard jsonData={parseRestaurantData(TestData, restaurantIndex)} />
                             <div className="row mt-4 mb-5">
                                 <div className="col-md-6 mx-auto">
@@ -43,7 +43,7 @@ function Restaurant() {
                                     <button type="button" className="btn confirm w-100" onClick={confirmRestaurant}>I'm Going!</button>
                                 </div>
                             </div>
-                        </div>
+                        </>
                     )
                 }
                 </div>

@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 // Takes in JSON data of a restaurant and parses the data
 const RestaurantCard = ({ jsonData }) => {
 
-    console.log(jsonData)
     let exampleRestaurant = jsonData
     let name = exampleRestaurant.name
     let image = exampleRestaurant.image_url

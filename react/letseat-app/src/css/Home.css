@@ -27,6 +27,11 @@ html, body {
     width: 100%;
 }
 
+.home-banner {
+    background-color: #6d8a5e;
+    min-height: 600px;
+}
+
 h1 {
     font-family: 'Sf-Pro-Bold';
     color: #6d8a5e;
@@ -57,6 +62,10 @@ label {
     color: #6d8a5e;
 }
 
+.white-theme {
+    color: white;
+}
+
 .input-box {
     background-color: #ececec;
     border-color: #ececec;
@@ -74,6 +83,25 @@ label {
     font-weight: 500;
 }
 
+.btn.home-login {
+    background-color: white;
+    color: black;
+    border-color: white;
+    border-width: 1.5px;
+    border-radius: 25px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size:1.2rem;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn.home-login:focus {
+    background-color: white;
+    color: black;
+    border-color: white;
+    transform: scale(0.8);
+}
+
 .btn.answerOption {
     font-family: 'SF-Pro-Regular';
     font-size: 1.1rem;
@@ -85,9 +113,18 @@ label {
     margin-top: 15px;
 }
 
+.btn.answerOption:focus {
+    border-color: #ececec;
+}
+
 .btn.answerOption:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    border-color: #ececec;
+}
+
+.btn.answerOption.selected {
     background-color: #87ae73;
+    border-color: #87ae73;
     color: white;
 }
 
