@@ -12,6 +12,10 @@ import ButtonCreate from '../components/ButtonCreate'
 function ProfileQuestions() {
 
     const [ questionIndex, setQuestionIndex ] = useState(0)
+    const [ questions, setQuestions ] = useState()
+    var cuisineChoices = ["American", "Mexican", "French", "Chinese", "Japanese", "Italian", "Korean", "Thai"]
+    var allergyChoices = ["Gluten", "Eggs", "Dairy", "Peanuts", "N/A"]
+    var numQuestions = 3
 
     const nextQuestion = () => {
         setQuestionIndex((questionIndex) => questionIndex + 1)
@@ -23,6 +27,13 @@ function ProfileQuestions() {
 
     const handleSubmitButton = () => {
         alert("Profile Create!")
+        // Send "questions" state to FastAPI
+    }
+
+    // Calls FastAPI to pull questions and stores
+    const fetchQuestions = () => {
+        console.log("Questions Fetched!")
+        // Store into "questions" array variable
     }
 
     const answerClicked = (e) => {
@@ -32,17 +43,13 @@ function ProfileQuestions() {
         if (clickedChoice.classList.contains("selected")) {
             // Deselect Answer
             clickedChoice.classList.remove("selected");
-            // Remove Selection from Fast API
+            // Remove Selection from "questions" state
         } else {
             // Select Answer
             clickedChoice.classList.add("selected");
-            // Send Selection to Fast API
+            // Add Selection to "questions" state
         }
     }
-
-    var cuisineChoices = ["American", "Mexican", "French", "Chinese", "Japanese", "Italian", "Korean", "Thai"]
-    var allergyChoices = ["Gluten", "Eggs", "Dairy", "Peanuts", "N/A"]
-    var numQuestions = 3
 
     return (
         <div className="container">
