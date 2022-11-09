@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from backend.db.db_management import createUser
+from backend.data_generation.data_gen_constants import cuisine_groups, restrictions_dict
 
 app = FastAPI()
  
@@ -22,6 +23,14 @@ def signup():
 @app.post("/signup/email/{email}/pw/{pw}/name/{name}/dob/{dob}/gender/{gender}/pos/{pos}/neg/{neg}/restr/{restr}")
 def signup(email, pw, name, dob, gender, pos, neg, restr):
     return createUser(email, pw, name, dob, gender, pos, neg, restr)
+
+@app.get("/profileQuestionInfo")
+def getProfileQuestionInfo():
+    return {
+        "positives": cuisine_groups.keys(),
+        "restrictions": restrictions_dict.keys(),
+        "negatives": cuisine_groups.keys()
+    }
 
 @app.get("/createprofile")
 def createprofile():
