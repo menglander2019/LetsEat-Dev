@@ -18,8 +18,6 @@ days = ['M', 'T', 'W', 'R', 'F', 'SA', 'SU']
 
 meals = ['breakfast', 'lunch', 'dinner', 'dessert']
 
-price_ranges = ['$', '$$', '$$$', '$$$$']
-
 num_rows = 20
 num_pot_positives = 8
 num_pot_negatives = 8

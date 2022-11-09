@@ -109,18 +109,24 @@ with open('random_data.csv', 'w', encoding='UTF8') as f:
 
         meal = meals[int(random.random() * len(meals))]
         
-        price_range = price_ranges[int(random.random() * len(price_ranges))]
 
         # gives a restauraunt a random umbrella cuisine
         rest_cuisines = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         rest_cuisines[int(random.random() * len(rest_cuisines))] = 1
+
+        # gives a restaurant a single price range
+        price_ranges = [0, 0, 0, 0]
+        price_ranges[int(random.random() * 4)] = 1
         
-        row = [names.get_full_name(), day, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1,
-                int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, 
-                int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, 
-                int(random.random() * 3) - 1, int(random.random() * 3) - 1, restriction, occasion, num_people, meal, price_range, rest_cuisines[0], rest_cuisines[1], 
-                rest_cuisines[2], rest_cuisines[3], rest_cuisines[4], rest_cuisines[5], rest_cuisines[6], rest_cuisines[7], rest_cuisines[8], rest_cuisines[9],
-                rest_cuisines[10], rest_cuisines[11], rest_cuisines[12], rest_cuisines[13], rest_cuisines[14], rest_cuisines[15]]
+        row = [
+            names.get_full_name(), day, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1,
+            int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, 
+            int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, 
+            int(random.random() * 3) - 1, int(random.random() * 3) - 1, restriction, occasion, num_people, meal, price_ranges[0], price_ranges[1], price_ranges[2], 
+            price_ranges[3], round(random.random() * 5, 1), rest_cuisines[0], rest_cuisines[1], rest_cuisines[2], rest_cuisines[3], rest_cuisines[4], rest_cuisines[5], 
+            rest_cuisines[6], rest_cuisines[7], rest_cuisines[8], rest_cuisines[9], rest_cuisines[10], rest_cuisines[11], rest_cuisines[12], rest_cuisines[13], 
+            rest_cuisines[14], rest_cuisines[15]
+        ]
 
         for j in range(scraped_column_ct):
             column_val = int(random.random() * 3) - 1
