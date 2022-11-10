@@ -1,6 +1,6 @@
 header = ['name', 'current_day', 'middle_eastern', 'african', 'american', 'mexican', 'latin_american', 'italian', 'chinese', 
         'japanese', 'southern_central_asian', 'french', 'eastern_europe', 'central_europe', 'caribbean', 'mediterranean', 'indian', 
-        'spanish', 'restrictions', 'occasion', 'num_people', 'meal', '$', '$$', '$$$', '$$$$', 'review', 'rest_middle_eastern', 'rest_african', 'rest_american', 
+        'spanish', 'restrictions', 'occasion', 'num_people', 'meal', '$', '$$', '$$$', '$$$$', 'rating', 'rest_$', 'rest_$$', 'rest_$$$', 'rest_$$$$', 'rest_middle_eastern', 'rest_african', 'rest_american', 
         'rest_mexican', 'rest_latin_american', 'rest_italian', 'rest_chinese', 'rest_japanese', 'rest_southern_central_asian',
         'rest_french', 'rest_eastern_europe', 'rest_central_europe', 'rest_caribbean', 'rest_mediterranean', 'rest_indian', 'rest_spanish',
         'Classy', 'Loud', 'Moderate', 'Groups', 'Kids','Garage', 'Street', 'WiFi','Monday','Tuesday','Wednesday',

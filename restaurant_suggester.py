@@ -61,7 +61,11 @@ def get_inputs():
     if negative5 in cuisine_preferences:
         cuisine_preferences[negative5] = -1
 
-    return [day] + list(cuisine_preferences.values()) + [restrictions, occasion, num_people, meal, price_range]
+    real_price_range = int(price_range) - 1
+    price_ranges = [0, 0, 0, 0]
+    price_ranges[real_price_range] = 1
+
+    return [day] + list(cuisine_preferences.values()) + [restrictions, occasion, num_people, meal] + price_ranges
 
 
 if __name__ == "__main__":
@@ -76,15 +80,25 @@ if __name__ == "__main__":
     for i in range(1, num_umbrella_terms+1):
         if user_features[i] == 1:
             cuisines.append(header[i+1])
-    restaurants = get_restaurant_list('20037', '4000', user_features[21], ','.join(filter(None, cuisines)))
+    price_range = 0
+    for i in range(21, 25):
+        if user_features[i] == 1:
+            price_range = i - 20
+    restaurants = get_restaurant_list('20037', '4000', price_range, ','.join(filter(None, cuisines)))
      # iterates through each restaurant, scraping data and making predictions
     for restaurant in restaurants:
         temp_user_features = copy.deepcopy(user_features)
         id = restaurant.get('id')
         url = restaurant.get('url')
         scraped_info = scrape(id, url)
+        # gets the rating of the restaurant
+        rest_features = [restaurant.get('rating')]
+        # gets the price of the restaurant and appends it to the list of restaurant features
+        rest_prices = [0, 0, 0, 0]
+        price = restaurant.get('price')
+        rest_prices[len(price) - 1] = 1
+        rest_features += rest_prices
         category_list = restaurant.get('categories')
-        categories = []
         # iterates through each umbrella term to see if the scraped restaurant fits into that umbrella and sets to 1 if it finds it and 0 if not
         for type in restaurant_types.keys():
             found_type = False
@@ -92,11 +106,12 @@ if __name__ == "__main__":
                 if category.get('alias') in restaurant_types[type]:
                     found_type = True
             if found_type:
-                temp_user_features.append(1)
+                rest_features.append(1)
             else:
-                temp_user_features.append(0)
-        # appends the collected values based on the user profile and the scraped restaurant values
-        total_features = numpy.array(temp_user_features + list(scraped_info.values()))
+                rest_features.append(0)
+        
+        # appends the collected values based on the user profile, restaurant features (rating/price/cuisine), and the scraped restaurant values
+        total_features = numpy.array(temp_user_features + rest_features + list(scraped_info.values()))
         cols = {}
         # sets up a dataframe with the proper feature names and values
         for i in range(len(total_features)):
