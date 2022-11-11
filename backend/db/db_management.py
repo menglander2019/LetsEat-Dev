@@ -1,10 +1,10 @@
 import mysql.connector
 import random
 
-mydb = mysql.connector.connect(host='localhost',
-                                         database='Users',
-                                         user='root',
-                                         password='196468maX!')
+#mydb = mysql.connector.connect(host='localhost',
+#                                         database='Users',
+#                                         user='root',
+#                                         password='196468maX!')
 
 # Database: Users
 def createUser(email, pw, name, dob, gender, pos, neg, restr):

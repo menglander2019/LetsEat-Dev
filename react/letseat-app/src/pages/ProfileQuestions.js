@@ -17,6 +17,18 @@ function ProfileQuestions() {
     var allergyChoices = ["Gluten", "Eggs", "Dairy", "Peanuts", "N/A"]
     var numQuestions = 3
 
+    useEffect(() => {
+        fetch('http://127.0.0.1:8000/')
+            .then(resp => {
+                console.log(resp);
+                console.log('======success=======');
+            })
+            .catch(err => {
+                console.log('======failure=======');
+                console.log(err);
+            });
+    })
+
     const nextQuestion = () => {
         setQuestionIndex((questionIndex) => questionIndex + 1)
     }
@@ -31,9 +43,12 @@ function ProfileQuestions() {
     }
 
     // Calls FastAPI to pull questions and stores
-    const fetchQuestions = () => {
+    const fetchQuestions = async () => {
         console.log("Questions Fetched!")
         // Store into "questions" array variable
+        const response = await fetch("http://http://127.0.0.1:8000/login")
+        const todos = await response.json()
+        console.log(response)
     }
 
     const answerClicked = (e) => {
