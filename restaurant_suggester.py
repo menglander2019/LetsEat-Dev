@@ -1,4 +1,5 @@
 from backend.dec_tree_trainer import train_dec_tree
+from backend.matrix_factorization_trainer import train_matrix_factorization
 from yelp.YelpApiCalls import get_restaurant_list
 from yelp.YelpWebscraping import scrape
 from backend.data_generation.data_gen_constants import header, num_umbrella_terms, restaurant_types
@@ -65,10 +66,14 @@ def get_inputs():
 
 
 if __name__ == "__main__":
-    # trains the decision tree and returns the tree along with the proper encoder
-    dec_tree_info = train_dec_tree()
-    dec_tree = dec_tree_info[0]
-    encoder = dec_tree_info[1]
+    # # trains the decision tree and returns the tree along with the proper encoder
+    # dec_tree_info = train_dec_tree()
+    # dec_tree = dec_tree_info[0]
+    # encoder = dec_tree_info[1]
+
+    # trains matrix factorization model
+    m_fact = train_matrix_factorization()
+
     # gets the user input for profile information (used for testing)
     user_features = get_inputs()
     cuisines = []
@@ -104,7 +109,10 @@ if __name__ == "__main__":
         row = pd.DataFrame(data=cols, index=[0])
         row = row.astype('string')
         # encodes the categorical features using the encoder that trained the decision tree
-        total_features_encoded = encoder.transform(row)
-        # makes a prediction as to whether the user would attend this restaurant or not
-        print(restaurant.get('name') + " prediction: " + str(dec_tree.predict(total_features_encoded)))
+        # total_features_encoded = encoder.transform(row)
+        # # makes a prediction as to whether the user would attend this restaurant or not
+        # print(restaurant.get('name') + " prediction: " + str(dec_tree.predict(total_features_encoded)))
+
+        # makes a prediction using matrix factorization model
+        print(restaurant.get('name') + " prediction: " + str(m_fact.predict(row)))
         
