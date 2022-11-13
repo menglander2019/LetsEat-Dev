@@ -30,7 +30,6 @@ question = [
         "answerChoices": ["One", "Two", "Four"],
         "selectedChoices": []
     }
-
 ]
  
 @app.get("/")
