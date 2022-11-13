@@ -67,17 +67,27 @@ function SearchQuestions() {
     }
 
     const answerClicked = (e) => {
+        var parentDiv = e.currentTarget
         var questionID = e.currentTarget.getAttribute("id");
-        var clickedChoice = e.target;
+        var clickedChoice = e.target
+
+        console.log(e.currentTarget)
 
         if (clickedChoice.classList.contains("selected")) {
             // Deselect Answer
-            clickedChoice.classList.remove("selected");
+            clickedChoice.classList.remove("selected")
             // Remove Selection from "questions" state
             removeSelection(questionID, clickedChoice.value)
         } else {
+            // Check if something is already selected
+            var checkSelected = parentDiv.querySelector(".selected")
+            if (checkSelected != null) {
+                // Deselect first the previously selected button
+                checkSelected.classList.remove("selected")
+                removeSelection(questionID, checkSelected.value)
+            }
             // Select Answer
-            clickedChoice.classList.add("selected");
+            clickedChoice.classList.add("selected")
             // Add Selection to "questions" state
             addSelection(questionID, clickedChoice.value)
         }
