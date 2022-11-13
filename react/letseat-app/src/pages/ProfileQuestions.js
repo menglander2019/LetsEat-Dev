@@ -32,7 +32,7 @@ function ProfileQuestions() {
     // Calls FastAPI to pull questions
     const fetchQuestions = async () => {
         console.log("Questions Fetched!")
-        const response = await fetch("http://127.0.0.1:8000/")
+        const response = await fetch("http://127.0.0.1:8000/questionnaire/profile/")
         const message = await response.json()
         setQuestions(message)
     }
@@ -85,7 +85,7 @@ function ProfileQuestions() {
 
         console.log(questions)
 
-        const response = fetch("http://127.0.0.1:8000/questionnaire/", {
+        const response = fetch("http://127.0.0.1:8000/submit/questionnaire/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(questions)
@@ -100,19 +100,19 @@ function ProfileQuestions() {
                     <div className="row mt-3">
                         <div id="q1" className="question" onClick={answerClicked}>
                             <label for="answerOptions">What are your cuisine preferences?</label>
-                            <ButtonCreate answerOptions={cuisineChoices} colNumber={4} />
+                            <ButtonCreate answerOptions={cuisineChoices} questionNumber={"q1"} colNumber={4} />
                         </div>
                     </div>
                     <div className="row mt-3">
                         <div id="q2" className="question" onClick={answerClicked}>
                             <label for="answerOptions">Any food restrictions or allergies?</label>
-                            <ButtonCreate answerOptions={allergyChoices} colNumber={4} />
+                            <ButtonCreate answerOptions={allergyChoices} questionNumber={"q2"} colNumber={4} />
                         </div>
                     </div>
                     <div className="row mt-3">
                         <div id="q3" className="question" onClick={answerClicked}>
                             <label for="answerOptions">What cuisine do you want not recommended?</label>
-                            <ButtonCreate answerOptions={cuisineChoices} colNumber={4} />
+                            <ButtonCreate answerOptions={cuisineChoices} questionNumber={"q3"} colNumber={4} />
                         </div>
                     </div>
                     <div className="row mt-4 mb-5">

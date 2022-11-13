@@ -43,9 +43,20 @@ function SearchQuestions() {
             selected: ""
         }
     ];
-
+    const [ questions, setQuestions ] = useState([])
     const [ questionIndex, setQuestionIndex ] = useState(0)
-    const [ answerSelect, setAnswerSelect ] = useState("")
+
+    useEffect(() => {
+        fetchQuestions()
+    }, [])
+
+    // Calls FastAPI to pull questions
+    const fetchQuestions = async () => {
+        console.log("Questions Fetched!")
+        const response = await fetch("http://127.0.0.1:8000/questionnaire/search/")
+        const message = await response.json()
+        setQuestions(message)
+    }
 
     const nextQuestion = () => {
         setQuestionIndex((questionIndex) => questionIndex + 1)
@@ -55,12 +66,60 @@ function SearchQuestions() {
         setQuestionIndex((questionIndex) => questionIndex - 1)
     }
 
-    const handleAnswerClick = (e) => {
-        alert(e.target.getAttribute("questionNumber"))
+    const answerClicked = (e) => {
+        var questionID = e.currentTarget.getAttribute("id");
+        var clickedChoice = e.target;
+
+        if (clickedChoice.classList.contains("selected")) {
+            // Deselect Answer
+            clickedChoice.classList.remove("selected");
+            // Remove Selection from "questions" state
+            removeSelection(questionID, clickedChoice.value)
+        } else {
+            // Select Answer
+            clickedChoice.classList.add("selected");
+            // Add Selection to "questions" state
+            addSelection(questionID, clickedChoice.value)
+        }
     }
 
-    const handleSubmitButton = () => {
-        alert("Search Create!")
+    // Adds selection to "selectedChoices" array
+    const addSelection = (questionID, selectionValue) => {
+        let tempQuestions = questions
+        tempQuestions.data.map((question, index) => {
+            if(question.id == questionID) {
+                // If something was already selected
+                question.selectedChoices.push(selectionValue)
+            }
+        });
+        setQuestions(tempQuestions)
+    }
+
+    // Removes selection from "selectedChoices" array
+    const removeSelection = (questionID, selectionValue) => {
+        let tempQuestions = questions
+        tempQuestions.data.map((question, index) => {
+            if(question.id == questionID) {
+                question.selectedChoices.map((choice, choiceIndex) => {
+                    if (choice == selectionValue) {
+                        question.selectedChoices.splice(choiceIndex, 1)
+                    }
+                })
+            }
+        });
+        setQuestions(tempQuestions)
+    }
+
+    // Submits user selection to FastAPI
+    const submitSelections = (e) => {
+
+        console.log(questions)
+
+        const response = fetch("http://127.0.0.1:8000/submit/questionnaire/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(questions)
+        })        
     }
 
     return (
@@ -69,31 +128,31 @@ function SearchQuestions() {
                 <h1 className="display-3">Search Questions</h1>
                 <div id="searchQuestions">
                     <div className="row mt-3">
-                        <div className="question">
+                        <div id="q1" className="question" onClick={answerClicked}>
                             <label for="answerOptions">What is the occasion?</label>
-                            <ButtonCreate answerOptions={questionBank[0].answers} questionNumber={0} colNumber={6} onClickFunction={handleAnswerClick} />
+                            <ButtonCreate answerOptions={questionBank[0].answers} questionNumber={"q1"} colNumber={6} />
                         </div>
                     </div>
                     <div className="row mt-3">
-                        <div className="question">
+                        <div id="q2" className="question" onClick={answerClicked}>
                             <label for="answerOptions">How many people?</label>
-                            <ButtonCreate answerOptions={questionBank[1].answers} questionNumber={1} colNumber={6} onClickFunction={handleAnswerClick} />
+                            <ButtonCreate answerOptions={questionBank[1].answers} questionNumber={"q2"} colNumber={6} />
                         </div>
                     </div>
                     <div className="row mt-3">
-                        <div className="question">
+                        <div id="q3" className="question" onClick={answerClicked}>
                             <label for="answerOptions">What type of meal?</label>
-                            <ButtonCreate answerOptions={questionBank[2].answers} questionNumber={2} colNumber={6} onClickFunction={handleAnswerClick} />
+                            <ButtonCreate answerOptions={questionBank[2].answers} questionNumber={"q3"} colNumber={6} />
                         </div>
                     </div>
                     <div className="row mt-3">
-                        <div className="question">
+                        <div id="q4" className="question" onClick={answerClicked}>
                             <label for="answerOptions">What is the price range?</label>
-                            <ButtonCreate answerOptions={questionBank[3].answers} questionNumber={3} colNumber={6} onClickFunction={handleAnswerClick} />
+                            <ButtonCreate answerOptions={questionBank[3].answers} questionNumber={"q4"} colNumber={6} />
                         </div>
                     </div>
                     <div className="row mt-3">
-                        <div className="question">
+                        <div id="q5" className="question" onClick={answerClicked}>
                             <label for="answerOptions">Distance Preference</label>
                             <p>Google Maps Pin Drop Here</p>
                             <p>Mile Selecting Slider Here</p>
@@ -105,7 +164,7 @@ function SearchQuestions() {
                                 <button 
                                     id="submit"
                                     className="btn btn-primary submit w-100" 
-                                    onClick={handleSubmitButton}>
+                                    onClick={submitSelections}>
                                     Search
                                 </button>
                             </IconContext.Provider>

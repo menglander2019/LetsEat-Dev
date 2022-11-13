@@ -35,7 +35,7 @@ question = [
  
 @app.get("/")
 def home():
-    return {"data": question}
+    return {"message": "home"}
 
 @app.get("/about")
 def about():
@@ -57,13 +57,21 @@ def signup(email, pw, name, dob, gender, pos, neg, restr):
 def createprofile():
     return {"message": "createprofile"}
 
-@app.get("/questionnaire")
-def questionnaire():
-    return {"message": "questionnaire"}
+@app.get("/questionnaire/profile")
+def questionnaire_profile():
+    return {"data": question}
 
-@app.post("/questionnaire")
-def submit_selection():
-    return {"message": "questionnaire submitted"}
+@app.post("/submit/questionnaire/")
+def submit_questionnaire():
+    return {"message": "submitted"}
+
+@app.get("/questionnaire/search/")
+def questionnaire_search():
+    return {"data": question}
+
+@app.post("/submit/search/")
+def submit_search():
+    return {"message": "submitted"}
 
 @app.get("/recommendation")
 def recommendation():
