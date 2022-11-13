@@ -8,28 +8,10 @@ function Home() {
     return (
         <div className="container-fluid">
             <div className="home-banner">
-                <div className="col-md-12 mt-3">
-                    <div className="row mt-3">
+                <div className="col-md-12">
+                    <div className="row">
                         <div className="col-md-8">
                             <h2 className="white-theme">LetsEat</h2>
-                        </div>
-                        <div className="col-md-2">
-                            <Link to="/login">
-                                <button 
-                                    id="submit"
-                                    className="btn btn-primary w-100">
-                                    Sign In
-                                </button>
-                            </Link>
-                        </div>
-                        <div className="col-md-2">
-                            <Link to="/login">
-                                <button 
-                                    id="submit"
-                                    className="btn btn-primary w-100">
-                                    Sign Up
-                                </button>
-                            </Link>
                         </div>
                     </div>
                     <div className="row mt-5">
@@ -42,7 +24,7 @@ function Home() {
                             <Link to="/login">
                                 <button 
                                     id="submit"
-                                    className="btn btn-primary home-login w-100">
+                                    className="btn btn-primary home-large-login w-100">
                                     Get Started
                                 </button>
                             </Link>

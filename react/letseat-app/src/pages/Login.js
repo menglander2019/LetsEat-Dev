@@ -10,9 +10,9 @@ function CreateAccount() {
 
     return (
         <>
-        <div className="container">
+        <div className="container-fluid">
             <div className="h-100 d-flex align-items-center">
-                <div className="col-md-4 mx-auto">
+                <div className="col-md-3 mx-auto">
                     <div className="row mt-4">
                         <div className="col-md-12 mx-auto">
                             <h3>Welcome to LetsEat!</h3>
