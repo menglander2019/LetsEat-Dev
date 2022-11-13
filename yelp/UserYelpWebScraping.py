@@ -15,7 +15,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 ADDRESS_TO_WEBDRIVER = "/Users/sarahstevens/OneDrive/Documents/College/Fall 2022/CSCI4243W/LetsEat/LetsEat-Dev/yelp/chromedriver 9"
 CLASS = "raw__09f24__T4Ezm"
-DATABASE = r"ScrapedUserDataNew2.db"
+DATABASE = r"OfficialUserScraping.db"
 occasions = ['date+night', 'friend','friends', 'family', 'clients', 'solo']
 restrictionsList = ['vegan', 'vegetarian', 'gluten-free', 'kosher', 'wheelchair', 'pescatarian', 'keto', 'soy', 'dog', 'covid']
 
@@ -88,9 +88,13 @@ def get_reviews(yelpUrl, rest_id):
         dayOfWeek = []
         for i in range(len(date)):
             if date[i].text.find("/")!=-1:
-                my_date = date[i].text
-                datetime_object = datetime.strptime(my_date, '%m/%d/%Y')
-                dayOfWeek.append(calendar.day_name[datetime_object.weekday()])  
+                try:
+                    my_date = date[i].text
+                    datetime_object = datetime.strptime(my_date, '%m/%d/%Y')
+                    dayOfWeek.append(calendar.day_name[datetime_object.weekday()])  
+                except ValueError:
+                    print("Time error")
+                    dayOfWeek.append("Saturday")
     
         
         #get text reviews and peoples names 

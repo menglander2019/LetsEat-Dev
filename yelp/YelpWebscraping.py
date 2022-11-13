@@ -64,7 +64,7 @@ ATTRIBUTES = ['Classy',
                   'Gender'
                   ]
 #TRANSACTIONS?? ADD TO DB
-DATABASE = r"YelpScrapeDataNew3.db"
+DATABASE = r"OfficialRestaurantScraping.db"
 TRUE_CLASS = "css-1p9ibgf"
 FALSE_CLASS = "css-qyp8bo"
 ADDRESS_TO_WEBDRIVER = "/Users/sarahstevens/OneDrive/Documents/College/Fall 2022/CSCI4243W/LetsEat/LetsEat-Dev/yelp/chromedriver 9"
@@ -308,4 +308,9 @@ def printDB():
 def main(business_id, url, categories, price, rating, transactions):
     if(checkExistance(business_id)==False):
         scrape(business_id, url, categories, price, rating, transactions)
-    printDB()
+        printDB()
+        return True
+    else:
+        printDB()
+        return False
+    
