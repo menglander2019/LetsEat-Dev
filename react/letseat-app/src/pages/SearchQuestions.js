@@ -55,6 +55,7 @@ function SearchQuestions() {
         console.log("Questions Fetched!")
         const response = await fetch("http://127.0.0.1:8000/questionnaire/search/")
         const message = await response.json()
+        console.log(message)
         setQuestions(message)
     }
 

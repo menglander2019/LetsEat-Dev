@@ -22,6 +22,9 @@ occasions = ['friends', 'date', 'family', 'work', 'solo']
 
 days = ['M', 'T', 'W', 'R', 'F', 'SA', 'SU']
 
+num_people = ['1', '2', '3', '4+']
+
+
 meals = ['breakfast', 'lunch', 'dinner', 'dessert']
 
 price_ranges = ['$', '$$', '$$$', '$$$$']
@@ -93,6 +96,7 @@ cuisine_groups = {
     "Indian": 'indian', 
     "Spanish": 'spanish'
 }
+ 
 
 # list of all cuisine options on yelp (may need to be adjusted for what the API returns)
 cuisines = """afghani

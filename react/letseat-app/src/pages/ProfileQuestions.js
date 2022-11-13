@@ -34,6 +34,7 @@ function ProfileQuestions() {
         console.log("Questions Fetched!")
         const response = await fetch("http://127.0.0.1:8000/questionnaire/profile/")
         const message = await response.json()
+        console.log(message)
         setQuestions(message)
     }
 
@@ -85,7 +86,7 @@ function ProfileQuestions() {
 
         console.log(questions)
 
-        const response = fetch("http://127.0.0.1:8000/submit/questionnaire/", {
+        const response = fetch("http://127.0.0.1:8000/submit/profile/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(questions)

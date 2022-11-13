@@ -1,7 +1,7 @@
-from fastapi import FastAPI, Response
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from backend.db.db_management import createUser
-from backend.data_generation.data_gen_constants import cuisine_groups, restrictions_dict
+from backend.questions_data import *
 
 app = FastAPI()
 
@@ -18,21 +18,6 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-question = [
-    {
-        "id": "q1",
-        "question": "Example Question",
-        "answerChoices": ["One", "Two", "Three"],
-        "selectedChoices": []
-    },
-    {
-        "id": "q2",
-        "question": "Example Question 2",
-        "answerChoices": ["One", "Two", "Four"],
-        "selectedChoices": []
-    }
-]
- 
 @app.get("/")
 def home():
     return {"message": "home"}
@@ -53,32 +38,26 @@ def signup():
 def signup(email, pw, name, dob, gender, pos, neg, restr):
     return createUser(email, pw, name, dob, gender, pos, neg, restr)
 
-@app.get("/profileQuestionInfo")
-def getProfileQuestionInfo():
-    return {
-        "positives": cuisine_groups.keys(),
-        "restrictions": restrictions_dict.keys(),
-        "negatives": cuisine_groups.keys()
-    }
-
 @app.get("/createprofile")
 def createprofile():
     return {"message": "createprofile"}
 
-@app.get("/questionnaire/profile")
+@app.get("/questionnaire/profile/")
 def questionnaire_profile():
-    return {"data": question}
-
-@app.post("/submit/questionnaire/")
-def submit_questionnaire():
-    return {"message": "submitted"}
+    return {"data": profile_questions}
 
 @app.get("/questionnaire/search/")
 def questionnaire_search():
-    return {"data": question}
+    return {"data": search_questions}
+
+@app.post("/submit/profile/")
+async def submit_questionnaire(request: Request):
+    returnData = await request.json()
+    return {"message": "submitted"}
 
 @app.post("/submit/search/")
-def submit_search():
+async def submit_search(request: Request):
+    returnData = await request.json()
     return {"message": "submitted"}
 
 @app.get("/recommendation")
