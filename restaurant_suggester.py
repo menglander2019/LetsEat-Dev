@@ -65,7 +65,21 @@ def get_inputs():
     price_ranges = [0, 0, 0, 0]
     price_ranges[real_price_range] = 1
 
-    return [day] + list(cuisine_preferences.values()) + [restrictions, occasion, num_people, meal] + price_ranges
+    dog = 0
+    covid = 0
+
+    return {
+        "day": day,
+        "cuisine_preferences": cuisine_preferences,
+        "restrictions": restrictions,
+        "dog": dog,
+        "covid": covid,
+        "occasion": occasion,
+        "num_people": num_people,
+        "meal": meal,
+        "price_ranges": price_ranges
+    }
+   # return [day] + list(cuisine_preferences.values()) +  [0, 0, 0, 0, 0, 0, 0, 0] + [dog, covid, occasion, num_people, meal] + price_ranges
 
 
 if __name__ == "__main__":
@@ -77,17 +91,35 @@ if __name__ == "__main__":
     user_features = get_inputs()
     cuisines = []
     # searches through the positive preferences and adds them to the list of cuisines the user wants
-    for i in range(1, num_umbrella_terms+1):
-        if user_features[i] == 1:
-            cuisines.append(header[i+1])
+    cuisine_preferences = user_features['cuisine_preferences']
+    print(cuisine_preferences.items())
+    for preference in cuisine_preferences.items():
+        if preference.value() == 1:
+            cuisines.append(preference.key())
+    # for i in range(1, num_umbrella_terms+1):
+    #     if user_features[i] == 1:
+    #         cuisines.append(header[i+1])
     price_range = 0
-    for i in range(21, 25):
-        if user_features[i] == 1:
-            price_range = i - 20
+    price_ranges = user_features['price_ranges']
+    for i in range(price_ranges):
+        if price_ranges[i] == 1:
+            price_range = i + 1
+            break
+    # for i in range(30, 34):
+    #     if user_features[i] == 1:
+    #         price_range = i - 29
+    print(user_features)
+    print(len(user_features))
+    print(price_range)
     restaurants = get_restaurant_list('20037', '4000', price_range, ','.join(filter(None, cuisines)))
      # iterates through each restaurant, scraping data and making predictions
     for restaurant in restaurants:
-        temp_user_features = copy.deepcopy(user_features)
+        # temp_user_features = copy.deepcopy(user_features)
+        temp_user_features = []
+        for value in user_features.values():
+            temp_user_features += value
+
+        print(temp_user_features)
         id = restaurant.get('id')
         url = restaurant.get('url')
         scraped_info = scrape(id, url)
@@ -121,5 +153,5 @@ if __name__ == "__main__":
         # encodes the categorical features using the encoder that trained the decision tree
         total_features_encoded = encoder.transform(row)
         # makes a prediction as to whether the user would attend this restaurant or not
-        print(restaurant.get('name') + " prediction: " + str(dec_tree.predict(total_features_encoded)))
+        print(restaurant.get('name') + " prediction: " + str(dec_tree.predict_proba(total_features_encoded)))
         

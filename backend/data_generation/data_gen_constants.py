@@ -1,11 +1,17 @@
-header = ['name', 'current_day', 'middle_eastern', 'african', 'american', 'mexican', 'latin_american', 'italian', 'chinese', 
+header = [
+        'name', 'current_day', 'middle_eastern', 'african', 'american', 'mexican', 'latin_american', 'italian', 'chinese', 
         'japanese', 'southern_central_asian', 'french', 'eastern_europe', 'central_europe', 'caribbean', 'mediterranean', 'indian', 
-        'spanish', 'restrictions', 'occasion', 'num_people', 'meal', '$', '$$', '$$$', '$$$$', 'rating', 'rest_$', 'rest_$$', 'rest_$$$', 'rest_$$$$', 'rest_middle_eastern', 'rest_african', 'rest_american', 
+        'spanish', 'kosher', 'gluten_free', 'wheelchair', 'vegan', 'vegetarian', 'pescatarian', 'keto', 'soy', 'dog', 'covid', 'occasion', 
+        'num_people', 'meal', '$', '$$', '$$$', '$$$$', 'rating', 'rest_middle_eastern', 'rest_african', 'rest_american', 
         'rest_mexican', 'rest_latin_american', 'rest_italian', 'rest_chinese', 'rest_japanese', 'rest_southern_central_asian',
         'rest_french', 'rest_eastern_europe', 'rest_central_europe', 'rest_caribbean', 'rest_mediterranean', 'rest_indian', 'rest_spanish',
-        'Classy', 'Loud', 'Moderate', 'Groups', 'Kids','Garage', 'Street', 'WiFi','Monday','Tuesday','Wednesday',
-        'Thursday','Friday','Saturday','Sunday','TV','Outdoor','Dancing','Working','Smoking','Bike','Casual',
-        'Breakfast','Lunch','Dinner','Dessert','Brunch','Late','Trendy', 'Divey','Bar', 'ATTEND?']
+        'rest_kosher', 'rest_gluten_free', 'rest_$', 'rest_$$', 'rest_$$$', 'rest_$$$$', 'pickup', 'delivery', 'restaurant_reservation',
+        'Classy', 'Loud', 'Hipster', 'Groups', 'Kids','Garage', 'Street', 'Valet', 'Validated', 'WiFi','Monday','Tuesday','Wednesday',
+        'Thursday','Friday','Saturday','Sunday','TV', 'Waiter', 'Outdoor','Dancing','Working','Smoking','Bike','Casual', 'Intimate',
+        'Upscale', 'Moderate', 'Quiet', 'Breakfast','Lunch','Dinner','Dessert','Brunch','Late','Trendy', 'Divey','Bar', 'Catering', 
+        'Plastic', 'reusable', 'staffMasks', 'staffVac', 'vaccination', 'Compostable', 'rest_wheelchair', 'rest_vegan', 
+        'rest_vegetarian', 'rest_gluten', 'rest_pescatarian', 'rest_keto', 'rest_soy', 'rest_dogs', 'rest_women', 'rest_military', 'Gender', 'ATTEND?'
+]
         
 data = [['Bob', 'italian,mexican', 'indian,american', 'vegan', 'italian'],
         ['Chuck', 'chinese,american', 'mexican,vietnamese', '', 'mexican']]
@@ -25,7 +31,7 @@ num_umbrella_terms = 16
 
 restriction_pct = 0.17
 
-scraped_column_ct = 31
+scraped_column_ct = 59
 
 num_pot_people = 10
 
