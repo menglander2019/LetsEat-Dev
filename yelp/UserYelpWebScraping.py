@@ -9,13 +9,15 @@ from datetime import datetime
 import calendar
 import time
 import random
+import pandas as pd
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 
 ADDRESS_TO_WEBDRIVER = "/Users/sarahstevens/OneDrive/Documents/College/Fall 2022/CSCI4243W/LetsEat/LetsEat-Dev/yelp/chromedriver 9"
 CLASS = "raw__09f24__T4Ezm"
-DATABASE = r"ScrapedUserData.db"
+DATABASE = r"ScrapedUserDataNew2.db"
 occasions = ['date+night', 'friend','friends', 'family', 'clients', 'solo']
-restrictionsList = ['vegan', 'vegetarian', 'gluten-free', 'kosher', 'pescatarian']
+restrictionsList = ['vegan', 'vegetarian', 'gluten-free', 'kosher', 'wheelchair', 'pescatarian', 'keto', 'soy', 'dog', 'covid']
 
 
 def get_reviews(yelpUrl, rest_id):
@@ -33,21 +35,45 @@ def get_reviews(yelpUrl, rest_id):
         c.execute('''CREATE TABLE IF NOT EXISTS users (
             [name] NVARCHAR(50) PRIMARY KEY,
             [current_day] NVARCHAR(50),
-            [pos] BLOB,
-            [neg] BLOB,
-            [restrictions] BLOB,
+            [middle_eastern] INTEGER DEFAULT 0,
+            [african] INTEGER DEFAULT 0,
+            [american] INTEGER DEFAULT 0,
+            [mexican] INTEGER DEFAULT 0,
+            [latin_american] INTEGER DEFAULT 0,
+            [italian] INTEGER DEFAULT 0,
+            [chinese] INTEGER DEFAULT 0,
+            [japanese] INTEGER DEFAULT 0,
+            [southern_central_asian] INTEGER DEFAULT 0,
+            [french] INTEGER DEFAULT 0,
+            [eastern_europe] INTEGER DEFAULT 0,
+            [central_europe] INTEGER DEFAULT 0,
+            [caribbean] INTEGER DEFAULT 0,
+            [mediterranean] INTEGER DEFAULT 0,
+            [indian] INTEGER DEFAULT 0,
+            [spanish] INTEGER DEFAULT 0,
+            [kosher] INTEGER DEFAULT 0,
+            [gluten_free] INTEGER DEFAULT 0,
+            [wheelchair] INTEGER DEFAULT 0,
+            [vegan] INTEGER DEFAULT 0,
+            [vegetarian] INTEGER DEFAULT 0,
+            [pescatarian] INTEGER DEFAULT 0,
+            [keto] INTEGER DEFAULT 0,
+            [soy] INTEGER DEFAULT 0,
+            [dog] INTEGER DEFAULT 0,
+            [covid] INTEGER DEFAULT 0,
             [occasion] NVARCHAR(50),
             [num_people] INTEGER,
             [meal] NVARCHAR(50),
-            [price_range] NVARCHAR(50),
+            [oneDollar] INTEGER DEFAULT 0,
+            [twoDollar] INTEGER DEFAULT 0,
+            [threeDollar] INTEGER DEFAULT 0,
+            [fourDollar] INTEGER DEFAULT 0,
             [rest_id] NVARCHAR(50),
             [going] INTEGER)''')
         
         #close connection
         conn.commit()
         conn.close() 
-    
-        #print(yelpUrl+"&q="+q)
         
         #open chrome to scrape website
         driver = webdriver.Chrome(ADDRESS_TO_WEBDRIVER)
@@ -87,19 +113,13 @@ def get_reviews(yelpUrl, rest_id):
             name = people[i+1].text
             if(checkExistance(name) == False):
                 
-                #fill database based on occasion/allergy
+                #get data from review
                 review = lists[i].text.lower()
                 current_day = dayOfWeek[i]
                 business = YelpApiCalls.return_business(rest_id)
-                
-                #i currently add the categories listed, not our umbrella terms. will switch next sprint
-                types = business.get('categories')
-                pos = []
-                for j in range(len(types)):
-                    pos.append(types[j].get('alias'))
-                neg = None
                 restrictions = []
                 
+                #determine if its bfast, lunch, or dinner
                 if review.find('lunch') != -1:
                     meal = 'lunch'
                 elif review.find('breakfast') != -1 or review.find('brunch') != -1 or review.find('morning') != -1:
@@ -109,10 +129,12 @@ def get_reviews(yelpUrl, rest_id):
       
                 occasion = None
                 
+                #find occasions in review
                 for res in restrictionsList:
                     if(review.find(res)!=-1 and res not in restrictions):
                         restrictions.append(res)
                 
+                #find restrictions in review
                 if q in restrictionsList:
                     for occ in occasions:
                         if review.find(' ' + occ.replace('+', ' ') + ' ') != -1:
@@ -145,8 +167,10 @@ def get_reviews(yelpUrl, rest_id):
                     occasion = None
                     num_people = None
             
-                            
+                #get price       
                 price = business.get('price')
+
+                #determine if they would attend
                 going = SentimentAnalysis(lists[i].text)
                 
                 #open connection 
@@ -154,11 +178,45 @@ def get_reviews(yelpUrl, rest_id):
                     conn = sqlite3.connect(DATABASE)
                     c = conn.cursor()
                 except Error as e:
-                    print(e)
+                    print(e)           
                 
-                c.execute('INSERT INTO users (name, current_day, pos, neg, restrictions, occasion, num_people, meal, price_range, rest_id, going) VALUES((?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?))', 
-                          (name,current_day, str(pos), neg, str(restrictions), occasion, num_people, meal, price, rest_id, going),)
-        
+                #create row
+                c.execute('INSERT INTO users (name, current_day, occasion, num_people, meal, rest_id, going) VALUES((?), (?), (?), (?), (?), (?), (?))', 
+                          (name,current_day, occasion, num_people, meal, rest_id, going),)
+
+                #add price preference to database
+                if price == '$':
+                    sqlprice = 'oneDollar'
+                if price == '$$':
+                    sqlprice = 'twoDollar'    
+                if price == '$$$':
+                    sqlprice = 'threeDollar'    
+                if price == '$$$$$':
+                    sqlprice = 'fourDollar'    
+                c.execute('''UPDATE users
+                        SET '''+sqlprice+''' = 1
+                        WHERE name = (?);''',
+                        (name,))  
+
+                #add umbrella term to databasw
+                types = business.get('categories')
+                categories = YelpApiCalls.cuisines_to_umbrellas(types)
+                for j in range(len(categories)):
+                    alias = categories[j]
+                    c.execute('''UPDATE users
+                        SET '''+alias+''' = 1
+                        WHERE name = (?);''',
+                        (name, )) 
+
+                #add restrictions to database
+                for restriction in restrictions:
+                    updRestriction = restriction
+                    if restriction == 'gluten-free':
+                        updRestriction = 'gluten_free'
+                    c.execute('''UPDATE users
+                        SET '''+updRestriction+''' = 1
+                        WHERE name = (?);''',
+                        (name, ))   
                 #close connection
                 conn.commit()
                 conn.close() 
@@ -183,6 +241,10 @@ def printDB():
     for r in range(len(result)):
         print(result[r])
         print("\n")
+
+    #write to csv
+    clients = pd.read_sql('SELECT * FROM users' ,conn)
+    clients.to_csv('scrapedUsers.csv', index=False)
     
     #close connection 
     conn.commit()
@@ -211,26 +273,20 @@ def checkExistance(name):
         return False
     return True
 
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-
 def SentimentAnalysis(text):
     analyzer = SentimentIntensityAnalyzer()
     score = analyzer.polarity_scores(text)
-    #print(score.get('compound'))
+
     if score.get('compound')>=.05:
         return 1
     else:
         return 0
-    #print("{:-<65} {}".format(text, str(score)))
 
 '''
 positive sentiment: compound score >= 0.05
 neutral sentiment: (compound score > -0.05) and (compound score < 0.05)
 negative sentiment: compound score <= -0.05
 
-date night
-friends
-client
 
 '''
 
