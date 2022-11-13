@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 from backend.db.db_management import createUser
 
@@ -16,10 +16,26 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"]
 )
+
+question = [
+    {
+        "id": "q1",
+        "question": "Example Question",
+        "answerChoices": ["One", "Two", "Three"],
+        "selectedChoices": []
+    },
+    {
+        "id": "q2",
+        "question": "Example Question 2",
+        "answerChoices": ["One", "Two", "Four"],
+        "selectedChoices": []
+    }
+
+]
  
 @app.get("/")
 def home():
-    return {"message": "Hello World!"}
+    return {"data": question}
 
 @app.get("/about")
 def about():
@@ -44,6 +60,10 @@ def createprofile():
 @app.get("/questionnaire")
 def questionnaire():
     return {"message": "questionnaire"}
+
+@app.post("/questionnaire")
+def submit_selection():
+    return {"message": "questionnaire submitted"}
 
 @app.get("/recommendation")
 def recommendation():

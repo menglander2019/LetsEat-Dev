@@ -12,22 +12,10 @@ import ButtonCreate from '../components/ButtonCreate'
 function ProfileQuestions() {
 
     const [ questionIndex, setQuestionIndex ] = useState(0)
-    const [ questions, setQuestions ] = useState()
+    const [ questions, setQuestions ] = useState([])
     var cuisineChoices = ["American", "Mexican", "French", "Chinese", "Japanese", "Italian", "Korean", "Thai"]
     var allergyChoices = ["Gluten", "Eggs", "Dairy", "Peanuts", "N/A"]
     var numQuestions = 3
-
-    useEffect(() => {
-        fetch('http://127.0.0.1:8000/')
-            .then(resp => {
-                console.log(resp);
-                console.log('======success=======');
-            })
-            .catch(err => {
-                console.log('======failure=======');
-                console.log(err);
-            });
-    })
 
     const nextQuestion = () => {
         setQuestionIndex((questionIndex) => questionIndex + 1)
@@ -37,18 +25,16 @@ function ProfileQuestions() {
         setQuestionIndex((questionIndex) => questionIndex - 1)
     }
 
-    const handleSubmitButton = () => {
-        alert("Profile Create!")
-        // Send "questions" state to FastAPI
-    }
+    useEffect(() => {
+        fetchQuestions()
+    }, [])
 
-    // Calls FastAPI to pull questions and stores
+    // Calls FastAPI to pull questions
     const fetchQuestions = async () => {
         console.log("Questions Fetched!")
-        // Store into "questions" array variable
-        const response = await fetch("http://http://127.0.0.1:8000/login")
-        const todos = await response.json()
-        console.log(response)
+        const response = await fetch("http://127.0.0.1:8000/")
+        const message = await response.json()
+        setQuestions(message)
     }
 
     const answerClicked = (e) => {
@@ -59,11 +45,51 @@ function ProfileQuestions() {
             // Deselect Answer
             clickedChoice.classList.remove("selected");
             // Remove Selection from "questions" state
+            removeSelection(questionID, clickedChoice.value)
         } else {
             // Select Answer
             clickedChoice.classList.add("selected");
             // Add Selection to "questions" state
+            addSelection(questionID, clickedChoice.value)
         }
+    }
+
+    // Adds selection to "selectedChoices" array
+    const addSelection = (questionID, selectionValue) => {
+        let tempQuestions = questions
+        tempQuestions.data.map((question, index) => {
+            if(question.id == questionID) {
+                question.selectedChoices.push(selectionValue)
+            }
+        });
+        setQuestions(tempQuestions)
+    }
+
+    // Removes selection from "selectedChoices" array
+    const removeSelection = (questionID, selectionValue) => {
+        let tempQuestions = questions
+        tempQuestions.data.map((question, index) => {
+            if(question.id == questionID) {
+                question.selectedChoices.map((choice, choiceIndex) => {
+                    if (choice == selectionValue) {
+                        question.selectedChoices.splice(choiceIndex, 1)
+                    }
+                })
+            }
+        });
+        setQuestions(tempQuestions)
+    }
+
+    // Submits user selection to FastAPI
+    const submitSelections = (e) => {
+
+        console.log(questions)
+
+        const response = fetch("http://127.0.0.1:8000/questionnaire/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(questions)
+        })        
     }
 
     return (
@@ -95,7 +121,7 @@ function ProfileQuestions() {
                                 <button 
                                     id="submit" 
                                     className="btn btn-primary submit w-100 inactive" 
-                                    onClick={handleSubmitButton}>
+                                    onClick={submitSelections}>
                                     <FaIcons.FaCheck />
                                 </button>
                             </IconContext.Provider>
