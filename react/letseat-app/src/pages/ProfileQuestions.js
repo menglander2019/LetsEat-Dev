@@ -8,14 +8,16 @@ import { IconContext } from 'react-icons'
 
 import PreviousNextButton from '../components/PreviousNextButton'
 import ButtonCreate from '../components/ButtonCreate'
+import { renderMatches } from 'react-router-dom'
 
 function ProfileQuestions() {
 
     const [ questionIndex, setQuestionIndex ] = useState(0)
     const [ questions, setQuestions ] = useState([])
+    var numQuestions = 3
+
     var cuisineChoices = ["American", "Mexican", "French", "Chinese", "Japanese", "Italian", "Korean", "Thai"]
     var allergyChoices = ["Gluten", "Eggs", "Dairy", "Peanuts", "N/A"]
-    var numQuestions = 3
 
     const nextQuestion = () => {
         setQuestionIndex((questionIndex) => questionIndex + 1)
@@ -28,15 +30,6 @@ function ProfileQuestions() {
     useEffect(() => {
         fetchQuestions()
     }, [])
-
-    // Calls FastAPI to pull questions
-    const fetchQuestions = async () => {
-        console.log("Questions Fetched!")
-        const response = await fetch("http://127.0.0.1:8000/questionnaire/profile/")
-        const message = await response.json()
-        console.log(message)
-        setQuestions(message)
-    }
 
     const answerClicked = (e) => {
         var questionID = e.currentTarget.getAttribute("id");
@@ -86,13 +79,22 @@ function ProfileQuestions() {
 
         console.log(questions)
 
-        const response = fetch("http://127.0.0.1:8000/submit/profile/", {
+        const response = fetch("http://127.0.0.1:8000/submit/questionnaire/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(questions)
         })        
     }
 
+    // Calls FastAPI to pull questions
+    const fetchQuestions = async () => {
+        console.log("Questions Fetched!")
+        const response = await fetch("http://127.0.0.1:8000/questionnaire/profile/")
+        const message = await response.json()
+        setQuestions(message)
+    }
+
+    
     return (
         <div className="container">
             <div className="col-md-7 mt-4 mx-auto">
@@ -100,7 +102,7 @@ function ProfileQuestions() {
                 <div id="profileQuestions">
                     <div className="row mt-3">
                         <div id="q1" className="question" onClick={answerClicked}>
-                            <label for="answerOptions">What are your cuisine preferences?</label>
+                            <label for="answerOptions">"Temporary Question 1"</label>
                             <ButtonCreate answerOptions={cuisineChoices} questionNumber={"q1"} colNumber={4} />
                         </div>
                     </div>
@@ -134,15 +136,5 @@ function ProfileQuestions() {
     );
 }
 
-/**
- * <div className="row">
-        <PreviousNextButton 
-            questionIndex={questionIndex} 
-            previousQuestion={previousQuestion} 
-            nextQuestion={nextQuestion}
-            numQuestions={numQuestions}/>
-    </div>
- */
-  
 
 export default ProfileQuestions
