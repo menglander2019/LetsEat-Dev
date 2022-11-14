@@ -1,8 +1,8 @@
 import requests
-import YelpWebscraping
+from .YelpWebscraping import *
 from datetime import datetime
 import time
-import UserYelpWebScraping
+from . import UserYelpWebScraping, YelpWebscraping
 
 API_KEY= "NIeApqUv-eXDl1Uk9Lp1tdYbkmwQqlAWIrE87BI6ntY1RAktDOUG2nadraL9hYnRr6qMDPwcanx4c_A_qKOZykBQmP4gmvpOe61Q4lPxLnejZc8VFxWEnBv4haYwY3Yx"
 
@@ -66,8 +66,8 @@ def parse_results(businesses):
         for j in (businesses[i].get('location').get('display_address')):
             print("\t"+j)
         print()
-    YelpWebscraping.printDB()
-    UserYelpWebScraping.printDB()
+    #YelpWebscraping.printDB()
+    #UserYelpWebScraping.printDB()
     
 
 #use businessId to get json results for that business
@@ -77,23 +77,18 @@ def return_business(businessId):
     return response.json()
     
 
-def main():
+def get_restaurant_list(zip, dist, price_range, cuisines):
     #this is test code. in real life, request_businesses_list is directly called
-    zipcode = '20037'
-    distance = '4000' #in meters, cannot exeed 4000
-    dollars = '2'
+    zipcode = zip
+    distance = dist #in meters, cannot exeed 4000
+    dollars = price_range
     open_at = '1664468447' #in unix nums 
-    categories = None
+    categories = cuisines
     attributes = None
     
     response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
     
     #print results to verify
     businesses = response.get('businesses')
-    #parse_results(businesses)
-    
-    #YelpWebscraping.printDB()
-    
-
-if __name__ == '__main__':
-    main()
+    parse_results(businesses)
+    return businesses
