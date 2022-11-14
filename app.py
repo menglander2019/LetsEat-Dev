@@ -52,12 +52,16 @@ def questionnaire_search():
 
 @app.post("/submit/profile/")
 async def submit_questionnaire(request: Request):
-    returnData = await request.json()
+    profile_data = await request.json()
+    selected_answers = profile_data["data"][0]["selectedChoices"]
+    print(selected_answers)
     return {"message": "submitted"}
 
 @app.post("/submit/search/")
 async def submit_search(request: Request):
-    returnData = await request.json()
+    search_data = await request.json()
+    selected_answers = search_data["data"][0]["selectedChoices"]
+    print(selected_answers)
     return {"message": "submitted"}
 
 @app.get("/recommendation")
