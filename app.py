@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from backend.db.db_management import createUser
+from backend.db.db_management import createUser, updatePositives
 from backend.questions_data import *
 
 app = FastAPI()
@@ -55,6 +55,7 @@ async def submit_questionnaire(request: Request):
     profile_data = await request.json()
     selected_answers = profile_data["data"][0]["selectedChoices"]
     print(selected_answers)
+    updatePositives("fake@email.com", "russian")
     return {"message": "submitted"}
 
 @app.post("/submit/search/")

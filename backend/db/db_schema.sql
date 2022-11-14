@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS userPreferences;
 DROP TABLE IF EXISTS userProfile;
 
-CREATE TABLE userProfile
+CREATE TABLE userProfiles
 (
     userID int(8) not null,
     email varchar(15) not null,

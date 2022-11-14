@@ -1,10 +1,10 @@
 import mysql.connector
 import random
 
-#mydb = mysql.connector.connect(host='localhost',
-#                                         database='Users',
-#                                         user='root',
-#                                         password='196468maX!')
+mydb = mysql.connector.connect(host='localhost',
+                                        database='Users',
+                                        user='root',
+                                        password='196468maX!')
 
 # Database: Users
 def createUser(email, pw, name, dob, gender, pos, neg, restr):
@@ -36,7 +36,16 @@ def createUser(email, pw, name, dob, gender, pos, neg, restr):
         c.execute(preference_insertion_query, preference_record)
 
         mydb.commit()
-        c.close
+        c.close()
         return {"message": "User successfully created!"}
     except Exception as e:
         return {"message:": f"ERROR: {e}!"}
+
+def updatePositives(email, positives):
+    c = mydb.cursor()
+    c.execute('SELECT userID FROM userProfile WHERE email = %s', (email,))
+    id = c.fetchone()[0]
+    c.execute('UPDATE userPreferences SET positivePreferences = %s WHERE userID = %s', (positives, id))
+
+    mydb.commit()
+    c.close()
