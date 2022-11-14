@@ -29,7 +29,7 @@ def cuisines_to_umbrellas(cuisines):
             #print(umbrella)
             if alias in umbList and umbrella not in list:
                 list.append(umbrella)
-                print(list)
+                #print(list)
     return list
 #get list of restaurants based on parameters
 def request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes):
@@ -93,7 +93,7 @@ def main():
     #this is test code. in real life, request_businesses_list is directly called
     zipcode = '20037'
     distance = '4000' #in meters, cannot exeed 4000
-    dollars = '1'
+    dollars = '2'
     open_at = '1664468447' #in unix nums 
     categories = None
     attributes = None
