@@ -13,38 +13,8 @@ import ButtonCreate from '../components/ButtonCreate'
 
 function SearchQuestions() {
 
-    var questionBank = [
-        {
-            id: 0,
-            question: "What is the occasion?",
-            answers: ["Friends", "Family", "Date", "Work"],
-            questionId: "0001",
-            selected: ""
-        },
-        {
-            id: 1,
-            question: "How many people?",
-            answers: ["1", "2", "3", "4+"],
-            questionId: "0002",
-            selected: ""
-        },
-        {
-            id: 2,
-            question: "What kind of meal?",
-            answers: ["Breakfast", "Lunch", "Dinner", "Dessert"],
-            questionId: "0003",
-            selected: ""
-        },
-        {
-            id: 3,
-            question: "What's the price range?",
-            answers: ["$", "$$", "$$$", "N/A"],
-            questionId: "0004",
-            selected: ""
-        }
-    ];
-    const [ questions, setQuestions ] = useState([])
     const [ questionIndex, setQuestionIndex ] = useState(0)
+    const [ questions, setQuestions ] = useState([])
 
     useEffect(() => {
         fetchQuestions()
@@ -124,65 +94,76 @@ function SearchQuestions() {
 
         console.log(questions)
 
-        const response = fetch("http://127.0.0.1:8000/submit/questionnaire/", {
+        const response = fetch("http://127.0.0.1:8000/submit/search/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(questions)
         })        
     }
 
-    return (
-        <div className="container">
-            <div className="col-md-7 mt-4 mx-auto">
-                <h1 className="display-3">Search Questions</h1>
-                <div id="searchQuestions">
-                    <div className="row mt-3">
-                        <div id="q1" className="question" onClick={radioAnswerClicked}>
-                            <label for="answerOptions">What is the occasion?</label>
-                            <ButtonCreate answerOptions={questionBank[0].answers} questionNumber={"q1"} colNumber={6} />
-                        </div>
-                    </div>
-                    <div className="row mt-3">
-                        <div id="q2" className="question" onClick={radioAnswerClicked}>
-                            <label for="answerOptions">How many people?</label>
-                            <ButtonCreate answerOptions={questionBank[1].answers} questionNumber={"q2"} colNumber={6} />
-                        </div>
-                    </div>
-                    <div className="row mt-3">
-                        <div id="q3" className="question" onClick={radioAnswerClicked}>
-                            <label for="answerOptions">What type of meal?</label>
-                            <ButtonCreate answerOptions={questionBank[2].answers} questionNumber={"q3"} colNumber={6} />
-                        </div>
-                    </div>
-                    <div className="row mt-3">
-                        <div id="q4" className="question" onClick={radioAnswerClicked}>
-                            <label for="answerOptions">What is the price range?</label>
-                            <ButtonCreate answerOptions={questionBank[3].answers} questionNumber={"q4"} colNumber={6} />
-                        </div>
-                    </div>
-                    <div className="row mt-3">
-                        <div id="q5" className="question" onClick={radioAnswerClicked}>
-                            <label for="answerOptions">Distance Preference</label>
-                            <p>Google Maps Pin Drop Here</p>
-                            <p>Mile Selecting Slider Here</p>
-                        </div>
-                    </div>
-                    <div className="row mt-4 mb-5">
-                        <div className="col-md-12 mx-auto">
-                            <IconContext.Provider value={{ color: "white", size: 25 }}>
-                                <button 
-                                    id="submit"
-                                    className="btn btn-primary submit w-100" 
-                                    onClick={submitSelections}>
-                                    Search
-                                </button>
-                            </IconContext.Provider>
-                        </div>
-                    </div>
-                </div> 
+    // Check if questions data is loaded in yet
+    if (questions.length == 0) {
+        return(
+            <div className="container">
+                <div className="col-md-7 mt-4 mx-auto">
+                    <h1>Loading</h1>
+                </div>
             </div>
-        </div> 
-    );
+        )
+    } else {
+        return (
+            <div className="container">
+                <div className="col-md-7 mt-4 mx-auto">
+                    <h1 className="display-3">Search Questions</h1>
+                    <div id="searchQuestions">
+                        <div className="row mt-3">
+                            <div id="q1" className="question" onClick={radioAnswerClicked}>
+                                <label for="answerOptions">{questions.data[0].question}</label>
+                                <ButtonCreate answerOptions={questions.data[0].answerChoices} questionNumber={"q1"} colNumber={6} />
+                            </div>
+                        </div>
+                        <div className="row mt-3">
+                            <div id="q2" className="question" onClick={radioAnswerClicked}>
+                                <label for="answerOptions">{questions.data[1].question}</label>
+                                <ButtonCreate answerOptions={questions.data[1].answerChoices} questionNumber={"q2"} colNumber={6} />
+                            </div>
+                        </div>
+                        <div className="row mt-3">
+                            <div id="q3" className="question" onClick={radioAnswerClicked}>
+                                <label for="answerOptions">{questions.data[2].question}</label>
+                                <ButtonCreate answerOptions={questions.data[2].answerChoices} questionNumber={"q3"} colNumber={6} />
+                            </div>
+                        </div>
+                        <div className="row mt-3">
+                            <div id="q4" className="question" onClick={radioAnswerClicked}>
+                                <label for="answerOptions">{questions.data[3].question}</label>
+                                <ButtonCreate answerOptions={questions.data[3].answerChoices} questionNumber={"q4"} colNumber={6} />
+                            </div>
+                        </div>
+                        <div className="row mt-3">
+                            <div id="q5" className="question" onClick={radioAnswerClicked}>
+                                <label for="answerOptions">{questions.data[4].question}</label>
+                                <p>Google Maps Pin Drop Here</p>
+                                <p>Mile Selecting Slider Here</p>
+                            </div>
+                        </div>
+                        <div className="row mt-4 mb-5">
+                            <div className="col-md-12 mx-auto">
+                                <IconContext.Provider value={{ color: "white", size: 25 }}>
+                                    <button 
+                                        id="submit"
+                                        className="btn btn-primary submit w-100" 
+                                        onClick={submitSelections}>
+                                        Search
+                                    </button>
+                                </IconContext.Provider>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div> 
+        );
+    }
 }
 
 export default SearchQuestions

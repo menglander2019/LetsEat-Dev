@@ -18,14 +18,14 @@ restrictions_dict = {
     'Kosher': 'kosher'
 }
 
-occasions = ['friends', 'date', 'family', 'work', 'solo']
+occasions = ['Myself', 'Friend', 'Date', 'Family', 'Work']
 
 days = ['M', 'T', 'W', 'R', 'F', 'SA', 'SU']
 
 num_people = ['1', '2', '3', '4+']
 
 
-meals = ['breakfast', 'lunch', 'dinner', 'dessert']
+meals = ['Breakfast', 'Lunch', 'Dinner', 'Dessert']
 
 price_ranges = ['$', '$$', '$$$', '$$$$']
 
@@ -87,7 +87,7 @@ cuisine_groups = {
     "Italian": 'italian', 
     "Chinese": 'chinese', 
     "Japanese": 'japanese', 
-    "Southern/Central Asian": 'southern_central_asian', 
+    "Southern / Central Asian": 'southern_central_asian', 
     "French": 'french', 
     "Eastern European": 'eastern_europe', 
     "Central European": 'central_europe', 
