@@ -56,7 +56,7 @@ def request_businesses_list(zipcode, distance, dollars, open_at, categories, att
     
     #add restaurants from API call to webscraping db
     #@MAX if you need to webscrape again just uncomment this 
-    updateDB(response.json())
+    #updateDB(response.json())
 
     return response.json()
 
@@ -78,7 +78,7 @@ def parse_results(businesses):
         for j in (businesses[i].get('location').get('display_address')):
             print("\t"+j)
         print()
-    #YelpWebscraping.printDB()
+    YelpWebscraping.printDB()
     #UserYelpWebScraping.printDB()
     
 
@@ -93,18 +93,18 @@ def main():
     #this is test code. in real life, request_businesses_list is directly called
     zipcode = '20037'
     distance = '4000' #in meters, cannot exeed 4000
-    dollars = '2'
+    dollars = '3'
     open_at = '1664468447' #in unix nums 
     categories = None
     attributes = None
     
-    response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
+    #response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
     
     #print results to verify
-    businesses = response.get('businesses')
-    parse_results(businesses)
+    #businesses = response.get('businesses')
+    #parse_results(businesses)
     
-    #YelpWebscraping.printDB()
+    YelpWebscraping.printDB()
     
 
 if __name__ == '__main__':

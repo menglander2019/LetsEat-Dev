@@ -11,7 +11,7 @@ import time
 import random
 import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-
+import threading
 
 ADDRESS_TO_WEBDRIVER = "/Users/sarahstevens/OneDrive/Documents/College/Fall 2022/CSCI4243W/LetsEat/LetsEat-Dev/yelp/chromedriver 9"
 CLASS = "raw__09f24__T4Ezm"
@@ -19,10 +19,29 @@ DATABASE = r"OfficialUserScraping.db"
 occasions = ['date+night', 'friend','friends', 'family', 'clients', 'solo']
 restrictionsList = ['vegan', 'vegetarian', 'gluten-free', 'kosher', 'wheelchair', 'pescatarian', 'keto', 'soy', 'dog', 'covid']
 
+thread_list = list()
 
 def get_reviews(yelpUrl, rest_id):
-
+    # Start test
     for q in occasions+restrictionsList:
+        t = threading.Thread(name='Test '+q, target=get_reviews2, args=(yelpUrl, rest_id, q))
+        t.start()
+        time.sleep(1)
+        print(t.name + ' started!')
+        thread_list.append(t)
+
+    # Wait for all threads to complete
+    for thread in thread_list:
+        thread.join()
+
+    print('Test completed!')
+
+
+def get_reviews2(yelpUrl, rest_id, q):
+
+    #here
+
+    #for q in occasions+restrictionsList:
        
        #open connection 
         try:
@@ -76,7 +95,11 @@ def get_reviews(yelpUrl, rest_id):
         conn.close() 
         
         #open chrome to scrape website
-        driver = webdriver.Chrome(ADDRESS_TO_WEBDRIVER)
+        from selenium.webdriver.chrome.options import Options
+        options = Options()
+        options.add_argument('--headless')
+        options.add_argument('--disable-gpu')
+        driver = webdriver.Chrome(ADDRESS_TO_WEBDRIVER, chrome_options=options)
         driver.implicitly_wait(10)
         driver.get(yelpUrl+"?&q="+q)
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -177,55 +200,59 @@ def get_reviews(yelpUrl, rest_id):
                 #determine if they would attend
                 going = SentimentAnalysis(lists[i].text)
                 
-                #open connection 
-                try:
-                    conn = sqlite3.connect(DATABASE)
-                    c = conn.cursor()
-                except Error as e:
-                    print(e)           
+         
                 
-                #create row
-                c.execute('INSERT INTO users (name, current_day, occasion, num_people, meal, rest_id, going) VALUES((?), (?), (?), (?), (?), (?), (?))', 
-                          (name,current_day, occasion, num_people, meal, rest_id, going),)
+                try:
+                    #open connection 
+                    try:
+                        conn = sqlite3.connect(DATABASE)
+                        c = conn.cursor()
+                    except Error as e:
+                        print(e)  
+                    #create row
+                    c.execute('INSERT INTO users (name, current_day, occasion, num_people, meal, rest_id, going) VALUES((?), (?), (?), (?), (?), (?), (?))', 
+                            (name,current_day, occasion, num_people, meal, rest_id, going),)
 
-                #add price preference to database
-                if price == '$':
-                    sqlprice = 'oneDollar'
-                if price == '$$':
-                    sqlprice = 'twoDollar'    
-                if price == '$$$':
-                    sqlprice = 'threeDollar'    
-                if price == '$$$$$':
-                    sqlprice = 'fourDollar'    
-                c.execute('''UPDATE users
-                        SET '''+sqlprice+''' = 1
-                        WHERE name = (?);''',
-                        (name,))  
-
-                #add umbrella term to databasw
-                types = business.get('categories')
-                categories = YelpApiCalls.cuisines_to_umbrellas(types)
-                for j in range(len(categories)):
-                    alias = categories[j]
+                    #add price preference to database
+                    if price == '$':
+                        sqlprice = 'oneDollar'
+                    if price == '$$':
+                        sqlprice = 'twoDollar'    
+                    if price == '$$$':
+                        sqlprice = 'threeDollar'    
+                    if price == '$$$$$':
+                        sqlprice = 'fourDollar'    
                     c.execute('''UPDATE users
-                        SET '''+alias+''' = 1
-                        WHERE name = (?);''',
-                        (name, )) 
+                            SET '''+sqlprice+''' = 1
+                            WHERE name = (?);''',
+                            (name,))  
 
-                #add restrictions to database
-                for restriction in restrictions:
-                    updRestriction = restriction
-                    if restriction == 'gluten-free':
-                        updRestriction = 'gluten_free'
-                    c.execute('''UPDATE users
-                        SET '''+updRestriction+''' = 1
-                        WHERE name = (?);''',
-                        (name, ))   
-                #close connection
-                conn.commit()
-                conn.close() 
-    
-    printDB()
+                    #add umbrella term to databasw
+                    types = business.get('categories')
+                    categories = YelpApiCalls.cuisines_to_umbrellas(types)
+                    for j in range(len(categories)):
+                        alias = categories[j]
+                        c.execute('''UPDATE users
+                            SET '''+alias+''' = 1
+                            WHERE name = (?);''',
+                            (name, )) 
+
+                    #add restrictions to database
+                    for restriction in restrictions:
+                        updRestriction = restriction
+                        if restriction == 'gluten-free':
+                            updRestriction = 'gluten_free'
+                        c.execute('''UPDATE users
+                            SET '''+updRestriction+''' = 1
+                            WHERE name = (?);''',
+                            (name, ))   
+                    #close connection
+                    conn.commit()
+                    conn.close() 
+                except Error as e:
+                    print(e)
+        
+    #printDB()
     
 #print database, FOR TESTING
 def printDB():

@@ -133,11 +133,6 @@ def checkExistance(rest_id):
     conn.commit()
     conn.close() 
     
-    #write to csv
-    conn = sqlite3.connect(DATABASE)
-    cursor = conn.cursor()
-    clients = pd.read_sql('SELECT * FROM attributes' ,conn)
-    clients.to_csv('scrapedRestaurants.csv', index=False)
     
     #return whether we found the list
     if(result == []):
@@ -147,7 +142,7 @@ def checkExistance(rest_id):
     
 #adds the restaurant to our database and queries attributes to add to database and add website
 def scrape(rest_id, url, categories, price, rating, transaction):
-    
+    print("Scraping " + rest_id)
     #open connection 
     try:
         conn = sqlite3.connect(DATABASE)
@@ -207,7 +202,11 @@ def scrape(rest_id, url, categories, price, rating, transaction):
         (rest_id,))  
 
     #open chrome to scrape website
-    driver = webdriver.Chrome(ADDRESS_TO_WEBDRIVER)
+    from selenium.webdriver.chrome.options import Options
+    options = Options()
+    options.add_argument('--headless')
+    options.add_argument('--disable-gpu')
+    driver = webdriver.Chrome(ADDRESS_TO_WEBDRIVER, chrome_options=options)
     driver.get(url)
     #access attributes by clicking button on yelp page
     buttons = driver.find_elements(By.TAG_NAME, 'button')
@@ -297,7 +296,7 @@ def printDB():
 
     #write to csv
     clients = pd.read_sql('SELECT * FROM attributes' ,conn)
-    clients.to_csv('scrapedRestaurants.csv', index=False)
+    clients.to_csv('restaurantsTest.csv', index=False)
     
     #close connection 
     conn.commit()
@@ -308,9 +307,9 @@ def printDB():
 def main(business_id, url, categories, price, rating, transactions):
     if(checkExistance(business_id)==False):
         scrape(business_id, url, categories, price, rating, transactions)
-        printDB()
+        #printDB()
         return True
     else:
-        printDB()
+        #printDB()
         return False
     
