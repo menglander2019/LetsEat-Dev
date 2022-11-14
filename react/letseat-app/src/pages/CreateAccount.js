@@ -3,8 +3,50 @@ import { useEffect, useState } from 'react'
 
 function CreateAccount() {
 
-    const handleSubmitButton = () => {
-        alert("Account Create!")
+    // Submits user selection to FastAPI
+    const submitSelections = (e) => {
+
+        var data = {
+            'data': [
+                {
+                    'id': 'q1', 
+                    'question': 'What is your email?', 
+                    'answerChoices': [], 
+                    'selectedChoices': ['test@test.com']
+                }, 
+                {
+                    'id': 'q2', 
+                    'question': 'Create a password', 
+                    'answerChoices': [], 
+                    'selectedChoices': ['1234abc']
+                }, 
+                {
+                    'id': 'q3', 
+                    'question': 'What should we call you?', 
+                    'answerChoices': [], 
+                    'selectedChoices': ['TestMan']
+                },
+                {
+                    'id': 'q4', 
+                    'question': 'Enter your date of birth', 
+                    'answerChoices': [], 
+                    'selectedChoices': ['2000-01-01']
+                }, 
+                {
+                    'id': 'q5', 
+                    'question': 'What is your gender?', 
+                    'answerChoices': [], 
+                    'selectedChoices': ['male']
+                }
+        ]
+    }
+
+        const response = fetch("http://127.0.0.1:8000/createprofile/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        })
+        console.log(response)        
     }
 
     return (
@@ -68,7 +110,7 @@ function CreateAccount() {
                         <button 
                             id="submit"
                             className="btn btn-primary submit w-100"
-                            onClick={handleSubmitButton}>
+                            onClick={submitSelections}>
                             Sign Up
                         </button>
                     </div>
