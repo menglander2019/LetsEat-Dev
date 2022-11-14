@@ -79,11 +79,12 @@ function ProfileQuestions() {
 
         console.log(questions)
 
-        const response = fetch("http://127.0.0.1:8000/submit/questionnaire/", {
+        const response = fetch("http://127.0.0.1:8000/submit/profile/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(questions)
-        })        
+        })
+        console.log(response)        
     }
 
     // Calls FastAPI to pull questions
