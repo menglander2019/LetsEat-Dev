@@ -99,14 +99,14 @@ def build_restaurant_features(restaurant):
     # prices are in the format $$$, so the length of this subtracted by 1 gives the index of the proper price
     rest_prices[len(price) - 1] = 1
 
-    # determines if the restaurant offers pickup/delivery options
+    # determines if the restaurant offers pickup/delivery/reservation options
     transactions = restaurant.get('transactions')
     pickup_delivery_reservation = [0, 0, 0]
     if 'pickup' in transactions:
         pickup_delivery_reservation[0] = 1
     if 'delivery' in transactions:
         pickup_delivery_reservation[1] = 1
-    if 'reservation' in transactions: # THIS NEEDS TO BE CHECKED (where to get whether the restaurant allows for reservations)
+    if 'restaurant_reservation' in transactions:
         pickup_delivery_reservation[2] = 1
 
     return [rating] + category_features + kosher_and_gluten_free + rest_prices + pickup_delivery_reservation
