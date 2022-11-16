@@ -42,7 +42,7 @@ num_umbrella_terms = 16
 
 restriction_pct = 0.17
 
-scraped_column_ct = 59
+scraped_column_ct = 56
 
 num_pot_people = 10
 

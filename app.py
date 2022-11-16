@@ -61,9 +61,9 @@ async def submit_questionnaire(request: Request):
     positives = profile_data["data"][0]["selectedChoices"]
     restrictions = profile_data["data"][1]["selectedChoices"]
     negatives = profile_data["data"][2]["selectedChoices"]
-    updatePositives("fake@email.com", "russian")
-    updateNegatives("fake@email.com", "korean")
-    updateRestrictions("fake@email.com", "vegetarian")
+    updatePositives("test@test.com", "italian")
+    updateNegatives("test@test.com", "chinese")
+    updateRestrictions("test@test.com", "vegetarian")
     return {"message": "submitted"}
 
 @app.post("/submit/search/")

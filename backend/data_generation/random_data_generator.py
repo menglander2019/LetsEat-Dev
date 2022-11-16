@@ -128,7 +128,7 @@ with open('random_data.csv', 'w', encoding='UTF8') as f:
             int(random.random() * 2), int(random.random() * 2), round(random.random() * 5, 1), rest_cuisines[0], rest_cuisines[1], rest_cuisines[2], rest_cuisines[3], rest_cuisines[4], rest_cuisines[5], 
             rest_cuisines[6], rest_cuisines[7], rest_cuisines[8], rest_cuisines[9], rest_cuisines[10], rest_cuisines[11], rest_cuisines[12], rest_cuisines[13], 
             rest_cuisines[14], rest_cuisines[15], int(random.random() * 2), int(random.random() * 2), rest_price_ranges[0], rest_price_ranges[1], rest_price_ranges[2], 
-            rest_price_ranges[3],
+            rest_price_ranges[3], int(random.random() * 2), int(random.random() * 2), int(random.random() * 2),
         ]
 
         for j in range(scraped_column_ct):
