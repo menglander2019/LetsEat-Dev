@@ -10,8 +10,14 @@ function Home() {
             <div className="home-banner">
                 <div className="col-md-12">
                     <div className="row">
-                        <div className="col-md-8">
+                        <div className="col-md-6 offset-md-1 mt-4">
                             <h2 className="white-theme">LetsEat</h2>
+                        </div>
+                        <div className="col-md-2 mt-4">
+                            <button className="btn btn-primary w-100">Log In</button>
+                        </div>
+                        <div className="col-md-2 mt-4">
+                            <button className="btn btn-primary w-100">Sign Up</button>
                         </div>
                     </div>
                     <div className="row mt-5">
