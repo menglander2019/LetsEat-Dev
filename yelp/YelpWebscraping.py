@@ -7,37 +7,64 @@ import pandas as pd
 from glob import glob; from os.path import expanduser
 
 #These are the attributes relevant to the Machine Learning algorithm
-ATTRIBUTES = ['Classy',
-                  'Loud',
-                  'Groups',
-                  'Kids',
-                  'Garage',
-                  'Street', 
-                  'WiFi',
-                  'Monday',
-                  'Tuesday',
-                  'Wednesday',
-                  'Thursday',
-                  'Friday',
-                  'Saturday',
-                  'Sunday',
-                  'TV',
-                  'Outdoor',
-                  'Dancing',
-                  'Working',
-                  'Smoking',
-                  'Bike',
-                  'Casual',
-                  'Moderate',
-                  'Breakfast',
-                  'Lunch',
-                  'Dinner',
-                  'Dessert',
-                  'Brunch',
-                  'Late',
-                  'Trendy', 
-                  'Divey',
-                  'Bar']
+ATTRIBUTES = [
+    'Classy',
+    'Loud',
+    'Hipster',
+    'Groups',
+    'Kids',
+    'Garage',
+    'Street',
+    'Valet', 
+    'Validated',
+    'WiFi',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+    'TV',
+    'Waiter',
+    'Outdoor',
+    'Dancing',
+    'Working',
+    'Smoking',
+    'Bike',
+    'Casual',
+    'Intimate',
+    'Upscale',
+    'Moderate',
+    'Quiet',
+    'Breakfast',
+    'Lunch',
+    'Dinner',
+    'Dessert',
+    'Brunch',
+    'Late',
+    'Trendy', 
+    'Divey',
+    'Bar',
+    'Catering',
+    'Plastic',    
+    'reusable',
+    'staffMasks',
+    'staffVac',
+    'vaccination',
+    'Compostable',
+    'Wheelchair',
+    'Vegan',
+    'Vegetarian',
+    'Gluten',
+    'Pescatarian',
+    'Keto',
+    'Soy',
+    'Dogs',
+    'Women',
+    'Military',
+    'Gender'
+]
 
 DATABASE = r"YelpScrapeData.db"
 TRUE_CLASS = "css-1p9ibgf"
@@ -99,14 +126,17 @@ def checkExistance(rest_id):
     
 #adds the restaurant to our database and queries attributes to add to database and add website
 def scrape(rest_id, url):
-
+    
     rest_attr_dict = {
         'Classy': 0,
         'Loud': 0,
+        'Hipster': 0,
         'Groups': 0,
         'Kids': 0,
         'Garage': 0,
-        'Street': 0, 
+        'Street': 0,
+        'Valet': 0, 
+        'Validated': 0,
         'WiFi': 0,
         'Monday': 0,
         'Tuesday': 0,
@@ -116,13 +146,17 @@ def scrape(rest_id, url):
         'Saturday': 0,
         'Sunday': 0,
         'TV': 0,
+        'Waiter': 0,
         'Outdoor': 0,
         'Dancing': 0,
         'Working': 0,
         'Smoking': 0,
         'Bike': 0,
         'Casual': 0,
+        'Intimate': 0,
+        'Upscale': 0,
         'Moderate': 0,
+        'Quiet': 0,
         'Breakfast': 0,
         'Lunch': 0,
         'Dinner': 0,
@@ -131,7 +165,25 @@ def scrape(rest_id, url):
         'Late': 0,
         'Trendy': 0, 
         'Divey': 0,
-        'Bar': 0
+        'Bar': 0,
+        'Catering': 0,
+        'Plastic': 0,    
+        'reusable': 0,
+        'staffMasks': 0,
+        'staffVac': 0,
+        'vaccination': 0,
+        'Compostable': 0,
+        'Wheelchair': 0,
+        'Vegan': 0,
+        'Vegetarian': 0,
+        'Gluten': 0,
+        'Pescatarian': 0,
+        'Keto': 0,
+        'Soy': 0,
+        'Dogs': 0,
+        'Women': 0,
+        'Military': 0,
+        'Gender': 0
     }
  
     #open chrome to scrape website
@@ -139,14 +191,14 @@ def scrape(rest_id, url):
     driver.get(url)
     
     #open connection 
-    try:
-        conn = sqlite3.connect(DATABASE)
-        c = conn.cursor()
-    except Error as e:
-        print(e)
+    # try:
+    #     conn = sqlite3.connect(DATABASE)
+    #     c = conn.cursor()
+    # except Error as e:
+    #     print(e)
 
-    #add restaurant to database
-    c.execute('INSERT INTO attributes (restaurant_id) VALUES((?))', (rest_id,))
+    # #add restaurant to database
+    # c.execute('INSERT INTO attributes (restaurant_id) VALUES((?))', (rest_id,))
     
     #add cuisine types to database
     # for j in range(len(categories)):
@@ -172,10 +224,11 @@ def scrape(rest_id, url):
             if(ATTRIBUTES[j] == 'WiFi'):
                 searchAttribute = 'Wi-Fi'
             if searchAttribute in all_pos_attributes[i].text:
-                c.execute('''UPDATE attributes
-                          SET '''+ATTRIBUTES[j]+''' = 1
-                          WHERE restaurant_id = (?);''',
-                          (rest_id,))  
+                # c.execute('''UPDATE attributes
+                #           SET '''+ATTRIBUTES[j]+''' = 1
+                #           WHERE restaurant_id = (?);''',
+                #           (rest_id,))  
+                rest_attr_dict[ATTRIBUTES[j]] = 1
                           
     #search for attributes the restaurant does not have
     all_neg_attributes = driver.find_elements(By.CLASS_NAME, FALSE_CLASS)

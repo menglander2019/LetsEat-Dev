@@ -8,20 +8,7 @@ import numpy
 import pandas as pd
 import copy
 
-def build_user_features(id, occasion, num_people, meal, price_ranges):
-    mydb = get_db()
-    c = mydb.cursor()
-    # fetch the user information from the database
-    c.execute('SELECT positivePreferences, negativePreferences, restrictions FROM userPreferences WHERE userID = %s', (id,))
-    user_info = c.fetchone()
-    positives = user_info[0].split(',')
-    negatives = user_info[1].split(',')
-    restrictions = user_info[2].split(',')
-
-    print(positives)
-    print(negatives)
-    print(restrictions)
-
+def build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions):
     # gets the current day
     dt = datetime.now()
     current_day = days[dt.weekday()]
@@ -81,46 +68,82 @@ def build_user_features(id, occasion, num_people, meal, price_ranges):
     # combine all accumulated data and return it
     return [current_day] + rest_preferences + restriction_settings + [occasion, num_people, meal] + prices
 
+def build_restaurant_features(restaurant):
+    # gets the rating of the restaurant
+    rating = restaurant.get('rating')
+    # gets the categories for each restaurant        
+    category_list = restaurant.get('categories')
+    category_features = []
+    kosher_and_gluten_free = [0, 0]
+    # iterates through each umbrella term to see if the scraped restaurant fits into that umbrella and sets to 1 if it finds it and 0 if not
+    for type in restaurant_types.keys():
+        found_type = False
+        for category in category_list:
+            # if a restaurant is kosher it is recorded
+            if category.get('alias') == 'kosher':
+                kosher_and_gluten_free[0] = 1
+            # if a restaurant is gluten free it is recorded
+            elif category.get('alias') == 'gluten_free':
+                kosher_and_gluten_free[1] = 1
+            # if the category is found within the major categories, then set the flag to true and append
+            elif category.get('alias') in restaurant_types[type]:
+                found_type = True
+        if found_type:
+            category_features.append(1)
+        else:
+            category_features.append(0)
+
+    # gets the price of the restaurant and appends it to the list of restaurant features
+    rest_prices = [0, 0, 0, 0]
+    price = restaurant.get('price')
+    # prices are in the format $$$, so the length of this subtracted by 1 gives the index of the proper price
+    rest_prices[len(price) - 1] = 1
+
+    # determines if the restaurant offers pickup/delivery options
+    transactions = restaurant.get('transactions')
+    pickup_delivery_reservation = [0, 0, 0]
+    if 'pickup' in transactions:
+        pickup_delivery_reservation[0] = 1
+    if 'delivery' in transactions:
+        pickup_delivery_reservation[1] = 1
+    if 'reservation' in transactions: # THIS NEEDS TO BE CHECKED (where to get whether the restaurant allows for reservations)
+        pickup_delivery_reservation[2] = 1
+
+    return [rating] + category_features + kosher_and_gluten_free + rest_prices + pickup_delivery_reservation
+    
+
 def get_predictions(id, occasion, num_people, meal, price_ranges):
     # trains the decision tree and returns the tree along with the proper encoder
     dec_tree_info = train_dec_tree()
     dec_tree = dec_tree_info[0]
     encoder = dec_tree_info[1]
-    # gets the user input for profile information (used for testing)
-    user_features = build_user_features(id, occasion, num_people, meal, price_ranges)
-    print(user_features)
-    cuisines = []
+    
+    # sets up database variables
+    mydb = get_db()
+    c = mydb.cursor()
+    # fetch the user information from the database
+    c.execute('SELECT positivePreferences, negativePreferences, restrictions FROM userPreferences WHERE userID = %s', (id,))
+    user_info = c.fetchone()
+    positives = user_info[0].split(',')
+    negatives = user_info[1].split(',')
+    restrictions = user_info[2].split(',')
 
-    restaurants = get_restaurant_list('20037', '4000', price_range, ','.join(filter(None, cuisines)))
+    # gets the user input for profile information (used for testing)
+    user_features = build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions)
+    cuisines = user_info[0]
+
+    restaurants = get_restaurant_list('20037', '4000', price_ranges, cuisines)
      # iterates through each restaurant, scraping data and making predictions
     for restaurant in restaurants:
         # temp_user_features = copy.deepcopy(user_features)
         temp_user_features = copy.copy(user_features)
-        for value in user_features.values():
-            temp_user_features += value
-
+        rest_features = build_restaurant_features(restaurant)
+                
+        # retrieves the restaurant ID and url so that the scraped info can be retrieved
         id = restaurant.get('id')
         url = restaurant.get('url')
         scraped_info = scrape(id, url)
-        # gets the rating of the restaurant
-        rest_features = [restaurant.get('rating')]
-        # gets the price of the restaurant and appends it to the list of restaurant features
-        rest_prices = [0, 0, 0, 0]
-        price = restaurant.get('price')
-        rest_prices[len(price) - 1] = 1
-        rest_features += rest_prices
-        category_list = restaurant.get('categories')
-        # iterates through each umbrella term to see if the scraped restaurant fits into that umbrella and sets to 1 if it finds it and 0 if not
-        for type in restaurant_types.keys():
-            found_type = False
-            for category in category_list:
-                if category.get('alias') in restaurant_types[type]:
-                    found_type = True
-            if found_type:
-                rest_features.append(1)
-            else:
-                rest_features.append(0)
-        
+
         # appends the collected values based on the user profile, restaurant features (rating/price/cuisine), and the scraped restaurant values
         total_features = numpy.array(temp_user_features + rest_features + list(scraped_info.values()))
         cols = {}
@@ -132,7 +155,8 @@ def get_predictions(id, occasion, num_people, meal, price_ranges):
         # encodes the categorical features using the encoder that trained the decision tree
         total_features_encoded = encoder.transform(row)
         # makes a prediction as to whether the user would attend this restaurant or not
-        print(restaurant.get('name') + " prediction: " + str(dec_tree.predict_proba(total_features_encoded)))
+        print(restaurant.get('name') + " prediction: " + str(dec_tree.predict(total_features_encoded)))
+        print(restaurant.get('name') + " probability prediction: " + str(dec_tree.predict_proba(total_features_encoded)))
         
 if __name__ == "__main__":
     get_predictions(48017772, "date", 2, "dinner", [3, 4])
