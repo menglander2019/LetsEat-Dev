@@ -19,10 +19,11 @@ def updateDB(response):
         keepScraping = YelpWebscraping.main(businesses[i].get('id'), businesses[i].get('url'), cuisines_to_umbrellas(businesses[i].get('categories')), businesses[i].get('price'), businesses[i].get('rating'), businesses[i].get('transactions'))
         url = businesses[i].get('url')
         if(keepScraping):
-            UserYelpWebScraping.get_reviews(url, businesses[i].get('id')) #We do not need this for functionality, only to fill database
+            UserYelpWebScraping.get_reviews(url, businesses[i].get('id'), businesses[i]) #We do not need this for functionality, only to fill database
 
 def cuisines_to_umbrellas(cuisines):
     list = []
+    #print(cuisines)
     for cuisine in cuisines: 
         alias = cuisine.get('alias')
         for umbrella, umbList in constants.cuisine_groups.items():
@@ -35,8 +36,8 @@ def cuisines_to_umbrellas(cuisines):
 def request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes):
 
     #convert time to UNIX
-    #now = datetime(2022, 11, 9, 12, 20)
-    now = datetime.now()
+    now = datetime(2022, 11, 16, 5, 20)
+    #now = datetime.now()
     unix = time.mktime(now.timetuple())
     
     #add parameters to API call
@@ -56,7 +57,7 @@ def request_businesses_list(zipcode, distance, dollars, open_at, categories, att
     
     #add restaurants from API call to webscraping db
     #@MAX if you need to webscrape again just uncomment this 
-    #updateDB(response.json())
+    updateDB(response.json())
 
     return response.json()
 
@@ -79,7 +80,7 @@ def parse_results(businesses):
             print("\t"+j)
         print()
     YelpWebscraping.printDB()
-    #UserYelpWebScraping.printDB()
+    UserYelpWebScraping.printDB()
     
 
 #use businessId to get json results for that business
@@ -93,19 +94,19 @@ def main():
     #this is test code. in real life, request_businesses_list is directly called
     zipcode = '20037'
     distance = '4000' #in meters, cannot exeed 4000
-    dollars = '3'
+    dollars = '1,2,3,4'
     open_at = '1664468447' #in unix nums 
     categories = None
     attributes = None
     
-    #response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
+
+    response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
     
     #print results to verify
-    #businesses = response.get('businesses')
-    #parse_results(businesses)
-    
-    YelpWebscraping.printDB()
-    
+    businesses = response.get('businesses')
+    parse_results(businesses)
+
+
 
 if __name__ == '__main__':
     main()

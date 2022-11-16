@@ -21,10 +21,10 @@ restrictionsList = ['vegan', 'vegetarian', 'gluten-free', 'kosher', 'wheelchair'
 
 thread_list = list()
 
-def get_reviews(yelpUrl, rest_id):
+def get_reviews(yelpUrl, rest_id, business):
     # Start test
     for q in occasions+restrictionsList:
-        t = threading.Thread(name='Test '+q, target=get_reviews2, args=(yelpUrl, rest_id, q))
+        t = threading.Thread(name='Test '+q, target=get_reviews2, args=(yelpUrl, rest_id, q, business))
         t.start()
         time.sleep(1)
         print(t.name + ' started!')
@@ -37,7 +37,7 @@ def get_reviews(yelpUrl, rest_id):
     print('Test completed!')
 
 
-def get_reviews2(yelpUrl, rest_id, q):
+def get_reviews2(yelpUrl, rest_id, q, business):
 
     #here
 
@@ -143,7 +143,7 @@ def get_reviews2(yelpUrl, rest_id, q):
                 #get data from review
                 review = lists[i].text.lower()
                 current_day = dayOfWeek[i]
-                business = YelpApiCalls.return_business(rest_id)
+                #business = YelpApiCalls.return_business(rest_id)
                 restrictions = []
                 
                 #determine if its bfast, lunch, or dinner
@@ -216,16 +216,28 @@ def get_reviews2(yelpUrl, rest_id, q):
                     #add price preference to database
                     if price == '$':
                         sqlprice = 'oneDollar'
-                    if price == '$$':
-                        sqlprice = 'twoDollar'    
-                    if price == '$$$':
-                        sqlprice = 'threeDollar'    
-                    if price == '$$$$$':
-                        sqlprice = 'fourDollar'    
-                    c.execute('''UPDATE users
+                        c.execute('''UPDATE users
                             SET '''+sqlprice+''' = 1
                             WHERE name = (?);''',
                             (name,))  
+                    if price == '$$':
+                        sqlprice = 'twoDollar'  
+                        c.execute('''UPDATE users
+                                SET '''+sqlprice+''' = 1
+                                WHERE name = (?);''',
+                                (name,))    
+                    if price == '$$$':
+                        sqlprice = 'threeDollar'   
+                        c.execute('''UPDATE users
+                            SET '''+sqlprice+''' = 1
+                            WHERE name = (?);''',
+                            (name,))   
+                    if price == '$$$$':
+                        sqlprice = 'fourDollar'    
+                        c.execute('''UPDATE users
+                                SET '''+sqlprice+''' = 1
+                                WHERE name = (?);''',
+                                (name,))  
 
                     #add umbrella term to databasw
                     types = business.get('categories')
