@@ -92,7 +92,7 @@ def return_business(businessId):
 
 def main():
     #this is test code. in real life, request_businesses_list is directly called
-    zipcode = '20004'
+    zipcode = '20003'
     distance = '4000' #in meters, cannot exeed 4000
     dollars = '1,2,3,4'
     open_at = '1664468447' #in unix nums 
