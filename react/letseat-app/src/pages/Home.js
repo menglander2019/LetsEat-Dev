@@ -7,26 +7,32 @@ import '../css/Home.css';
 function Home() {
     return (
         <div className="container-fluid">
-            <div className="home-banner">
-                <div className="col-md-12">
-                    <div className="row">
-                        <div className="col-md-6 offset-md-1 mt-4">
+            <div className="d-flex flex-column">
+                <div className="home-banner">
+                    <div className="d-flex flex navbar">
+                        <div class="d-flex justify-content-start">
                             <h2 className="white-theme">LetsEat</h2>
                         </div>
-                        <div className="col-md-2 mt-4">
-                            <button className="btn btn-primary w-100">Log In</button>
-                        </div>
-                        <div className="col-md-2 mt-4">
-                            <button className="btn btn-primary w-100">Sign Up</button>
+                        <div class="d-flex justify-content-end">
+                            <Link to="/login">
+                                <button className="btn btn-primary navbar-login">
+                                    <span>Log In</span>
+                                </button>
+                            </Link>
+                            <Link to="/createaccount">
+                                <button className="btn btn-primary navbar-signup">
+                                    <span>Sign Up</span>
+                                </button>
+                            </Link>
                         </div>
                     </div>
-                    <div className="row mt-5">
-                        <div className="col-md-6 mx-auto">
+                    <div className="d-flex flex-row justify-content-center mt-5">
+                        <div className="col-md-8">
                             <h1 className="display-3 white-theme text-center">Discover your new favorite restaurant</h1>
                         </div>
                     </div>
-                    <div className="row mt-4">
-                        <div className="col-md-4 mx-auto">
+                    <div className="d-flex flex-row justify-content-center mt-4">
+                        <div className="col-md-4">
                             <Link to="/login">
                                 <button 
                                     id="submit"
@@ -37,26 +43,26 @@ function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="row mt-5">
-                <Link to="/login">
-                    <span>Login</span>
-                </Link><br />
-                <Link to="/createaccount">
-                    <span>Create Account</span>
-                </Link><br />
-                <Link to="/edit/account">
-                    <span>Edit Account</span>
-                </Link><br />
-                <Link to="/edit/preferences">
-                    <span>Profile Questions</span>
-                </Link><br />
-                <Link to="/searchquestions">
-                    <span>Search Questions</span>
-                </Link><br />
-                <Link to="/restaurantsearch">
-                    <span>Restaurant</span>
-                </Link>
+                <div className="row mt-5">
+                    <Link to="/login">
+                        <span>Login</span>
+                    </Link><br />
+                    <Link to="/createaccount">
+                        <span>Create Account</span>
+                    </Link><br />
+                    <Link to="/edit/account">
+                        <span>Edit Account</span>
+                    </Link><br />
+                    <Link to="/edit/preferences">
+                        <span>Profile Questions</span>
+                    </Link><br />
+                    <Link to="/searchquestions">
+                        <span>Search Questions</span>
+                    </Link><br />
+                    <Link to="/restaurantsearch">
+                        <span>Restaurant</span>
+                    </Link>
+                </div>
             </div>
         </div>
     );

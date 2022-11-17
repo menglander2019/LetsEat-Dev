@@ -11,38 +11,38 @@ function CreateAccount() {
     return (
         <>
         <div className="container-fluid">
-            <div className="h-100 d-flex align-items-center">
-                <div className="col-md-3 mx-auto">
-                    <div className="row mt-4">
-                        <div className="col-md-12 mx-auto">
+            <div className="d-flex align-items-center justify-content-center h-100">
+                <div className="col-md-3">
+                    <div className="d-flex flex-column">
+                        <div className="row mt-4">
                             <h3>Welcome to LetsEat!</h3>
                         </div>
-                    </div>
-                    <div className="row mt-2">
-                        <div className="col-md-12 mx-auto">
-                            <label for="email">Log In</label>
-                            <input type="text" id="email" className="login-box form-control w-100 mt-3" placeholder="Enter email"></input>
-                            <input type="text" id="password" className="login-box form-control w-100 mt-3" placeholder="Enter password"></input>
+                        <div className="row mt-2">
+                            <div className="col-md-12">
+                                <label for="email">Log In</label>
+                                <input type="text" id="email" className="login-box form-control w-100 mt-3" placeholder="Enter email"></input>
+                                <input type="text" id="password" className="login-box form-control w-100 mt-3" placeholder="Enter password"></input>
+                            </div>
                         </div>
-                    </div>
-                    <div className="row mt-4">
-                        <div className="col-md-12 mx-auto">
-                            <button 
-                                id="submit"
-                                className="btn btn-primary submit w-100"
-                                onClick={handleSubmitButton}>
-                                Log In
-                            </button>
+                        <div className="row mt-4">
+                            <div className="col-md-12">
+                                <button 
+                                    id="submit"
+                                    className="btn btn-primary submit w-100"
+                                    onClick={handleSubmitButton}>
+                                    Log In
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div className="row mt-4">
-                        <div className="col-md-12 mx-auto">
-                            <p>
-                                Don't have an account?
-                                <Link to="/createaccount">
-                                    <span>Sign Up</span>
-                                </Link>
-                            </p>
+                        <div className="row mt-4">
+                            <div className="col-md-12">
+                                <p>
+                                    Don't have an account?
+                                    <Link to="/createaccount">
+                                        <span>Sign Up</span>
+                                    </Link>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
