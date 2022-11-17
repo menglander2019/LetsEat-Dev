@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from backend.db.db_management import *
 from backend.questions_data import *
+from .restaurant_suggester import get_predictions
 
 app = FastAPI()
 
@@ -70,12 +71,14 @@ async def submit_questionnaire(request: Request):
 async def submit_search(request: Request):
     search_data = await request.json()
     # extracts all the search criteria from the selected answers
+    id = 1234 # placeholder, need to get ID here
     occasion = search_data["data"][0]["selectedChoices"]
     num_people = search_data["data"][1]["selectedChoices"]
     meal = search_data["data"][2]["selectedChoices"]
-    price_range = search_data["data"][3]["selectedChoices"]
+    price_ranges = search_data["data"][3]["selectedChoices"]
     distance_settings = search_data["data"][4]["selectedChoices"]
-    return {"message": "submitted"}
+    suggestions_list = get_predictions(id, occasion, num_people, meal, price_ranges)
+    return {"message": suggestions_list}
 
 @app.get("/recommendation")
 def recommendation():

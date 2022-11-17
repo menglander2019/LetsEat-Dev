@@ -7,6 +7,7 @@ from datetime import datetime
 import numpy
 import pandas as pd
 import copy
+import operator
 
 def build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions):
     # gets the current day
@@ -111,6 +112,33 @@ def build_restaurant_features(restaurant):
 
     return [rating] + category_features + kosher_and_gluten_free + rest_prices + pickup_delivery_reservation
     
+def make_prediction(restaurant, user_features, encoder, dec_tree):
+    temp_user_features = copy.copy(user_features)
+    rest_features = build_restaurant_features(restaurant)
+            
+    # retrieves the restaurant ID and url so that the scraped info can be retrieved
+    id = restaurant.get('id')
+    url = restaurant.get('url')
+    scraped_info = scrape(id, url)
+
+    # appends the collected values based on the user profile, restaurant features (rating/price/cuisine), and the scraped restaurant values
+    total_features = numpy.array(temp_user_features + rest_features + list(scraped_info.values()))
+    cols = {}
+    # sets up a dataframe with the proper feature names and values
+    for i in range(len(total_features)):
+        cols[header[i+1]] = total_features[i]
+    row = pd.DataFrame(data=cols, index=[0])
+    row = row.astype('string')
+    # encodes the categorical features using the encoder that trained the decision tree
+    total_features_encoded = encoder.transform(row)
+    # makes a prediction as to whether the user would attend this restaurant or not
+    prediction_prob = dec_tree.predict_proba(total_features_encoded)[0]
+    print("Prediction prob: " + str(prediction_prob))
+    # if the model has an above 50% confidence score that the restaurant should be suggested, return the value
+    if prediction_prob[1] > 0.5:
+        return prediction_prob[1]
+    # if the confidence score is too low, return 0 to indicate that the restaurant shouldn't be suggested
+    return 0
 
 def get_predictions(id, occasion, num_people, meal, price_ranges):
     # trains the decision tree and returns the tree along with the proper encoder
@@ -133,30 +161,17 @@ def get_predictions(id, occasion, num_people, meal, price_ranges):
     cuisines = user_info[0]
 
     restaurants = get_restaurant_list('20037', '4000', price_ranges, cuisines)
-     # iterates through each restaurant, scraping data and making predictions
+    # iterates through each restaurant, scraping data and making predictions
+    suggestions_list = []
     for restaurant in restaurants:
-        # temp_user_features = copy.deepcopy(user_features)
-        temp_user_features = copy.copy(user_features)
-        rest_features = build_restaurant_features(restaurant)
-                
-        # retrieves the restaurant ID and url so that the scraped info can be retrieved
-        id = restaurant.get('id')
-        url = restaurant.get('url')
-        scraped_info = scrape(id, url)
+        suggestion = make_prediction(restaurant, user_features, encoder, dec_tree)
+        # if the model predicts a suggestion, then append it to the unordered dictionary as a key-value pair
+        if suggestion > 0:
+            suggestions_list.append([restaurant, suggestion])
 
-        # appends the collected values based on the user profile, restaurant features (rating/price/cuisine), and the scraped restaurant values
-        total_features = numpy.array(temp_user_features + rest_features + list(scraped_info.values()))
-        cols = {}
-        # sets up a dataframe with the proper feature names and values
-        for i in range(len(total_features)):
-            cols[header[i+1]] = total_features[i]
-        row = pd.DataFrame(data=cols, index=[0])
-        row = row.astype('string')
-        # encodes the categorical features using the encoder that trained the decision tree
-        total_features_encoded = encoder.transform(row)
-        # makes a prediction as to whether the user would attend this restaurant or not
-        print(restaurant.get('name') + " prediction: " + str(dec_tree.predict(total_features_encoded)[0]))
-        print(restaurant.get('name') + " probability prediction: " + str(dec_tree.predict_proba(total_features_encoded)[0]))
-        
+    suggestions_sorted = sorted(suggestions_list, key=lambda x: x[1])
+    print(suggestions_sorted)
+    return suggestions_sorted
+
 if __name__ == "__main__":
     get_predictions(48017772, "date", 2, "dinner", [3, 4])
