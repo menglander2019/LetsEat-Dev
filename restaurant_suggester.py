@@ -155,8 +155,8 @@ def get_predictions(id, occasion, num_people, meal, price_ranges):
         # encodes the categorical features using the encoder that trained the decision tree
         total_features_encoded = encoder.transform(row)
         # makes a prediction as to whether the user would attend this restaurant or not
-        print(restaurant.get('name') + " prediction: " + str(dec_tree.predict(total_features_encoded)))
-        print(restaurant.get('name') + " probability prediction: " + str(dec_tree.predict_proba(total_features_encoded)))
+        print(restaurant.get('name') + " prediction: " + str(dec_tree.predict(total_features_encoded)[0]))
+        print(restaurant.get('name') + " probability prediction: " + str(dec_tree.predict_proba(total_features_encoded)[0]))
         
 if __name__ == "__main__":
     get_predictions(48017772, "date", 2, "dinner", [3, 4])
