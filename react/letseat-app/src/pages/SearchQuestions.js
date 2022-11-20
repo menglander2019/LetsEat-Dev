@@ -15,6 +15,7 @@ function SearchQuestions() {
 
     const [ questionIndex, setQuestionIndex ] = useState(0)
     const [ questions, setQuestions ] = useState([])
+    var flexStylingOption = "flex-styling-50"
 
     useEffect(() => {
         fetchQuestions()
@@ -60,6 +61,25 @@ function SearchQuestions() {
             // Add Selection to "questions" state
             addSelection(questionID, clickedChoice.value)
         }
+    }
+
+    const textSubmission = (e) => {
+        var parentDiv = e.currentTarget
+        var questionID = e.currentTarget.getAttribute("id");
+        var clickedChoice = e.target
+        addTextSubmission(questionID, clickedChoice.value)
+    }
+
+    // Adds selection to "selectedChoices" array
+    const addTextSubmission = (questionID, selectionValue) => {
+        let tempQuestions = questions
+        tempQuestions.data.map((question, index) => {
+            if(question.id == questionID) {
+                // If something was already selected
+                question.selectedChoices[0] = selectionValue
+            }
+        });
+        setQuestions(tempQuestions)
     }
 
     // Adds selection to "selectedChoices" array
@@ -119,24 +139,23 @@ function SearchQuestions() {
                             <h1 className="display-3">Search Questions</h1>
                             <div id="q1" className="question mt-3" onClick={radioAnswerClicked}>
                                 <label for="answerOptions">{questions.data[0].question}</label>
-                                <ButtonCreate answerOptions={questions.data[0].answerChoices} questionNumber={"q1"} optionType="searchOption" />
+                                <ButtonCreate answerOptions={questions.data[0].answerChoices} questionNumber={"q1"} optionType={flexStylingOption} />
                             </div>
                             <div id="q2" className="question mt-3" onClick={radioAnswerClicked}>
                                 <label for="answerOptions">{questions.data[1].question}</label>
-                                <ButtonCreate answerOptions={questions.data[1].answerChoices} questionNumber={"q2"} optionType="searchOption" />
+                                <ButtonCreate answerOptions={questions.data[1].answerChoices} questionNumber={"q2"} optionType={flexStylingOption} />
                             </div>
                             <div id="q3" className="question mt-3" onClick={radioAnswerClicked}>
                                 <label for="answerOptions">{questions.data[2].question}</label>
-                                <ButtonCreate answerOptions={questions.data[2].answerChoices} questionNumber={"q3"} optionType="searchOption" />
+                                <ButtonCreate answerOptions={questions.data[2].answerChoices} questionNumber={"q3"} optionType={flexStylingOption} />
                             </div>
                             <div id="q4" className="question mt-3" onClick={radioAnswerClicked}>
                                 <label for="answerOptions">{questions.data[3].question}</label>
-                                <ButtonCreate answerOptions={questions.data[3].answerChoices} questionNumber={"q4"} optionType="searchOption" />
+                                <ButtonCreate answerOptions={questions.data[3].answerChoices} questionNumber={"q4"} optionType={flexStylingOption} />
                             </div>
-                            <div id="q5" className="question mt-3" onClick={radioAnswerClicked}>
+                            <div id="q5" className="question mt-3" onChange={textSubmission}>
                                 <label for="answerOptions">{questions.data[4].question}</label>
-                                <p>Google Maps Pin Drop Here</p>
-                                <p>Mile Selecting Slider Here</p>
+                                <input type="text" id="distance" className="input-box form-control mt-2 w-100" placeholder="Enter your zipcode"></input>
                             </div>
                             <div className="d-flex justify-content-center mt-4 mb-5">
                                 <IconContext.Provider value={{ color: "white", size: 20 }}>

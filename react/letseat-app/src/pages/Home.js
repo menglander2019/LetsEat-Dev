@@ -9,7 +9,7 @@ function Home() {
         <div className="container-fluid">
             <div className="d-flex flex-column">
                 <div className="home-banner">
-                    <div className="d-flex flex navbar">
+                    <div className="navbar padding-style-1">
                         <div class="d-flex justify-content-start">
                             <h2 className="white-theme">LetsEat</h2>
                         </div>
@@ -42,6 +42,10 @@ function Home() {
                             </Link>
                         </div>
                     </div>
+                </div>
+                <div className="home-description padding-style-1 mt-3">
+                    <h2>What is LetsEat?</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
                 <div className="row mt-5">
                     <Link to="/login">

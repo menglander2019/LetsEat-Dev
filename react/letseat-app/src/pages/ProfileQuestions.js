@@ -15,6 +15,7 @@ function ProfileQuestions() {
     const [ questionIndex, setQuestionIndex ] = useState(0)
     const [ questions, setQuestions ] = useState([])
     var numQuestions = 3
+    var flexStylingOption = "flex-styling-33"
 
     // Temporary Filler Arrays
     //var cuisineChoices = ["American", "Mexican", "French", "Chinese", "Japanese", "Italian", "Korean", "Thai"]
@@ -114,15 +115,15 @@ function ProfileQuestions() {
                                 <h1 className="display-3">Profile Questions</h1>
                                 <div id="q1" className="question mt-3" onClick={answerClicked}>
                                         <label for="answerOptions">{questions.data[0].question}</label>
-                                        <ButtonCreate answerOptions={questions.data[0].answerChoices} questionNumber={"q1"} optionType="profileOption" />
+                                        <ButtonCreate answerOptions={questions.data[0].answerChoices} questionNumber={"q1"} optionType={flexStylingOption} />
                                 </div>
                                 <div id="q2" className="question mt-3" onClick={answerClicked}>
                                     <label for="answerOptions">{questions.data[1].question}</label>
-                                    <ButtonCreate answerOptions={questions.data[1].answerChoices} questionNumber={"q2"} optionType="profileOption" />
+                                    <ButtonCreate answerOptions={questions.data[1].answerChoices} questionNumber={"q2"} optionType={flexStylingOption} />
                                 </div>
                                 <div id="q3" className="question mt-3" onClick={answerClicked}>
                                     <label for="answerOptions">{questions.data[2].question}</label>
-                                    <ButtonCreate answerOptions={questions.data[2].answerChoices} questionNumber={"q3"} optionType="profileOption" />
+                                    <ButtonCreate answerOptions={questions.data[2].answerChoices} questionNumber={"q3"} optionType={flexStylingOption} />
                                 </div>
                                 <div className="d-flex justify-content-center mt-4 mb-5">
                                     <IconContext.Provider value={{ color: "white", size: 20 }}>

@@ -101,11 +101,11 @@ label {
     transform: scale(0.9);
 }
 
-.btn.searchOption {
+.flex-styling-50 {
     flex: 0 0 48%;
 }
 
-.btn.profileOption {
+.flex-styling-33 {
     flex: 0 0 32%;
 }
 
@@ -175,7 +175,7 @@ label {
     border-radius: 5%;
 }
 
-.navbar {
+.padding-style-1 {
     padding-top: 20px;
     margin-right: 30px;
     margin-left: 30px;
