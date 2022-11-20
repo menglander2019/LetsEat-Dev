@@ -38,8 +38,8 @@ function Restaurant() {
                                 <RestaurantCard jsonData={parseRestaurantData(TestData, restaurantIndex)} />
                                 <div className="buttons mt-4">
                                     <div className="d-flex flex-wrap justify-content-between">
-                                        <button type="button" className="btn tryAgain searchOption" onClick={nextRestaurant}>Try Again</button>
-                                        <button type="button" className="btn confirm searchOption" onClick={confirmRestaurant}>I'm Going!</button>
+                                        <button type="button" className="btn tryAgain flex-styling-50" onClick={nextRestaurant}>Try Again</button>
+                                        <button type="button" className="btn confirm flex-styling-50" onClick={confirmRestaurant}>I'm Going!</button>
                                     </div>
                                 </div>
                             </>

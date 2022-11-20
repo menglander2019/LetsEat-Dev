@@ -18,8 +18,8 @@ const RestaurantCard = ({ jsonData }) => {
                 <img className="restaurant-image w-100" src={image}></img>
             </div>
             <div className="restaurant-description-row mt-3">
-                <h2>{category}</h2>
-                <h2>{address}</h2>
+                <h2 className="colfax-regular">{category}</h2>
+                <h2 className="colfax-regular">{address}</h2>
             </div>
         </div>
     )

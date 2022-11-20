@@ -9,13 +9,22 @@
 @font-face { 
     font-family: SF-Pro-Bold; 
     src: url('./fonts/SF-Pro-Display-Bold.otf');
-}@font-face { 
+}
+@font-face { 
     font-family: Charter-Regular; 
     src: url('./fonts/charter-font/Charter-Regular.otf');
 }
 @font-face { 
     font-family: Charter-Bold; 
     src: url('./fonts/charter-font/Charter-Bold.otf');
+}
+@font-face { 
+    font-family: Colfax-Regular; 
+    src: url('./fonts/colfax-font/Colfax-Regular.otf');
+}
+@font-face { 
+    font-family: Colfax-Medium; 
+    src: url('./fonts/colfax-font/Colfax-Medium.otf');
 }
 
 html, body {
@@ -39,7 +48,7 @@ html, body {
 
 .home-banner {
     background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 100%);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 100%);
     min-height: 700px;
 }
 
@@ -50,12 +59,18 @@ h1 {
 
 h2 {
     font-family: 'SF-Pro-Regular';
-    color:#161616
+    color:#161616;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
 }
 
 h3 {
     font-family: 'SF-Pro-Regular';
     font-weight: 800;
+}
+
+a {
+    text-decoration: none;
 }
 
 p {
@@ -64,9 +79,26 @@ p {
 }
 
 label {
-    font-family: 'SF-Pro-Regular';
+    font-family: 'Colfax-Regular';
     font-size: 1.1rem;
     color: #4c4c4c;
+}
+
+.charter-regular {
+    font-family: 'Charter-Regular';
+    text-decoration: none;
+}
+
+.charter-medium {
+    font-family: 'Charter-Medium';
+}
+
+.colfax-regular {
+    font-family: 'Colfax-Regular';
+}
+
+.colfax-medium {
+    font-family: 'Colfax-Medium';
 }
 
 .color-theme {
@@ -152,12 +184,13 @@ label {
 }
 
 .btn.submit {
-    background-color: #87ae73;
-    border-color: #87ae73;
+    background-color: #87ae73 !important;
+    border-color: #87ae73 !important;
+    color: white !important;
     border-radius: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
-    font-size:1.1rem;
+    font-size:1.2rem;
 }
 
 .btn.submit:hover {
@@ -190,9 +223,9 @@ label {
 }
 
 .padding-style-1 {
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-left: 30px;
+    padding-top: 12px;
+    padding-right: 60px;
+    padding-left: 60px;
     padding-bottom: 12px;
 }
 
@@ -225,4 +258,9 @@ label {
     border-width: 0px !important;
     color: white !important;
     border-radius: 20px;
+}
+
+.home-description {
+    margin-top: 50px;
+    background: white;
 }

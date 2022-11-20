@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import HomeNavbar from '../components/HomeComponents/HomeNavbar';
+
+
 function CreateAccount() {
 
     const handleSubmitButton = () => {
@@ -11,11 +14,12 @@ function CreateAccount() {
     return (
         <>
         <div className="container-fluid">
+            <HomeNavbar />
             <div className="d-flex align-items-center justify-content-center h-100">
                 <div className="col-md-3">
                     <div className="d-flex flex-column">
                         <div className="row mt-4">
-                            <h3>Welcome to LetsEat!</h3>
+                            <h3 className="colfax-regular">Welcome to LetsEat!</h3>
                         </div>
                         <div className="row mt-2">
                             <div className="col-md-12">
@@ -36,7 +40,7 @@ function CreateAccount() {
                         </div>
                         <div className="row mt-4">
                             <div className="col-md-12">
-                                <p>
+                                <p className="colfax-regular">
                                     Don't have an account?
                                     <Link to="/createaccount">
                                         <span>Sign Up</span>

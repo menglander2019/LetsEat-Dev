@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { useEffect, useState } from 'react'
 
+import HomeNavbar from '../components/HomeComponents/HomeNavbar';
+
 function CreateAccount() {
 
     const handleSubmitButton = () => {
@@ -8,12 +10,12 @@ function CreateAccount() {
     }
 
     return (
-        <div className="container">
+        <div className="container-fluid">
+            <HomeNavbar />
             <div className="d-flex align-items-center justify-content-center h-100">
-                <div className="col-md-5 mt-4">
+                <div className="col-md-4 mt-4">
                     <div className="d-flex flex-column">
-                        <h1 className="display-3 text-center">LetsEat</h1>
-                        <h3 className="mt-3 text-center">Sign up for free to find your new favorite restaurant.</h3>
+                        <h3 className="colfax-regular text-center mt-3">Sign up for free to discover your new favorite restaurant.</h3>
                         <div className="question mt-3">
                             <label for="email">Enter your email</label>
                             <input type="text" id="email" className="input-box form-control w-100" placeholder="Enter an email"></input>
@@ -57,7 +59,7 @@ function CreateAccount() {
                             <div className="d-flex flex-row justify-content-center">                            
                                 <button 
                                     id="submit"
-                                    className="btn btn-primary submit w-50"
+                                    className="btn submit colfax-regular w-50"
                                     onClick={handleSubmitButton}>
                                     Sign Up
                                 </button>
