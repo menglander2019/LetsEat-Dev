@@ -3,21 +3,21 @@ import React, { Component } from 'react'
 import * as FaIcons from 'react-icons/fa'
 
 // Takes array of answer options and onClick function to generate buttons
-const ButtonCreate = ({ answerOptions, questionNumber, colNumber }) => {
+const ButtonCreate = ({ answerOptions, questionNumber, optionType }) => {
+    
+    let optionTypeText = optionType
 
-    let colSize = "col-md-" + colNumber
     return (
-        <div id="answerOptions" className="row">
+        <div id="answerOptions" className="d-flex flex-wrap justify-content-between">
             {answerOptions.map((answerOption, index) => (
-                <div className={colSize} key={answerOption}>
-                    <button 
-                        id={questionNumber + "-" + index}
-                        type="button" 
-                        className="btn answerOption w-100"
-                        value={answerOption}>
-                        {answerOption}
-                    </button>
-                </div>
+                <button 
+                    id={questionNumber + "-" + index}
+                    type="button" 
+                    className={"btn answerOption w-100 " + optionTypeText}
+                    key={answerOption}
+                    value={answerOption}>
+                    {answerOption}
+                </button>
             ))}
         </div>
     )

@@ -101,13 +101,21 @@ label {
     transform: scale(0.9);
 }
 
+.btn.searchOption {
+    flex: 0 0 48%;
+}
+
+.btn.profileOption {
+    flex: 0 0 32%;
+}
+
 .btn.answerOption {
     font-family: 'SF-Pro-Regular';
     font-size: 1.1rem;
     font-weight: 700;
     color: black;
     background-color: #ececec;
-    padding: 6%;
+    padding: 3%;
     border-radius: 8px;
     margin-top: 15px;
     transition: .2s ease-in-out 0s;
@@ -161,8 +169,7 @@ label {
 }
 
 .restaurant-image {
-    width: 800px;
-    height: 350px;
+    height: 400px;
     object-fit: cover;
     object-position: center;
     border-radius: 5%;

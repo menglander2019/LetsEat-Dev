@@ -107,37 +107,33 @@ function ProfileQuestions() {
     } else {
         return (
             <div className="container">
-                <div className="col-md-7 mt-4 mx-auto">
-                    <h1 className="display-3">Profile Questions</h1>
-                    <div id="profileQuestions">
-                        <div className="row mt-3">
-                            <div id="q1" className="question" onClick={answerClicked}>
-                                <label for="answerOptions">{questions.data[0].question}</label>
-                                <ButtonCreate answerOptions={questions.data[0].answerChoices} questionNumber={"q1"} colNumber={4} />
-                            </div>
-                        </div>
-                        <div className="row mt-3">
-                            <div id="q2" className="question" onClick={answerClicked}>
-                                <label for="answerOptions">{questions.data[1].question}</label>
-                                <ButtonCreate answerOptions={questions.data[1].answerChoices} questionNumber={"q2"} colNumber={4} />
-                            </div>
-                        </div>
-                        <div className="row mt-3">
-                            <div id="q3" className="question" onClick={answerClicked}>
-                                <label for="answerOptions">{questions.data[2].question}</label>
-                                <ButtonCreate answerOptions={questions.data[2].answerChoices} questionNumber={"q3"} colNumber={4} />
-                            </div>
-                        </div>
-                        <div className="row mt-4 mb-5">
-                            <div className="col-md-12 mx-auto">
-                                <IconContext.Provider value={{ color: "white", size: 15 }}>
-                                    <button 
-                                        id="submit" 
-                                        className="btn btn-primary submit w-100 inactive" 
-                                        onClick={submitSelections}>
-                                        <FaIcons.FaCheck />
-                                    </button>
-                                </IconContext.Provider>
+                <div className="d-flex align-items-center justify-content-center h-100">
+                    <div className="col-md-7 mt-4">
+                        <div id="profileQuestions">
+                            <div className="d-flex flex-column">
+                                <h1 className="display-3">Profile Questions</h1>
+                                <div id="q1" className="question mt-3" onClick={answerClicked}>
+                                        <label for="answerOptions">{questions.data[0].question}</label>
+                                        <ButtonCreate answerOptions={questions.data[0].answerChoices} questionNumber={"q1"} optionType="profileOption" />
+                                </div>
+                                <div id="q2" className="question mt-3" onClick={answerClicked}>
+                                    <label for="answerOptions">{questions.data[1].question}</label>
+                                    <ButtonCreate answerOptions={questions.data[1].answerChoices} questionNumber={"q2"} optionType="profileOption" />
+                                </div>
+                                <div id="q3" className="question mt-3" onClick={answerClicked}>
+                                    <label for="answerOptions">{questions.data[2].question}</label>
+                                    <ButtonCreate answerOptions={questions.data[2].answerChoices} questionNumber={"q3"} optionType="profileOption" />
+                                </div>
+                                <div className="d-flex justify-content-center mt-4 mb-5">
+                                    <IconContext.Provider value={{ color: "white", size: 20 }}>
+                                        <button 
+                                            id="submit" 
+                                            className="btn btn-primary submit w-100 inactive" 
+                                            onClick={submitSelections}>
+                                            <FaIcons.FaCheck />
+                                        </button>
+                                    </IconContext.Provider>
+                                </div>
                             </div>
                         </div>
                     </div>

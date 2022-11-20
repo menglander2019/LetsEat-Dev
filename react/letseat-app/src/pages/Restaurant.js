@@ -26,26 +26,26 @@ function Restaurant() {
 
     return (
         <div className="container">
-            <div className="h-100 d-flex align-items-center">
-                <div className="col-md-6 mt-4 mx-auto">
-                {   displayRestaurant == 0
-                    ? (
-                        <h1>Confirmed!</h1>
-                    ) :
-                    (
-                        <>
-                            <RestaurantCard jsonData={parseRestaurantData(TestData, restaurantIndex)} />
-                            <div className="row mt-4 mb-5">
-                                <div className="col-md-6 mx-auto">
-                                    <button type="button" className="btn tryAgain w-100" onClick={nextRestaurant}>Try Again</button>
+            <div className="d-flex align-items-center justify-content-center h-100">
+                <div className="col-md-7 mt-4">
+                    <div className="d-flex flex-column">
+                    {   displayRestaurant == 0
+                        ? (
+                            <h1>Confirmed!</h1>
+                        ) :
+                        (
+                            <>
+                                <RestaurantCard jsonData={parseRestaurantData(TestData, restaurantIndex)} />
+                                <div className="buttons mt-4">
+                                    <div className="d-flex flex-wrap justify-content-between">
+                                        <button type="button" className="btn tryAgain searchOption" onClick={nextRestaurant}>Try Again</button>
+                                        <button type="button" className="btn confirm searchOption" onClick={confirmRestaurant}>I'm Going!</button>
+                                    </div>
                                 </div>
-                                <div className="col-md-6 mx-auto">
-                                    <button type="button" className="btn confirm w-100" onClick={confirmRestaurant}>I'm Going!</button>
-                                </div>
-                            </div>
-                        </>
-                    )
-                }
+                            </>
+                        )
+                    }
+                    </div>
                 </div>
             </div>
         </div>
