@@ -11,38 +11,46 @@ function Home() {
                 <div className="home-banner">
                     <div className="navbar padding-style-1">
                         <div class="d-flex justify-content-start">
-                            <h2 className="white-theme">LetsEat</h2>
+                            <h2>LetsEat</h2>
                         </div>
                         <div class="d-flex justify-content-end">
                             <Link to="/login">
-                                <button className="btn btn-primary navbar-login">
+                                <button className="btn navbar-login">
                                     <span>Log In</span>
                                 </button>
                             </Link>
                             <Link to="/createaccount">
-                                <button className="btn btn-primary navbar-signup">
+                                <button className="btn navbar-signup">
                                     <span>Sign Up</span>
                                 </button>
                             </Link>
                         </div>
                     </div>
-                    <div className="d-flex flex-row justify-content-center mt-5">
-                        <div className="col-md-8">
-                            <h1 className="display-3 white-theme text-center">Discover your new favorite restaurant</h1>
-                        </div>
-                    </div>
-                    <div className="d-flex flex-row justify-content-center mt-4">
-                        <div className="col-md-4">
-                            <Link to="/login">
-                                <button 
-                                    id="submit"
-                                    className="btn btn-primary home-large-login w-100">
-                                    Get Started
-                                </button>
-                            </Link>
+                    <div className="d-flex align-items-center justify-content-center">
+                        <div className="col-md-6 mt-5">
+                            <div className="home-main-block">
+                                <div className="d-flex flex-column">
+                                    <p className="display-5 text-center">Discover your new favorite restaurant nearby</p>
+                                    <div className="d-flex justify-content-center">
+                                        <p className="text-center flex-styling-75">
+                                            Our machine learning powered algorithm will help you find new restaurants that match your unique preferences
+                                        </p>
+                                    </div>
+                                    <div className="d-flex justify-content-center mt-4">
+                                        <Link to="/login" className="flex-styling-33">
+                                            <button 
+                                                id="submit"
+                                                className="btn home-large-login w-100">
+                                                Get Started
+                                            </button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <hr />
                 <div className="home-description padding-style-1 mt-3">
                     <h2>What is LetsEat?</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>

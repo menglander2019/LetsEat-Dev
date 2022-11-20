@@ -9,6 +9,13 @@
 @font-face { 
     font-family: SF-Pro-Bold; 
     src: url('./fonts/SF-Pro-Display-Bold.otf');
+}@font-face { 
+    font-family: Charter-Regular; 
+    src: url('./fonts/charter-font/Charter-Regular.otf');
+}
+@font-face { 
+    font-family: Charter-Bold; 
+    src: url('./fonts/charter-font/Charter-Bold.otf');
 }
 
 html, body {
@@ -27,12 +34,13 @@ html, body {
     width: 100%;
     padding-left: 0px;
     padding-right: 0px;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .home-banner {
-    background-color: #6d8a5e;
-    min-height: 600px;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 100%);
+    min-height: 700px;
 }
 
 h1 {
@@ -51,7 +59,7 @@ h3 {
 }
 
 p {
-    font-family: 'SF-Pro-Regular';
+    font-family: 'Charter-Regular';
     font-size: 1.1rem;
 }
 
@@ -87,18 +95,20 @@ label {
 }
 
 .btn.home-large-login {
-    background-color: white !important;
-    color: black !important;
-    border-width: 0px;
+    background-color: black !important;
+    color: white !important;
     border-radius: 30px;
-    padding-top: 11px;
-    padding-bottom: 11px;
     font-size:1.2rem;
+    padding: 3%;
     transition: all 0.1s ease-in-out;
 }
 
 .btn.home-large-login:active {
     transform: scale(0.9);
+}
+
+.flex-styling-75 {
+    flex: 0 0 73%;
 }
 
 .flex-styling-50 {
@@ -107,6 +117,10 @@ label {
 
 .flex-styling-33 {
     flex: 0 0 32%;
+}
+
+.flex-styling-25 {
+    flex: 0 0 23%;
 }
 
 .btn.answerOption {
@@ -176,9 +190,25 @@ label {
 }
 
 .padding-style-1 {
-    padding-top: 20px;
-    margin-right: 30px;
-    margin-left: 30px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 30px;
+    padding-bottom: 12px;
+}
+
+.padding-style-2 {
+    padding-top: 5%;
+    padding-left: 10%;
+    padding-right: 4%;
+    padding-bottom: 5%;
+}
+
+.home-main-block {
+    padding-top: 10%;
+}
+
+.navbar {
+    background-color: white;
 }
 
 .navbar-login {
@@ -187,11 +217,12 @@ label {
     border-width: 0px;
     color: black !important;
     text-align: right;
+    
 }
 
 .navbar-signup {
-    background-color: white !important;
+    background-color: black !important;
     border-width: 0px !important;
-    color: black !important;
+    color: white !important;
     border-radius: 20px;
 }
