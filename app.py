@@ -92,7 +92,7 @@ async def submit_search(request: Request):
     suggestions_list = get_predictions(id, occasion, num_people, meal, price_ranges)
     return {"message": suggestions_list}
 
-@app.get("/recommendation")
-def recommendation():
+@app.get("/getRecommendations")
+def getRecommendations():
     return {"message": "recommendation"}
 
