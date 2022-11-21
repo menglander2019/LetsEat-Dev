@@ -1,4 +1,4 @@
-import YelpApiCalls
+from . import YelpApiCalls
 import sqlite3
 from sqlite3 import Error
 from selenium import webdriver
@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import calendar
 import time
 import random
@@ -163,7 +164,8 @@ def get_reviews(yelpUrl, rest_id):
                 conn.commit()
                 conn.close() 
     
-    printDB()
+    
+    #printDB()
     
 #print database, FOR TESTING
 def printDB():
@@ -210,8 +212,6 @@ def checkExistance(name):
     if(result == []):
         return False
     return True
-
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 def SentimentAnalysis(text):
     analyzer = SentimentIntensityAnalyzer()

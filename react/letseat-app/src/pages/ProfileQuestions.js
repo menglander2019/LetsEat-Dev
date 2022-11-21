@@ -93,7 +93,8 @@ function ProfileQuestions() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(questions)
-        })        
+        })
+        console.log(response)        
     }
 
     // Check if questions data is loaded in yet

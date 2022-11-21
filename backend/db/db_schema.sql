@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS userPreferences;
-DROP TABLE IF EXISTS userProfile;
+DROP TABLE IF EXISTS userProfiles;
 
-CREATE TABLE userProfile
+CREATE TABLE userProfiles
 (
     userID int(8) not null,
     email varchar(15) not null,
@@ -18,6 +18,6 @@ CREATE TABLE userPreferences
     positivePreferences varchar(250) not null,
     negativePreferences varchar(250) not null,
     restrictions varchar(250) not null,
-    foreign key (userID) references userProfile(userID),
+    foreign key (userID) references userProfiles(userID),
     primary key (userID)
 );

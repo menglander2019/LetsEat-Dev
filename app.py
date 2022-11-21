@@ -1,7 +1,8 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from backend.db.db_management import createUser
+from backend.db.db_management import *
 from backend.questions_data import *
+from .restaurant_suggester import get_predictions
 
 app = FastAPI()
 
@@ -34,13 +35,17 @@ def login():
 def signup():
     return {"message": "signup page"}
 
-@app.post("/signup/email/{email}/pw/{pw}/name/{name}/dob/{dob}/gender/{gender}/pos/{pos}/neg/{neg}/restr/{restr}")
-def signup(email, pw, name, dob, gender, pos, neg, restr):
-    return createUser(email, pw, name, dob, gender, pos, neg, restr)
-
-@app.get("/createprofile")
-def createprofile():
-    return {"message": "createprofile"}
+@app.post("/createprofile")
+async def createprofile(request: Request):
+    account_data = await request.json()
+    #print(account_data["data"])
+    email = account_data["data"][0]["selectedChoices"][0]
+    password = account_data["data"][1]["selectedChoices"][0]
+    name = account_data["data"][2]["selectedChoices"][0]
+    dob = account_data["data"][3]["selectedChoices"][0]
+    gender = account_data["data"][4]["selectedChoices"][0]
+    createUser(email, password, name, dob, gender)
+    return {"message": "account created"}
 
 @app.get("/questionnaire/profile/")
 def questionnaire_profile():
@@ -52,13 +57,28 @@ def questionnaire_search():
 
 @app.post("/submit/profile/")
 async def submit_questionnaire(request: Request):
-    returnData = await request.json()
+    profile_data = await request.json()
+    # extracts the positives, restrictions, and negatives from the JSON sent from REACT
+    positives = profile_data["data"][0]["selectedChoices"]
+    restrictions = profile_data["data"][1]["selectedChoices"]
+    negatives = profile_data["data"][2]["selectedChoices"]
+    updatePositives("test@test.com", "italian")
+    updateNegatives("test@test.com", "chinese")
+    updateRestrictions("test@test.com", "vegetarian")
     return {"message": "submitted"}
 
 @app.post("/submit/search/")
 async def submit_search(request: Request):
-    returnData = await request.json()
-    return {"message": "submitted"}
+    search_data = await request.json()
+    # extracts all the search criteria from the selected answers
+    id = 1234 # placeholder, need to get ID here
+    occasion = search_data["data"][0]["selectedChoices"]
+    num_people = search_data["data"][1]["selectedChoices"]
+    meal = search_data["data"][2]["selectedChoices"]
+    price_ranges = search_data["data"][3]["selectedChoices"]
+    distance_settings = search_data["data"][4]["selectedChoices"]
+    suggestions_list = get_predictions(id, occasion, num_people, meal, price_ranges)
+    return {"message": suggestions_list}
 
 @app.get("/recommendation")
 def recommendation():
