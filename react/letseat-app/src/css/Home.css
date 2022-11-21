@@ -109,6 +109,10 @@ label {
     color: white;
 }
 
+.font-size-md {
+    font-size: 1.2rem;
+}
+
 .input-box {
     background-color: #ececec;
     border-color: #ececec;

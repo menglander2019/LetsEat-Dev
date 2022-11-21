@@ -11,8 +11,8 @@ const HomeBanner = () => {
                     <div className="home-main-block">
                         <div className="d-flex flex-column">
                             <p className="display-4 text-center charter-regular">Discover your new favorite restaurant nearby.</p>
-                            <div className="d-flex justify-content-center">
-                                <p className="text-center colfax-regular flex-styling-75">
+                            <div className="d-flex justify-content-center mt-3">
+                                <p className="text-center font-size-md colfax-regular flex-styling-75">
                                     Our machine learning powered algorithm will help you find new restaurants that match your unique preferences. 
                                 </p>
                             </div>
