@@ -27,6 +27,10 @@ def home():
 def checkLogin():
     return {"data": 0}
 
+@app.get("/checkLoginPositive")
+def checkLoginPositive():
+    return {"data": 1}
+
 @app.get("/about")
 def about():
     return {"message": "about"}
