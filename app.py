@@ -23,6 +23,10 @@ app.add_middleware(
 def home():
     return {"message": "home"}
 
+@app.get("/checkLogin")
+def checkLogin():
+    return {"data": 0}
+
 @app.get("/about")
 def about():
     return {"message": "about"}
