@@ -73,3 +73,14 @@ def updateRestrictions(email, restrictions):
 
     mydb.commit()
     c.close()
+
+def checkUser(email, password):
+    c = mydb.cursor()
+    # finds a user's ID given their email and password
+    c.execute('SELECT userID FROM userProfiles WHERE email = %s AND password = %s', (email, password))
+
+    result = c.fetchone()
+    # if there is no result, then the user doesn't exist and False is returned, True is returned otherwise
+    if result is None:
+        return 0
+    return 1

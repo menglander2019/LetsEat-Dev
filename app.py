@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from backend.db.db_management import *
 from backend.questions_data import *
-from .restaurant_suggester import get_predictions
+from restaurant_suggester import get_predictions
 
 app = FastAPI()
 
@@ -24,8 +24,12 @@ def home():
     return {"message": "home"}
 
 @app.get("/checkLogin")
-def checkLogin():
-    return {"data": 0}
+async def checkLogin(request: Request):
+    login_data = await request.json()
+    email = login_data["data"][0]["selectedChoices"][0]
+    password = login_data["data"][1]["selectedChoices"][0]
+    response = checkUser(email, password)
+    return {"data": response}
 
 @app.get("/testCheckLogin")
 def testCheckLogin():
@@ -50,7 +54,6 @@ def signup():
 @app.post("/createprofile")
 async def createprofile(request: Request):
     account_data = await request.json()
-    #print(account_data["data"])
     email = account_data["data"][0]["selectedChoices"][0]
     password = account_data["data"][1]["selectedChoices"][0]
     name = account_data["data"][2]["selectedChoices"][0]
