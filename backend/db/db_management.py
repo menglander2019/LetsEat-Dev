@@ -82,5 +82,5 @@ def checkUser(email, password):
     result = c.fetchone()
     # if there is no result, then the user doesn't exist and False is returned, True is returned otherwise
     if result is None:
-        return 0
-    return 1
+        return [0, 0]
+    return [1, result[0]]
