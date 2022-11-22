@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from feature_engine.encoding import DecisionTreeEncoder
 
 
-data_path = '/Users/maxenglander/Documents/2022-23_School_Shit/FALL/SD/LetsEat-Dev/random_data.csv'
+data_path = 'backend/data_generation/random_data.csv'
 raw_data = pd.read_csv(data_path)
 
 le = LabelEncoder()
