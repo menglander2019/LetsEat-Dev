@@ -52,3 +52,51 @@ search_questions = [
         "selectedChoices": []
     }
 ]
+
+createprofile_questions = [
+    {
+        "id": "q1",
+        "question": "Enter your email",
+        "answerChoices": [],
+        "selectedChoices": []
+    },
+    {
+        "id": "q2",
+        "question": "Create a password",
+        "answerChoices": [],
+        "selectedChoices": []
+    },
+    {
+        "id": "q3",
+        "question": "What should we call you?",
+        "answerChoices": [],
+        "selectedChoices": []
+    },
+    {
+        "id": "q4",
+        "question": "Enter your date of birth",
+        "answerChoices": [],
+        "selectedChoices": []
+    },
+    {
+        "id": "q5",
+        "question": "What is your gender?",
+        "answerChoices": [],
+        "selectedChoices": []
+    }
+]
+
+login_questions = [
+    {
+        "id": "q1",
+        "question": "Enter your email",
+        "answerChoices": [],
+        "selectedChoices": []
+    },
+    {
+        "id": "q2",
+        "question": "Enter your password",
+        "answerChoices": [],
+        "selectedChoices": []
+    }
+]

@@ -8,7 +8,7 @@ import { IconContext } from 'react-icons'
 
 import PreviousNextButton from '../components/PreviousNextButton'
 import ButtonCreate from '../components/ButtonCreate'
-import { renderMatches } from 'react-router-dom'
+import { renderMatches, Navigate } from 'react-router-dom'
 
 function ProfileQuestions() {
 
@@ -92,13 +92,15 @@ function ProfileQuestions() {
         const response = fetch("http://127.0.0.1:8000/submit/profile/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
+            mode: 'no-cors',
             body: JSON.stringify(questions)
         })
         console.log(response)        
     }
 
-    // Check if questions data is loaded in yet
-    if (questions.length == 0) {
+    if (localStorage.getItem("token") == null) {
+        return ( <Navigate to="/" /> )
+    } else if (questions.length == 0) {
         return(
             <div className="container">
                 <div className="col-md-7 mt-4 mx-auto">

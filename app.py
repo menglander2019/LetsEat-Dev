@@ -29,13 +29,22 @@ async def checkLogin(request: Request):
         request.session["id"] = response[1]
     return {"data": response[0]}
 
-@app.get("/testCheckLogin")
+@app.post("/testCheckLogin")
 def testCheckLogin():
-    return {"data": 0}
+    return [ 
+        {
+            "status": 0,
+            "token": None
+        }
+    ]
 
-@app.get("/checkLoginPositive")
-def testCheckLoginPositive():
-    return {"data": 1}
+@app.post("/checkLoginPositive")
+async def testCheckLoginPositive(request: Request):
+    account_data = await request.json()
+    return {
+        "status": 1,
+        "token": "#kdudhn23232nds@3"
+    }
 
 @app.post("/createprofile")
 async def createprofile(request: Request):
@@ -46,11 +55,19 @@ async def createprofile(request: Request):
     dob = account_data["data"][3]["selectedChoices"][0]
     gender = account_data["data"][4]["selectedChoices"][0]
     createUser(email, password, name, dob, gender)
-    return {"message": "account created"}
+    return {"message": "Profile created!"}
+
+@app.get("/questionnaire/login/")
+def questionnaire_login():
+    return {"data": login_questions}
 
 @app.get("/questionnaire/profile/")
 def questionnaire_profile():
     return {"data": profile_questions}
+
+@app.get("/questionnaire/createprofile/")
+def questionnaire_createProfile():
+    return {"data": createprofile_questions}
 
 @app.get("/questionnaire/search/")
 def questionnaire_search():
@@ -72,15 +89,16 @@ async def submit_questionnaire(request: Request):
 async def submit_search(request: Request):
     search_data = await request.json()
     # extracts all the search criteria from the selected answers
-    id = request.session["id"]
-    print(id)
+    #id = request.session["id"]
+    #print(id)
     occasion = search_data["data"][0]["selectedChoices"]
     num_people = search_data["data"][1]["selectedChoices"]
     meal = search_data["data"][2]["selectedChoices"]
     price_ranges = search_data["data"][3]["selectedChoices"]
     distance_settings = search_data["data"][4]["selectedChoices"]
-    suggestions_list = get_predictions(id, occasion, num_people, meal, price_ranges)
-    return {"message": suggestions_list}
+    #suggestions_list = get_predictions(id, occasion, num_people, meal, price_ranges)
+    #return {"message": suggestions_list}
+    return {"message": "temp"}
 
 @app.get("/getRecommendations")
 def getRecommendations():

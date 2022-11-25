@@ -11,6 +11,7 @@ def get_db():
 
 # Database: Users
 def createUser(email, pw, name, dob, gender):
+
     id = int(random.random() * 100000000)
 
     c = mydb.cursor()
