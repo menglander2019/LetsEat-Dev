@@ -145,6 +145,8 @@ def get_predictions(id, occasion, num_people, meal, price_ranges):
     dec_tree_info = train_dec_tree()
     dec_tree = dec_tree_info[0]
     encoder = dec_tree_info[1]
+
+    print("importance: " + str(dec_tree.feature_importances_))
     
     # sets up database variables
     mydb = get_db()

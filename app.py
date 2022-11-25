@@ -18,16 +18,22 @@ user_middlewares.append(Middleware(SessionMiddleware, secret_key=os.environ.get(
 
 app = FastAPI(middleware=user_middlewares)
 
-@app.get("/checkLogin")
+@app.post("/checkLogin")
 async def checkLogin(request: Request):
     login_data = await request.json()
     email = login_data["data"][0]["selectedChoices"][0]
     password = login_data["data"][1]["selectedChoices"][0]
+    print(email)
+    print(password)
     # returns the user's ID if it exists and a TRUE/FALSE value (1/0)
     response = checkUser(email, password)
+    print(response)
     if response[0] == 1:
         request.session["id"] = response[1]
-    return {"data": response[0]}
+    return {
+        "status": response[0],
+        "token": "sefkjsdlfj"
+    }
 
 @app.post("/testCheckLogin")
 def testCheckLogin():
@@ -89,8 +95,8 @@ async def submit_questionnaire(request: Request):
 async def submit_search(request: Request):
     search_data = await request.json()
     # extracts all the search criteria from the selected answers
-    #id = request.session["id"]
-    #print(id)
+    id = request.session["id"]
+    print(id)
     occasion = search_data["data"][0]["selectedChoices"]
     num_people = search_data["data"][1]["selectedChoices"]
     meal = search_data["data"][2]["selectedChoices"]
@@ -99,6 +105,11 @@ async def submit_search(request: Request):
     #suggestions_list = get_predictions(id, occasion, num_people, meal, price_ranges)
     #return {"message": suggestions_list}
     return {"message": "temp"}
+
+@app.get("/isNewUser")
+async def is_new_user(request: Request):
+    id = request.session["id"]
+    return {"status": 0} # 1 is new user, 0 is existing
 
 @app.get("/getRecommendations")
 def getRecommendations():

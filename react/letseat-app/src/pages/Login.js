@@ -51,19 +51,25 @@ function CreateAccount() {
         return checkStatus
     }
     const submitSelections = async (e) => {
+        e.preventDefault()
         if (checkInputSubmissions() == 1) {
             const requestOption = {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(questions)
             }
-            const response = await fetch("http://127.0.0.1:8000/checkLoginPositive", requestOption)
+            const response = await fetch("http://127.0.0.1:8000/checkLogin", requestOption)
             const data = await response.json()
+            console.log(data.status)
+            console.log(data.token)
             
             if (data.status == 1) {
                 console.log("Logged In Success")
                 localStorage.setItem("token", data.token)
                 console.log(localStorage.getItem("token"))
+            } else {
+                // Temporary invalid code
+                console.log("Logged In Failed")
             }
         } else {
             // Temporary invalid code
