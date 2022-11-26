@@ -2,14 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 // Takes in JSON data of a restaurant and parses the data
-const DashboardBanner = () => {
-
-    const searchButtonClicked = async (e) => {
-        e.preventDefault()
-        const response = await fetch("http://127.0.0.1:8000/isNewUser/")
-        const message = await response.json()
-        console.log(message)
-    }
+const DashboardBanner = ({searchFunction}) => {
 
     return (
         <div className="home-banner">
@@ -28,7 +21,7 @@ const DashboardBanner = () => {
                                     <button 
                                         id="submit"
                                         className="btn home-large-login colfax-regular w-100"
-                                        onClick={searchButtonClicked}>
+                                        onClick={searchFunction}>
                                         Search
                                     </button>
                                 </div>

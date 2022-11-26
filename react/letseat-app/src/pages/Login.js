@@ -63,7 +63,7 @@ function CreateAccount() {
             const requestOption = {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(questions)
+                body: JSON.stringify(questions),
             }
             const response = await fetch("http://127.0.0.1:8000/checkLogin", requestOption)
             const data = await response.json()

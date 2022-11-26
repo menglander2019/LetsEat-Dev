@@ -22,11 +22,21 @@ function Dashboard() {
         }
     }
 
+    const searchButtonClicked = async (e) => {
+        e.preventDefault()
+        const response = await fetch("http://127.0.0.1:8000/isNewUser/", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+        })
+        const message = await response.json()
+        console.log(message)
+    }
+
     return (
         <div className="container-fluid">
             <div className="d-flex flex-column">
                 <DashboardNavbar />
-                <DashboardBanner />
+                <DashboardBanner searchFunction={searchButtonClicked}/>
             </div>
         </div>
     );
