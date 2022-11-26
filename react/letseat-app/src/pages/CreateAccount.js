@@ -105,7 +105,6 @@ function CreateAccount() {
         }
     }
 
-
     return (
         <div className="container-fluid">
             <HomeNavbar />

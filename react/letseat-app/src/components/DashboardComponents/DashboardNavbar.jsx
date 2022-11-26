@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Takes in JSON data of a restaurant and parses the data
 const DashboardNavbar = () => {
+    const navigate = useNavigate()
 
     const logOut = () => {
         localStorage.removeItem("token")
+        navigate("/")
     }
 
     return (

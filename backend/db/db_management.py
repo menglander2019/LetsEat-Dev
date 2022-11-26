@@ -4,7 +4,7 @@ import random
 mydb = mysql.connector.connect(host='localhost',
                                         database='Users',
                                         user='root',
-                                        password='196468maX!')
+                                        password='$outhKorea23')
 
 def get_db():
     return mydb

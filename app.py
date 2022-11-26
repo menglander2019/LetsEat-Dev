@@ -20,16 +20,15 @@ app = FastAPI(middleware=user_middlewares)
 
 @app.post("/checkLogin")
 async def checkLogin(request: Request):
+    print(request)
     login_data = await request.json()
     email = login_data["data"][0]["selectedChoices"][0]
     password = login_data["data"][1]["selectedChoices"][0]
-    print(email)
-    print(password)
     # returns the user's ID if it exists and a TRUE/FALSE value (1/0)
     response = checkUser(email, password)
-    print(response)
     if response[0] == 1:
         request.session["id"] = response[1]
+
     return {
         "status": response[0],
         "token": "sefkjsdlfj"
@@ -106,7 +105,7 @@ async def submit_search(request: Request):
     #return {"message": suggestions_list}
     return {"message": "temp"}
 
-@app.get("/isNewUser")
+@app.get("/isNewUser/")
 async def is_new_user(request: Request):
     id = request.session["id"]
     return {"status": 0} # 1 is new user, 0 is existing

@@ -4,6 +4,13 @@ import { Link } from 'react-router-dom'
 // Takes in JSON data of a restaurant and parses the data
 const DashboardBanner = () => {
 
+    const searchButtonClicked = async (e) => {
+        e.preventDefault()
+        const response = await fetch("http://127.0.0.1:8000/isNewUser/")
+        const message = await response.json()
+        console.log(message)
+    }
+
     return (
         <div className="home-banner">
             <div className="d-flex align-items-center justify-content-center">
@@ -17,13 +24,14 @@ const DashboardBanner = () => {
                                 </p>
                             </div>
                             <div className="d-flex justify-content-center mt-4">
-                                <Link to="/login" className="flex-styling-33">
+                                <div className="flex-styling-33">
                                     <button 
                                         id="submit"
-                                        className="btn home-large-login colfax-regular w-100">
+                                        className="btn home-large-login colfax-regular w-100"
+                                        onClick={searchButtonClicked}>
                                         Search
                                     </button>
-                                </Link>
+                                </div>
                             </div>
                         </div>
                     </div>

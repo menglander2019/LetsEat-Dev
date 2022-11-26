@@ -1,19 +1,26 @@
 import React, { Component } from 'react'
 import { useEffect, useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 
 import HomeNavbar from '../components/HomeComponents/HomeNavbar';
 import SearchQuestions from './SearchQuestions';
 
 
 function CreateAccount() {
-
+    const navigate = useNavigate()
     const [ questions, setQuestions ] = useState([])
 
     useEffect(() => {
+        checkCredentials()
         fetchQuestions()
     }, [])
 
+    // Checks user credentials
+    const checkCredentials = async () => {
+        if (localStorage.getItem("token") != null) {
+            navigate("/dashboard")
+        }
+    }
     // Calls FastAPI to pull questions
     const fetchQuestions = async () => {
         const response = await fetch("http://127.0.0.1:8000/questionnaire/login/")
@@ -60,74 +67,69 @@ function CreateAccount() {
             }
             const response = await fetch("http://127.0.0.1:8000/checkLogin", requestOption)
             const data = await response.json()
-            console.log(data.status)
-            console.log(data.token)
-            
+            //console.log(data.token)
+            console.log(data)
             if (data.status == 1) {
                 console.log("Logged In Success")
                 localStorage.setItem("token", data.token)
-                console.log(localStorage.getItem("token"))
+                navigate("/dashboard")
             } else {
                 // Temporary invalid code
                 console.log("Logged In Failed")
             }
         } else {
             // Temporary invalid code
-            console.log("Logged In Failed")
+            console.log("Input Field Error")
         }
 
     }
-
-    if (localStorage.getItem("token") != null) {
-        console.log("Inside")
-        return ( <Navigate to="/dashboard" /> )
-    } else {
-        return (
-            <>
-            <div className="container-fluid">
-                <HomeNavbar />
-                <div className="d-flex align-items-center justify-content-center h-100">
-                    <div className="col-md-3">
-                        <form onSubmit={submitSelections}>
-                            <div className="d-flex flex-column">
-                                <div className="row mt-4">
-                                    <h3 className="colfax-regular">Welcome to LetsEat!</h3>
-                                </div>
-                                <div id="q1" className="question input-group mt-2" onChange={textSubmission}>                            
-                                    <label for="email">Log In</label>
-                                    <input type="text" id="email" className="form-control login-box w-100 mt-3" placeholder="Enter email" required></input>          
-                                </div>
-                                <div id="q2" className="question mt-2" onChange={textSubmission}>                            
-                                    <input type="text" id="password" className="login-box form-control w-100 mt-3" placeholder="Enter password" required></input>
-                                </div>
-                                <div className="row mt-4">
-                                    <div className="col-md-12">
-                                        <button 
-                                            id="submit"
-                                            className="btn btn-primary submit w-100"
-                                            type="submit">
-                                            Log In
-                                        </button>
-                                    </div>
-                                </div>
-                                <div className="row mt-4">
-                                    <div className="col-md-12">
-                                        <p className="colfax-regular">
-                                            Don't have an account?
-                                            <Link to="/createaccount">
-                                                <span>Sign Up</span>
-                                            </Link>
-                                        </p>
-                                    </div>
+    
+    if (questions.length == 0) {
+        return ( <h1>Loading</h1>)
+    }
+    return (
+        <div className="container-fluid">
+            <HomeNavbar />
+            <div className="d-flex align-items-center justify-content-center h-100">
+                <div className="col-md-3">
+                    <form onSubmit={submitSelections}>
+                        <div className="d-flex flex-column">
+                            <div className="row mt-4">
+                                <h3 className="colfax-regular">Welcome to LetsEat!</h3>
+                            </div>
+                            <div id="q1" className="question input-group mt-2" onChange={textSubmission}>                            
+                                <label for="email">Log In</label>
+                                <input type="text" id="email" className="form-control login-box w-100 mt-3" placeholder="Enter email" required></input>          
+                            </div>
+                            <div id="q2" className="question mt-2" onChange={textSubmission}>                            
+                                <input type="text" id="password" className="login-box form-control w-100 mt-3" placeholder="Enter password" required></input>
+                            </div>
+                            <div className="row mt-4">
+                                <div className="col-md-12">
+                                    <button 
+                                        id="submit"
+                                        className="btn btn-primary submit w-100"
+                                        type="submit">
+                                        Log In
+                                    </button>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                            <div className="row mt-4">
+                                <div className="col-md-12">
+                                    <p className="colfax-regular">
+                                        Don't have an account?
+                                        <Link to="/createaccount">
+                                            <span>Sign Up</span>
+                                        </Link>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            </>
-        );
-    }
+        </div>
+    );
 }
   
 
