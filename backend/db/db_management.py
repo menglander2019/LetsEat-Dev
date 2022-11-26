@@ -85,3 +85,15 @@ def checkUser(email, password):
     if result is None:
         return [0, 0]
     return [1, result[0]]
+
+def checkNewUser(id):
+    c = mydb.cursor()
+    # finds a user's preferences given their ID
+    c.execute('SELECT positivePreferences, negativePreferences, restrictions FROM userPreferences WHERE userID = %s', (id,))
+
+    result = c.fetchone()
+    # returns 1 if the user has no preferences set yet
+    if result[0] == '' and result[1] == '' and result[2] == '':
+        return 1
+    # returns 0 if the user has any of their preferences set up
+    return 0

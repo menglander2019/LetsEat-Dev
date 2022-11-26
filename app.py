@@ -26,13 +26,20 @@ async def checkLogin(request: Request):
     password = login_data["data"][1]["selectedChoices"][0]
     # returns the user's ID if it exists and a TRUE/FALSE value (1/0)
     response = checkUser(email, password)
+    token = ""
+    print(response)
     if response[0] == 1:
         request.session["id"] = response[1]
-
+        token = "fjdsfkjasdflkjsl"
     return {
         "status": response[0],
-        "token": "sefkjsdlfj"
+        "token": token
     }
+
+@app.post("/logout")
+async def logout(request: Request):
+    request.session.clear()
+    return {"status": "cleared"}
 
 @app.post("/testCheckLogin")
 def testCheckLogin():
@@ -108,7 +115,9 @@ async def submit_search(request: Request):
 @app.get("/isNewUser/")
 async def is_new_user(request: Request):
     id = request.session["id"]
-    return {"status": 0} # 1 is new user, 0 is existing
+    print(id)
+    res = checkNewUser(id)
+    return {"status": res} # 1 is new user, 0 is existing
 
 @app.get("/getRecommendations")
 def getRecommendations():

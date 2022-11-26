@@ -7,7 +7,7 @@ from datetime import datetime
 import numpy
 import pandas as pd
 import copy
-import operator
+import time
 
 def build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions):
     # gets the current day
@@ -35,8 +35,12 @@ def build_user_features(occasion, num_people, meal, price_ranges, positives, neg
     }
     # iterate through positives and set any matching to 1, same with negatives but -1
     for positive in positives:
+        if positive not in rest_preferences:
+            raise Exception("ERROR: Invalid cuisine preference for given user")
         rest_preferences[positive] = 1
     for negative in negatives:
+        if negative not in rest_preferences:
+            raise Exception("ERROR: Invalid cuisine preference for given user")
         rest_preferences[negative] = -1
     # converts the restauraunt preferences to a list
     rest_preferences = list(rest_preferences.values())
@@ -56,6 +60,8 @@ def build_user_features(occasion, num_people, meal, price_ranges, positives, neg
     }
     # iterates through the restrictions the user chose and assigns a value of 1 to it
     for restriction in restrictions:
+        if restriction not in restriction_settings:
+            raise Exception("ERROR: Invalid dietary restriction for given user")
         restriction_settings[restriction] = 1
     # converts the restrictions settings into a list
     restriction_settings = list(restriction_settings.values())
@@ -142,7 +148,10 @@ def make_prediction(restaurant, user_features, encoder, dec_tree):
 
 def get_predictions(id, occasion, num_people, meal, price_ranges):
     # trains the decision tree and returns the tree along with the proper encoder
+    start_time = time.time()
     dec_tree_info = train_dec_tree()
+    print("Training time: ", time.time() - start_time)
+
     dec_tree = dec_tree_info[0]
     encoder = dec_tree_info[1]
 
@@ -176,4 +185,4 @@ def get_predictions(id, occasion, num_people, meal, price_ranges):
     return suggestions_sorted
 
 if __name__ == "__main__":
-    get_predictions(48017772, "date", 2, "dinner", [3, 4])
+    get_predictions(48017772, "date", 2, "dinner", [4])
