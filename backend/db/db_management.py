@@ -1,10 +1,11 @@
 import mysql.connector
 import random
+import os
 
 mydb = mysql.connector.connect(host='localhost',
                                         database='Users',
                                         user='root',
-                                        password='$outhKorea23')
+                                        password=os.environ.get('db_password'))
 
 def get_db():
     return mydb

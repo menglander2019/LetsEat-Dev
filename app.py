@@ -6,6 +6,7 @@ from backend.db.db_management import *
 from backend.questions_data import *
 from restaurant_suggester import get_predictions
 import os
+import jwt
 
 origins = [
     "http://localhost:3000",
@@ -27,10 +28,10 @@ async def checkLogin(request: Request):
     # returns the user's ID if it exists and a TRUE/FALSE value (1/0)
     response = checkUser(email, password)
     token = ""
-    print(response)
+    # if the response is 1 (meaning a valid user login), then set up the session data and return a token
     if response[0] == 1:
         request.session["id"] = response[1]
-        token = "fjdsfkjasdflkjsl"
+        token = jwt.encode(login_data, "secret", algorithm="HS256")
     return {
         "status": response[0],
         "token": token
@@ -91,17 +92,18 @@ async def submit_search(request: Request):
     meal = search_data["data"][2]["selectedChoices"]
     price_ranges = search_data["data"][3]["selectedChoices"]
     distance_settings = search_data["data"][4]["selectedChoices"]
-    #suggestions_list = get_predictions(id, occasion, num_people, meal, price_ranges)
-    #return {"message": suggestions_list}
-    return {"message": "temp"}
+    suggestions_list = get_predictions(id, occasion, num_people, meal, price_ranges)
+    request.session["rest_list"] = suggestions_list
+    return {
+        "status": 200
+    }
 
 @app.get("/isNewUser/")
 async def is_new_user(request: Request):
     id = request.session["id"]
-    print(id)
     res = checkNewUser(id)
     return {"status": res} # 1 is new user, 0 is existing
 
 @app.get("/getRecommendations")
-def getRecommendations():
-    return {"message": "recommendation"}
+def getRecommendations(request: Request):
+    return {"restaurants": request.session["rest_list"]}
