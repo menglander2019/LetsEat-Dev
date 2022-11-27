@@ -23,9 +23,13 @@ function CreateAccount() {
     }
     // Calls FastAPI to pull questions
     const fetchQuestions = async () => {
-        const response = await fetch("http://127.0.0.1:8000/questionnaire/login/")
+        const requestOption = {
+            method: "GET",
+            credentials: "include",
+            headers: { "Content-Type": "application/json"}
+        }
+        const response = await fetch("http://localhost:8000/questionnaire/login/", requestOption)
         const message = await response.json()
-        console.log(message)
         setQuestions(message)
     }
 
@@ -64,15 +68,16 @@ function CreateAccount() {
             const requestOption = {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                credentials: "include",
                 body: JSON.stringify(questions),
             }
-            const response = await fetch("http://127.0.0.1:8000/checkLogin", requestOption)
+            const response = await fetch("http://localhost:8000/checkLogin", requestOption)
             const data = await response.json()
 
             if (data.status == 1) {
                 console.log("Logged In Success")
                 localStorage.setItem("token", data.token)
-                navigate("/dashboard")
+                checkNewUser()
             } else {
                 // Temporary invalid code
                 console.log("Logged In Failed")
@@ -81,7 +86,24 @@ function CreateAccount() {
             // Temporary invalid code
             console.log("Input Field Error")
         }
+    }
 
+    const checkNewUser = async (e) => {
+        const requestOption = {
+            method: "GET",
+            credentials: "include",
+            headers: { "Content-Type": "application/json"}
+        }
+        const response = await fetch("http://localhost:8000/isNewUser/", requestOption)
+        const data = await response.json()
+
+        if (data.status == 1) {
+            // Case 1: New User
+            navigate("/edit/preferences")
+        } else if (data.status == 0) {
+            // Case 2: Existing User
+            navigate("/searchquestions")
+        }
     }
     
     if (questions.length == 0) {

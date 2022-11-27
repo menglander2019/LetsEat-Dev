@@ -28,7 +28,12 @@ function ProfileQuestions() {
     // Calls FastAPI to pull questions
     const fetchQuestions = async () => {
         console.log("Questions Fetched!")
-        const response = await fetch("http://127.0.0.1:8000/questionnaire/profile/")
+        const requestOption = {
+            method: "GET",
+            credentials: "include",
+            headers: { "Content-Type": "application/json"}
+        }
+        const response = await fetch("http://localhost:8000/questionnaire/profile/", requestOption)
         const message = await response.json()
         setQuestions(message)
     }
@@ -87,12 +92,15 @@ function ProfileQuestions() {
     // Submits user selection to FastAPI
     const submitSelections = (e) => {
 
-        const response = fetch("http://127.0.0.1:8000/submit/profile/", {
+        e.preventDefault()
+        const requestOption = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            mode: 'no-cors',
+            credentials: "include",
             body: JSON.stringify(questions)
-        })
+        }
+        const response = fetch("http://localhost:8000/submit/profile/", requestOption)
+        navigate("/dashboard")
     }
 
     if (localStorage.getItem("token") == null) {

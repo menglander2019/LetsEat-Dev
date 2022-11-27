@@ -13,10 +13,20 @@ import * as IconName from "react-icons/io";
 const DashboardNavbar = ({ navBarColor }) => {
     const navigate = useNavigate()
 
-    const logOut = () => {
+    const logOut = async (e) => {
+        e.preventDefault()
+        const requestOption = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include"
+        }
+
+        const response = await fetch("http://localhost:8000/logout", requestOption)
+        const data = await response.json()
+        
         localStorage.removeItem("token")
         navigate("/")
-    }
+    } 
 
     return (
         <div className={navBarColor}>

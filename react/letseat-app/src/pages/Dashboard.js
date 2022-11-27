@@ -24,17 +24,7 @@ function Dashboard() {
 
     const searchButtonClicked = async (e) => {
         e.preventDefault()
-        const response = await fetch("http://127.0.0.1:8000/isNewUser/")
-        const data = await response.json()
-        console.log(data)
-
-        if (data.status == 1) {
-            // Case 1: New User
-            navigate("/edit/preferences")
-        } else if (data.status == 0) {
-            // Case 2: Existing User
-            navigate("/searchquestions")
-        }
+        navigate("/searchquestions")
     }
 
     return (

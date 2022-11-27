@@ -20,7 +20,12 @@ function CreateAccount() {
     // Calls FastAPI to pull questions
     const fetchQuestions = async () => {
         console.log("Questions Fetched!")
-        const response = await fetch("http://127.0.0.1:8000/questionnaire/createprofile/")
+        const requestOption = {
+            method: "GET",
+            credentials: "include",
+            headers: { "Content-Type": "application/json"}
+        }
+        const response = await fetch("http://localhost:8000/questionnaire/createprofile/", requestOption)
         const message = await response.json()
         console.log(message)
         setQuestions(message)
@@ -93,10 +98,11 @@ function CreateAccount() {
             const requestOption = {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                credentials: "include",
                 body: JSON.stringify(questions)
             }
 
-            const response = await fetch("http://127.0.0.1:8000/createprofile", requestOption)
+            const response = await fetch("http://localhost:8000/createprofile", requestOption)
             const data = await response.json()
             setAccountCreateStatus(1)
         } else {
