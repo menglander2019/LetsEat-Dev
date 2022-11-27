@@ -38,10 +38,6 @@ def get_reviews(yelpUrl, rest_id, business):
 
 
 def get_reviews2(yelpUrl, rest_id, q, business):
-
-    #here
-
-    #for q in occasions+restrictionsList:
        
        #open connection 
         try:

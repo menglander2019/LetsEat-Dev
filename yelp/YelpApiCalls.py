@@ -23,20 +23,18 @@ def updateDB(response):
 
 def cuisines_to_umbrellas(cuisines):
     list = []
-    #print(cuisines)
     for cuisine in cuisines: 
         alias = cuisine.get('alias')
         for umbrella, umbList in constants.cuisine_groups.items():
-            #print(umbrella)
             if alias in umbList and umbrella not in list:
                 list.append(umbrella)
-                #print(list)
     return list
+
 #get list of restaurants based on parameters
 def request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes):
 
     #convert time to UNIX
-    #now = datetime(2022, 11, 16, 1, 20)
+    #now = open_at
     now = datetime.now()
     unix = time.mktime(now.timetuple())
     
@@ -56,8 +54,7 @@ def request_businesses_list(zipcode, distance, dollars, open_at, categories, att
     response = requests.request('GET', API_URL, headers=headers, params=params)
     
     #add restaurants from API call to webscraping db
-    #@MAX if you need to webscrape again just uncomment this 
-    updateDB(response.json())
+    #updateDB(response.json())
 
     return response.json()
 
