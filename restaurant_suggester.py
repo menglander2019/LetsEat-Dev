@@ -181,8 +181,9 @@ def get_predictions(id, occasion, num_people, meal, price_ranges):
             suggestions_list.append([restaurant, suggestion])
 
     suggestions_sorted = sorted(suggestions_list, key=lambda x: x[1])
-    print(suggestions_sorted)
-    return suggestions_sorted
+    suggestions_sorted_list = list(numpy.array(suggestions_sorted)[:,0])
+
+    return suggestions_sorted_list
 
 if __name__ == "__main__":
-    get_predictions(48017772, "date", 2, "dinner", [4])
+    get_predictions(48017772, "date", 2, "dinner", [3])
