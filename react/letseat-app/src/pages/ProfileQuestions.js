@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { useEffect, useState } from 'react'
+import { renderMatches, useNavigate } from 'react-router-dom'
 
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
@@ -8,18 +9,17 @@ import { IconContext } from 'react-icons'
 
 import PreviousNextButton from '../components/PreviousNextButton'
 import ButtonCreate from '../components/ButtonCreate'
-import { renderMatches, Navigate } from 'react-router-dom'
+import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
+
 
 function ProfileQuestions() {
 
+    const navigate = useNavigate()
     const [ questionIndex, setQuestionIndex ] = useState(0)
     const [ questions, setQuestions ] = useState([])
+    
     var numQuestions = 3
     var flexStylingOption = "flex-styling-33"
-
-    // Temporary Filler Arrays
-    //var cuisineChoices = ["American", "Mexican", "French", "Chinese", "Japanese", "Italian", "Korean", "Thai"]
-    //var allergyChoices = ["Gluten", "Eggs", "Dairy", "Peanuts", "N/A"]
 
     useEffect(() => {
         fetchQuestions()
@@ -87,19 +87,16 @@ function ProfileQuestions() {
     // Submits user selection to FastAPI
     const submitSelections = (e) => {
 
-        console.log(questions)
-
         const response = fetch("http://127.0.0.1:8000/submit/profile/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             mode: 'no-cors',
             body: JSON.stringify(questions)
         })
-        console.log(response)        
     }
 
     if (localStorage.getItem("token") == null) {
-        return ( <Navigate to="/" /> )
+        return navigate("/")
     } else if (questions.length == 0) {
         return(
             <div className="container">
@@ -115,7 +112,7 @@ function ProfileQuestions() {
                     <div className="col-md-7 mt-4">
                         <div id="profileQuestions">
                             <div className="d-flex flex-column">
-                                <h1 className="display-3">Profile Questions</h1>
+                                <h1 className="display-3 colfax-regular">Profile Questions</h1>
                                 <div id="q1" className="question mt-3" onClick={answerClicked}>
                                         <label for="answerOptions">{questions.data[0].question}</label>
                                         <ButtonCreate answerOptions={questions.data[0].answerChoices} questionNumber={"q1"} optionType={flexStylingOption} />
@@ -146,6 +143,8 @@ function ProfileQuestions() {
         );
     }
 }
+
+// Color: #87ae73 GREEN
 
 
 export default ProfileQuestions

@@ -24,18 +24,23 @@ function Dashboard() {
 
     const searchButtonClicked = async (e) => {
         e.preventDefault()
-        const response = await fetch("http://127.0.0.1:8000/isNewUser/", {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-        })
-        const message = await response.json()
-        console.log(message)
+        const response = await fetch("http://127.0.0.1:8000/isNewUser/")
+        const data = await response.json()
+        console.log(data)
+
+        if (data.status == 1) {
+            // Case 1: New User
+            navigate("/edit/preferences")
+        } else if (data.status == 0) {
+            // Case 2: Existing User
+            navigate("/searchquestions")
+        }
     }
 
     return (
         <div className="container-fluid">
             <div className="d-flex flex-column">
-                <DashboardNavbar />
+                <DashboardNavbar navBarColor={"home-navbar-white"}/>
                 <DashboardBanner searchFunction={searchButtonClicked}/>
             </div>
         </div>

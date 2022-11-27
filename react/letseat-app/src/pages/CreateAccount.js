@@ -112,7 +112,6 @@ function CreateAccount() {
                 <div className="col-md-4 mt-4">
                     <form onSubmit={submitSelections}>
                         <div className="d-flex flex-column">
-                            <h2 className="charter-regular text-center mt-3">LetsEat</h2>
                             <h3 className="colfax-regular text-center mt-3">Sign up for free to discover your new favorite restaurant.</h3>
                             <div id="q1" className="question input-group mt-3" onChange={textSubmission}>                            
                                 <input type="text" id="email" className="form-control input-box w-100" placeholder="Enter an email" required></input>
@@ -155,6 +154,9 @@ function CreateAccount() {
                                     <option selected disabled value="">Select</option> 
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
+                                    <option value="transgender">Transgender</option>
+                                    <option value="other">Do not identify as male, female, or transgender</option>
+                                    <option value="n/a">Prefer not to say</option>
                                 </select>
                             </div>
                             <div className="d-flex justify-content-center mt-4 mb-1">

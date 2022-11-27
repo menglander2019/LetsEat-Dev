@@ -7,14 +7,14 @@ import * as BoxIcons from 'react-icons/bi'
 import * as BsIcons from "react-icons/bs"
 
 import { IconContext } from 'react-icons'
-import { Navigate } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
 
 import PreviousNextButton from '../components/PreviousNextButton'
 import ButtonCreate from '../components/ButtonCreate'
 
 function SearchQuestions() {
 
+    const navigate = useNavigate()
     const [ questionIndex, setQuestionIndex ] = useState(0)
     const [ questions, setQuestions ] = useState([])
     var flexStylingOption = "flex-styling-50"
@@ -114,8 +114,6 @@ function SearchQuestions() {
     // Submits user selection to FastAPI
     const submitSelections = (e) => {
 
-        console.log(questions)
-
         const response = fetch("http://127.0.0.1:8000/submit/search/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -125,7 +123,7 @@ function SearchQuestions() {
     }
 
     if (localStorage.getItem("token") == null) {
-        return ( <Navigate to="/" /> )
+        return navigate("/")
     } else if (questions.length == 0) {
         return(
             <div className="container">
@@ -140,7 +138,7 @@ function SearchQuestions() {
                 <div className="d-flex align-items-center justify-content-center h-100">
                     <div className="col-md-7 mt-4">
                         <div className="d-flex flex-column">
-                            <h1 className="display-3">Search Questions</h1>
+                            <h1 className="display-3 colfax-regular">Search Questions</h1>
                             <div id="q1" className="question mt-3" onClick={radioAnswerClicked}>
                                 <label for="answerOptions">{questions.data[0].question}</label>
                                 <ButtonCreate answerOptions={questions.data[0].answerChoices} questionNumber={"q1"} optionType={flexStylingOption} />

@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { useEffect, useState } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import HomeNavbar from '../components/HomeComponents/HomeNavbar';
 import SearchQuestions from './SearchQuestions';
@@ -57,6 +57,7 @@ function CreateAccount() {
         })
         return checkStatus
     }
+    
     const submitSelections = async (e) => {
         e.preventDefault()
         if (checkInputSubmissions() == 1) {
@@ -67,8 +68,7 @@ function CreateAccount() {
             }
             const response = await fetch("http://127.0.0.1:8000/checkLogin", requestOption)
             const data = await response.json()
-            //console.log(data.token)
-            console.log(data)
+
             if (data.status == 1) {
                 console.log("Logged In Success")
                 localStorage.setItem("token", data.token)

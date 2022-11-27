@@ -12,7 +12,7 @@ const RestaurantCard = ({ jsonData }) => {
     return (
         <div className="restaurant">
             <div className="restaurant-name-row mt-3">
-                <h1 className="display-4">{name}</h1>
+                <h1 className="display-4 colfax-medium">{name}</h1>
             </div>
             <div className="restaurant-image-row mt-3">
                 <img className="restaurant-image w-100" src={image}></img>

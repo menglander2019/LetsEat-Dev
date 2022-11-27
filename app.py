@@ -41,23 +41,6 @@ async def logout(request: Request):
     request.session.clear()
     return {"status": "cleared"}
 
-@app.post("/testCheckLogin")
-def testCheckLogin():
-    return [ 
-        {
-            "status": 0,
-            "token": None
-        }
-    ]
-
-@app.post("/checkLoginPositive")
-async def testCheckLoginPositive(request: Request):
-    account_data = await request.json()
-    return {
-        "status": 1,
-        "token": "#kdudhn23232nds@3"
-    }
-
 @app.post("/createprofile")
 async def createprofile(request: Request):
     account_data = await request.json()
