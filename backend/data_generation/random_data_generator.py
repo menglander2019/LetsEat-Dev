@@ -65,7 +65,7 @@ def generate_restaurant_cuisines():
 
     return cuisines
 
-with open('random_data.csv', 'w', encoding='UTF8') as f:
+with open('./backend/data_generation/random_data.csv', 'w', encoding='UTF8') as f:
     writer = csv.writer(f)
 
     # write the header
@@ -97,9 +97,9 @@ with open('random_data.csv', 'w', encoding='UTF8') as f:
             cuisine2 = cuisines[1]
        
         # sets the occasion and number of people properly
-        if occasion == 'solo':
+        if occasion == 'Myself':
             num_people = 1
-        elif occasion == 'date':
+        elif occasion == 'Date':
             num_people = 2
         else:
             num_people = int(random.random() * num_pot_people) + 1
