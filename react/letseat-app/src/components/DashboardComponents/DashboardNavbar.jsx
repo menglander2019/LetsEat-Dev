@@ -8,6 +8,7 @@ import * as BoxIcons from 'react-icons/bi'
 import * as BsIcons from "react-icons/bs"
 import * as IconName from "react-icons/io";
 
+import logoPath from "../../design-resources/logo/letseat-banner.png"
 
 // Takes in JSON data of a restaurant and parses the data
 const DashboardNavbar = ({ navBarColor }) => {
@@ -32,9 +33,7 @@ const DashboardNavbar = ({ navBarColor }) => {
             <div className="navbar align-items-center padding-style-1">
                 <div className="d-flex justify-content-start">
                     <Link to="/dashboard">
-                        <h2 className="charter-regular">
-                            LetsEat
-                        </h2>
+                        <img src={logoPath} className="letseat-logo-navbar" />
                     </Link>
                 </div>
                 <div className="d-flex justify-content-end">

@@ -125,8 +125,7 @@ function CreateAccount() {
                         navigate("/edit/preferences")
                     } else {
                         // Case 2: Existing User
-                        // navigate("/searchquestions")
-                        navigate("/edit/preferences")
+                        navigate("/dashboard")
                     }
                 } else {
                     console.log("Error!")

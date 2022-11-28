@@ -129,6 +129,8 @@ function SearchQuestions() {
 
         e.preventDefault()
 
+        console.log(questions)
+
         const requestOption = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -142,7 +144,6 @@ function SearchQuestions() {
                     navigate("/restaurantsearch") 
                 } else {
                     console.log("Error Posting!")
-                    navigate("/dashboard") 
                 }
             })
             .catch(error => {

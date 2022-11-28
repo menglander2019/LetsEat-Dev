@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import logoPath from "../../design-resources/logo/letseat-banner.png"
+
 // Takes in JSON data of a restaurant and parses the data
 const HomeNavbar = () => {
 
@@ -9,9 +11,7 @@ const HomeNavbar = () => {
             <div className="navbar align-items-center padding-style-1">
                 <div class="d-flex justify-content-start">
                     <Link to="/">
-                        <h2 className="charter-regular">
-                            LetsEat
-                        </h2>
+                        <img src={logoPath} className="letseat-logo-navbar" />
                     </Link>
                 </div>
                 <div class="d-flex justify-content-end">

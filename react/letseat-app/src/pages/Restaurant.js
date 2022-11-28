@@ -7,7 +7,7 @@ import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
 
 function Restaurant() {
 
-    const [ restaurants, setRestaurants ] = useState([])
+    const [ restaurantList, setRestaurantList ] = useState([])
     // Keeps index of the restaurant index from JSON data
     const [ restaurantIndex, setRestaurantIndex ] = useState(0)
     // State 0: Questionnaire, State 1: Display Restaurant
@@ -30,7 +30,8 @@ function Restaurant() {
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
-                    setRestaurants(data)
+                    console.log(data)
+                    setRestaurantList(data)
                 } else {
                     console.log("Error!")
                 }
@@ -49,37 +50,43 @@ function Restaurant() {
     }
 
     // Accesses JSON data (implement error or null checks later on)
-    const parseRestaurantData = (jsonData, index) => {
-        return jsonData.businesses[index]
+    const parseRestaurantData = (index) => {
+        return restaurantList.restaurants[index]
     }
 
-    return (
-        <div className="container">
-            <DashboardNavbar navBarColor={"home-navbar-white"}/>
-            <div className="d-flex align-items-center justify-content-center h-100">
-                <div className="col-md-6 mt-3">
-                    <div className="d-flex flex-column">
-                    {   displayRestaurant == 0
-                        ? (
-                            <h1>Confirmed!</h1>
-                        ) :
-                        (
-                            <>
-                                <RestaurantCard jsonData={parseRestaurantData(TestData, restaurantIndex)} />
-                                <div className="buttons mt-4">
-                                    <div className="d-flex flex-wrap justify-content-between">
-                                        <button type="button" className="btn tryAgain flex-styling-50" onClick={nextRestaurant}>Try Again</button>
-                                        <button type="button" className="btn confirm flex-styling-50" onClick={confirmRestaurant}>I'm Going!</button>
+    if (restaurantList.length == 0) {
+        return ( <h1>Loading</h1>)
+    } else {
+        return (
+            <div className="container">
+                <DashboardNavbar navBarColor={"home-navbar-white"}/>
+                <div className="d-flex align-items-center justify-content-center h-100">
+                    <div className="col-md-6 mt-3">
+                        <div className="d-flex flex-column">
+                        {   displayRestaurant == 0
+                            ? (
+                                <>
+                                    <h1 className="text-center">Confirmed!</h1>
+                                </>
+                            ) :
+                            (
+                                <>
+                                    <RestaurantCard jsonData={parseRestaurantData(restaurantIndex)} />
+                                    <div className="buttons mt-4">
+                                        <div className="d-flex flex-wrap justify-content-between">
+                                            <button type="button" className="btn tryAgain flex-styling-50" onClick={nextRestaurant}>Try Again</button>
+                                            <button type="button" className="btn confirm flex-styling-50" onClick={confirmRestaurant}>I'm Going!</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </>
-                        )
-                    }
+                                </>
+                            )
+                        }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
   
 
