@@ -128,4 +128,6 @@ async def is_new_user(request: Request):
 
 @app.get("/getRecommendations/")
 def getRecommendations(request: Request):
-    return {"restaurants": request.session["rest_list"]}
+    if "rest_list" in request.session:
+        return {"restaurants": request.session["rest_list"]}
+    return {"restaurants": []}
