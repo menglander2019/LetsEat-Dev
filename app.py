@@ -73,10 +73,22 @@ def questionnaire_search():
 @app.post("/submit/profile/")
 async def submit_questionnaire(request: Request):
     profile_data = await request.json()
-    # extracts the positives, restrictions, and negatives from the JSON sent from REACT
+    # extracts the positives, restrictions, and negatives from the JSON sent from REACT and checks for any None objects
     positives = profile_data["data"][0]["selectedChoices"]
+    if None in positives:
+        print("WARNING! Found a None object in positives passed from REACT. Removing...")
+        positives.remove(None)
+
     restrictions = profile_data["data"][1]["selectedChoices"]
+    if None in restrictions:
+        print("WARNING! Found a None object in restrictions passed from REACT. Removing...")
+        restrictions.remove(None)
+
     negatives = profile_data["data"][2]["selectedChoices"]
+    if None in negatives:
+        print("WARNING! Found a None object in negatives passed from REACT. Removing...")
+        negatives.remove(None)
+
     id = request.session["id"]
     # convert the tuples of positives, restrictions, and negatives into lists in their proper formats
     positives_list = []
@@ -96,7 +108,9 @@ async def submit_questionnaire(request: Request):
         restrictions_list.append(restrictions_dict[restriction])
     updatePositives(id, positives_list)
     updateNegatives(id, negatives_list)
-    updateRestrictions(id, restrictions_list)
+    # checks if the N/A option is selected
+    if len(restrictions) != 1 or restrictions[0] != 'N/A':
+        updateRestrictions(id, restrictions_list)
     return {"message": "submitted"}
 
 @app.post("/submit/search/")
@@ -104,19 +118,16 @@ async def submit_search(request: Request):
     search_data = await request.json()
     # extracts all the search criteria from the selected answers
     id = request.session["id"]
-    print(id)
-    if "rest_list" in request.session:
-        print("Current rest list:", request.session["rest_list"])
     occasion = search_data["data"][0]["selectedChoices"][0]
     num_people = int(search_data["data"][1]["selectedChoices"][0])
     meal = search_data["data"][2]["selectedChoices"][0]
     price_ranges = search_data["data"][3]["selectedChoices"]
-    distance_settings = search_data["data"][4]["selectedChoices"][0]
+    zip = search_data["data"][4]["selectedChoices"][0]
     # converts the $$$'s selected into numbers
     actual_price_ranges = []
     for price in price_ranges:
         actual_price_ranges.append(price_ranges_groups[price])
-    suggestions_list = get_predictions(id, occasion, num_people, meal, actual_price_ranges)
+    suggestions_list = get_predictions(id, occasion, num_people, meal, actual_price_ranges, zip)
     request.session["rest_list"] = suggestions_list
     return {"message": "submitted"}
 
@@ -129,5 +140,6 @@ async def is_new_user(request: Request):
 @app.get("/getRecommendations/")
 def getRecommendations(request: Request):
     if "rest_list" in request.session:
+        print("Current rest list:", request.session["rest_list"])
         return {"restaurants": request.session["rest_list"]}
     return {"restaurants": []}
