@@ -22,8 +22,7 @@ const DashboardNavbar = ({ navBarColor }) => {
         }
 
         const response = await fetch("http://localhost:8000/logout", requestOption)
-        const data = await response.json()
-        
+        //const data = await response.json()
         localStorage.removeItem("token")
         navigate("/")
     } 

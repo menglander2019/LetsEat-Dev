@@ -102,7 +102,8 @@ function CreateAccount() {
             navigate("/edit/preferences")
         } else if (data.status == 0) {
             // Case 2: Existing User
-            navigate("/searchquestions")
+            navigate("/edit/preferences")
+            //navigate("/searchquestions")
         }
     }
     

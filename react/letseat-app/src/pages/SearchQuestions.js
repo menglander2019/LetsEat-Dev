@@ -119,6 +119,8 @@ function SearchQuestions() {
     // Submits user selection to FastAPI
     const submitSelections = (e) => {
 
+        e.preventDefault()
+
         const requestOption = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -127,7 +129,16 @@ function SearchQuestions() {
         }
 
         const response = fetch("http://localhost:8000/submit/search/", requestOption)   
-        navigate("/dashboard")     
+            .then(response => {
+                if (response.ok) {
+                    navigate("/restaurantsearch") 
+                } else {
+                    console.log("Error Posting!")
+                }
+            })
+            .catch(error => {
+                console.log("Error Recommending!")
+            })
     }
 
     if (localStorage.getItem("token") == null) {
