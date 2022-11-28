@@ -30,8 +30,8 @@ function Restaurant() {
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
-                    console.log(data)
-                    setRestaurantList(data)
+                    console.log(data.restaurants)
+                    setRestaurantList(data.restaurants)
                 } else {
                     console.log("Error!")
                 }
@@ -51,7 +51,7 @@ function Restaurant() {
 
     // Accesses JSON data (implement error or null checks later on)
     const parseRestaurantData = (index) => {
-        return restaurantList.restaurants[index]
+        return restaurantList[index]
     }
 
     if (restaurantList.length == 0) {

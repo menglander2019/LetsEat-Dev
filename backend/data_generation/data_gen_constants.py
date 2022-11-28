@@ -16,12 +16,13 @@ header = [
 data = [['Bob', 'italian,mexican', 'indian,american', 'vegan', 'italian'],
         ['Chuck', 'chinese,american', 'mexican,vietnamese', '', 'mexican']]
 
-restrictions = ['vegan', 'vegetarian', 'gluten-free', 'kosher']
+restrictions = ['vegan', 'vegetarian', 'gluten-free', 'kosher', 'none']
 restrictions_dict = {
     'Vegan': 'vegan',
     'Vegetarian': 'vegetarian',
     'Gluten Free': 'gluten_free',
-    'Kosher': 'kosher'
+    'Kosher': 'kosher',
+    'N/A': 'none'
 }
 
 occasions = ['Myself', 'Friend', 'Date', 'Family', 'Work']
