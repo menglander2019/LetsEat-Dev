@@ -34,8 +34,14 @@ num_people = ['1', '2', '3', '4+']
 meals = ['Breakfast', 'Lunch', 'Dinner', 'Dessert']
 
 price_ranges = ['$', '$$', '$$$', '$$$$']
+price_ranges_groups = {
+        '$': 1,
+        '$$': 2,
+        '$$$': 3,
+        '$$$$': 4
+}
 
-num_rows = 20
+num_rows = 1000
 num_pot_positives = 8
 num_pot_negatives = 8
 num_umbrella_terms = 16

@@ -138,7 +138,7 @@ def make_prediction(restaurant, user_features, encoder, dec_tree):
     total_features_encoded = encoder.transform(row)
     # makes a prediction as to whether the user would attend this restaurant or not
     prediction_prob = dec_tree.predict_proba(total_features_encoded)[0]
-    print("Prediction prob: " + str(prediction_prob))
+    print("Prediction prob for " + str(restaurant.get('name')) + " is= " + str(prediction_prob))
     # if the model has an above 50% confidence score that the restaurant should be suggested, return the value
     if prediction_prob[1] > 0.5:
         return prediction_prob[1]

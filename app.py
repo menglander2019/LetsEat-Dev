@@ -84,15 +84,15 @@ async def submit_questionnaire(request: Request):
     restrictions_list = []
     for positive in positives:
         if positive not in cuisine_groups:
-            raise Exception("ERROR: Value gotten from REACT app does not match cuisine groups!")
+            raise Exception("ERROR: Positive value (" + str(positive) + ") gotten from REACT app does not match cuisine groups!")
         positives_list.append(cuisine_groups[positive])
     for negative in negatives:
         if negative not in cuisine_groups:
-            raise Exception("ERROR: Value gotten from REACT app does not match cuisine groups!")
+            raise Exception("ERROR: Negative value (" + str(negative) + ") gotten from REACT app does not match cuisine groups!")
         negatives_list.append(cuisine_groups[negative])
     for restriction in restrictions:
         if restriction not in restrictions_dict:
-            raise Exception("ERROR: Value gotten from REACT app does not match cuisine groups!")
+            raise Exception("ERROR: Value (" + str(restriction) + ") gotten from REACT app does not match restriction groups!")
         restrictions_list.append(restrictions_dict[restriction])
     updatePositives(id, positives_list)
     updateNegatives(id, negatives_list)
@@ -105,12 +105,18 @@ async def submit_search(request: Request):
     # extracts all the search criteria from the selected answers
     id = request.session["id"]
     print(id)
-    occasion = search_data["data"][0]["selectedChoices"]
-    num_people = search_data["data"][1]["selectedChoices"]
-    meal = search_data["data"][2]["selectedChoices"]
+    if "rest_list" in request.session:
+        print("Current rest list:", request.session["rest_list"])
+    occasion = search_data["data"][0]["selectedChoices"][0]
+    num_people = int(search_data["data"][1]["selectedChoices"][0])
+    meal = search_data["data"][2]["selectedChoices"][0]
     price_ranges = search_data["data"][3]["selectedChoices"]
-    distance_settings = search_data["data"][4]["selectedChoices"]
-    suggestions_list = get_predictions(id, occasion, num_people, meal, price_ranges)
+    distance_settings = search_data["data"][4]["selectedChoices"][0]
+    # converts the $$$'s selected into numbers
+    actual_price_ranges = []
+    for price in price_ranges:
+        actual_price_ranges.append(price_ranges_groups[price])
+    suggestions_list = get_predictions(id, occasion, num_people, meal, actual_price_ranges)
     request.session["rest_list"] = suggestions_list
     return {
         "status": 200
