@@ -7,9 +7,12 @@ const HomeBanner = () => {
     return (
         <div className="home-banner">
             <div className="d-flex align-items-center justify-content-center">
-                <div className="col-md-6 mt-5">
+                <div className="col-md-7">
                     <div className="home-main-block">
                         <div className="d-flex flex-column">
+                            <div className="d-flex justify-content-center">
+                                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                            </div>
                             <p className="display-5 text-center charter-regular">Discover your new favorite restaurant nearby.</p>
                             <div className="d-flex justify-content-center mt-3">
                                 <p className="text-center font-size-md colfax-regular flex-styling-75">

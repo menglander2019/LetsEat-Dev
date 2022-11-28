@@ -167,7 +167,7 @@ function SearchQuestions() {
                 <div className="d-flex align-items-center justify-content-center h-100">
                     <div className="col-md-7 mt-4">
                         <div className="d-flex flex-column">
-                            <h1 className="display-3 colfax-regular">Search Questions</h1>
+                            <h1 className="display-5 colfax-regular">Search Questions</h1>
                             <div id="q1" className="question mt-3" onClick={radioAnswerClicked}>
                                 <label for="answerOptions">{questions.data[0].question}</label>
                                 <ButtonCreate answerOptions={questions.data[0].answerChoices} questionNumber={"q1"} optionType={flexStylingOption} />
