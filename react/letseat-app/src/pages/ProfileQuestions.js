@@ -33,9 +33,19 @@ function ProfileQuestions() {
             credentials: "include",
             headers: { "Content-Type": "application/json"}
         }
-        const response = await fetch("http://localhost:8000/questionnaire/profile/", requestOption)
-        const message = await response.json()
-        setQuestions(message)
+
+        await fetch("http://localhost:8000/questionnaire/profile/", requestOption)
+            .then(async response => {
+                const data = await response.json()
+                if (response.ok) {
+                    setQuestions(data)
+                } else {
+                    console.log("Error!")
+                }
+            })
+            .catch(error => {
+                console.log("Error!")
+            })
     }
 
     const nextQuestion = () => {
@@ -90,7 +100,7 @@ function ProfileQuestions() {
     }
 
     // Submits user selection to FastAPI
-    const submitSelections = (e) => {
+    const submitSelections = async (e) => {
 
         e.preventDefault()
         const requestOption = {
@@ -99,8 +109,21 @@ function ProfileQuestions() {
             credentials: "include",
             body: JSON.stringify(questions)
         }
-        const response = fetch("http://localhost:8000/submit/profile/", requestOption)
-        navigate("/dashboard")
+
+        await fetch("http://localhost:8000/submit/profile/", requestOption)
+            .then(async response => {
+                const data = await response.json()
+
+                if (response.ok) {
+                    navigate("/dashboard")
+                    // navigate("/searchquestions")
+                } else {
+                    console.log("Error!")
+                }
+            })
+            .catch(error => {
+                console.log("Error!")
+            })
     }
 
     if (localStorage.getItem("token") == null) {

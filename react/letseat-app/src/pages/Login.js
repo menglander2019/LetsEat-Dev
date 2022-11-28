@@ -28,9 +28,19 @@ function CreateAccount() {
             credentials: "include",
             headers: { "Content-Type": "application/json"}
         }
-        const response = await fetch("http://localhost:8000/questionnaire/login/", requestOption)
-        const message = await response.json()
-        setQuestions(message)
+
+        await fetch("http://localhost:8000/questionnaire/login/", requestOption)
+            .then(async response => {
+                if (response.ok) {
+                    const message = await response.json()
+                    setQuestions(message)
+                } else {
+                    console.log("Error Fetching Questions!")
+                }
+            })
+            .catch(error => {
+                console.log("Error!")
+            })
     }
 
     const textSubmission = (e) => {
@@ -71,17 +81,27 @@ function CreateAccount() {
                 credentials: "include",
                 body: JSON.stringify(questions),
             }
-            const response = await fetch("http://localhost:8000/checkLogin", requestOption)
-            const data = await response.json()
 
-            if (data.status == 1) {
-                console.log("Logged In Success")
-                localStorage.setItem("token", data.token)
-                checkNewUser()
-            } else {
-                // Temporary invalid code
-                console.log("Logged In Failed")
-            }
+            await fetch("http://localhost:8000/checkLogin", requestOption)
+                .then(async response => {
+                    const data = await response.json()
+
+                    if (response.ok) {
+                        if (data.status == 1) {
+                            console.log("Logged In Success")
+                            localStorage.setItem("token", data.token)
+                            checkNewUser()
+                        } else {
+                            // Temporary invalid code
+                            console.log("Logged In Failed")
+                        }
+                    } else {
+                        console.log("Error!")
+                    }
+                })
+                .catch(error => {
+                    console.log("Error!")
+                })
         } else {
             // Temporary invalid code
             console.log("Input Field Error")
@@ -94,17 +114,27 @@ function CreateAccount() {
             credentials: "include",
             headers: { "Content-Type": "application/json"}
         }
-        const response = await fetch("http://localhost:8000/isNewUser/", requestOption)
-        const data = await response.json()
 
-        if (data.status == 1) {
-            // Case 1: New User
-            navigate("/edit/preferences")
-        } else if (data.status == 0) {
-            // Case 2: Existing User
-            navigate("/edit/preferences")
-            //navigate("/searchquestions")
-        }
+        await fetch("http://localhost:8000/isNewUser/", requestOption)
+            .then(async response => {
+                const data = await response.json()
+
+                if (response.ok) {
+                    if (data.status == 1) {
+                        // Case 1: New User
+                        navigate("/edit/preferences")
+                    } else {
+                        // Case 2: Existing User
+                        // navigate("/searchquestions")
+                        navigate("/edit/preferences")
+                    }
+                } else {
+                    console.log("Error!")
+                }
+            })
+            .catch(error => {
+                console.log("Error!")
+            })
     }
     
     if (questions.length == 0) {

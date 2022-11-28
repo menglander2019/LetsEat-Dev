@@ -32,9 +32,17 @@ function SearchQuestions() {
             headers: { "Content-Type": "application/json"}
         }
         const response = await fetch("http://localhost:8000/questionnaire/search/", requestOption)
-        const message = await response.json()
-        console.log(message)
-        setQuestions(message)
+            .then(async response => {
+                const data = await response.json()
+                if (response.ok) {
+                    setQuestions(data)
+                } else {
+                    console.log("Error!")
+                }
+            })
+            .catch(error => {
+                console.log("Error!")
+            })
     }
 
     const nextQuestion = () => {

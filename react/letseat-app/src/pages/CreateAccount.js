@@ -102,9 +102,16 @@ function CreateAccount() {
                 body: JSON.stringify(questions)
             }
 
-            const response = await fetch("http://localhost:8000/createprofile", requestOption)
-            const data = await response.json()
-            setAccountCreateStatus(1)
+            await fetch("http://localhost:8000/createprofile", requestOption)
+                .then(async response => {
+                    const data = await response.json()
+                    if (response.ok) {
+                        setAccountCreateStatus(1)
+                    }
+                })
+                .catch(error => {
+                    console.log("Error!")
+                })
         } else {
             setAccountCreateStatus(2)
             console.log("Account Creation Error!")
