@@ -142,6 +142,7 @@ function SearchQuestions() {
                     navigate("/restaurantsearch") 
                 } else {
                     console.log("Error Posting!")
+                    navigate("/dashboard") 
                 }
             })
             .catch(error => {

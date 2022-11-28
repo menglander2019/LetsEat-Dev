@@ -127,6 +127,7 @@ function CreateAccount() {
                         <div className="d-flex flex-column">
                             <h3 className="colfax-regular text-center mt-3">Sign up for free to discover your new favorite restaurant.</h3>
                             <div id="q1" className="question input-group mt-3" onChange={textSubmission}>                            
+                                <label for="email">Enter your email</label>
                                 <input type="text" id="email" className="form-control input-box w-100" placeholder="Enter an email" required></input>
                                 <small id="nameHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                             </div>

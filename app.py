@@ -118,9 +118,7 @@ async def submit_search(request: Request):
         actual_price_ranges.append(price_ranges_groups[price])
     suggestions_list = get_predictions(id, occasion, num_people, meal, actual_price_ranges)
     request.session["rest_list"] = suggestions_list
-    return {
-        "status": 200
-    }
+    return {"message": "submitted"}
 
 @app.get("/isNewUser/")
 async def is_new_user(request: Request):
@@ -128,6 +126,6 @@ async def is_new_user(request: Request):
     res = checkNewUser(id)
     return {"status": res} # 1 is new user, 0 is existing
 
-@app.get("/getRecommendations")
+@app.get("/getRecommendations/")
 def getRecommendations(request: Request):
     return {"restaurants": request.session["rest_list"]}
