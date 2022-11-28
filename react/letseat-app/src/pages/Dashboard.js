@@ -24,18 +24,13 @@ function Dashboard() {
 
     const searchButtonClicked = async (e) => {
         e.preventDefault()
-        const response = await fetch("http://127.0.0.1:8000/isNewUser/", {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-        })
-        const message = await response.json()
-        console.log(message)
+        navigate("/searchquestions")
     }
 
     return (
         <div className="container-fluid">
             <div className="d-flex flex-column">
-                <DashboardNavbar />
+                <DashboardNavbar navBarColor={"home-navbar-white"}/>
                 <DashboardBanner searchFunction={searchButtonClicked}/>
             </div>
         </div>

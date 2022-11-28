@@ -52,11 +52,6 @@ html, body {
     min-height: 700px;
 }
 
-h1 {
-    font-family: 'Sf-Pro-Bold';
-    color: #6d8a5e;
-}
-
 h2 {
     font-family: 'SF-Pro-Regular';
     color:#161616;
@@ -82,6 +77,16 @@ label {
     font-family: 'Colfax-Regular';
     font-size: 1.1rem;
     color: #4c4c4c;
+}
+
+.sf-pro-bold {
+    font-family: 'SF-Pro-Bold';
+    text-decoration: none;
+}
+
+.sf-pro-regular {
+    font-family: 'SF-Pro-Regular';
+    text-decoration: none;
 }
 
 .charter-regular {
@@ -188,8 +193,8 @@ label {
 }
 
 .btn.submit {
-    background-color: #87ae73 !important;
-    border-color: #87ae73 !important;
+    background-color: black !important;
+    border-color: black !important;
     color: white !important;
     border-radius: 5px;
     padding-top: 10px;
@@ -244,8 +249,14 @@ label {
     padding-top: 10%;
 }
 
-.navbar {
+.home-navbar-white {
     background-color: white;
+    max-height: 70px;
+}
+
+.home-navbar-black {
+    background-color: black;
+    max-height: 70px;
 }
 
 .navbar-login {
