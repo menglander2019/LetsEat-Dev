@@ -20,7 +20,7 @@ restrictions = ['vegan', 'vegetarian', 'gluten-free', 'kosher']
 restrictions_dict = {
     'Vegan': 'vegan',
     'Vegetarian': 'vegetarian',
-    'Gluten Free': 'gluten-free',
+    'Gluten Free': 'gluten_free',
     'Kosher': 'kosher'
 }
 
@@ -41,7 +41,7 @@ price_ranges_groups = {
         '$$$$': 4
 }
 
-num_rows = 1000
+num_rows = 50
 num_pot_positives = 8
 num_pot_negatives = 8
 num_umbrella_terms = 16

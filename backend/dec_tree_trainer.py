@@ -17,9 +17,8 @@ output = raw_data['ATTEND?']
 # trains the decision tree with randomly generated data and returns it along with its encoder
 def train_dec_tree():
     # utilizes OneHotEncoder to convert categorical values
-    onehot_encoder = OneHotEncoder(sparse=False)
+    onehot_encoder = OneHotEncoder(sparse=False, handle_unknown='ignore')
     encoded_train_X = onehot_encoder.fit_transform(input)
-    print("training encoded:", encoded_train_X)
 
     # creates the decision tree classifier model and fits it to the converted training data
     dec_tree = xgb.XGBClassifier()
