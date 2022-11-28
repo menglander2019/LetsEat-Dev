@@ -1,8 +1,9 @@
-import requests
+import requests 
 import YelpWebscraping
 from datetime import datetime
 import time
 import UserYelpWebScraping
+import constants
 
 API_KEY= "NIeApqUv-eXDl1Uk9Lp1tdYbkmwQqlAWIrE87BI6ntY1RAktDOUG2nadraL9hYnRr6qMDPwcanx4c_A_qKOZykBQmP4gmvpOe61Q4lPxLnejZc8VFxWEnBv4haYwY3Yx"
 
@@ -15,15 +16,25 @@ API_URL = "https://api.yelp.com/v3/businesses/search"
 def updateDB(response):
     businesses = response.get('businesses')
     for i in range(len(businesses)):
-        YelpWebscraping.main(businesses[i].get('id'), businesses[i].get('url'), businesses[i].get('categories'))
+        keepScraping = YelpWebscraping.main(businesses[i].get('id'), businesses[i].get('url'), cuisines_to_umbrellas(businesses[i].get('categories')), businesses[i].get('price'), businesses[i].get('rating'), businesses[i].get('transactions'))
         url = businesses[i].get('url')
-        #UserYelpWebScraping.get_reviews(url, businesses[i].get('id')) #We do not need this for functionality, only to fill database
+        if(keepScraping):
+            UserYelpWebScraping.get_reviews(url, businesses[i].get('id'), businesses[i]) #We do not need this for functionality, only to fill database
+
+def cuisines_to_umbrellas(cuisines):
+    list = []
+    for cuisine in cuisines: 
+        alias = cuisine.get('alias')
+        for umbrella, umbList in constants.cuisine_groups.items():
+            if alias in umbList and umbrella not in list:
+                list.append(umbrella)
+    return list
 
 #get list of restaurants based on parameters
 def request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes):
 
     #convert time to UNIX
-    #now = datetime(2022, 10, 13, 12, 20)
+    #now = open_at
     now = datetime.now()
     unix = time.mktime(now.timetuple())
     
@@ -36,14 +47,13 @@ def request_businesses_list(zipcode, distance, dollars, open_at, categories, att
         'open_at': str(int(unix)),
         'categories': categories,
         'attributes': attributes,
-        'limit': 20
+        'limit': 50
     }
     
     #request API data
     response = requests.request('GET', API_URL, headers=headers, params=params)
     
     #add restaurants from API call to webscraping db
-    #@MAX if you need to webscrape again just uncomment this 
     #updateDB(response.json())
 
     return response.json()
@@ -81,19 +91,19 @@ def main():
     #this is test code. in real life, request_businesses_list is directly called
     zipcode = '20037'
     distance = '4000' #in meters, cannot exeed 4000
-    dollars = '2'
+    dollars = '1,2,3,4'
     open_at = '1664468447' #in unix nums 
     categories = None
     attributes = None
     
+
     response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
     
     #print results to verify
     businesses = response.get('businesses')
-    #parse_results(businesses)
-    
-    #YelpWebscraping.printDB()
-    
+    parse_results(businesses)
+
+
 
 if __name__ == '__main__':
     main()
