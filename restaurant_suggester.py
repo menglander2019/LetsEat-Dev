@@ -128,13 +128,12 @@ def make_prediction(restaurant, user_features, encoder, dec_tree):
     scraped_info = scrape(id, url)
 
     # appends the collected values based on the user profile, restaurant features (rating/price/cuisine), and the scraped restaurant values
-    total_features = numpy.array(temp_user_features + rest_features + list(scraped_info.values()))
+    total_features = temp_user_features + rest_features + list(scraped_info.values())
     cols = {}
     # sets up a dataframe with the proper feature names and values
     for i in range(len(total_features)):
         cols[header[i+1]] = total_features[i]
     row = pd.DataFrame(data=cols, index=[0])
-    row = row.astype('string')
     # encodes the categorical features using the encoder that trained the decision tree
     total_features_encoded = encoder.transform(row)
     # makes a prediction as to whether the user would attend this restaurant or not
@@ -150,13 +149,11 @@ def get_predictions(id, occasion, num_people, meal, price_ranges):
     # trains the decision tree and returns the tree along with the proper encoder
     start_time = time.time()
     dec_tree_info = train_dec_tree()
-    print("Training time: ", time.time() - start_time)
+    print("Training time:", time.time() - start_time)
 
     dec_tree = dec_tree_info[0]
     encoder = dec_tree_info[1]
 
-    print("importance: " + str(dec_tree.feature_importances_))
-    
     # sets up database variables
     mydb = get_db()
     c = mydb.cursor()
@@ -174,6 +171,7 @@ def get_predictions(id, occasion, num_people, meal, price_ranges):
     restaurants = get_restaurant_list('20037', '4000', price_ranges, cuisines)
     # iterates through each restaurant, scraping data and making predictions
     suggestions_list = []
+    start_time = time.time()
     for restaurant in restaurants:
         suggestion = make_prediction(restaurant, user_features, encoder, dec_tree)
         # if the model predicts a suggestion, then append it to the unordered dictionary as a key-value pair
@@ -182,8 +180,9 @@ def get_predictions(id, occasion, num_people, meal, price_ranges):
 
     suggestions_sorted = sorted(suggestions_list, key=lambda x: x[1])
     suggestions_sorted_list = list(numpy.array(suggestions_sorted)[:,0])
+    print("Total prediction time:", time.time() - start_time)
 
     return suggestions_sorted_list
 
 if __name__ == "__main__":
-    get_predictions(48017772, "date", 2, "dinner", [3])
+    get_predictions(48017772, "Date", 2, "Dinner", [3,4])
