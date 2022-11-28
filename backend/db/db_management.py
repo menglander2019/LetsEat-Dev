@@ -5,7 +5,7 @@ import os
 mydb = mysql.connector.connect(host='localhost',
                                         database='Users',
                                         user='root',
-                                        password=os.environ.get('db_password'))
+                                        password='196468maX!')
 
 def get_db():
     return mydb
@@ -43,34 +43,31 @@ def createUser(email, pw, name, dob, gender):
     c.close()
     return {"message": "User successfully created!"}
 
-def updatePositives(email, positives):
+def updatePositives(id, positives_list):
     c = mydb.cursor()
-    # retrieves the user information based on the user who is logged in's email address
-    c.execute('SELECT userID FROM userProfiles WHERE email = %s', (email,))
-    id = c.fetchone()[0]
     # update the user's positive preferences in the database
+    positives = ','.join(positives_list)
+    print(positives)
     c.execute('UPDATE userPreferences SET positivePreferences = %s WHERE userID = %s', (positives, id))
 
     mydb.commit()
     c.close()
 
-def updateNegatives(email, negatives):
+def updateNegatives(id, negatives_list):
     c = mydb.cursor()
-    # retrieves the user information based on the user who is logged in's email address
-    c.execute('SELECT userID FROM userProfiles WHERE email = %s', (email,))
-    id = c.fetchone()[0]
     # update the user's negative preferences in the database
+    negatives = ','.join(negatives_list)
+    print(negatives)
     c.execute('UPDATE userPreferences SET negativePreferences = %s WHERE userID = %s', (negatives, id))
 
     mydb.commit()
     c.close()
 
-def updateRestrictions(email, restrictions):
+def updateRestrictions(id, restrictions_list):
     c = mydb.cursor()
-    # retrieves the user information based on the user who is logged in's email address
-    c.execute('SELECT userID FROM userProfiles WHERE email = %s', (email,))
-    id = c.fetchone()[0]
     # update the user's negative preferences in the database
+    restrictions = ','.join(restrictions_list)
+    print(restrictions)
     c.execute('UPDATE userPreferences SET restrictions = %s WHERE userID = %s', (restrictions, id))
 
     mydb.commit()
