@@ -1,6 +1,6 @@
 from backend.dec_tree_trainer import train_dec_tree
 from yelp.YelpApiCalls import get_restaurant_list
-from yelp.YelpWebscraping import scrape
+from yelp.YelpWebscraping import scrape, DATABASE
 from backend.data_generation.data_gen_constants import header, num_umbrella_terms, restaurant_types, days
 from backend.db.db_management import get_db
 from datetime import datetime
@@ -8,6 +8,7 @@ import numpy
 import pandas as pd
 import copy
 import time
+import sqlite3
 
 def build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions):
     # gets the current day
@@ -119,16 +120,35 @@ def build_restaurant_features(restaurant):
     return [rating] + category_features + kosher_and_gluten_free + rest_prices + pickup_delivery_reservation
     
 def make_prediction(restaurant, user_features, encoder, dec_tree):
+    print("Making prediction for:", restaurant.get('name'))
     temp_user_features = copy.copy(user_features)
     rest_features = build_restaurant_features(restaurant)
             
     # retrieves the restaurant ID and url so that the scraped info can be retrieved
-    id = restaurant.get('id')
+    rest_id = restaurant.get('id')
     url = restaurant.get('url')
-    scraped_info = scrape(id, url)
 
+    # opens up the scraped restaurant info database
+    conn = sqlite3.connect("./yelp/OfficialRestaurantScraping.db")
+    c = conn.cursor()
+
+    c.execute("SELECT * FROM attributes WHERE restaurant_id = (?)", (rest_id,))
+    result = c.fetchall()
+    # for now, if the restaurant is not in the db then skip it and return 0 (in the future, the scrape call should go here)
+    if len(result) == 0:
+        print("The restaurant was not in the db!")
+        return 0
+    print(list(result[0])[28:])
+    
+    #scraped_info = list(scrape(rest_id, url)).values()
+    scraped_info = list(result[0])[28:]
+    print("length:", len(scraped_info))
+
+    # closes the connection to the sqlite3 db
+    conn.close() 
+    
     # appends the collected values based on the user profile, restaurant features (rating/price/cuisine), and the scraped restaurant values
-    total_features = temp_user_features + rest_features + list(scraped_info.values())
+    total_features = temp_user_features + rest_features + scraped_info
     cols = {}
     # sets up a dataframe with the proper feature names and values
     for i in range(len(total_features)):
@@ -169,6 +189,7 @@ def get_predictions(id, occasion, num_people, meal, price_ranges):
     cuisines = user_info[0]
 
     restaurants = get_restaurant_list('20037', '4000', price_ranges, cuisines)
+    print(f"FOUND {len(restaurants)} restaurants!")
     # iterates through each restaurant, scraping data and making predictions
     suggestions_list = []
     start_time = time.time()
@@ -177,10 +198,15 @@ def get_predictions(id, occasion, num_people, meal, price_ranges):
         # if the model predicts a suggestion, then append it to the unordered dictionary as a key-value pair
         if suggestion > 0:
             suggestions_list.append([restaurant, suggestion])
+    
+    # edge-case: no restaurants are found, so an empty list is returned
+    if len(suggestions_list) == 0:
+        return []
 
     suggestions_sorted = sorted(suggestions_list, key=lambda x: x[1])
     suggestions_sorted_list = list(numpy.array(suggestions_sorted)[:,0])
     print("Total prediction time:", time.time() - start_time)
+    print("Final list of sorted predicted restaurants:", suggestions_sorted_list)
 
     return suggestions_sorted_list
 
