@@ -77,9 +77,26 @@ async def submit_questionnaire(request: Request):
     positives = profile_data["data"][0]["selectedChoices"]
     restrictions = profile_data["data"][1]["selectedChoices"]
     negatives = profile_data["data"][2]["selectedChoices"]
-    updatePositives("admin@gmail.com", "italian")
-    updateNegatives("test@test.com", "chinese")
-    updateRestrictions("test@test.com", "vegetarian")
+    id = request.session["id"]
+    # convert the tuples of positives, restrictions, and negatives into lists in their proper formats
+    positives_list = []
+    negatives_list = []
+    restrictions_list = []
+    for positive in positives:
+        if positive not in cuisine_groups:
+            raise Exception("ERROR: Value gotten from REACT app does not match cuisine groups!")
+        positives_list.append(cuisine_groups[positive])
+    for negative in negatives:
+        if negative not in cuisine_groups:
+            raise Exception("ERROR: Value gotten from REACT app does not match cuisine groups!")
+        negatives_list.append(cuisine_groups[negative])
+    for restriction in restrictions:
+        if restriction not in restrictions_dict:
+            raise Exception("ERROR: Value gotten from REACT app does not match cuisine groups!")
+        restrictions_list.append(restrictions_dict[restriction])
+    updatePositives(id, positives_list)
+    updateNegatives(id, negatives_list)
+    updateRestrictions(id, restrictions_list)
     return {"message": "submitted"}
 
 @app.post("/submit/search/")
