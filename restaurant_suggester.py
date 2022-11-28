@@ -165,7 +165,7 @@ def make_prediction(restaurant, user_features, encoder, dec_tree):
     # if the confidence score is too low, return 0 to indicate that the restaurant shouldn't be suggested
     return 0
 
-def get_predictions(id, occasion, num_people, meal, price_ranges):
+def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
     # trains the decision tree and returns the tree along with the proper encoder
     start_time = time.time()
     dec_tree_info = train_dec_tree()
@@ -187,8 +187,7 @@ def get_predictions(id, occasion, num_people, meal, price_ranges):
     # gets the user input for profile information (used for testing)
     user_features = build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions)
     cuisines = user_info[0]
-
-    restaurants = get_restaurant_list('20037', '4000', price_ranges, cuisines)
+    restaurants = get_restaurant_list(zip, '4000', price_ranges, cuisines)
     print(f"FOUND {len(restaurants)} restaurants!")
     # iterates through each restaurant, scraping data and making predictions
     suggestions_list = []
