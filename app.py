@@ -128,7 +128,9 @@ async def submit_search(request: Request):
     for price in price_ranges:
         actual_price_ranges.append(price_ranges_groups[price])
     suggestions_list = get_predictions(id, occasion, num_people, meal, actual_price_ranges, zip)
+    print("received suggestions list:", suggestions_list)
     request.session["rest_list"] = suggestions_list
+    print("session list:", request.session["rest_list"])
     return {"message": "submitted"}
 
 @app.get("/isNewUser/")
