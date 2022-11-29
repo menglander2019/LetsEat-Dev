@@ -49,7 +49,7 @@ html, body {
 .home-banner {
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 100%);
-    min-height: 650px;
+    min-height: 530px;
 }
 
 h2 {
@@ -129,9 +129,8 @@ label {
 .login-box {
     background-color: #ececec;
     border-color: #ececec;
-    padding-top: 16px;
-    padding-bottom: 8px;
-    border-radius: 5px;
+    padding: 3%;
+    border-radius: 4px;
     font-weight: 500;
 }
 
@@ -139,7 +138,7 @@ label {
     background-color: black !important;
     color: white !important;
     border-radius: 30px;
-    font-size:1.2rem;
+    font-size:0.9rem;
     padding: 3%;
     transition: all 0.1s ease-in-out;
 }
@@ -165,14 +164,13 @@ label {
 }
 
 .btn.answerOption {
-    font-family: 'SF-Pro-Regular';
-    font-size: 1.1rem;
+    background-color: #ececec;
+    font-family: 'Colfax-Regular';
+    font-size: 0.9rem;
     font-weight: 700;
     color: black;
-    background-color: #ececec;
     padding: 3%;
-    border-radius: 8px;
-    margin-top: 15px;
+    margin: 4px;
     transition: .2s ease-in-out 0s;
 }
 
@@ -197,8 +195,7 @@ label {
     border-color: black !important;
     color: white !important;
     border-radius: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 2%;
     font-size:1.2rem;
 }
 
@@ -232,10 +229,10 @@ label {
 }
 
 .padding-style-1 {
-    padding-top: 12px;
+    padding-top: 10px;
     padding-right: 60px;
     padding-left: 60px;
-    padding-bottom: 12px;
+    padding-bottom: 10px;
 }
 
 .padding-style-2 {
@@ -265,6 +262,7 @@ label {
     border-width: 0px;
     color: black !important;
     text-align: right;
+    font-size: 0.8rem;
     
 }
 
@@ -273,6 +271,7 @@ label {
     border-width: 0px !important;
     color: white !important;
     border-radius: 20px;
+    font-size: 0.8rem;
 }
 
 .home-description {
@@ -281,8 +280,7 @@ label {
 }
 
 .letseat-logo-navbar {
-    width: 120px;
-    height: 50px;
+    width: 100px;
 }
 
 .lds-ellipsis {
@@ -340,3 +338,13 @@ label {
       transform: translate(24px, 0);
     }
   }
+
+.font-size-md {
+    font-size: 2.6rem;
+    line-height: 1.1;
+}
+
+.font-size-sm {
+    font-size: 1rem;
+    line-height: 1.4;
+}

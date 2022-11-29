@@ -48,7 +48,7 @@ search_questions = [
     },
     {
         "id": "q5",
-        "question": "Distance Preference",
+        "question": "Zipcode",
         "selectedChoices": []
     }
 ]

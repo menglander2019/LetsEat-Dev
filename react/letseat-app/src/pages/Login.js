@@ -153,7 +153,7 @@ function CreateAccount() {
                                 <label for="email">Log In</label>
                                 <input type="text" id="email" className="form-control login-box w-100 mt-3" placeholder="Enter email" required></input>          
                             </div>
-                            <div id="q2" className="question mt-2" onChange={textSubmission}>                            
+                            <div id="q2" className="question" onChange={textSubmission}>                            
                                 <input type="text" id="password" className="login-box form-control w-100 mt-3" placeholder="Enter password" required></input>
                             </div>
                             <div className="row mt-4">

@@ -13,9 +13,9 @@ const DashboardBanner = ({searchFunction}) => {
                             <div className="d-flex justify-content-center">
                                 <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                             </div>
-                            <p className="display-4 text-center charter-regular">Welcome Back.</p>
+                            <p className="font-size-md text-center charter-regular">Welcome Back.</p>
                             <div className="d-flex justify-content-center mt-1">
-                                <p className="text-center font-size-md colfax-regular">
+                                <p className="text-center font-size-sm colfax-regular">
                                     Answer the questionnaire to generate your recommendations.
                                 </p>
                             </div>
