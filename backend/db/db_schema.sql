@@ -4,11 +4,11 @@ DROP TABLE IF EXISTS userProfiles;
 CREATE TABLE userProfiles
 (
     userID int(8) not null,
-    email varchar(15) not null,
-    password char(15) not null,
+    email varchar(30) not null,
+    password char(30) not null,
     dob date not null,
     gender varchar(15) not null,
-    name varchar(15) not null,
+    name varchar(30) not null,
     primary key (userID)
 );
 
