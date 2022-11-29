@@ -7,7 +7,7 @@ import logoPath from "../../design-resources/logo/letseat-banner.png"
 const HomeNavbar = () => {
 
     return (
-        <div className="home-navbar">
+        <div className="home-navbar-white">
             <div className="navbar align-items-center padding-style-1">
                 <div class="d-flex justify-content-start">
                     <Link to="/">

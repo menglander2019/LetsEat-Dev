@@ -8,10 +8,10 @@ import * as BoxIcons from 'react-icons/bi'
 import * as BsIcons from "react-icons/bs"
 import * as IconName from "react-icons/io";
 
-import logoPath from "../../design-resources/logo/letseat-banner.png"
+import logoPath from "../../design-resources/logo/letseat-banner-white.png"
 
 // Takes in JSON data of a restaurant and parses the data
-const DashboardNavbar = ({ navBarColor }) => {
+const DashboardNavbar = () => {
     const navigate = useNavigate()
 
     const logOut = async (e) => {
@@ -29,7 +29,7 @@ const DashboardNavbar = ({ navBarColor }) => {
     } 
 
     return (
-        <div className={navBarColor}>
+        <div className="home-navbar-black">
             <div className="navbar align-items-center padding-style-1">
                 <div className="d-flex justify-content-start">
                     <Link to="/dashboard">
@@ -39,14 +39,14 @@ const DashboardNavbar = ({ navBarColor }) => {
                 <div className="d-flex justify-content-end">
                     <div className="d-flex flex-wrap align-items-center justify-content-between">
                         <Link to="/edit/preferences/">  
-                            <IconContext.Provider value={{ color: "black", size: 25 }}>
+                            <IconContext.Provider value={{ color: "white", size: 25 }}>
                                 <button className="btn">
                                     <FaIcons.FaUser />
                                 </button>
                             </IconContext.Provider>
                         </Link>
                         <Link to="/">
-                            <button onClick={logOut} className="btn navbar-signup">
+                            <button onClick={logOut} className="btn navbar-signup-white">
                                 <span>Log Out</span>
                             </button>
                         </Link>

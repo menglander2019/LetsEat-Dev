@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import TestData from '../data/test-data.json'
 import RestaurantCard from '../components/RestaurantCard'
 import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
+import LoadingAnimation from '../components/LoadingAnimation';
 
 function Restaurant() {
 
+    const navigate = useNavigate()
     const [ restaurantList, setRestaurantList ] = useState([])
     // Keeps index of the restaurant index from JSON data
     const [ restaurantIndex, setRestaurantIndex ] = useState(0)
@@ -54,19 +57,33 @@ function Restaurant() {
         return restaurantList[index]
     }
 
+    const backButton = () => {
+        navigate("/dashboard")
+    }
+
     if (restaurantList.length == 0) {
-        return ( <h1>Loading</h1>)
+        return ( <LoadingAnimation />)
     } else {
         return (
-            <div className="container">
-                <DashboardNavbar navBarColor={"home-navbar-white"}/>
-                <div className="d-flex align-items-center justify-content-center h-100">
-                    <div className="col-md-6 mt-3">
+            <div className="container-fluid">
+                <DashboardNavbar />
+                <div className="d-flex justify-content-center h-100">
+                    <div className="col-md-5 mt-4">
                         <div className="d-flex flex-column">
                         {   displayRestaurant == 0
                             ? (
                                 <>
                                     <h1 className="text-center">Confirmed!</h1>
+                                    <div className="d-flex justify-content-center mt-2">
+                                        <div className="flex-styling-33">
+                                            <button 
+                                                id="submit"
+                                                className="btn home-large-login colfax-regular w-100"
+                                                onClick={backButton}>
+                                                Back
+                                            </button>
+                                        </div>
+                                    </div>
                                 </>
                             ) :
                             (

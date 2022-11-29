@@ -121,8 +121,8 @@ function CreateAccount() {
     return (
         <div className="container-fluid">
             <HomeNavbar />
-            <div className="d-flex align-items-center justify-content-center h-100 mb-5">
-                <div className="col-md-4 mt-5">
+            <div className="d-flex justify-content-center h-100 mb-5">
+                <div className="col-md-4 mt-2">
                     <form onSubmit={submitSelections}>
                         <div className="d-flex flex-column">
                             <h4 className="colfax-regular text-center mt-3">Sign up for free to discover your new favorite restaurant.</h4>
@@ -182,10 +182,9 @@ function CreateAccount() {
                                 </button>
                             </div>
                             { 
-                                accountCreateStatus == 1 ? <p id="successMessage" className="text-center text-muted">Account Created!</p> : 
-                                accountCreateStatus == 2 ? <p id="failMessage" className="text-center text-muted">Account Creation Failed!</p> : null 
+                                accountCreateStatus == 1 ? <p className="successMessage text-center">Account Created!</p> : 
+                                accountCreateStatus == 2 ? <p className="failMessage text-center">Account Creation Failed!</p> : null 
                             }
-
                         </div>
                     </form>
                 </div>

@@ -30,7 +30,7 @@ function Dashboard() {
     return (
         <div className="container-fluid">
             <div className="d-flex flex-column">
-                <DashboardNavbar navBarColor={"home-navbar-white"}/>
+                <DashboardNavbar />
                 <DashboardBanner searchFunction={searchButtonClicked}/>
             </div>
         </div>

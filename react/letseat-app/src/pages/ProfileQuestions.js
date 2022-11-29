@@ -10,6 +10,7 @@ import { IconContext } from 'react-icons'
 import PreviousNextButton from '../components/PreviousNextButton'
 import ButtonCreate from '../components/ButtonCreate'
 import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
+import LoadingAnimation from '../components/LoadingAnimation';
 
 
 function ProfileQuestions() {
@@ -129,18 +130,12 @@ function ProfileQuestions() {
     if (localStorage.getItem("token") == null) {
         return navigate("/")
     } else if (questions.length == 0) {
-        return(
-            <div className="container">
-                <div className="col-md-7 mt-4 mx-auto">
-                    <h1>Loading</h1>
-                </div>
-            </div>
-        )
+        return( <LoadingAnimation /> )
     } else {
         return (
-            <div className="container">
-                <div className="d-flex align-items-center justify-content-center h-100">
-                    <div className="col-md-7 mt-4">
+            <div className="container-fluid">
+                <div className="d-flex justify-content-center h-100">
+                    <div className="col-md-6 mt-5">
                         <div id="profileQuestions">
                             <div className="d-flex flex-column">
                                 <h1 className="display-5 colfax-regular">Profile Questions</h1>

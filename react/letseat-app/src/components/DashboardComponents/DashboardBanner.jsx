@@ -19,7 +19,7 @@ const DashboardBanner = ({searchFunction}) => {
                                     Answer the questionnaire to generate your recommendations.
                                 </p>
                             </div>
-                            <div className="d-flex justify-content-center mt-4">
+                            <div className="d-flex justify-content-center mt-2">
                                 <div className="flex-styling-33">
                                     <button 
                                         id="submit"

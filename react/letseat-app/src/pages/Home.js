@@ -19,26 +19,6 @@ function Home() {
                 }
                 <HomeBanner />
                 <HomeDescription />
-                <div className="row mt-5">
-                    <Link to="/login">
-                        <span>Login</span>
-                    </Link><br />
-                    <Link to="/createaccount">
-                        <span>Create Account</span>
-                    </Link><br />
-                    <Link to="/edit/account">
-                        <span>Edit Account</span>
-                    </Link><br />
-                    <Link to="/edit/preferences">
-                        <span>Profile Questions</span>
-                    </Link><br />
-                    <Link to="/searchquestions">
-                        <span>Search Questions</span>
-                    </Link><br />
-                    <Link to="/restaurantsearch">
-                        <span>Restaurant</span>
-                    </Link>
-                </div>
             </div>
         </div>
     );

@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import HomeNavbar from '../components/HomeComponents/HomeNavbar';
+import LoadingAnimation from '../components/LoadingAnimation';
 import SearchQuestions from './SearchQuestions';
-
 
 function CreateAccount() {
     const navigate = useNavigate()
@@ -137,7 +137,7 @@ function CreateAccount() {
     }
     
     if (questions.length == 0) {
-        return ( <h1>Loading</h1>)
+        return ( <LoadingAnimation /> )
     }
     return (
         <div className="container-fluid">
