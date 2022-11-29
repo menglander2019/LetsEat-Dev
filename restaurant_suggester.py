@@ -141,11 +141,9 @@ def make_prediction(restaurant, user_features, encoder, dec_tree):
     if len(result) == 0:
         print("The restaurant was not in the db!")
         return 0
-    print(list(result[0])[28:])
-    
+
     #scraped_info = list(scrape(rest_id, url)).values()
     scraped_info = list(result[0])[28:]
-    print("length:", len(scraped_info))
 
     # closes the connection to the sqlite3 db
     conn.close() 
@@ -205,12 +203,17 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
     if len(suggestions_list) == 0:
         return []
 
+    # sorts the restaurants based on the 1st column of each row which contains the confidence score of that rejection
     suggestions_sorted = sorted(suggestions_list, key=lambda x: x[1])
     suggestions_sorted_list = list(numpy.array(suggestions_sorted)[:,0])
     print("Total prediction time:", time.time() - start_time)
-    print("Final list of sorted predicted restaurants:", suggestions_sorted_list)
 
-    return suggestions_sorted_list
+    # returns the list of restaurants sorted by their IDs
+    id_list_sorted = []
+    for suggestion in suggestions_sorted_list:
+        id_list_sorted.append(suggestion.get('id'))
+
+    return id_list_sorted
 
 if __name__ == "__main__":
     get_predictions(48017772, "Date", 2, "Dinner", [3,4])

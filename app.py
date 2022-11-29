@@ -5,6 +5,7 @@ from starlette.middleware.sessions import SessionMiddleware
 from backend.db.db_management import *
 from backend.questions_data import *
 from restaurant_suggester import get_predictions
+from yelp.YelpApiCalls import return_business
 import os
 import jwt
 
@@ -128,9 +129,7 @@ async def submit_search(request: Request):
     for price in price_ranges:
         actual_price_ranges.append(price_ranges_groups[price])
     suggestions_list = get_predictions(id, occasion, num_people, meal, actual_price_ranges, zip)
-    print("received suggestions list:", suggestions_list)
-    request.session["rest_list"] = suggestions_list
-    print("session list:", request.session["rest_list"])
+    request.session.update({"rest_id_list": suggestions_list})
     return {"message": "submitted"}
 
 @app.get("/isNewUser/")
@@ -141,7 +140,8 @@ async def is_new_user(request: Request):
 
 @app.get("/getRecommendations/")
 def getRecommendations(request: Request):
-    if "rest_list" in request.session:
-        print("Current rest list:", request.session["rest_list"])
-        return {"restaurants": request.session["rest_list"]}
-    return {"restaurants": []}
+    rest_list = []
+    if "rest_id_list" in request.session:
+        for id in request.session['rest_id_list']:
+            rest_list.append(return_business(id))
+    return {"restaurants": rest_list}
