@@ -39,7 +39,7 @@ const DashboardNavbar = ({ navBarColor }) => {
                 <div className="d-flex justify-content-end">
                     <div className="d-flex flex-wrap align-items-center justify-content-between">
                         <Link to="/edit/preferences/">  
-                            <IconContext.Provider value={{ color: "black", size: 30 }}>
+                            <IconContext.Provider value={{ color: "black", size: 25 }}>
                                 <button className="btn">
                                     <FaIcons.FaUser />
                                 </button>

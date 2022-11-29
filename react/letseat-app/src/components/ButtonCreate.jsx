@@ -8,7 +8,7 @@ const ButtonCreate = ({ answerOptions, questionNumber, optionType }) => {
     let optionTypeText = optionType
 
     return (
-        <div id="answerOptions" className="d-flex flex-wrap justify-content-between">
+        <div id="answerOptions" className="d-flex flex-row flex-wrap">
             {answerOptions.map((answerOption, index) => (
                 <button 
                     id={questionNumber + "-" + index}
@@ -18,6 +18,7 @@ const ButtonCreate = ({ answerOptions, questionNumber, optionType }) => {
                     value={answerOption}>
                     {answerOption}
                 </button>
+
             ))}
         </div>
     )
