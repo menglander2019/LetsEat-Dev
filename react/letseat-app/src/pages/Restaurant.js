@@ -1,16 +1,49 @@
 import React, { Component } from 'react'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import TestData from '../data/test-data.json'
 import RestaurantCard from '../components/RestaurantCard'
+import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
+import LoadingAnimation from '../components/LoadingAnimation';
 
 function Restaurant() {
 
+    const navigate = useNavigate()
+    const [ restaurantList, setRestaurantList ] = useState([])
     // Keeps index of the restaurant index from JSON data
     const [ restaurantIndex, setRestaurantIndex ] = useState(0)
     // State 0: Questionnaire, State 1: Display Restaurant
     const [ displayRestaurant, setDisplayRestaurant ] = useState(1)
     
+    useEffect(() => {
+        fetchRestaurants()
+    }, [])
+
+    // Calls FastAPI to pull questions
+    const fetchRestaurants = async (e) => {
+        console.log("Restaurants Fetched!")
+        const requestOption = {
+            method: "GET",
+            credentials: "include",
+            headers: { "Content-Type": "application/json"}
+        }
+
+        await fetch("http://localhost:8000/getRecommendations/", requestOption)
+            .then(async response => {
+                const data = await response.json()
+                if (response.ok) {
+                    console.log(data.restaurants)
+                    setRestaurantList(data.restaurants)
+                } else {
+                    console.log("Error!")
+                }
+            })
+            .catch(error => {
+                console.log("Error!")
+            })
+    }
+
     const nextRestaurant = () => {
         setRestaurantIndex((restaurantIndex) => restaurantIndex + 1)
     }
@@ -20,36 +53,57 @@ function Restaurant() {
     }
 
     // Accesses JSON data (implement error or null checks later on)
-    const parseRestaurantData = (jsonData, index) => {
-        return jsonData.businesses[index]
+    const parseRestaurantData = (index) => {
+        return restaurantList[index]
     }
 
-    return (
-        <div className="container">
-            <div className="h-100 d-flex align-items-center">
-                <div className="col-md-6 mt-4 mx-auto">
-                {   displayRestaurant == 0
-                    ? (
-                        <h1>Confirmed!</h1>
-                    ) :
-                    (
-                        <>
-                            <RestaurantCard jsonData={parseRestaurantData(TestData, restaurantIndex)} />
-                            <div className="row mt-4 mb-5">
-                                <div className="col-md-6 mx-auto">
-                                    <button type="button" className="btn tryAgain w-100" onClick={nextRestaurant}>Try Again</button>
-                                </div>
-                                <div className="col-md-6 mx-auto">
-                                    <button type="button" className="btn confirm w-100" onClick={confirmRestaurant}>I'm Going!</button>
-                                </div>
-                            </div>
-                        </>
-                    )
-                }
+    const backButton = () => {
+        navigate("/dashboard")
+    }
+
+    if (restaurantList.length == 0) {
+        return ( <LoadingAnimation />)
+    } else {
+        return (
+            <div className="container-fluid">
+                <DashboardNavbar />
+                <div className="d-flex justify-content-center h-100">
+                    <div className="col-md-5 mt-4">
+                        <div className="d-flex flex-column">
+                        {   displayRestaurant == 0
+                            ? (
+                                <>
+                                    <h1 className="text-center">Confirmed!</h1>
+                                    <div className="d-flex justify-content-center mt-2">
+                                        <div className="flex-styling-33">
+                                            <button 
+                                                id="submit"
+                                                className="btn home-large-login colfax-regular w-100"
+                                                onClick={backButton}>
+                                                Back
+                                            </button>
+                                        </div>
+                                    </div>
+                                </>
+                            ) :
+                            (
+                                <>
+                                    <RestaurantCard jsonData={parseRestaurantData(restaurantIndex)} />
+                                    <div className="buttons mt-4">
+                                        <div className="d-flex flex-wrap justify-content-between">
+                                            <button type="button" className="btn tryAgain flex-styling-50" onClick={nextRestaurant}>Try Again</button>
+                                            <button type="button" className="btn confirm flex-styling-50" onClick={confirmRestaurant}>I'm Going!</button>
+                                        </div>
+                                    </div>
+                                </>
+                            )
+                        }
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
   
 

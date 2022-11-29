@@ -7,45 +7,46 @@ import * as BoxIcons from 'react-icons/bi'
 import * as BsIcons from "react-icons/bs"
 
 import { IconContext } from 'react-icons'
+import { useNavigate } from 'react-router-dom'
 
 import PreviousNextButton from '../components/PreviousNextButton'
 import ButtonCreate from '../components/ButtonCreate'
+import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
+import LoadingAnimation from '../components/LoadingAnimation'
+
 
 function SearchQuestions() {
 
-    var questionBank = [
-        {
-            id: 0,
-            question: "What is the occasion?",
-            answers: ["Friends", "Family", "Date", "Work"],
-            questionId: "0001",
-            selected: ""
-        },
-        {
-            id: 1,
-            question: "How many people?",
-            answers: ["1", "2", "3", "4+"],
-            questionId: "0002",
-            selected: ""
-        },
-        {
-            id: 2,
-            question: "What kind of meal?",
-            answers: ["Breakfast", "Lunch", "Dinner", "Dessert"],
-            questionId: "0003",
-            selected: ""
-        },
-        {
-            id: 3,
-            question: "What's the price range?",
-            answers: ["$", "$$", "$$$", "N/A"],
-            questionId: "0004",
-            selected: ""
-        }
-    ];
-
+    const navigate = useNavigate()
     const [ questionIndex, setQuestionIndex ] = useState(0)
-    const [ answerSelect, setAnswerSelect ] = useState("")
+    const [ questions, setQuestions ] = useState([])
+    var flexStylingOption = "flex-styling-50"
+
+    useEffect(() => {
+        fetchQuestions()
+    }, [])
+
+    // Calls FastAPI to pull questions
+    const fetchQuestions = async () => {
+        console.log("Questions Fetched!")
+        const requestOption = {
+            method: "GET",
+            credentials: "include",
+            headers: { "Content-Type": "application/json"}
+        }
+        const response = await fetch("http://localhost:8000/questionnaire/search/", requestOption)
+            .then(async response => {
+                const data = await response.json()
+                if (response.ok) {
+                    setQuestions(data)
+                } else {
+                    console.log("Error!")
+                }
+            })
+            .catch(error => {
+                console.log("Error!")
+            })
+    }
 
     const nextQuestion = () => {
         setQuestionIndex((questionIndex) => questionIndex + 1)
@@ -55,75 +56,152 @@ function SearchQuestions() {
         setQuestionIndex((questionIndex) => questionIndex - 1)
     }
 
-    const handleAnswerClick = (e) => {
-        alert(e.target.getAttribute("questionNumber"))
+    const radioAnswerClicked = (e) => {
+        var parentDiv = e.currentTarget
+        var questionID = e.currentTarget.getAttribute("id");
+        var clickedChoice = e.target
+
+        if (clickedChoice.classList.contains("selected")) {
+            // Deselect Answer
+            clickedChoice.classList.remove("selected")
+            // Remove Selection from "questions" state
+            removeSelection(questionID, clickedChoice.value)
+        } else {
+            // Check if something is already selected
+            var prevSelected = parentDiv.querySelector(".selected")
+            if (prevSelected != null) {
+                // Deselect first the previously selected button
+                prevSelected.classList.remove("selected")
+                removeSelection(questionID, prevSelected.value)
+            }
+            // Select Answer
+            clickedChoice.classList.add("selected")
+            // Add Selection to "questions" state
+            addSelection(questionID, clickedChoice.value)
+        }
     }
 
-    const handleSubmitButton = () => {
-        alert("Search Create!")
+    const textSubmission = (e) => {
+        var parentDiv = e.currentTarget
+        var questionID = e.currentTarget.getAttribute("id");
+        var clickedChoice = e.target
+        addTextSubmission(questionID, clickedChoice.value)
     }
 
-    return (
-        <div className="container">
-            <div className="col-md-7 mt-4 mx-auto">
-                <h1 className="display-3">Search Questions</h1>
-                <div id="searchQuestions">
-                    <div className="row mt-3">
-                        <div className="question">
-                            <label for="answerOptions">What is the occasion?</label>
-                            <ButtonCreate answerOptions={questionBank[0].answers} questionNumber={0} colNumber={6} onClickFunction={handleAnswerClick} />
+    // Adds selection to "selectedChoices" array
+    const addTextSubmission = (questionID, selectionValue) => {
+        let tempQuestions = questions
+        tempQuestions.data.map((question, index) => {
+            if(question.id == questionID) {
+                // If something was already selected
+                question.selectedChoices[0] = selectionValue
+            }
+        });
+        setQuestions(tempQuestions)
+    }
+
+    // Adds selection to "selectedChoices" array
+    const addSelection = (questionID, selectionValue) => {
+        let tempQuestions = questions
+        tempQuestions.data.map((question, index) => {
+            if(question.id == questionID) {
+                // If something was already selected
+                question.selectedChoices.push(selectionValue)
+            }
+        });
+        setQuestions(tempQuestions)
+    }
+
+    // Removes selection from "selectedChoices" array
+    const removeSelection = (questionID, selectionValue) => {
+        let tempQuestions = questions
+        tempQuestions.data.map((question, index) => {
+            if(question.id == questionID) {
+                question.selectedChoices.map((choice, choiceIndex) => {
+                    if (choice == selectionValue) {
+                        question.selectedChoices.splice(choiceIndex, 1)
+                    }
+                })
+            }
+        });
+        setQuestions(tempQuestions)
+    }
+
+    // Submits user selection to FastAPI
+    const submitSelections = (e) => {
+
+        e.preventDefault()
+
+        console.log(questions)
+
+        const requestOption = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify(questions)
+        }
+
+        const response = fetch("http://localhost:8000/submit/search/", requestOption)   
+            .then(response => {
+                if (response.ok) {
+                    navigate("/restaurantsearch") 
+                } else {
+                    console.log("Error Posting!")
+                }
+            })
+            .catch(error => {
+                console.log("Error Recommending!")
+            })
+    }
+
+    if (localStorage.getItem("token") == null) {
+        return navigate("/")
+    } else if (questions.length == 0) {
+        return (<LoadingAnimation />)
+    } else {
+        return (
+            <div className="container-fluid">
+                <DashboardNavbar />
+                <div className="d-flex justify-content-center h-100">
+                    <div className="col-md-6 mt-5">
+                        <div className="d-flex flex-column">
+                            <h1 className="display-5 colfax-regular">Search Questions</h1>
+                            <div id="q1" className="question mt-3" onClick={radioAnswerClicked}>
+                                <label for="answerOptions">{questions.data[0].question}</label>
+                                <ButtonCreate answerOptions={questions.data[0].answerChoices} questionNumber={"q1"} optionType={flexStylingOption} />
+                            </div>
+                            <div id="q2" className="question mt-3" onClick={radioAnswerClicked}>
+                                <label for="answerOptions">{questions.data[1].question}</label>
+                                <ButtonCreate answerOptions={questions.data[1].answerChoices} questionNumber={"q2"} optionType={flexStylingOption} />
+                            </div>
+                            <div id="q3" className="question mt-3" onClick={radioAnswerClicked}>
+                                <label for="answerOptions">{questions.data[2].question}</label>
+                                <ButtonCreate answerOptions={questions.data[2].answerChoices} questionNumber={"q3"} optionType={flexStylingOption} />
+                            </div>
+                            <div id="q4" className="question mt-3" onClick={radioAnswerClicked}>
+                                <label for="answerOptions">{questions.data[3].question}</label>
+                                <ButtonCreate answerOptions={questions.data[3].answerChoices} questionNumber={"q4"} optionType={flexStylingOption} />
+                            </div>
+                            <div id="q5" className="question mt-3" onChange={textSubmission}>
+                                <label for="answerOptions">{questions.data[4].question}</label>
+                                <input type="text" id="distance" className="input-box form-control mt-2 w-100" placeholder="Enter your zipcode"></input>
+                            </div>
+                            <div className="d-flex justify-content-center mt-4 mb-5">
+                                <IconContext.Provider value={{ color: "white", size: 20 }}>
+                                    <button 
+                                        id="submit" 
+                                        className="btn btn-primary submit w-100 inactive" 
+                                        onClick={submitSelections}>
+                                        <FaIcons.FaCheck />
+                                    </button>
+                                </IconContext.Provider>
+                            </div>
                         </div>
                     </div>
-                    <div className="row mt-3">
-                        <div className="question">
-                            <label for="answerOptions">How many people?</label>
-                            <ButtonCreate answerOptions={questionBank[1].answers} questionNumber={1} colNumber={6} onClickFunction={handleAnswerClick} />
-                        </div>
-                    </div>
-                    <div className="row mt-3">
-                        <div className="question">
-                            <label for="answerOptions">What type of meal?</label>
-                            <ButtonCreate answerOptions={questionBank[2].answers} questionNumber={2} colNumber={6} onClickFunction={handleAnswerClick} />
-                        </div>
-                    </div>
-                    <div className="row mt-3">
-                        <div className="question">
-                            <label for="answerOptions">What is the price range?</label>
-                            <ButtonCreate answerOptions={questionBank[3].answers} questionNumber={3} colNumber={6} onClickFunction={handleAnswerClick} />
-                        </div>
-                    </div>
-                    <div className="row mt-3">
-                        <div className="question">
-                            <label for="answerOptions">Distance Preference</label>
-                            <p>Google Maps Pin Drop Here</p>
-                            <p>Mile Selecting Slider Here</p>
-                        </div>
-                    </div>
-                    <div className="row mt-4 mb-5">
-                        <div className="col-md-12 mx-auto">
-                            <IconContext.Provider value={{ color: "white", size: 25 }}>
-                                <button 
-                                    id="submit"
-                                    className="btn btn-primary submit w-100" 
-                                    onClick={handleSubmitButton}>
-                                    Search
-                                </button>
-                            </IconContext.Provider>
-                        </div>
-                    </div>
-                </div> 
-            </div>
-        </div> 
-    );
+                </div>
+            </div> 
+        );
+    }
 }
-  
-/**
- * <PreviousNextButton 
-        questionIndex={questionIndex}
-        previousQuestion={previousQuestion}
-        nextQuestion={nextQuestion}
-        numQuestions={questionBank.length}
-    />
- */
 
 export default SearchQuestions

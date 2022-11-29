@@ -1,4 +1,4 @@
-import YelpApiCalls
+from . import YelpApiCalls
 import sqlite3
 from sqlite3 import Error
 from selenium import webdriver
@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import calendar
 import time
 import random
@@ -196,7 +197,6 @@ def get_reviews2(yelpUrl, rest_id, q, business):
                 #determine if they would attend
                 going = SentimentAnalysis(lists[i].text)
                 
-         
                 
                 try:
                     #open connection 
