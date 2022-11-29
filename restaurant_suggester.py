@@ -60,8 +60,11 @@ def build_user_features(occasion, num_people, meal, price_ranges, positives, neg
         'covid': 0
     }
     # iterates through the restrictions the user chose and assigns a value of 1 to it
+    print(restrictions)
     for restriction in restrictions:
-        if restriction not in restriction_settings:
+        if restriction == '':
+            continue
+        elif restriction not in restriction_settings:
             raise Exception("ERROR: Invalid dietary restriction for given user")
         restriction_settings[restriction] = 1
     # converts the restrictions settings into a list
