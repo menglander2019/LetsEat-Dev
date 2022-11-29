@@ -10,8 +10,11 @@ const DashboardBanner = ({searchFunction}) => {
                 <div className="col-md-6 mt-5">
                     <div className="home-main-block">
                         <div className="d-flex flex-column">
-                            <p className="display-4 text-center charter-regular">Begin your search.</p>
-                            <div className="d-flex justify-content-center mt-3">
+                            <div className="d-flex justify-content-center">
+                                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                            </div>
+                            <p className="display-4 text-center charter-regular">Welcome Back.</p>
+                            <div className="d-flex justify-content-center mt-1">
                                 <p className="text-center font-size-md colfax-regular">
                                     Answer the questionnaire to generate your recommendations.
                                 </p>

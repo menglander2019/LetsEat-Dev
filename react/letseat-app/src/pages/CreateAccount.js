@@ -121,11 +121,11 @@ function CreateAccount() {
     return (
         <div className="container-fluid">
             <HomeNavbar />
-            <div className="d-flex align-items-center justify-content-center h-100">
-                <div className="col-md-4 mt-4">
+            <div className="d-flex align-items-center justify-content-center h-100 mb-5">
+                <div className="col-md-4 mt-5">
                     <form onSubmit={submitSelections}>
                         <div className="d-flex flex-column">
-                            <h3 className="colfax-regular text-center mt-3">Sign up for free to discover your new favorite restaurant.</h3>
+                            <h4 className="colfax-regular text-center mt-3">Sign up for free to discover your new favorite restaurant.</h4>
                             <div id="q1" className="question input-group mt-3" onChange={textSubmission}>                            
                                 <label for="email">Enter your email</label>
                                 <input type="text" id="email" className="form-control input-box w-100" placeholder="Enter an email" required></input>
