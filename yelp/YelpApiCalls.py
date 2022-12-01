@@ -34,7 +34,7 @@ def cuisines_to_umbrellas(cuisines):
 def request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes):
 
     #convert time to UNIX
-    #now = open_at
+    #now = datetime(2022, 12, 2, 3, 20)
     now = datetime.now()
     unix = time.mktime(now.timetuple())
     
@@ -54,7 +54,7 @@ def request_businesses_list(zipcode, distance, dollars, open_at, categories, att
     response = requests.request('GET', API_URL, headers=headers, params=params)
     
     #add restaurants from API call to webscraping db
-    #updateDB(response.json())
+    updateDB(response.json())
 
     return response.json()
 
@@ -89,19 +89,66 @@ def return_business(businessId):
 
 def main():
     #this is test code. in real life, request_businesses_list is directly called
-    zipcode = '20037'
-    distance = '4000' #in meters, cannot exeed 4000
-    dollars = '1,2,3,4'
-    open_at = '1664468447' #in unix nums 
-    categories = None
-    attributes = None
+    for umbrella, umbList in constants.cuisine_groups.items():
+            #if alias in umbList and umbrella not in list:
+        print(umbList)
+        for terms in umbList:
+
+            zipcode = '20037'
+            distance = '4000' #in meters, cannot exeed 4000
+            dollars = '1'
+            open_at = '1664468447' #in unix nums 
+            categories = terms
+            attributes = None
     
 
-    response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
+            response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
+            
+            #print results to verify
+            businesses = response.get('businesses')
+            #parse_results(businesses)
+
+            zipcode = '20037'
+            distance = '4000' #in meters, cannot exeed 4000
+            dollars = '2'
+            open_at = '1664468447' #in unix nums 
+            categories = terms
+            attributes = None
     
-    #print results to verify
-    businesses = response.get('businesses')
-    parse_results(businesses)
+
+            response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
+            
+            #print results to verify
+            businesses = response.get('businesses')
+            #parse_results(businesses)
+
+            zipcode = '20037'
+            distance = '4000' #in meters, cannot exeed 4000
+            dollars = '3'
+            open_at = '1664468447' #in unix nums 
+            categories = terms
+            attributes = None
+    
+
+            response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
+            
+            #print results to verify
+            businesses = response.get('businesses')
+            #parse_results(businesses)
+
+            zipcode = '20037'
+            distance = '4000' #in meters, cannot exeed 4000
+            dollars = '4'
+            open_at = '1664468447' #in unix nums 
+            categories = terms
+            attributes = None
+    
+
+            response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
+            
+            #print results to verify
+            businesses = response.get('businesses')
+        parse_results(businesses)
 
 
 
