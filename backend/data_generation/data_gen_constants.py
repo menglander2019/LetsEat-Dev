@@ -26,6 +26,13 @@ restrictions_dict = {
 }
 
 occasions = ['Myself', 'Friend', 'Date', 'Family', 'Work']
+occasions_dict = {
+        'Myself': 'solo',
+        'Friend': 'friends',
+        'Date': 'date',
+        'Family': 'family',
+        'Work': 'work'
+}
 
 days = ['M', 'T', 'W', 'R', 'F', 'SA', 'SU']
 
@@ -33,6 +40,12 @@ num_people = ['1', '2', '3', '4+']
 
 
 meals = ['Breakfast', 'Lunch', 'Dinner', 'Dessert']
+meals_dict = {
+        'Breakfast': 'breakfast',
+        'Lunch': 'lunch',
+        'Dinner': 'dinner',
+        'Dessert': 'dessert'
+}
 
 price_ranges = ['$', '$$', '$$$', '$$$$']
 price_ranges_groups = {

@@ -1,7 +1,7 @@
 from backend.dec_tree_trainer import train_dec_tree
 from yelp.YelpApiCalls import get_restaurant_list
 from yelp.YelpWebscraping import scrape, DATABASE
-from backend.data_generation.data_gen_constants import header, num_umbrella_terms, restaurant_types, days
+from backend.data_generation.data_gen_constants import header, num_umbrella_terms, restaurant_types, days, occasions_dict, meals_dict
 from backend.db.db_management import get_db
 from datetime import datetime
 import numpy
@@ -60,7 +60,6 @@ def build_user_features(occasion, num_people, meal, price_ranges, positives, neg
         'covid': 0
     }
     # iterates through the restrictions the user chose and assigns a value of 1 to it
-    print(restrictions)
     for restriction in restrictions:
         if restriction == '':
             continue
@@ -75,6 +74,18 @@ def build_user_features(occasion, num_people, meal, price_ranges, positives, neg
     for price in price_ranges:
         # subtracts each value of price by 1 because the indexes start at 0 (price of 1 should make the 0th index = 1)
         prices[price - 1] = 1
+
+    # associates the occasion with the correct key
+    if occasion not in occasions_dict:
+        occasion = ''
+    else:
+        occasion = occasions_dict[occasion]
+
+    # associates the meal with the correct key
+    if meal not in meals_dict:
+        meal = ''
+    else:
+        meal = meals_dict[meal]
 
     # combine all accumulated data and return it
     return [current_day] + rest_preferences + restriction_settings + [occasion, num_people, meal] + prices
@@ -215,5 +226,5 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
 
     return id_list_sorted
 
-if __name__ == "__main__":
-    get_predictions(48017772, "Date", 2, "Dinner", [3,4])
+if __name__ == '__main__':
+    get_predictions(86217081, 'Family', 4, 'Dinner', [3], '20037')
