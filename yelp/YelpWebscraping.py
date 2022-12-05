@@ -67,7 +67,7 @@ ATTRIBUTES = ['Classy',
 DATABASE = r"OfficialRestaurantScraping.db"
 TRUE_CLASS = "css-1p9ibgf"
 FALSE_CLASS = "css-qyp8bo"
-ADDRESS_TO_WEBDRIVER = "/Users/sarahstevens/OneDrive/Documents/College/Fall 2022/CSCI4243W/LetsEat/LetsEat-Dev/yelp/chromedriver 9"
+ADDRESS_TO_WEBDRIVER = "/Users/maxenglander/Documents/2022-23_School_Shit/FALL/SD/LetsEat-Dev/yelp/chromedriver 2"
 
 #create database. this should not be called unless i accidently delete the database or we change it 
 def createTable():
@@ -142,7 +142,70 @@ def checkExistance(rest_id):
     
 #adds the restaurant to our database and queries attributes to add to database and add website
 def scrape(rest_id, url, categories, price, rating, transaction):
-    print("Scraping " + rest_id)
+
+    rest_attr_dict = {
+        'Classy': 0,
+        'Loud': 0,
+        'Hipster': 0,
+        'Groups': 0,
+        'Kids': 0,
+        'Garage': 0,
+        'Street': 0,
+        'Valet': 0, 
+        'Validated': 0,
+        'WiFi': 0,
+        'Monday': 0,
+        'Tuesday': 0,
+        'Wednesday': 0,
+        'Thursday': 0,
+        'Friday': 0,
+        'Saturday': 0,
+        'Sunday': 0,
+        'TV': 0,
+        'Waiter': 0,
+        'Outdoor': 0,
+        'Dancing': 0,
+        'Working': 0,
+        'Smoking': 0,
+        'Bike': 0,
+        'Casual': 0,
+        'Intimate': 0,
+        'Upscale': 0,
+        'Moderate': 0,
+        'Quiet': 0,
+        'Breakfast': 0,
+        'Lunch': 0,
+        'Dinner': 0,
+        'Dessert': 0,
+        'Brunch': 0,
+        'Late': 0,
+        'Trendy': 0, 
+        'Divey': 0,
+        'Bar': 0,
+        'Catering': 0,
+        'Plastic': 0,    
+        'reusable': 0,
+        'staffMasks': 0,
+        'staffVac': 0,
+        'vaccination': 0,
+        'Compostable': 0,
+        'Wheelchair': 0,
+        'Vegan': 0,
+        'Vegetarian': 0,
+        'Gluten': 0,
+        'Pescatarian': 0,
+        'Keto': 0,
+        'Soy': 0,
+        'Dogs': 0,
+        'Women': 0,
+        'Military': 0,
+        'Gender': 0
+    }
+ 
+    #open chrome to scrape website
+    driver = webdriver.Chrome(ADDRESS_TO_WEBDRIVER)
+    driver.get(url)
+    
     #open connection 
     try:
         conn = sqlite3.connect(DATABASE)
@@ -150,8 +213,8 @@ def scrape(rest_id, url, categories, price, rating, transaction):
     except Error as e:
         print(e)
 
-    #add restaurant to database
-    c.execute('INSERT INTO attributes (restaurant_id) VALUES((?))', (rest_id,))
+    # #add restaurant to database
+    # c.execute('INSERT INTO attributes (restaurant_id) VALUES((?))', (rest_id,))
     
     #add cuisine type (umbrella terms) to database
     for j in range(len(categories)):
@@ -228,10 +291,11 @@ def scrape(rest_id, url, categories, price, rating, transaction):
                 searchAttribute = 'All staff fully vaccinated'
 
             if searchAttribute in all_pos_attributes[i].text:
-                c.execute('''UPDATE attributes
-                          SET '''+ATTRIBUTES[j]+''' = 1
-                          WHERE restaurant_id = (?);''',
-                          (rest_id,))  
+                # c.execute('''UPDATE attributes
+                #           SET '''+ATTRIBUTES[j]+''' = 1
+                #           WHERE restaurant_id = (?);''',
+                #           (rest_id,))  
+                rest_attr_dict[ATTRIBUTES[j]] = 1
                           
     #search for attributes the restaurant does not have
     all_neg_attributes = driver.find_elements(By.CLASS_NAME, FALSE_CLASS)
@@ -248,10 +312,11 @@ def scrape(rest_id, url, categories, price, rating, transaction):
                 searchAttribute = 'All staff fully vaccinated'
 
             if ATTRIBUTES[j] in all_neg_attributes[i].text:
-                c.execute('''UPDATE attributes
-                          SET '''+ATTRIBUTES[j]+''' = -1
-                          WHERE restaurant_id = (?);''',
-                          (rest_id,))  
+                # c.execute('''UPDATE attributes
+                #           SET '''+ATTRIBUTES[j]+''' = -1
+                #           WHERE restaurant_id = (?);''',
+                #           (rest_id,))  
+                rest_attr_dict[ATTRIBUTES[j]] = -1
 
     #search for website on yelp page
     siteForDB = url
@@ -303,13 +368,5 @@ def printDB():
     conn.close() 
 
 
-#createTable()
-def main(business_id, url, categories, price, rating, transactions):
-    if(checkExistance(business_id)==False):
-        scrape(business_id, url, categories, price, rating, transactions)
-        #printDB()
-        return True
-    else:
-        #printDB()
-        return False
+
     

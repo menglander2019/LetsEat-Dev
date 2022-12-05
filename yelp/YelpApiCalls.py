@@ -1,9 +1,8 @@
-import requests 
-import YelpWebscraping
+import requests
+from .YelpWebscraping import *
 from datetime import datetime
 import time
-import UserYelpWebScraping
-import constants
+from . import UserYelpWebScraping, YelpWebscraping
 
 API_KEY= "NIeApqUv-eXDl1Uk9Lp1tdYbkmwQqlAWIrE87BI6ntY1RAktDOUG2nadraL9hYnRr6qMDPwcanx4c_A_qKOZykBQmP4gmvpOe61Q4lPxLnejZc8VFxWEnBv4haYwY3Yx"
 
@@ -54,7 +53,7 @@ def request_businesses_list(zipcode, distance, dollars, open_at, categories, att
     response = requests.request('GET', API_URL, headers=headers, params=params)
     
     #add restaurants from API call to webscraping db
-    updateDB(response.json())
+    #updateDB(response.json())
 
     return response.json()
 
@@ -76,8 +75,8 @@ def parse_results(businesses):
         for j in (businesses[i].get('location').get('display_address')):
             print("\t"+j)
         print()
-    YelpWebscraping.printDB()
-    UserYelpWebScraping.printDB()
+    #YelpWebscraping.printDB()
+    #UserYelpWebScraping.printDB()
     
 
 #use businessId to get json results for that business
@@ -87,7 +86,7 @@ def return_business(businessId):
     return response.json()
     
 
-def main():
+def get_restaurant_list(zip, dist, price_range, cuisines):
     #this is test code. in real life, request_businesses_list is directly called
     for umbrella, umbList in constants.cuisine_groups.items():
             #if alias in umbList and umbrella not in list:
@@ -101,7 +100,6 @@ def main():
             categories = terms
             attributes = None
     
-
             response = request_businesses_list(zipcode, distance, dollars, open_at, categories, attributes)
             
             #print results to verify

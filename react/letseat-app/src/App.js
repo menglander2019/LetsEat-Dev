@@ -7,6 +7,7 @@ import SearchQuestions from './pages/SearchQuestions';
 import CreateAccount from './pages/CreateAccount';
 import Login from './pages/Login';
 import EditAccount from './pages/EditAccount';
+import Dashboard  from './pages/Dashboard';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/createaccount" element={<CreateAccount />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/edit/account" element={<EditAccount />} />
           <Route path="/edit/preferences" element={<ProfileQuestions />} />
           <Route path="/searchquestions" element={<SearchQuestions />} />
