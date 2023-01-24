@@ -21,12 +21,11 @@
 
 	<!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
 </head>
-<body class="home">
+<body>
 
 <header id="header">
-	<div id="head" class="parallax" parallax-speed="2">
+	<div id="head" class="parallax" parallax-speed="1">
 		<h1 id="logo" class="text-center">
-			<img class="img-circle" src="assets/cornimages/cornkid.jpg" alt="">
 			<span class="title">LetsEat</span>
 			<span class="tagline">Food Recommendation Application - GW CS Senior Design Project 2022-2023<br>
 				<a href="mailto:cornzmds@gmail.com">cornzmds@gmail.com</a></span>
@@ -81,74 +80,66 @@
 <main id="main">
 
 	<div class="container">
-		
-		<div class="row section topspace">
-			<div class="col-md-12">
-				<p class="lead text-center text-muted"> Our product, LetsEat, is a restaurant recommendation application that aims to provide personalized recommendations to users based on food preferences and various questions about the occasion on which the user is going to eat. By using a machine learning model, this recommendation system will provide users with restaurants that have been good matches for similar users in the past. In short, users will receive the best possible restaurant recommendation given their preferences and circumstances. Instead of scrolling through a seemingly endless supply of restaurants on Yelp or OpenTable, this application will give a single restaurant that best fits the situation and group of people. </p>
-			</div>
-		</div> <!-- / section -->
-		
-		<div class="row section featured topspace">
-			<h2 class="section-title"><span>Developers</span></h2>
-			<div class="row">
-				<div class="col-sm-6 col-md-3">
-					<h3 class="text-center">Zach Bloomstein</h3>
-					<p class="text-center"><a href="zach.html" class="btn btn-action">More about Zach</a></p>
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<h3 class="text-center">Max Englander</h3>
-					<p class="text-center"><a href="max.html" class="btn btn-action">More About Max</a></p>
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<h3 class="text-center">Don Kim</h3>
-					<p class="text-center"><a href="don.html" class="btn btn-action">More About Don</a></p>
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<h3 class="text-center">Sarah Stevens</h3>
-					<p class="text-center"><a href="sarah.html" class="btn btn-action">More About Sarah</a></p>
-				</div>
-			</div>
-		</div> <!-- / section -->
-	
 
-		<div class="row section recentworks topspace">
+		<div class="row topspace">
 			
-			<h2 class="section-title"><span>Video Demo</span></h2>
-			
-			<div class="thumbnails recentworks row">
+			<!-- Article main content -->
+			<article class="col-sm-8 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">Sarah Stevens</h1>
+				</header>
+
+				<p><img style="width: 100%;"src="assets/images/guy.jpg" alt=""></p>
+
+
+				<h3>My Work with LetsEat</h3>
+				<p>I focused on developing the backend web server with the FastAPI library so that data could be sent between the frontend and backend. Additionally, I developed the decision tree code which makes predictions on restaurants.</p>
+				<ul>
+					<li>Add more details eventually</li>
+
+				</ul>
 				
-				<div class="details">
-						<span class="img">
-							<video controls width="400" src="Presentations/alpha-prototype.mov" type="video/mov" alt=""></video>
-					<span class="details"><p>Alpha Demo - 12/7</p></span>
-					<h4></h4>
-					<p></p>
-				</div>
+			</article>
+			<!-- /Article -->
 
-		</div> <!-- /section -->
+			<!-- Sidebar -->
+			<aside class="col-md-4 sidebar sidebar-left">
 
-		<div class="row section topspace">
-			<div class="panel panel-cta"><div class="panel-body">
-				<div class="col-lg-8">
-					<p>View the LetsEat code on Github </p>
+				<div class="widget">
+					<h4>About Me</h4>
+					<ul>
+						<li>uh</li>
+					</ul>
 				</div>
-				<div class="col-lg-4 text-right">
-					<a href="https://github.com/menglander2019/LetsEat-Dev" class="btn btn-primary btn-lg">Github Code</a>
+				<div class="widget">
+					<h4>Future Plans</h4>
+					<ul>
+						<li>Graduating May 2023</li>
+						<li>SDE 1 at Amazon</li>
+						<li>Living in Washington DC</li>
+					</ul>
 				</div>
-			</div></div>
-		</div> <!-- /section -->
-<!--
-		<div class="row section clients topspace">
-			<h2 class="section-title"><span>Clients</span></h2>
-			<div class="col-lg-12">
-				<p>
-					<img src="assets/images/sample_clients.png" alt="">
-				</p>
-			</div>
-		</div> 
-	-->
+				<div class="widget">
+					<h4>Individual Writing Assignments</h4>
+					<ul>
+						<li><a href="Presentations/SarahStevensWriting1.pdf">Writing 1 - Executive Summary</a></li>
+						<li><a href="Presentations/SarahStevensWriting2.pdf">Writing 2 - Technical Summary</a></li>
+					</ul>
+				</div>
+				<div class="widget">
+					<h4>Contact Sarah</h4>
+					<ul>
+						<li><a href="https://www.linkedin.com/in/sarahstevens21/"><i class="fa fa-linkedin fa-2"></i></a>	</li>
+						<li><a href="mailto:stevensse21@gmail.com"><i class="fa fa-envelope fa-2"></i></a>	</li>
+					</ul>
+				</div>
+				
+			</aside>			
+			<!-- /Sidebar -->
+			
+		</div>
 	</div>	<!-- /container -->
-
+	
 </main>
 
 <footer id="footer">
@@ -234,10 +225,9 @@
 </footer>
 
 
-
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="https://menglander2019.github.io/LetsEat-Dev/website/assets/js/template.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="assets/js/template.js"></script>
 </body>
 </html>

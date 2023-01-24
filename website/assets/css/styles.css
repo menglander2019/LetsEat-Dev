@@ -126,14 +126,14 @@ body {
 .nav-side > li > a {
   padding-top: 5px;
   padding-bottom: 5px;
-  color: #f392b4;
+  color: #ebf392;
 }
 .nav-side > li > a:hover {
-  color: #bd1550;
+  color: #bdaf15;
   background: none;
 }
 .nav-side > li.active > a {
-  color: #bd1550;
+  color: #babd15;
 }
 /*********************************************************************
 
@@ -193,10 +193,10 @@ h5 {
   font-size: 1.25rem;
 }
 a {
-  color: #bd1550;
+  color: #bdb715;
 }
 a:hover {
-  color: #e93675;
+  color: #dde936;
 }
 .lead {
   font-weight: 300;
@@ -308,18 +308,18 @@ img {
   transition-duration: 0.2s;
   border: 0 none;
   padding: 12px 35px;
-  text-shadow: 0 1px 0px #780d33;
+  text-shadow: 0 1px 0px #73780d;
 }
 .btn-primary {
   color: #fff;
-  background-color: #bd1550;
+  background-color: #b7bd15;
 }
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active {
   color: #fff;
-  background-color: #e61f65;
+  background-color: #e6dc1f;
 }
 .btn-action {
   font-weight: bold;
@@ -331,8 +331,8 @@ img {
 .btn-action:focus,
 .btn-action:active,
 .btn-action.active {
-  color: #bd1550;
-  border-color: #bd1550;
+  color: #bdaf15;
+  border-color: #b7bd15;
 }
 .btn-lg {
   padding: 15px 60px;
@@ -450,8 +450,8 @@ img {
   font-size: 12px;
   font-size: 0.75rem;
   text-transform: uppercase;
-  text-shadow: 0 1px 0px #780d33;
-  background: #bd1550;
+  text-shadow: 0 1px 0px #73780d;
+  background: #bdba15;
   color: white;
 }
 .thumbnail img {
@@ -702,7 +702,7 @@ footer.entry-meta .meta-in {
   color: #333333;
 }
 #comments .comment-meta a:hover {
-  color: #bd1550;
+  color: #bdb715;
 }
 #comments .comment-meta .author {
   margin: 0 20px 0 0;
