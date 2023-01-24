@@ -21,6 +21,8 @@ user_middlewares.append(Middleware(SessionMiddleware, secret_key=os.environ.get(
 
 app = FastAPI(middleware=user_middlewares)
 
+groupHost_dict = {}
+
 @app.post("/checkLogin")
 async def checkLogin(request: Request):
     print(request)
@@ -145,3 +147,16 @@ def getRecommendations(request: Request):
         for id in request.session['rest_id_list']:
             rest_list.append(return_business(id))
     return {"restaurants": rest_list}
+
+@app.post("/createGroupSession")
+def createGroupSession(request: Request):
+    groupHost_dict[request.session["id"]] = []
+    print(type(request.session["id"]))
+    print(groupHost_dict)
+
+@app.post("/joinGroup/{hostID}")
+def joinGroupSession(hostID: int, request: Request):
+    if hostID in groupHost_dict:
+        print("found host!")
+        groupHost_dict[hostID].append(request.session["id"])
+        print(groupHost_dict)
