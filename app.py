@@ -6,6 +6,7 @@ from backend.db.db_management import *
 from backend.questions_data import *
 from restaurant_suggester import get_predictions
 from yelp.YelpApiCalls import return_business
+from backend.group_session import GroupSession
 import os
 import jwt
 
@@ -25,7 +26,6 @@ groupHost_dict = {}
 
 @app.post("/checkLogin")
 async def checkLogin(request: Request):
-    print(request)
     login_data = await request.json()
     email = login_data["data"][0]["selectedChoices"][0]
     password = login_data["data"][1]["selectedChoices"][0]
@@ -151,12 +151,34 @@ def getRecommendations(request: Request):
 @app.post("/createGroupSession")
 def createGroupSession(request: Request):
     groupHost_dict[request.session["id"]] = []
-    print(type(request.session["id"]))
-    print(groupHost_dict)
+    return {"message": "group session created"}
+
+@app.post("/deleteGroupSession")
+def deleteGroupSession(request: Request):
+    hostID = request.session["id"]
+    if hostID in groupHost_dict:
+        del groupHost_dict[hostID]
+        response = "deleted host ID: " + str(hostID)
+    else:
+        response = "host ID: " + str(hostID) + " not found!"
+    return {"message": response}
 
 @app.post("/joinGroup/{hostID}")
 def joinGroupSession(hostID: int, request: Request):
+    response = "group " + str(hostID) + " not found"
     if hostID in groupHost_dict:
         print("found host!")
-        groupHost_dict[hostID].append(request.session["id"])
+        joiningID = request.session["id"]
+        if joiningID in groupHost_dict[hostID]:
+            response = "already joined group: " + str(hostID)
+        else:
+            groupHost_dict[hostID].append(joiningID)
+            response = "group " + str(hostID) + " found and joined"
         print(groupHost_dict)
+
+    return {"message": response}
+
+@app.get("/getGroupRecommendations")
+def getGroupRecommendations(request: Request):
+    hostID = request.session["id"]
+
