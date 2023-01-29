@@ -7,6 +7,7 @@ from backend.questions_data import *
 from restaurant_suggester import get_predictions
 from yelp.YelpApiCalls import return_business
 from backend.group_session import GroupSession
+from backend.group_session import generateGroupPreferences
 import os
 import jwt
 
@@ -181,4 +182,7 @@ def joinGroupSession(hostID: int, request: Request):
 @app.get("/getGroupRecommendations")
 def getGroupRecommendations(request: Request):
     hostID = request.session["id"]
+    groupIDs = groupHost_dict[hostID]
+    positives = generateGroupPreferences(hostID, groupIDs)
+    return {"message": positives}
 

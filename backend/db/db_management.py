@@ -95,3 +95,21 @@ def checkNewUser(id):
         return 1
     # returns 0 if the user has any of their preferences set up
     return 0
+
+def retrievePositives(id):
+    c = mydb.cursor()
+    # finds a user's preferences given their ID
+    c.execute('SELECT positivePreferences FROM userPreferences WHERE userID = %s', (id,))
+
+    result = c.fetchone()
+    # returns the list of positive preferences for a given user's ID
+    return result
+
+def retrieveNegatives(id):
+    c = mydb.cursor()
+    # finds a user's negative preferences given their ID
+    c.execute('SELECT negativePreferences FROM userPreferences WHERE userID = %s', (id,))
+
+    result = c.fetchone()
+    # returns the list of positive preferences for a given user's ID
+    return result
