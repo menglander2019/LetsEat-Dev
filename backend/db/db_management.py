@@ -103,7 +103,7 @@ def retrievePositives(id):
 
     result = c.fetchone()
     # returns the list of positive preferences for a given user's ID
-    return result
+    return result[0].split(',')
 
 def retrieveNegatives(id):
     c = mydb.cursor()
@@ -112,4 +112,4 @@ def retrieveNegatives(id):
 
     result = c.fetchone()
     # returns the list of positive preferences for a given user's ID
-    return result
+    return result[0].split(',')

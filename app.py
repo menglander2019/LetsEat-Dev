@@ -6,7 +6,6 @@ from backend.db.db_management import *
 from backend.questions_data import *
 from restaurant_suggester import get_predictions
 from yelp.YelpApiCalls import return_business
-from backend.group_session import GroupSession
 from backend.group_session import generateGroupPreferences
 import os
 import jwt
