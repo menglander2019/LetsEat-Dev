@@ -2,11 +2,17 @@ import React, { Component } from 'react'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
-import '../css/Home.css';
 
 import HomeBanner from '../components/HomeComponents/HomeBanner';
 import DashboardBanner from '../components/DashboardComponents/DashboardBanner';
 import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
+
+import '../css/Animation.css';
+import '../css/Button.css';
+import '../css/Color.css';
+import '../css/Font.css';
+import '../css/Home.css';
+import '../css/Padding.css';
 
 function Dashboard() {
     const navigate = useNavigate()
