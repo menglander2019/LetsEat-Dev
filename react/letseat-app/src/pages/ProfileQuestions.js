@@ -140,8 +140,8 @@ function ProfileQuestions() {
                             <div className="d-flex flex-column">
                                 <h1 className="display-5 colfax-regular">Profile Questions</h1>
                                 <div id="q1" className="question mt-3" onClick={answerClicked}>
-                                        <label for="answerOptions">{questions.data[0].question}</label>
-                                        <ButtonCreate answerOptions={questions.data[0].answerChoices} questionNumber={"q1"} optionType={flexStylingOption} />
+                                    <label for="answerOptions">{questions.data[0].question}</label>
+                                    <ButtonCreate answerOptions={questions.data[0].answerChoices} questionNumber={"q1"} optionType={flexStylingOption} />
                                 </div>
                                 <div id="q2" className="question mt-3" onClick={answerClicked}>
                                     <label for="answerOptions">{questions.data[1].question}</label>
