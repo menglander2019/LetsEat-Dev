@@ -188,6 +188,9 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
     # gets the user input for profile information (used for testing)
     user_features = build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions)
     cuisines = user_info[0]
+    print("zip: " + str(zip))
+    print("prices: " + str(price_ranges))
+    print("cuisines: " + str(cuisines))
     restaurants = get_restaurant_list(zip, '4000', price_ranges, cuisines)
     print(f"FOUND {len(restaurants)} restaurants!")
     # iterates through each restaurant, scraping data and making predictions
@@ -207,6 +210,49 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
     suggestions_sorted = sorted(suggestions_list, key=lambda x: x[1])
     suggestions_sorted_list = list(numpy.array(suggestions_sorted)[:,0])
     print("Total prediction time:", time.time() - start_time)
+
+    # returns the list of restaurants sorted by their IDs
+    id_list_sorted = []
+    for suggestion in suggestions_sorted_list:
+        id_list_sorted.append(suggestion.get('id'))
+
+    return id_list_sorted
+
+def get_group_predictions(positives, negatives, restrictions, occasion, num_people, meal, price_ranges, zip):
+    # trains the decision tree and returns the tree along with the proper encoder
+    start_time = time.time()
+    dec_tree_info = train_dec_tree()
+    print("Group training time:", time.time() - start_time)
+
+    dec_tree = dec_tree_info[0]
+    encoder = dec_tree_info[1]
+
+    # gets the user input for profile information (used for testing)
+    user_features = build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions)
+    cuisines = ','.join(positives)
+
+    print("group zip: " + str(zip))
+    print("group prices: " + str(price_ranges))
+    print("group cuisines: " + str(cuisines))
+    restaurants = get_restaurant_list(zip, '4000', price_ranges, cuisines)
+    print(f"FOUND {len(restaurants)} restaurants!")
+    # iterates through each restaurant, scraping data and making predictions
+    suggestions_list = []
+    start_time = time.time()
+    for restaurant in restaurants:
+        suggestion = make_prediction(restaurant, user_features, encoder, dec_tree)
+        # if the model predicts a suggestion, then append it to the unordered dictionary as a key-value pair
+        if suggestion > 0:
+            suggestions_list.append([restaurant, suggestion])
+    
+    # edge-case: no restaurants are found, so an empty list is returned
+    if len(suggestions_list) == 0:
+        return []
+
+    # sorts the restaurants based on the 1st column of each row which contains the confidence score of that rejection
+    suggestions_sorted = sorted(suggestions_list, key=lambda x: x[1])
+    suggestions_sorted_list = list(numpy.array(suggestions_sorted)[:,0])
+    print("Group total prediction time:", time.time() - start_time)
 
     # returns the list of restaurants sorted by their IDs
     id_list_sorted = []

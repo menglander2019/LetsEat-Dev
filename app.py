@@ -4,9 +4,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
 from backend.db.db_management import *
 from backend.questions_data import *
-from restaurant_suggester import get_predictions
+from restaurant_suggester import get_predictions, get_group_predictions
 from yelp.YelpApiCalls import return_business
-from backend.group_session import generateGroupPreferences
+from backend.group_session import *
 import os
 import jwt
 
@@ -179,9 +179,33 @@ def joinGroupSession(hostID: int, request: Request):
     return {"message": response}
 
 @app.get("/getGroupRecommendations")
-def getGroupRecommendations(request: Request):
+async def getGroupRecommendations(request: Request):
+    group_search_data = await request.json()
+    # retrieves group ID based on the host's ID
     hostID = request.session["id"]
     groupIDs = groupHost_dict[hostID]
+    # generates the list of positives, negatives, and restrictions based on the group
     positives = generateGroupPreferences(hostID, groupIDs)
-    return {"message": positives}
+    negatives = generateGroupNegatives(hostID, groupIDs)
+    restrictions = generateGroupRestrictions(hostID, groupIDs)
 
+    # uses the request body to get the search preferences
+    occasion = group_search_data["data"][0]["selectedChoices"][0]
+    num_people = int(group_search_data["data"][1]["selectedChoices"][0])
+    meal = group_search_data["data"][2]["selectedChoices"][0]
+    price_ranges = group_search_data["data"][3]["selectedChoices"]
+    zip = group_search_data["data"][4]["selectedChoices"][0]
+    # converts the $$$'s selected into numbers
+    actual_price_ranges = []
+    for price in price_ranges:
+        actual_price_ranges.append(price_ranges_groups[price])
+
+    # uses a new group prediction function to generate the list of suggested restaurants
+    group_suggestions_list = get_group_predictions(positives, negatives, restrictions, occasion, num_people, meal, actual_price_ranges, zip)
+
+    # temporarily having the function return the list of restaurants, will eventually just populate the session with IDs
+    # and a separate route will return the list of restaurants
+    rest_list = []
+    for id in group_suggestions_list:
+        rest_list.append(return_business(id))
+    return {"restaurants": rest_list}

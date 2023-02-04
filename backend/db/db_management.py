@@ -111,5 +111,14 @@ def retrieveNegatives(id):
     c.execute('SELECT negativePreferences FROM userPreferences WHERE userID = %s', (id,))
 
     result = c.fetchone()
-    # returns the list of positive preferences for a given user's ID
+    # returns the list of negative preferences for a given user's ID
+    return result[0].split(',')
+
+def retrieveRestrictions(id):
+    c = mydb.cursor()
+    # finds a user's restrictions given their ID
+    c.execute('SELECT restrictions FROM userPreferences WHERE userID = %s', (id,))
+
+    result = c.fetchone()
+    # returns the list of restrictions for a given user's ID
     return result[0].split(',')
