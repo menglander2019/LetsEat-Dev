@@ -1,0 +1,53 @@
+.home-navbar-white {
+    background-color: transparent;
+}
+
+.home-navbar-black {
+    background-color: black;
+}
+
+.navbar-login {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    border-width: 0px;
+    color: black !important;
+    text-align: right;
+    font-size: 0.8rem;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navbar-login-white {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    border-width: 0px;
+    color: white !important;
+    text-align: right;
+    font-size: 0.8rem;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navbar-signup {
+    background-color: black !important;
+    border-width: 0px !important;
+    color: white !important;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navbar-signup-white {
+    background-color: white !important;
+    border-width: 0px !important;
+    color: black !important;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.letseat-logo-navbar {
+    width: 100px;
+}
