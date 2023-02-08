@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { useEffect, useState } from 'react'
 
-import HomeNavbar from '../components/HomeComponents/HomeNavbar';
+import SignUpNavbar from '../components/SignUpComponents/SignUpNavbar';
 
 function CreateAccount() {
 
@@ -120,12 +120,12 @@ function CreateAccount() {
 
     return (
         <div className="container-fluid">
-            <HomeNavbar />
+            <SignUpNavbar />
             <div className="d-flex justify-content-center h-100 mb-5">
                 <div className="col-md-4 mt-2">
                     <form onSubmit={submitSelections}>
                         <div className="d-flex flex-column">
-                            <h4 className="colfax-regular text-center mt-3">Sign up for free to discover your new favorite restaurant.</h4>
+                            <h4 className="sf-pro-regular text-center mt-3">Sign up for free to discover your new favorite restaurant.</h4>
                             <div id="q1" className="question input-group mt-3" onChange={textSubmission}>                            
                                 <label for="email">Enter your email</label>
                                 <input type="text" id="email" className="form-control input-box w-100" placeholder="Enter an email" required></input>
@@ -176,9 +176,9 @@ function CreateAccount() {
                             <div className="d-flex justify-content-center mt-4 mb-1">
                                 <button 
                                     id="submit" 
-                                    className="btn btn-primary submit w-100" 
+                                    className="btn btn-primary submit sf-pro-bold w-100" 
                                     type="submit">
-                                    Sign Up
+                                    SIGN UP
                                 </button>
                             </div>
                             { 

@@ -1,0 +1,132 @@
+@font-face { 
+    font-family: Visby; 
+    src: url('./fonts/visbycf-bold.otf');
+}
+@font-face { 
+    font-family: SF-Pro-Regular; 
+    src: url('./fonts/SF-Pro-Display-Regular.otf');
+}
+@font-face { 
+    font-family: SF-Pro-Bold; 
+    src: url('./fonts/SF-Pro-Display-Bold.otf');
+}
+@font-face { 
+    font-family: Charter-Regular; 
+    src: url('./fonts/charter-font/Charter-Regular.otf');
+}
+@font-face { 
+    font-family: Charter-Bold; 
+    src: url('./fonts/charter-font/Charter-Bold.otf');
+}
+@font-face { 
+    font-family: Colfax-Regular; 
+    src: url('./fonts/colfax-font/Colfax-Regular.otf');
+}
+@font-face { 
+    font-family: Colfax-Medium; 
+    src: url('./fonts/colfax-font/Colfax-Medium.otf');
+}
+@font-face { 
+    font-family: Inter-Bold; 
+    src: url('./fonts/inter-font/Inter-Bold.ttf');
+}
+@font-face { 
+    font-family: Druk-Bold; 
+    src: url('./fonts/druk-font/Druk-Wide-Bold.ttf');
+}
+
+h2 {
+    font-family: 'SF-Pro-Regular';
+    color:#161616;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+}
+
+h3 {
+    font-family: 'SF-Pro-Regular';
+    font-weight: 800;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    font-family: 'Charter-Regular';
+    font-size: 1.1rem;
+    color: rgb(240, 240, 240);
+
+}
+
+label {
+    font-family: 'Colfax-Regular';
+    font-size: 1.1rem;
+    color: #4c4c4c;
+}
+
+.sf-pro-bold {
+    font-family: 'SF-Pro-Bold';
+    text-decoration: none;
+}
+
+.sf-pro-regular {
+    font-family: 'SF-Pro-Regular';
+    text-decoration: none;
+}
+
+.charter-regular {
+    font-family: 'Charter-Regular';
+    text-decoration: none;
+}
+
+.charter-medium {
+    font-family: 'Charter-Medium';
+}
+
+.colfax-regular {
+    font-family: 'Colfax-Regular';
+}
+
+.colfax-medium {
+    font-family: 'Colfax-Medium';
+}
+
+.inter-bold {
+    font-family: 'Inter-Bold';
+    text-decoration: none;
+}
+
+.inter-medium {
+    font-family: 'Inter-Medium';
+    text-decoration: none;
+}
+
+.inter-regular {
+    font-family: 'Inter-Regular';
+    text-decoration: none;
+}
+
+.druk-bold {
+    font-family: 'Druk-Bold';
+    text-decoration: none;
+}
+
+.font-size-banner {
+    font-size: 4.6rem;
+    line-height: 1.1;
+}
+
+.font-size-lg {
+    font-size: 3.0rem;
+    line-height: 1.1;
+}
+
+.font-size-md {
+    font-size: 2.6rem;
+    line-height: 1.1;
+}
+
+.font-size-sm {
+    font-size: 1rem;
+    line-height: 1.4;
+}
