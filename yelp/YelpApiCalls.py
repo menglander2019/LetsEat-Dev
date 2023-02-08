@@ -4,12 +4,11 @@ from datetime import datetime
 import time
 from . import UserYelpWebScraping, YelpWebscraping, constants
 
-API_KEY= "NIeApqUv-eXDl1Uk9Lp1tdYbkmwQqlAWIrE87BI6ntY1RAktDOUG2nadraL9hYnRr6qMDPwcanx4c_A_qKOZykBQmP4gmvpOe61Q4lPxLnejZc8VFxWEnBv4haYwY3Yx"
-
 headers = {
-    'Authorization': 'Bearer %s' % API_KEY,
+    "accept": "application/json",
+    "Authorization": "Bearer Msv8IKs-goIxMaYJDCJah1NGKjTq2whsYQsHpHS0q3dyAeFS4V5kIbiZfdAycELiIpSv_SjRWBLARmnG_nqbjjVOKIxZddOdwHoUrTsCPZfiwHrJCe15kBgtUZzdY3Yx"
 }
-API_URL = "https://api.yelp.com/v3/businesses/search"
+API_URL = "https://api.yelp.com/v3/businesses/search?"
  
 #iterate json results and add each restaurant to db
 def updateDB(response):
@@ -50,7 +49,7 @@ def request_businesses_list(zipcode, distance, dollars, open_at, categories, att
     }
     
     #request API data
-    response = requests.request('GET', API_URL, headers=headers, params=params)
+    response = requests.get(API_URL, headers=headers, params=params)
     
     #add restaurants from API call to webscraping db
     #updateDB(response.json())
@@ -82,7 +81,7 @@ def parse_results(businesses):
 #use businessId to get json results for that business
 def return_business(businessId):
     url = 'https://api.yelp.com/v3/businesses/'+businessId
-    response = requests.request('GET', url, headers=headers, params=None)
+    response = requests.get(url, headers=headers)
     return response.json()
     
 
