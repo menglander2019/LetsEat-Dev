@@ -66,3 +66,11 @@
 .btn.home-large-login:active {
     transform: scale(0.9);
 }
+
+.btn.home-description-button {
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+}

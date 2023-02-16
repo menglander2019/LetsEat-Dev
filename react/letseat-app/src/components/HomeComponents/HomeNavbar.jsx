@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import logoPath from "../../design-resources/logo/letseat-banner-white.png"
+import logoPath from "../../design-resources/logo/letseat-banner.png"
 
 // Takes in JSON data of a restaurant and parses the data
 
@@ -17,13 +17,13 @@ const HomeNavbar = () => {
                 </div>
                 <div class="d-flex justify-content-end">
                     <Link to="/login">
-                        <button className="btn navbar-login-white">
-                            <span className="sf-pro-bold">LOG IN</span>
+                        <button className="btn navbar-login">
+                            <span className="move-bold">LOG IN</span>
                         </button>
                     </Link>
                     <Link to="/createaccount">
-                        <button className="btn navbar-signup-white">
-                            <span className="sf-pro-bold">SIGN UP</span>
+                        <button className="btn navbar-signup">
+                            <span className="move-bold">SIGN UP</span>
                         </button>
                     </Link>
                 </div>
