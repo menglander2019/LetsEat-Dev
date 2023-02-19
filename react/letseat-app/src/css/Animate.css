@@ -1,0 +1,7 @@
+.animate-right {
+    transition: all 0.1s ease-in-out;
+}
+
+.animate-right:hover {
+    transform:translateX(10px);
+}

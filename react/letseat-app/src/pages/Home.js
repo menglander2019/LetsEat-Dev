@@ -10,7 +10,6 @@ import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
 import NewHomeBanner from '../components/HomeComponents/NewHomeBanner';
 import HomeQuote from '../components/HomeComponents/HomeQuote';
 
-
 import '../css/Animation.css';
 import '../css/Button.css';
 import '../css/Color.css';
@@ -18,6 +17,7 @@ import '../css/Font.css';
 import '../css/Home.css';
 import '../css/Padding.css';
 import '../css/Navbar.css'
+import '../css/Animate.css'
 
 function Home() {
 

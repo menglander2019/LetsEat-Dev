@@ -74,3 +74,16 @@
     padding-left: 50px;
     padding-right: 50px;
 }
+
+.btn.dashboard-large-login {
+    background-color: #0c5a8b !important;
+    color: white !important;
+    border-radius: 10px;
+    font-size:1.4rem;
+    padding: 3%;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn.dashboard-large-login:active {
+    transform: scale(0.9);
+}

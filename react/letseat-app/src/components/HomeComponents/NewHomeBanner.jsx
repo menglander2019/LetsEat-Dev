@@ -12,7 +12,7 @@ const NewHomeBanner = () => {
                         <h2 className="white-theme move-bold">Discover your new favorite restaurants.</h2>
                         <br /><br /><br /><br /><br /><br />
                         <Link to="/login">
-                            <h4 className="white-theme move-bold ">Discover Now {' >'}</h4>
+                            <h4 className="animate-right white-theme move-bold ">Discover Now {' >'}</h4>
                         </Link>
                     </div>
                 </div>
