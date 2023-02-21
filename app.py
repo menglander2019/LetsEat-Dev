@@ -148,3 +148,17 @@ def getRecommendations(request: Request):
         for id in request.session['rest_id_list']:
             rest_list.append(return_business(id))
     return {"restaurants": rest_list}
+
+@app.post("/restaurantDenied")
+async def restaurantDenied(request: Request):
+    rest_data = await request.json()
+    rest_id = rest_data["id"]
+
+    return {"message": "restaurant denied"}
+
+@app.post("/restaurantAccepted")
+async def restaurantAccepted(request: Request):
+    rest_data = await request.json()
+    rest_id = rest_data["id"]
+    
+    return {"message": "restaurant accepted"}

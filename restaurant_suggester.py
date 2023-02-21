@@ -214,6 +214,3 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
         id_list_sorted.append(suggestion.get('id'))
 
     return id_list_sorted
-
-if __name__ == "__main__":
-    get_predictions(48017772, "Date", 2, "Dinner", [3,4])
