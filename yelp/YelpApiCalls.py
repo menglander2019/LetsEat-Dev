@@ -4,7 +4,7 @@ from datetime import datetime
 import time
 from . import UserYelpWebScraping, YelpWebscraping, constants
 
-API_KEY= "NIeApqUv-eXDl1Uk9Lp1tdYbkmwQqlAWIrE87BI6ntY1RAktDOUG2nadraL9hYnRr6qMDPwcanx4c_A_qKOZykBQmP4gmvpOe61Q4lPxLnejZc8VFxWEnBv4haYwY3Yx"
+API_KEY= "Ajp2BpBwSZg-y5gYRXLeX_4eF3NHCzVC-nn_M__OmLgIPjXGGp4Z6ou4MgICshQZVUwbbXW1cyzZVZqMPkMskXdqLjU2-_r3rFgUquoSb2Y28ih96GtMVSiY4Q_rY3Yx"
 
 headers = {
     'Authorization': 'Bearer %s' % API_KEY,

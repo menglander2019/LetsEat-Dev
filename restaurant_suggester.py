@@ -122,7 +122,7 @@ def build_restaurant_features(restaurant):
 
     return [rating] + category_features + kosher_and_gluten_free + rest_prices + pickup_delivery_reservation
     
-def make_prediction(restaurant, user_features, encoder, dec_tree):
+def make_prediction(restaurant, user_features, encoder, dec_tree, restrictions):
     print("Making prediction for:", restaurant.get('name'))
     temp_user_features = copy.copy(user_features)
     rest_features = build_restaurant_features(restaurant)
@@ -134,6 +134,13 @@ def make_prediction(restaurant, user_features, encoder, dec_tree):
     # opens up the scraped restaurant info database
     conn = sqlite3.connect("./yelp/OfficialRestaurantScraping.db")
     c = conn.cursor()
+
+
+    for j in restrictions:
+        c.execute("SELECT "+j+" FROM attributes WHERE restaurant_id = (?)", (rest_id,))
+        result = c.fetchall()
+        if result[0][0] != 1:
+            return 0
 
     c.execute("SELECT * FROM attributes WHERE restaurant_id = (?)", (rest_id,))
     result = c.fetchall()
@@ -194,7 +201,7 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
     suggestions_list = []
     start_time = time.time()
     for restaurant in restaurants:
-        suggestion = make_prediction(restaurant, user_features, encoder, dec_tree)
+        suggestion = make_prediction(restaurant, user_features, encoder, dec_tree, restrictions)
         # if the model predicts a suggestion, then append it to the unordered dictionary as a key-value pair
         if suggestion > 0:
             suggestions_list.append([restaurant, suggestion])
