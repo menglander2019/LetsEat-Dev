@@ -8,6 +8,7 @@ from restaurant_suggester import get_predictions
 from yelp.YelpApiCalls import return_business
 import os
 import jwt
+import bcrypt
 
 origins = [
     "http://localhost:3000",
@@ -48,7 +49,9 @@ async def logout(request: Request):
 async def createprofile(request: Request):
     account_data = await request.json()
     email = account_data["data"][0]["selectedChoices"][0]
-    password = account_data["data"][1]["selectedChoices"][0]
+    salt = bcrypt.gensalt()
+    # hashes the password using bcrypt and salts it
+    password = bcrypt.hashpw(account_data["data"][1]["selectedChoices"][0].encode('utf-8'), salt)
     name = account_data["data"][2]["selectedChoices"][0]
     dob = account_data["data"][3]["selectedChoices"][0]
     gender = account_data["data"][4]["selectedChoices"][0]
