@@ -30,6 +30,7 @@ function NewSearchQuestions() {
         fetchQuestions()
     }, [])
 
+    
     // Calls FastAPI to pull questions
     const fetchQuestions = async () => {
         console.log("Questions Fetched!")
