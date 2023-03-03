@@ -134,3 +134,11 @@ def retrieveRestrictions(id):
     result = c.fetchone()
     # returns the list of restrictions for a given user's ID
     return result[0].split(',')
+
+def getNameByID(id):
+    c = mydb.cursor()
+
+    c.execute('SELECT name FROM userProfiles WHERE userID = %s', (id,))
+    result = c.fetchone()
+
+    return result[0]

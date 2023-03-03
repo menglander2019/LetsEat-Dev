@@ -166,19 +166,27 @@ def deleteGroupSession(request: Request):
         response = "host ID: " + str(hostID) + " not found!"
     return {"message": response}
 
-@app.post("/joinGroup/{hostID}")
-def joinGroupSession(hostID: int, request: Request):
-    response = "group " + str(hostID) + " not found"
+@app.get("/getGroupHostName")
+async def getGroupHostName(request: Request):
+    group_page_data = await request.json()
+    id = group_page_data["data"]["id"]
+    return {"host name": getNameByID(id)}
+
+@app.post("/joinGroup")
+async def joinGroupSession(request: Request):
+    member_data = await request.json()
+    hostID = member_data["data"]["hostID"]
+    response = 0
     if hostID in groupHost_dict:
         print("found host!")
         joiningID = request.session["id"]
         if joiningID in groupHost_dict[hostID]:
-            response = "already joined group: " + str(hostID)
+            response = 0
         else:
             groupHost_dict[hostID].append(joiningID)
-            response = "group " + str(hostID) + " found and joined"
+            response = 1
         print(groupHost_dict)
-
+    # returns 1 on successful join and 0 on failure
     return {"message": response}
 
 @app.get("/getGroupRecommendations")
@@ -212,3 +220,6 @@ async def getGroupRecommendations(request: Request):
     for id in group_suggestions_list:
         rest_list.append(return_business(id))
     return {"restaurants": rest_list}
+
+
+# endpoints: submission endpoint for group member joining, endpoint that fetches the Hosts name
