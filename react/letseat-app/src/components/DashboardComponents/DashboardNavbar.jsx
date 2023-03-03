@@ -8,7 +8,7 @@ import * as BoxIcons from 'react-icons/bi'
 import * as BsIcons from "react-icons/bs"
 import * as IconName from "react-icons/io";
 
-import logoPath from "../../design-resources/logo/letseat-banner.png"
+import logoPath from "../../design-resources/logo/letseat-banner-white.png"
 
 // Takes in JSON data of a restaurant and parses the data
 const DashboardNavbar = () => {
@@ -46,8 +46,8 @@ const DashboardNavbar = () => {
                             </IconContext.Provider>
                         </Link>
                         <Link to="/">
-                            <button onClick={logOut} className="btn navbar-signup-black">
-                                <span className="move-bold">Sign Out</span>
+                            <button onClick={logOut} className="btn navbar-signup-white-v2">
+                                <span className="move-medium">Sign Out</span>
                             </button>
                         </Link>
                     </div>

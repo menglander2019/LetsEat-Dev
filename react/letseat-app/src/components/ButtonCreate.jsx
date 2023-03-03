@@ -13,7 +13,7 @@ const ButtonCreate = ({ answerOptions, questionNumber, optionType }) => {
                 <button 
                     id={questionNumber + "-" + index}
                     type="button" 
-                    className={"btn answerOption w-100 " + optionTypeText}
+                    className={"btn answerOption move-medium w-100 " + optionTypeText}
                     key={answerOption}
                     value={answerOption}>
                     {answerOption}

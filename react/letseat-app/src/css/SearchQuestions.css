@@ -1,6 +1,6 @@
-.dashboard-component {
+.search-component {
     position: relative;
-    min-height: 700px;
+    min-height: 800px;
     min-width: 1300px;
     overflow: hidden;
     background-size:cover;
@@ -9,12 +9,12 @@
     z-index: 1;
 }
 
-.dashboard-main-block {
+.search-main-block {
     background-color: white;
-    padding: 95px;
+    padding: 80px;
     border-radius: 10px;
 }
 
-.disabled {
-    pointer-events: none;
+.hidden-element {
+    visibility: hidden;
 }

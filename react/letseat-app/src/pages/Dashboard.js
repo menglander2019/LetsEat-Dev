@@ -31,7 +31,7 @@ function Dashboard() {
 
     const searchButtonClicked = async (e) => {
         e.preventDefault()
-        navigate("/searchquestions")
+        navigate("/newsearchquestions")
     }
 
     return (

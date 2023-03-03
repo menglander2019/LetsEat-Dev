@@ -1,8 +1,6 @@
 .btn.answerOption {
     background-color: #f0f0f0;
-    font-family: 'Colfax-Regular';
     font-size: 0.9rem;
-    font-weight: 700;
     color: black;
     padding: 3%;
     margin: 4px;
@@ -20,8 +18,8 @@
 }
 
 .btn.answerOption.selected {
-    background-color: #87ae73;
-    border-color: #87ae73;
+    background-color: black;
+    border-color: black;
     color: white;
 }
 
@@ -78,12 +76,26 @@
 .btn.dashboard-large-login {
     background-color: #0c5a8b !important;
     color: white !important;
-    border-radius: 10px;
-    font-size:1.4rem;
-    padding: 3%;
+    border-radius: 5px;
+    font-size:1.3rem;
+    padding: 2%;
     transition: all 0.1s ease-in-out;
 }
 
 .btn.dashboard-large-login:active {
     transform: scale(0.9);
+}
+
+.btn.search-navigation {
+    background-color: black !important;
+    color: white !important;
+    border-radius: 5px;
+    font-size:1.3rem;
+    min-width: 170px;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn.search-navigation:hover {
+    transform: scale(1.08);
+    border-color: #0c5a8b;    
 }

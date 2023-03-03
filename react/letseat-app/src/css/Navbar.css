@@ -48,6 +48,16 @@
     padding-right: 20px;
 }
 
+.navbar-signup-white-v2 {
+    background-color: black !important;
+    border-width: 0px !important;
+    color: white !important;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 .letseat-logo-navbar {
     width: 100px;
 }
