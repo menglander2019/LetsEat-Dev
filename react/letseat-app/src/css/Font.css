@@ -34,6 +34,15 @@
     font-family: Druk-Bold; 
     src: url('./fonts/druk-font/Druk-Wide-Bold.ttf');
 }
+@font-face { 
+    font-family: Move-Bold; 
+    src: url('./fonts/move-font/MoveBold.otf');
+}
+@font-face { 
+    font-family: Move-Medium; 
+    src: url('./fonts/move-font/MoveMedium.otf');
+}
+
 
 h2 {
     font-family: 'SF-Pro-Regular';
@@ -111,9 +120,14 @@ label {
     text-decoration: none;
 }
 
-.font-size-banner {
-    font-size: 4.6rem;
-    line-height: 1.1;
+.move-bold {
+    font-family: 'Move-Bold';
+    text-decoration: none;
+}
+
+.move-medium {
+    font-family: 'Move-Medium';
+    text-decoration: none;
 }
 
 .font-size-lg {
@@ -128,5 +142,15 @@ label {
 
 .font-size-sm {
     font-size: 1rem;
+    line-height: 1.4;
+}
+
+.font-size-sm-2 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+}
+
+.font-size-sm-3 {
+    font-size: 1.7rem;
     line-height: 1.4;
 }

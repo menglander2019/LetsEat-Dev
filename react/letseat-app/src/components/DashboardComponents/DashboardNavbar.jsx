@@ -29,7 +29,7 @@ const DashboardNavbar = () => {
     } 
 
     return (
-        <div className="home-navbar-black">
+        <div className="home-navbar-white">
             <div className="navbar align-items-center padding-style-1">
                 <div className="d-flex justify-content-start">
                     <Link to="/dashboard">
@@ -39,15 +39,15 @@ const DashboardNavbar = () => {
                 <div className="d-flex justify-content-end">
                     <div className="d-flex flex-wrap align-items-center justify-content-between">
                         <Link to="/edit/preferences/">  
-                            <IconContext.Provider value={{ color: "white", size: 25 }}>
+                            <IconContext.Provider value={{ color: "black", size: 25 }}>
                                 <button className="btn">
                                     <FaIcons.FaUser />
                                 </button>
                             </IconContext.Provider>
                         </Link>
                         <Link to="/">
-                            <button onClick={logOut} className="btn navbar-signup-white">
-                                <span>Log Out</span>
+                            <button onClick={logOut} className="btn navbar-signup-white-v2">
+                                <span className="move-medium">Sign Out</span>
                             </button>
                         </Link>
                     </div>

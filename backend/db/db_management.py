@@ -1,11 +1,12 @@
 import mysql.connector
 import random
 import os
+import bcrypt
 
 mydb = mysql.connector.connect(host='localhost',
                                         database='Users',
                                         user='root',
-                                        password='Password')
+                                        password='196468maX!')
 
 def get_db():
     return mydb
@@ -75,6 +76,17 @@ def updateRestrictions(id, restrictions_list):
 
 def checkUser(email, password):
     c = mydb.cursor()
+    # first checks if the user exists and if they do, retrieves their salt
+    c.execute('SELECT password FROM userProfiles WHERE email = %s', (email,))
+    # if there is no result, then the user doesn't exist and False is returned
+    salt = c.fetchone()
+    if salt is None:
+        return [0, 0]
+    
+    # Password is stored in the database as a 60 character string, the first 29 characters are the salt
+    salt = salt[0]
+    salt = salt[0:29]
+    password = bcrypt.hashpw(password.encode('utf-8'), salt.encode('utf-8'))
     # finds a user's ID given their email and password
     c.execute('SELECT userID FROM userProfiles WHERE email = %s AND password = %s', (email, password))
 

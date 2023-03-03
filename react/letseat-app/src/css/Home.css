@@ -15,22 +15,38 @@ html, body {
     padding-left: 0px;
     padding-right: 0px;
     overflow-x: hidden;
-    background-color: black;
-}
-
-.background-image-banner {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url('../design-resources/letseat-background.png');
+    background-color: white;
 }
 
 .home-banner {
-    background-color: transparent;
-    min-height: 600px;
+    min-height: 700px;
+}
+
+.home-image-banner {
+    position: relative;
+    min-height: 700px;
+    min-width: 1300px;
+    overflow: hidden;
+    left: -230px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-image: url('../design-resources/restaurant-background-2.jpg');
+    z-index: 1;
+}
+
+.home-image-description {
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 350px;
+    background-image: url('../design-resources/stock-restaurant.jpg');
+}
+
+.home-main-block {
+    background-color: black;
 }
 
 .home-description {
-    background: black;
+    background: white;
 }
 
 .input-box {
@@ -59,4 +75,17 @@ html, body {
 .home-main-block {
     padding-top: 13%;
 }
+
+.card-banner {
+    position: relative;
+    width: 500px;
+    margin-top: 140px;
+    z-index: 9999;
+}
+
+.home-quote {
+    background-color: #0c5a8b;
+    height: 220px;
+}
+
 

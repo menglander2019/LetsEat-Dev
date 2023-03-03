@@ -184,7 +184,7 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
     positives = user_info[0].split(',')
     negatives = user_info[1].split(',')
     restrictions = user_info[2].split(',')
-
+    
     # gets the user input for profile information (used for testing)
     user_features = build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions)
     cuisines = user_info[0]
