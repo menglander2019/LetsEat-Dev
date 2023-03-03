@@ -11,7 +11,7 @@ raw_data = pd.read_csv(data_path)
 
 le = LabelEncoder()
 
-input = raw_data.drop(['name', 'ATTEND?'], axis='columns')
+input = raw_data.drop(['ATTEND?'], axis='columns')
 output = raw_data['ATTEND?']
 
 # trains the decision tree with randomly generated data and returns it along with its encoder

@@ -1,5 +1,5 @@
 header = [
-        'name', 'current_day', 'middle_eastern', 'african', 'american', 'mexican', 'latin_american', 'italian', 'chinese', 
+        'current_day', 'middle_eastern', 'african', 'american', 'mexican', 'latin_american', 'italian', 'chinese', 
         'japanese', 'southern_central_asian', 'french', 'eastern_europe', 'central_europe', 'caribbean', 'mediterranean', 'indian', 
         'spanish', 'kosher', 'gluten_free', 'wheelchair', 'vegan', 'vegetarian', 'pescatarian', 'keto', 'soy', 'dog', 'covid', 'occasion', 
         'num_people', 'meal', '$', '$$', '$$$', '$$$$', 'rating', 'rest_middle_eastern', 'rest_african', 'rest_american', 

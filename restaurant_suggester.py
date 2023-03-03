@@ -153,15 +153,15 @@ def make_prediction(restaurant, user_features, encoder, dec_tree):
     cols = {}
     # sets up a dataframe with the proper feature names and values
     for i in range(len(total_features)):
-        cols[header[i+1]] = total_features[i]
+        cols[header[i]] = total_features[i]
     row = pd.DataFrame(data=cols, index=[0])
     # encodes the categorical features using the encoder that trained the decision tree
     total_features_encoded = encoder.transform(row)
     # makes a prediction as to whether the user would attend this restaurant or not
     prediction_prob = dec_tree.predict_proba(total_features_encoded)[0]
     print("Prediction prob for " + str(restaurant.get('name')) + " is= " + str(prediction_prob))
-    # if the model has an above 50% confidence score that the restaurant should be suggested, return the value
-    if prediction_prob[1] > 0.5:
+    # if the model has an above 75% confidence score that the restaurant should be suggested, return the value
+    if prediction_prob[1] > 0.75:
         return prediction_prob[1]
     # if the confidence score is too low, return 0 to indicate that the restaurant shouldn't be suggested
     return 0
