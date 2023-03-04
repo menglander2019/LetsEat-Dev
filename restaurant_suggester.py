@@ -1,7 +1,7 @@
 from backend.dec_tree_trainer import train_dec_tree
 from yelp.YelpApiCalls import get_restaurant_list
 from yelp.YelpWebscraping import scrape, DATABASE
-from backend.data_generation.data_gen_constants import header, num_umbrella_terms, restaurant_types, days
+from backend.data_generation.data_gen_constants import header, num_umbrella_terms, restaurant_types, days, PREDICTION_BAR
 from backend.db.db_management import get_db
 from datetime import datetime
 import numpy
@@ -163,7 +163,7 @@ def make_prediction(restaurant, user_features, encoder, dec_tree, restrictions):
     cols = {}
     # sets up a dataframe with the proper feature names and values
     for i in range(len(total_features)):
-        cols[header[i+1]] = total_features[i]
+        cols[header[i]] = total_features[i]
     row = pd.DataFrame(data=cols, index=[0])
     # encodes the categorical features using the encoder that trained the decision tree
     total_features_encoded = encoder.transform(row)
@@ -171,7 +171,7 @@ def make_prediction(restaurant, user_features, encoder, dec_tree, restrictions):
     prediction_prob = dec_tree.predict_proba(total_features_encoded)[0]
     print("Prediction prob for " + str(restaurant.get('name')) + " is= " + str(prediction_prob))
     # if the model has an above 50% confidence score that the restaurant should be suggested, return the value
-    if prediction_prob[1] > 0.5:
+    if prediction_prob[1] > PREDICTION_BAR:
         return prediction_prob[1]
     # if the confidence score is too low, return 0 to indicate that the restaurant shouldn't be suggested
     return 0
@@ -224,6 +224,3 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
         id_list_sorted.append(suggestion.get('id'))
 
     return id_list_sorted
-
-if __name__ == "__main__":
-    get_predictions(48017772, "Date", 2, "Dinner", [3,4])
