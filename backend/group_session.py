@@ -1,13 +1,13 @@
 from .db.db_management import retrievePositives, retrieveNegatives, retrieveRestrictions
 
-def generateGroupPreferences(hostID, groupIDs):
+def generateGroupPreferences(hostID, groupMembers):
     # initializes the list of positive cuisine preferences with the host's preferences
     positives = retrievePositives(hostID)
     print("host positives: "+ str(positives))
 
     # iterates through every guest in the host's session and adds their preferences to the final list
-    for groupID in groupIDs:
-        memberPositives = retrievePositives(groupID)
+    for groupMember in groupMembers:
+        memberPositives = groupMember.positives
         for memberPositive in memberPositives:
             # makes sure that the preference is not already in the list so that repeats are avoided
             if memberPositives not in positives:
@@ -25,8 +25,8 @@ def generateGroupPreferences(hostID, groupIDs):
             positives.remove(hostNegative)
 
     # now goes through each members' negative preferences
-    for groupID in groupIDs:
-        memberNegatives = retrieveNegatives(groupID)
+    for groupMember in groupMembers:
+        memberNegatives = groupMember.negatives
         print("member negatives: " + str(memberNegatives))
         for memberNegative in memberNegatives:
             # checks if the negative preference appears in the list and removes it
@@ -38,13 +38,13 @@ def generateGroupPreferences(hostID, groupIDs):
 
     return positives
 
-def generateGroupNegatives(hostID, groupIDs):
+def generateGroupNegatives(hostID, groupMembers):
     # initially populates the list of negatives with the host's negativbes
     negatives = retrieveNegatives(hostID)
 
     # now goes through each members' negative preferences
-    for groupID in groupIDs:
-        memberNegatives = retrieveNegatives(groupID)
+    for groupMember in groupMembers:
+        memberNegatives = groupMember.negatives
         print("member negatives: " + str(memberNegatives))
         for memberNegative in memberNegatives:
             # checks if the negative preference appears in the list and adds it if it isn't already present
@@ -55,13 +55,13 @@ def generateGroupNegatives(hostID, groupIDs):
 
     return negatives
 
-def generateGroupRestrictions(hostID, groupIDs):
+def generateGroupRestrictions(hostID, groupMembers):
     # initially populates the list of restrictions with the host's restrictions
     restrictions = retrieveRestrictions(hostID)
 
     # now goes through each members' restrictions
-    for groupID in groupIDs:
-        memberRestrictions = retrieveRestrictions(groupID)
+    for groupMember in groupMembers:
+        memberRestrictions = groupMember.restrictions
         print("member restrictions: " + str(memberRestrictions))
         for memberRestriction in memberRestrictions:
             # checks if the restriction is already present in the list of restrictions and adds it if it is not
@@ -71,3 +71,12 @@ def generateGroupRestrictions(hostID, groupIDs):
     print("final group restrictions: " + str(restrictions))
 
     return restrictions
+
+# Class used to represent a group member who joined via link invitation
+class GroupMember:
+    def __init__(self, positives, negatives, restrictions):
+        self.positives = positives
+        self.negatives = negatives
+        self.restrictions = restrictions
+    def __str__(self):
+        return f"[{self.positives}],[{self.negatives}],[{self.restrictions}]"

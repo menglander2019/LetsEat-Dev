@@ -175,16 +175,19 @@ async def getGroupHostName(request: Request):
 @app.post("/joinGroup")
 async def joinGroupSession(request: Request):
     member_data = await request.json()
+    # obtain all the necessary info from the request object
     hostID = member_data["data"]["hostID"]
+    positives = member_data["data"]["positives"]
+    negatives = member_data["data"]["negatives"]
+    restrictions = member_data["data"]["restrictions"]
     response = 0
+    # checks to make sure the host exists
     if hostID in groupHost_dict:
         print("found host!")
-        joiningID = request.session["id"]
-        if joiningID in groupHost_dict[hostID]:
-            response = 0
-        else:
-            groupHost_dict[hostID].append(joiningID)
-            response = 1
+        # creates a new GroupMember
+        newGroupMember = GroupMember(positives, negatives, restrictions)
+        groupHost_dict[hostID].append(newGroupMember)
+        response = 1
         print(groupHost_dict)
     # returns 1 on successful join and 0 on failure
     return {"message": response}
@@ -194,11 +197,11 @@ async def getGroupRecommendations(request: Request):
     group_search_data = await request.json()
     # retrieves group ID based on the host's ID
     hostID = request.session["id"]
-    groupIDs = groupHost_dict[hostID]
+    groupMembers = groupHost_dict[hostID]
     # generates the list of positives, negatives, and restrictions based on the group
-    positives = generateGroupPreferences(hostID, groupIDs)
-    negatives = generateGroupNegatives(hostID, groupIDs)
-    restrictions = generateGroupRestrictions(hostID, groupIDs)
+    positives = generateGroupPreferences(hostID, groupMembers)
+    negatives = generateGroupNegatives(hostID, groupMembers)
+    restrictions = generateGroupRestrictions(hostID, groupMembers)
 
     # uses the request body to get the search preferences
     occasion = group_search_data["data"][0]["selectedChoices"][0]
