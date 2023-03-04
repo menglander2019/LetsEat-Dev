@@ -1,0 +1,101 @@
+.btn.answerOption {
+    background-color: #f0f0f0;
+    font-size: 0.9rem;
+    color: black;
+    padding: 3%;
+    margin: 4px;
+    transition: .2s ease-in-out 0s;
+}
+
+.btn.answerOption:focus {
+    border-color: #ececec;
+}
+
+.btn.answerOption:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    transform: scale(1.08);
+    border-color: #ececec;
+}
+
+.btn.answerOption.selected {
+    background-color: black;
+    border-color: black;
+    color: white;
+}
+
+.btn.submit {
+    background-color: black !important;
+    border-color: black !important;
+    color: white !important;
+    border-radius: 5px;
+    padding: 2%;
+    font-size:1rem;
+}
+
+.btn.submit:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 12px 40px 0 rgba(0,0,0,0.19);    
+}
+
+.btn.confirm {
+    color: white;
+    background-color: #87ae73;
+    border-radius: 14px;
+    padding: 2%;
+    font-size:1.1rem;
+}
+
+.btn.tryAgain {
+    color: white;
+    background-color: black;
+    border-radius: 14px;
+    padding: 2%;
+    font-size:1.1rem;
+}
+
+.btn.home-large-login {
+    background-color: white !important;
+    color: black !important;
+    border-radius: 20px;
+    font-size:1.1rem;
+    padding: 3%;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn.home-large-login:active {
+    transform: scale(0.9);
+}
+
+.btn.home-description-button {
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.btn.dashboard-large-login {
+    background-color: #0c5a8b !important;
+    color: white !important;
+    border-radius: 5px;
+    font-size:1.3rem;
+    padding: 2%;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn.dashboard-large-login:active {
+    transform: scale(0.9);
+}
+
+.btn.search-navigation {
+    background-color: black !important;
+    color: white !important;
+    border-radius: 5px;
+    font-size:1.3rem;
+    min-width: 170px;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn.search-navigation:hover {
+    transform: scale(1.08);
+    border-color: #0c5a8b;    
+}

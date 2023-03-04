@@ -147,7 +147,7 @@ function CreateAccount() {
                     <form onSubmit={submitSelections}>
                         <div className="d-flex flex-column">
                             <div className="row mt-4">
-                                <h3 className="colfax-regular">Welcome to LetsEat!</h3>
+                                <h3 className="move-medium">Welcome to LetsEat!</h3>
                             </div>
                             <div id="q1" className="question input-group mt-2" onChange={textSubmission}>                            
                                 <label for="email">Log In</label>
@@ -160,7 +160,7 @@ function CreateAccount() {
                                 <div className="col-md-12">
                                     <button 
                                         id="submit"
-                                        className="btn btn-primary submit w-100"
+                                        className="btn btn-primary move-medium submit w-100"
                                         type="submit">
                                         Log In
                                     </button>
@@ -168,7 +168,7 @@ function CreateAccount() {
                             </div>
                             <div className="row mt-4">
                                 <div className="col-md-12">
-                                    <p className="colfax-regular">
+                                    <p className="move-medium black-theme">
                                         Don't have an account?
                                         <Link to="/createaccount">
                                             <span>Sign Up</span>

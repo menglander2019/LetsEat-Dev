@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Restaurant from './pages/Restaurant';
 import ProfileQuestions from './pages/ProfileQuestions';
+import NewSearchQuestions from './pages/NewSearchQuestions';
 import SearchQuestions from './pages/SearchQuestions';
 import CreateAccount from './pages/CreateAccount';
 import Login from './pages/Login';
@@ -20,6 +21,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/edit/account" element={<EditAccount />} />
           <Route path="/edit/preferences" element={<ProfileQuestions />} />
+          <Route path="/newsearchquestions" element={<NewSearchQuestions />} />
           <Route path="/searchquestions" element={<SearchQuestions />} />
           <Route path="/restaurantsearch" element={<Restaurant />} />
         </Routes>

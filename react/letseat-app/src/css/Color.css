@@ -1,0 +1,23 @@
+.color-theme {
+    color: #0c5a8b;
+}
+
+.white-theme {
+    color: white;
+}
+
+.black-theme {
+    color: black;
+}
+
+.yellow-theme {
+    color: #d0fd11;
+}
+
+.successMessage {
+    color:#6d8a5e;
+}
+
+.failMessage {
+    color:red;
+}

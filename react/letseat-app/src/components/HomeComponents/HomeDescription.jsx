@@ -1,25 +1,31 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 // Takes in JSON data of a restaurant and parses the data
 const HomeDescription = () => {
  
     return (
         <>
-            <hr />
-            <div className="home-description padding-style-1">
+            <div className="home-description padding-style-4">
                 <div className="d-flex flex-wrap align-items-start">
-                    <div className="col-md-6">
-                        <div className="d-flex justify-content-start">
-                            <h3 className="text-center charter-regular">What is LetsEat?</h3>
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="d-flex justify-content-start">
-                            <p className="font-size-sm colfax-regular">
-                                LetsEat is a restaurant cuisine recommendation website that provides users with personalized recommendations for where to eat based on their preferences. 
-                                Our platform works by using a machine learning algorithm to match users with restaurants that have been liked by other users with similar preferences.
+                    <div className="col-md-7">
+                        <div className="d-flex flex-column justify-content-start">
+                            <h2 className="black-theme move-bold">We match your preferences and restrictions to restaurants for you</h2>
+                            <p className="font-size-sm black-theme move-medium mt-4">
+                                Free to use platform that saves you time deciding on where <br /> to eat next by yourself or with a group.
                             </p>
+                            <div className="mt-3">
+                            <Link to="/login">
+                                <button className="btn home-description-button">
+                                    <span className="move-bold">Try it now</span>
+                                </button>
+                            </Link>
+                            </div>
                         </div>
+
+                    </div>
+                    <div className="col-md-5">
+                        <div className="home-image-description"></div>
                     </div>
                 </div>
             </div>

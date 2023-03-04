@@ -139,7 +139,10 @@ def make_prediction(restaurant, user_features, encoder, dec_tree, restrictions):
     for j in restrictions:
         c.execute("SELECT "+j+" FROM attributes WHERE restaurant_id = (?)", (rest_id,))
         result = c.fetchall()
-        if result[0][0] != 1:
+        if result != []:
+            if result[0][0] != 1:
+                return 0
+        else:
             return 0
 
     c.execute("SELECT * FROM attributes WHERE restaurant_id = (?)", (rest_id,))
@@ -191,7 +194,7 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
     positives = user_info[0].split(',')
     negatives = user_info[1].split(',')
     restrictions = user_info[2].split(',')
-
+    
     # gets the user input for profile information (used for testing)
     user_features = build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions)
     cuisines = user_info[0]

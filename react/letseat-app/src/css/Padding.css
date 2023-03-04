@@ -1,0 +1,56 @@
+.padding-style-1 {
+    padding-top: 10px;
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-bottom: 10px;
+}
+
+.padding-style-2 {
+    padding-top: 5%;
+    padding-left: 10%;
+    padding-right: 4%;
+    padding-bottom: 5%;
+}
+
+.padding-style-3 {
+    padding-top: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 20px;
+}
+
+.padding-style-4 {
+    padding-top: 50px;
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-bottom: 50px;
+}
+
+.padding-style-5 {
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 40px;
+    margin-left: 100px;
+}
+
+.padding-style-6 {
+    margin-right: 140px;
+    margin-left: 140px;
+}
+
+.flex-styling-75 {
+    flex: 0 0 73%;
+}
+
+.flex-styling-50 {
+    flex: 0 0 48%;
+}
+
+.flex-styling-33 {
+    flex: 0 0 32%;
+}
+
+.flex-styling-25 {
+    flex: 0 0 23%;
+}

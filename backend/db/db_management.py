@@ -43,6 +43,10 @@ mydb = mysql.connector.connect(**config)
 #         mydb.close()
 #         print("MySQL Connection is closed")
 
+mydb = mysql.connector.connect(host='localhost',
+                                        database='Users',
+                                        user='root',
+                                        password='Password')
 
 def get_db():
     return mydb
