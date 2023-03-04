@@ -9,6 +9,8 @@ import CreateAccount from './pages/CreateAccount';
 import Login from './pages/Login';
 import EditAccount from './pages/EditAccount';
 import Dashboard  from './pages/Dashboard';
+import Group  from './pages/Group';
+import JoinGroup  from './pages/JoinGroup';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/newsearchquestions" element={<NewSearchQuestions />} />
           <Route path="/searchquestions" element={<SearchQuestions />} />
           <Route path="/restaurantsearch" element={<Restaurant />} />
+          <Route path="/group" element={<Group />} />
+          <Route path="/join/group/:host" element={<JoinGroup />} />
         </Routes>
       </Router>
     </>

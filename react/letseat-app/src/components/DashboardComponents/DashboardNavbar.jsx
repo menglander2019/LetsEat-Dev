@@ -6,7 +6,9 @@ import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import * as BoxIcons from 'react-icons/bi'
 import * as BsIcons from "react-icons/bs"
-import * as IconName from "react-icons/io";
+import * as Ionicons from "react-icons/io";
+import * as Heroicons from "react-icons/hi";
+
 
 import logoPath from "../../design-resources/logo/letseat-banner-white.png"
 
@@ -37,13 +39,12 @@ const DashboardNavbar = () => {
                     </Link>
                 </div>
                 <div className="d-flex justify-content-end">
-                    <div className="d-flex flex-wrap align-items-center justify-content-between">
+                    <div className="d-flex flex-wrap align-items-center">
                         <Link to="/edit/preferences/">  
-                            <IconContext.Provider value={{ color: "black", size: 25 }}>
-                                <button className="btn">
-                                    <FaIcons.FaUser />
-                                </button>
-                            </IconContext.Provider>
+                            <span className="move-medium">Group</span>
+                        </Link>
+                        <Link to="/edit/preferences/">  
+                            <span className="move-medium">Profile</span>
                         </Link>
                         <Link to="/">
                             <button onClick={logOut} className="btn navbar-signup-white-v2">
