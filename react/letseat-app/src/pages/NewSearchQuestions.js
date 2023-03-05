@@ -14,7 +14,6 @@ import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
 import LoadingAnimation from '../components/LoadingAnimation'
 import CreateQuestion from '../components/CreateQuestion'
 
-
 import '../css/SearchQuestions.css';
 
 function NewSearchQuestions() {

@@ -7,6 +7,8 @@ import RestaurantCard from '../components/RestaurantCard'
 import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
 import LoadingAnimation from '../components/LoadingAnimation';
 
+import '../css/Restaurant.css';
+
 function Restaurant() {
 
     const navigate = useNavigate()
@@ -65,39 +67,41 @@ function Restaurant() {
         return ( <LoadingAnimation />)
     } else {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid restaurant-component">
                 <DashboardNavbar />
                 <div className="d-flex justify-content-center h-100">
-                    <div className="col-md-5 mt-4">
-                        <div className="d-flex flex-column">
-                        {   displayRestaurant == 0
-                            ? (
-                                <>
-                                    <h1 className="text-center">Confirmed!</h1>
-                                    <div className="d-flex justify-content-center mt-2">
-                                        <div className="flex-styling-33">
-                                            <button 
-                                                id="submit"
-                                                className="btn home-large-login colfax-regular w-100"
-                                                onClick={backButton}>
-                                                Back
-                                            </button>
-                                        </div>
-                                    </div>
-                                </>
-                            ) :
-                            (
-                                <>
-                                    <RestaurantCard jsonData={parseRestaurantData(restaurantIndex)} />
-                                    <div className="buttons mt-4">
-                                        <div className="d-flex flex-wrap justify-content-between">
-                                            <button type="button" className="btn tryAgain flex-styling-50" onClick={nextRestaurant}>Try Again</button>
-                                            <button type="button" className="btn confirm flex-styling-50" onClick={confirmRestaurant}>I'm Going!</button>
-                                        </div>
-                                    </div>
-                                </>
-                            )
-                        }
+                    <div className="col-md-6">
+                        <div className="restaurant-main-block">
+                            <div className="d-flex flex-column">
+                                {   displayRestaurant == 0
+                                    ? (
+                                        <>
+                                            <h1 className="text-center">Confirmed!</h1>
+                                            <div className="d-flex justify-content-center mt-2">
+                                                <div className="flex-styling-33">
+                                                    <button 
+                                                        id="submit"
+                                                        className="btn search-navigation move-medium w-100"
+                                                        onClick={backButton}>
+                                                        Back
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </>
+                                    ) :
+                                    (
+                                        <>
+                                            <RestaurantCard jsonData={parseRestaurantData(restaurantIndex)} />
+                                            <div className="buttons mt-3">
+                                                <div className="d-flex flex-wrap justify-content-between">
+                                                    <button type="button" className="btn tryAgain flex-styling-50" onClick={nextRestaurant}>Try Again</button>
+                                                    <button type="button" className="btn confirm flex-styling-50" onClick={confirmRestaurant}>I'm Going!</button>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )
+                                }
+                                </div>
                         </div>
                     </div>
                 </div>

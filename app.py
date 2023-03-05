@@ -169,6 +169,7 @@ def deleteGroupSession(request: Request):
 @app.get("/getGroupHostName")
 async def getGroupHostName(request: Request):
     group_page_data = await request.json()
+    print(group_page_data)
     id = group_page_data["data"]["id"]
     return {"host name": getNameByID(id)}
 

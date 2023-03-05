@@ -38,19 +38,22 @@ const DashboardNavbar = () => {
                         <img src={logoPath} className="letseat-logo-navbar" />
                     </Link>
                 </div>
-                <div className="d-flex justify-content-end">
-                    <div className="d-flex flex-wrap align-items-center">
-                        <Link to="/edit/preferences/">  
-                            <span className="move-medium">Group</span>
-                        </Link>
-                        <Link to="/edit/preferences/">  
-                            <span className="move-medium">Profile</span>
-                        </Link>
-                        <Link to="/">
-                            <button onClick={logOut} className="btn navbar-signup-white-v2">
-                                <span className="move-medium">Sign Out</span>
-                            </button>
-                        </Link>
+                <div className="col-md-4">
+                    <div className="d-flex flex-wrap justify-content-between align-items-center">
+                            <Link to="/dashboard/">  
+                                <span className="move-medium white-theme">Dashboard</span>
+                            </Link>
+                            <Link to="/group/">  
+                                <span className="move-medium white-theme">Group</span>
+                            </Link>
+                            <Link to="/edit/preferences/">  
+                                <span className="move-medium white-theme">Profile</span>
+                            </Link>
+                            <Link to="/">
+                                <button onClick={logOut} className="btn navbar-signup-white-v2">
+                                    <span className="move-medium">Sign Out</span>
+                                </button>
+                            </Link>
                     </div>
                 </div>
             </div>
