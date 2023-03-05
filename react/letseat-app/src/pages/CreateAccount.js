@@ -25,7 +25,7 @@ function CreateAccount() {
             credentials: "include",
             headers: { "Content-Type": "application/json"}
         }
-        const response = await fetch("http://localhost:8000/questionnaire/createprofile/", requestOption)
+        const response = await fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/questionnaire/createprofile/", requestOption)
         const message = await response.json()
         console.log(message)
         setQuestions(message)
@@ -102,7 +102,7 @@ function CreateAccount() {
                 body: JSON.stringify(questions)
             }
 
-            await fetch("http://localhost:8000/createprofile", requestOption)
+            await fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/createprofile", requestOption)
                 .then(async response => {
                     const data = await response.json()
                     if (response.ok) {
