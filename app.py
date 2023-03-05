@@ -173,6 +173,14 @@ async def getGroupHostName(request: Request):
     id = group_page_data["data"]["id"]
     return {"host name": getNameByID(id)}
 
+@app.get("/createdGroupStatus")
+async def createdGroupStatus(request: Request):
+    id = request.session["id"]
+    response = 0
+    if id in groupHost_dict:
+        response = 1
+    return {"created_status": response}
+
 @app.post("/joinGroup")
 async def joinGroupSession(request: Request):
     member_data = await request.json()
