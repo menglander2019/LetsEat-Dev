@@ -247,12 +247,13 @@ async def getGroupRecommendations(request: Request):
     # uses a new group prediction function to generate the list of suggested restaurants
     group_suggestions_list = get_group_predictions(positives, negatives, restrictions, occasion, num_people, meal, actual_price_ranges, zip)
 
-    # temporarily having the function return the list of restaurants, will eventually just populate the session with IDs
-    # and a separate route will return the list of restaurants
-    rest_list = []
-    for id in group_suggestions_list:
-        rest_list.append(return_business(id))
-    return {"restaurants": rest_list}
+    request.session.update({"group_rest_id_list": group_suggestions_list})
+    return {"restaurants": "group search submitted"}
 
-
-# endpoints: submission endpoint for group member joining, endpoint that fetches the Hosts name
+@app.get("/getGroupRestaurants")
+def getGroupRestaurants(request: Request):
+    group_rest_list = []
+    if "group_rest_id_list" in request.session:
+        for id in request.session['group_rest_id_list']:
+            group_rest_list.append(return_business(id))
+    return {"restaurants": group_rest_list}
