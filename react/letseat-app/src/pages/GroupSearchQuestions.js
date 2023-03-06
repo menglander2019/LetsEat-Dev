@@ -174,6 +174,7 @@ function GroupSearchQuestions() {
                 const data = await response.json()
                 if (response.ok) {
                     console.log(data)
+                    navigate("/group/restaurant")
                 } else {
                     console.log("Error!")
                 }

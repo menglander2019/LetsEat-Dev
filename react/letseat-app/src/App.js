@@ -13,6 +13,8 @@ import Dashboard  from './pages/Dashboard';
 import Group  from './pages/Group';
 import JoinGroup  from './pages/JoinGroup';
 import GroupSearchQuestions  from './pages/GroupSearchQuestions';
+import GroupRestaurant  from './pages/GroupRestaurant';
+
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
           <Route path="/group" element={<Group />} />
           <Route path="/join/group/:host" element={<JoinGroup />} />
           <Route path="/group/searchquestions" element={<GroupSearchQuestions />} />
+          <Route path="/group/restaurant" element={<GroupRestaurant />} />
         </Routes>
       </Router>
     </>
