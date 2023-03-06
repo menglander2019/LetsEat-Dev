@@ -58,6 +58,7 @@ def generateGroupNegatives(hostID, groupMembers):
 def generateGroupRestrictions(hostID, groupMembers):
     # initially populates the list of restrictions with the host's restrictions
     restrictions = retrieveRestrictions(hostID)
+    print("host restrictions: " + str(restrictions))
 
     # now goes through each members' restrictions
     for groupMember in groupMembers:

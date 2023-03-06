@@ -187,17 +187,35 @@ async def createdGroupStatus(request: Request):
 async def joinGroupSession(request: Request):
     member_data = await request.json()
     # obtain all the necessary info from the request object
-    hostID = member_data["data"][3]["hostID"]
+    hostID = int(member_data["data"][3]["hostID"])
     positives = member_data["data"][0]["selectedChoices"]
-    negatives = member_data["data"][1]["selectedChoices"]
-    restrictions = member_data["data"][2]["selectedChoices"]
+    restrictions = member_data["data"][1]["selectedChoices"]
+    negatives = member_data["data"][2]["selectedChoices"]
+
+    # convert the tuples of positives, restrictions, and negatives into lists in their proper formats
+    positives_list = []
+    negatives_list = []
+    restrictions_list = []
+    for positive in positives:
+        if positive not in cuisine_groups:
+            raise Exception("ERROR: Positive value (" + str(positive) + ") gotten from REACT app does not match cuisine groups!")
+        positives_list.append(cuisine_groups[positive])
+    for negative in negatives:
+        if negative not in cuisine_groups:
+            raise Exception("ERROR: Negative value (" + str(negative) + ") gotten from REACT app does not match cuisine groups!")
+        negatives_list.append(cuisine_groups[negative])
+    for restriction in restrictions:
+        if restriction not in restrictions_dict:
+            raise Exception("ERROR: Value (" + str(restriction) + ") gotten from REACT app does not match restriction groups!")
+        if restriction != 'N/A': # extra check to prevent problems later on when building user features
+            restrictions_list.append(restrictions_dict[restriction])
 
     response = 0
     # checks to make sure the host exists
     if hostID in groupHost_dict:
         print("found host!")
         # creates a new GroupMember
-        newGroupMember = GroupMember(positives, negatives, restrictions)
+        newGroupMember = GroupMember(positives_list, negatives_list, restrictions_list)
         groupHost_dict[hostID].append(newGroupMember)
         response = 1
         print(groupHost_dict)
