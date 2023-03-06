@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
@@ -17,13 +16,9 @@ import CreateQuestion from '../components/CreateQuestion'
 
 import '../css/ProfileQuestions.css';
 
-const JoinGroup = () => {
+function NewProfileQuestions() {
 
-    const { host } = useParams()
-
-    const [ hostID, setHostID ] = useState([])
-    const [ hostName, setHostName ] = useState("")
-
+    const navigate = useNavigate()
     const [ questionIndex, setQuestionIndex ] = useState(0)
     const [ questions, setQuestions ] = useState([])
     const [ answerSelected, setAnswerSelected ] = useState(0)
@@ -31,35 +26,10 @@ const JoinGroup = () => {
     var flexStylingOption = "flex-styling-50"
 
     useEffect(() => {
-        setHostID([])
-        hostID.push({"id": host})
         fetchQuestions()
-        getHostUsername()
     }, [])
 
-    // Checks if user has already created a group
-    const getHostUsername = async () => {
-
-        const requestOption = {
-            method: "POST",
-            credentials: "include",
-            headers: { "Content-Type": "application/json"},
-            body: JSON.stringify(hostID[0])
-        }
-
-        const response = await fetch("http://localhost:8000/getGroupHostName", requestOption)
-            .then(async response => {
-                const data = await response.json()
-                if (response.ok) {
-                    setHostName(data.host_name)
-                } else {
-                    console.log(data)
-                }
-            })
-            .catch(error => {
-                console.log("Error!")
-            })
-    }
+    
     // Calls FastAPI to pull questions
     const fetchQuestions = async () => {
         console.log("Questions Fetched!")
@@ -190,8 +160,6 @@ const JoinGroup = () => {
         e.preventDefault()
 
         console.log(questions)
-        var hostInfo = {"hostID": host}
-        questions.data.push(hostInfo)
 
         const requestOption = {
             method: "POST",
@@ -200,10 +168,10 @@ const JoinGroup = () => {
             body: JSON.stringify(questions)
         }
 
-        const response = fetch("http://localhost:8000/joinGroup/", requestOption)   
+        const response = fetch("http://localhost:8000/submit/profile/", requestOption)   
             .then(response => {
                 if (response.ok) {
-                    console.log("Submitted Response!")
+                    navigate("/dashboard")
                 } else {
                     console.log("Error Posting!")
                 }
@@ -213,73 +181,75 @@ const JoinGroup = () => {
             })
     }
 
-    if (questions.length == 0) {
+    if (localStorage.getItem("token") == null) {
+        return navigate("/")
+    } else if (questions.length == 0) {
         return (<LoadingAnimation />)
     } else {
         return (
             <div className="container-fluid profile-component">
-            <div className="d-flex flex-column">
-                <div className="d-flex align-items-center justify-content-center">
-                    <div className="col-md-8 mt-5">
-                        <h1 className="white-theme">{hostName}'s Group</h1>
-                        <div className="profile-main-block">
-                            <h1 className="move-medium">Question {questionIndex + 1} / {questions.data.length}</h1>
-                                {
-                                    questionIndex == 4 ? 
-                                        <div id="q5" className="question mt-3" onChange={textSubmission}>
-                                            <label for="answerOptions">{questions.data[4].question}</label>
-                                            <input type="text" id="distance" className="input-box form-control mt-2 w-100" placeholder="Enter your zipcode"></input>
-                                        </div> 
-                                        : 
-                                        <CreateQuestion 
-                                            question={questions.data[questionIndex]} 
-                                            questionNumber={questionIndex} 
-                                            radioAnswerClicked={answerClicked}
-                                            flexStylingOption={flexStylingOption}
-                                        />
-                                }
-                            <div className="d-flex align-items-center justify-content-around mt-5">
-                                {
-                                    questionIndex == 0 ? null: 
-                                        <button 
-                                            id="previousQuestion"
-                                            className="btn search-navigation move-medium"
-                                            onClick={previousQuestion}>
-                                            {"<"}
-                                        </button>
-                                }
-                                {
-                                    questionIndex >= questions.data.length - 1 ? 
-                                        answerSelected == 1 ? 
-                                            <button 
-                                                id="submit" 
-                                                className="btn search-navigation move-medium" 
-                                                onClick={submitSelections}>
-                                                Submit
-                                            </button>
-                                            :
-                                            <button 
-                                                id="submit" 
-                                                className="btn search-navigation move-medium disabled" 
-                                                onClick={submitSelections}>
-                                                Submit
-                                            </button>
-
-                                    :
-                                        questionIndex < questions.data.length - 1 && answerSelected == 1 ? 
-                                            <button 
-                                                id="nextQuestion"
-                                                className="btn search-navigation move-medium"
-                                                onClick={nextQuestion}>
-                                                {">"}
-                                            </button>
+                <DashboardNavbar />
+                <div className="d-flex flex-column">
+                    <div className="d-flex align-items-center justify-content-center">
+                        <div className="col-md-8 mt-5">
+                            <div className="profile-main-block">
+                                <h1 className="move-medium">Question {questionIndex + 1} / {questions.data.length}</h1>
+                                    {
+                                        questionIndex == 4 ? 
+                                            <div id="q5" className="question mt-3" onChange={textSubmission}>
+                                                <label for="answerOptions">{questions.data[4].question}</label>
+                                                <input type="text" id="distance" className="input-box form-control mt-2 w-100" placeholder="Enter your zipcode"></input>
+                                            </div> 
                                             : 
+                                            <CreateQuestion 
+                                                question={questions.data[questionIndex]} 
+                                                questionNumber={questionIndex} 
+                                                radioAnswerClicked={answerClicked}
+                                                flexStylingOption={flexStylingOption}
+                                            />
+                                    }
+                                <div className="d-flex align-items-center justify-content-around mt-5">
+                                    {
+                                        questionIndex == 0 ? null: 
                                             <button 
-                                                id="nextQuestion"
-                                                className="btn search-navigation move-medium disabled"
-                                                onClick={nextQuestion}>
-                                                {">"}
+                                                id="previousQuestion"
+                                                className="btn search-navigation move-medium"
+                                                onClick={previousQuestion}>
+                                                {"<"}
                                             </button>
+                                    }
+                                    {
+                                        questionIndex >= questions.data.length - 1 ? 
+                                            answerSelected == 1 ? 
+                                                <button 
+                                                    id="submit" 
+                                                    className="btn search-navigation move-medium" 
+                                                    onClick={submitSelections}>
+                                                    Submit
+                                                </button>
+                                                :
+                                                <button 
+                                                    id="submit" 
+                                                    className="btn search-navigation move-medium disabled" 
+                                                    onClick={submitSelections}>
+                                                    Submit
+                                                </button>
+
+                                        :
+                                            questionIndex < questions.data.length - 1 && answerSelected == 1 ? 
+                                                <button 
+                                                    id="nextQuestion"
+                                                    className="btn search-navigation move-medium"
+                                                    onClick={nextQuestion}>
+                                                    {">"}
+                                                </button>
+                                                : 
+                                                <button 
+                                                    id="nextQuestion"
+                                                    className="btn search-navigation move-medium disabled"
+                                                    onClick={nextQuestion}>
+                                                    {">"}
+                                                </button>
                                     }
                                 </div>
                             </div>
@@ -290,4 +260,5 @@ const JoinGroup = () => {
         );
     }
 }
-export default JoinGroup
+
+export default NewProfileQuestions

@@ -8,26 +8,52 @@ import '../css/Group.css';
 
 const Group = () => {
 
-    const { host } = useParams()
-    console.log(host)
+    const [ groupCreationStatus, setGroupCreationStatus ] = useState(0)
 
     useEffect(() => {
-    
+        checkGroupCreation()
     }, [])
 
-    const createGroup = async () => {
-        console.log("Fetching Host!")
+    // Checks if user has already created a group
+    const checkGroupCreation = async () => {
         const requestOption = {
             method: "GET",
             credentials: "include",
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/getGroupHostName", requestOption)
+        const response = await fetch("http://localhost:8000/createdGroupStatus", requestOption)
+            .then(async response => {
+                const data = await response.json()
+                if (response.ok) {
+                    if (data.created_status == 0) {
+                        setGroupCreationStatus(0)
+                    } else {
+                        setGroupCreationStatus(data.created_status)
+                    }
+                } else {
+                    console.log(data)
+                }
+            })
+            .catch(error => {
+                console.log("Error!")
+            })
+    }
+
+    const createGroup = async () => {
+        console.log("Creating Group!")
+        const requestOption = {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json"}
+        }
+
+        const response = await fetch("http://localhost:8000/createGroupSession", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
                     console.log(data)
+                    checkGroupCreation()
                 } else {
                     console.log(data)
                 }
@@ -46,12 +72,17 @@ const Group = () => {
                             <div className="group-main-block">
                                 <div className="d-flex flex-column">
                                     <h1 className="move-bold">Group Settings</h1>
-                                    <button 
-                                        id="submit"
-                                        className="btn dashboard-large-login move-medium w-50 mt-3"
-                                        onClick={createGroup}>
-                                        Create Group {'>'}
-                                    </button>
+                                    {
+                                        groupCreationStatus == 0 ?
+                                            <button 
+                                                id="submit"
+                                                className="btn dashboard-large-login move-medium w-50 mt-3"
+                                                onClick={createGroup}>
+                                                Create Group {'>'}
+                                            </button>
+                                            :
+                                            <p className="move-medium black-theme mt-3">Invite your friends: localhost:3000/join/group/{groupCreationStatus}</p>
+                                    }
                                 </div>
                             </div>
                         </div>

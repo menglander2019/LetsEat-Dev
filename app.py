@@ -166,29 +166,32 @@ def deleteGroupSession(request: Request):
         response = "host ID: " + str(hostID) + " not found!"
     return {"message": response}
 
-@app.get("/getGroupHostName")
+@app.post("/getGroupHostName")
 async def getGroupHostName(request: Request):
+    print(request)
     group_page_data = await request.json()
     print(group_page_data)
-    id = group_page_data["data"]["id"]
-    return {"host name": getNameByID(id)}
+    id = group_page_data["id"]
+    return {"host_name": getNameByID(id)}
 
 @app.get("/createdGroupStatus")
 async def createdGroupStatus(request: Request):
     id = request.session["id"]
     response = 0
+    print(id)
     if id in groupHost_dict:
-        response = 1
+        response = id
     return {"created_status": response}
 
 @app.post("/joinGroup")
 async def joinGroupSession(request: Request):
     member_data = await request.json()
     # obtain all the necessary info from the request object
-    hostID = member_data["data"]["hostID"]
-    positives = member_data["data"]["positives"]
-    negatives = member_data["data"]["negatives"]
-    restrictions = member_data["data"]["restrictions"]
+    hostID = member_data["data"][3]["hostID"]
+    positives = member_data["data"][0]["selectedChoices"]
+    negatives = member_data["data"][1]["selectedChoices"]
+    restrictions = member_data["data"][2]["selectedChoices"]
+
     response = 0
     # checks to make sure the host exists
     if hostID in groupHost_dict:
@@ -201,7 +204,7 @@ async def joinGroupSession(request: Request):
     # returns 1 on successful join and 0 on failure
     return {"message": response}
 
-@app.get("/getGroupRecommendations")
+@app.post("/getGroupRecommendations")
 async def getGroupRecommendations(request: Request):
     group_search_data = await request.json()
     # retrieves group ID based on the host's ID

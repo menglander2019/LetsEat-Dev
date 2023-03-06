@@ -1,8 +1,20 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Takes in JSON data of a restaurant and parses the data
-const DashboardBanner = ({searchFunction}) => {
+const DashboardBanner = () => {
+
+    const navigate = useNavigate()
+    
+    const searchButtonClicked = async (e) => {
+        e.preventDefault()
+        navigate("/newsearchquestions")
+    }
+
+    const groupSearchButtonClicked = async (e) => {
+        e.preventDefault()
+        navigate("/group/searchquestions")
+    }
 
     return (
         <div className="dashboard-banner">
@@ -15,8 +27,14 @@ const DashboardBanner = ({searchFunction}) => {
                                 <button 
                                     id="submit"
                                     className="btn dashboard-large-login move-medium w-50"
-                                    onClick={searchFunction}>
+                                    onClick={searchButtonClicked}>
                                     Search {'>'}
+                                </button>
+                                <button 
+                                    id="submit"
+                                    className="btn dashboard-large-login move-medium w-50"
+                                    onClick={groupSearchButtonClicked}>
+                                    Group Search {'>'}
                                 </button>
                             </div>
                         </div>
