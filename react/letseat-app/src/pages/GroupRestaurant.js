@@ -31,7 +31,7 @@ function GroupRestaurant() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://localhost:8000//getGroupRestaurant/", requestOption)
+        await fetch("http://localhost:8000/getGroupRestaurants/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
