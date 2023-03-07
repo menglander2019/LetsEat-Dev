@@ -47,7 +47,7 @@ const JoinGroup = () => {
             body: JSON.stringify(hostID[0])
         }
 
-        const response = await fetch("http://ec2-54-160-112-17.compute-1.amazonaws.com:8000/getGroupHostName", requestOption)
+        const response = await fetch("http://ec2-100-24-238-253.compute-1.amazonaws.com:8000/getGroupHostName", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -69,7 +69,7 @@ const JoinGroup = () => {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://ec2-54-160-112-17.compute-1.amazonaws.com:8000/questionnaire/profile/", requestOption)
+        const response = await fetch("http://ec2-100-24-238-253.compute-1.amazonaws.com:8000/questionnaire/profile/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -200,7 +200,7 @@ const JoinGroup = () => {
             body: JSON.stringify(questions)
         }
 
-        const response = fetch("http://ec2-54-160-112-17.compute-1.amazonaws.com:8000/joinGroup/", requestOption)   
+        const response = fetch("http://ec2-100-24-238-253.compute-1.amazonaws.com:8000/joinGroup/", requestOption)   
             .then(response => {
                 if (response.ok) {
                     console.log("Submitted Response!")
