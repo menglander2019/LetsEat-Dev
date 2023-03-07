@@ -10,7 +10,9 @@ def generateGroupPreferences(hostID, groupMembers):
         memberPositives = groupMember.positives
         for memberPositive in memberPositives:
             # makes sure that the preference is not already in the list so that repeats are avoided
-            if memberPositives not in positives:
+            print("checking that " + str(memberPositive) + " not in the positives list already...")
+            if positives.count(memberPositive) == 0:
+                print(str(memberPositive) + " is not in the list! adding...")
                 positives.append(memberPositive)
 
     # now that all the positive preferences are consolidated, the negatives of each user need to be considered
