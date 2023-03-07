@@ -37,19 +37,19 @@
 }
 
 .btn.confirm {
-    color: white;
-    background-color: #87ae73;
-    border-radius: 14px;
-    padding: 2%;
-    font-size:1.1rem;
+    background-color: #0c5a8b !important;
+    color: white !important;
+    border-radius: 5px;
+    font-size:1.3rem;
+    min-width: 170px;
 }
 
 .btn.tryAgain {
-    color: white;
-    background-color: black;
-    border-radius: 14px;
-    padding: 2%;
-    font-size:1.1rem;
+    background-color: black !important;
+    color: white !important;
+    border-radius: 5px;
+    font-size:1.3rem;
+    min-width: 170px;
 }
 
 .btn.home-large-login {

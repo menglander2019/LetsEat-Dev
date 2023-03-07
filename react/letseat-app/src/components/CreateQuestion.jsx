@@ -10,7 +10,7 @@ const CreateQuestion = ({ question, questionNumber, radioAnswerClicked, flexStyl
   return (
     <div id={divNumber} className="question mt-3" onClick={radioAnswerClicked}>
       <label for="answerOptions">{question.question}</label>
-      <ButtonCreate answerOptions={question.answerChoices} questionNumber={"q1"} optionType={flexStylingOption} />
+      <ButtonCreate answerOptions={question.answerChoices} questionNumber={divNumber} optionType={flexStylingOption} />
     </div>
   )
 }

@@ -60,6 +60,10 @@ a {
     text-decoration: none;
 }
 
+span {
+    text-decoration: none;
+}
+
 p {
     font-family: 'Charter-Regular';
     font-size: 1.1rem;

@@ -29,16 +29,11 @@ function Dashboard() {
         }
     }
 
-    const searchButtonClicked = async (e) => {
-        e.preventDefault()
-        navigate("/newsearchquestions")
-    }
-
     return (
         <div className="container-fluid dashboard-component">
             <div className="d-flex flex-column">
                 <DashboardNavbar />
-                <DashboardBanner searchFunction={searchButtonClicked}/>
+                <DashboardBanner />
             </div>
         </div>
     );

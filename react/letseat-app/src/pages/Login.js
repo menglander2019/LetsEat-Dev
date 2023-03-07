@@ -82,6 +82,8 @@ function CreateAccount() {
                 body: JSON.stringify(questions),
             }
 
+            console.log(questions)
+
             await fetch("http://localhost:8000/checkLogin", requestOption)
                 .then(async response => {
                     const data = await response.json()
