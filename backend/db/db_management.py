@@ -43,10 +43,10 @@ mydb = mysql.connector.connect(**config)
 #         mydb.close()
 #         print("MySQL Connection is closed")
 
-mydb = mysql.connector.connect(host='localhost',
-                                        database='Users',
-                                        user='root',
-                                        password='Password')
+# mydb = mysql.connector.connect(host='localhost',
+#                                         database='Users',
+#                                         user='root',
+#                                         password='Password')
 
 def get_db():
     return mydb
@@ -147,3 +147,38 @@ def checkNewUser(id):
         return 1
     # returns 0 if the user has any of their preferences set up
     return 0
+
+def retrievePositives(id):
+    c = mydb.cursor()
+    # finds a user's preferences given their ID
+    c.execute('SELECT positivePreferences FROM userPreferences WHERE userID = %s', (id,))
+
+    result = c.fetchone()
+    # returns the list of positive preferences for a given user's ID
+    return result[0].split(',')
+
+def retrieveNegatives(id):
+    c = mydb.cursor()
+    # finds a user's negative preferences given their ID
+    c.execute('SELECT negativePreferences FROM userPreferences WHERE userID = %s', (id,))
+
+    result = c.fetchone()
+    # returns the list of negative preferences for a given user's ID
+    return result[0].split(',')
+
+def retrieveRestrictions(id):
+    c = mydb.cursor()
+    # finds a user's restrictions given their ID
+    c.execute('SELECT restrictions FROM userPreferences WHERE userID = %s', (id,))
+
+    result = c.fetchone()
+    # returns the list of restrictions for a given user's ID
+    return result[0].split(',')
+
+def getNameByID(id):
+    c = mydb.cursor()
+
+    c.execute('SELECT name FROM userProfiles WHERE userID = %s', (id,))
+    result = c.fetchone()
+
+    return result[0]

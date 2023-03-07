@@ -65,13 +65,6 @@ html, body {
     font-weight: 500;
 }
 
-.restaurant-image {
-    height: 300px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 5%;
-}
-
 .home-main-block {
     padding-top: 13%;
 }

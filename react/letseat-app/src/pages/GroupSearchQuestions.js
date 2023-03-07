@@ -16,7 +16,7 @@ import CreateQuestion from '../components/CreateQuestion'
 
 import '../css/SearchQuestions.css';
 
-function NewSearchQuestions() {
+function GroupSearchQuestions() {
 
     const navigate = useNavigate()
     const [ questionIndex, setQuestionIndex ] = useState(0)
@@ -169,16 +169,18 @@ function NewSearchQuestions() {
             body: JSON.stringify(questions)
         }
 
-        const response = fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/submit/search/", requestOption)   
-            .then(response => {
+        const response = fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/getGroupRecommendations", requestOption)   
+            .then(async response => {
+                const data = await response.json()
                 if (response.ok) {
-                    navigate("/restaurantsearch") 
+                    console.log(data)
+                    navigate("/group/restaurant")
                 } else {
-                    console.log("Error Posting!")
+                    console.log("Error!")
                 }
             })
             .catch(error => {
-                console.log("Error Recommending!")
+                console.log("Error!")
             })
     }
 
@@ -193,6 +195,7 @@ function NewSearchQuestions() {
                 <div className="d-flex flex-column">
                     <div className="d-flex align-items-center justify-content-center">
                         <div className="col-md-8 mt-5">
+                            <h1 className="white-theme">Group Search Questions</h1>
                             <div className="search-main-block">
                                 <h1 className="move-medium">Question {questionIndex + 1} / {questions.data.length}</h1>
                                     {
@@ -262,4 +265,4 @@ function NewSearchQuestions() {
     }
 }
 
-export default NewSearchQuestions
+export default GroupSearchQuestions

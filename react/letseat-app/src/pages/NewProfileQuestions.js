@@ -14,9 +14,9 @@ import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
 import LoadingAnimation from '../components/LoadingAnimation'
 import CreateQuestion from '../components/CreateQuestion'
 
-import '../css/SearchQuestions.css';
+import '../css/ProfileQuestions.css';
 
-function NewSearchQuestions() {
+function NewProfileQuestions() {
 
     const navigate = useNavigate()
     const [ questionIndex, setQuestionIndex ] = useState(0)
@@ -39,7 +39,7 @@ function NewSearchQuestions() {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/questionnaire/search/", requestOption)
+        const response = await fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/questionnaire/profile/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -70,27 +70,26 @@ function NewSearchQuestions() {
         setAnswerSelected(0)
     }
 
-    const radioAnswerClicked = (e) => {
+    const answerClicked = (e) => {
         var parentDiv = e.currentTarget
         var questionID = e.currentTarget.getAttribute("id");
         var clickedChoice = e.target
 
         if (clickedChoice.classList.contains("selected")) {
             // Deselect Answer
-            clickedChoice.classList.remove("selected")
+            clickedChoice.classList.remove("selected");
             // Remove Selection from "questions" state
             removeSelection(questionID, clickedChoice.value)
-            setAnswerSelected(0)
-        } else {
-            // Check if something is already selected
+
             var prevSelected = parentDiv.querySelector(".selected")
-            if (prevSelected != null) {
-                // Deselect first the previously selected button
-                prevSelected.classList.remove("selected")
-                removeSelection(questionID, prevSelected.value)
+            if (prevSelected == null) {
+                // Disable next button
+                setAnswerSelected(0)
             }
+
+        } else {
             // Select Answer
-            clickedChoice.classList.add("selected")
+            clickedChoice.classList.add("selected");
             // Add Selection to "questions" state
             addSelection(questionID, clickedChoice.value)
             setAnswerSelected(1)
@@ -136,7 +135,7 @@ function NewSearchQuestions() {
             if(question.id == questionID) {
                 question.selectedChoices.map((choice, choiceIndex) => {
                     if (choice == selectionValue) {
-                        question.selectedChoices.splice(choiceIndex, 1)
+                        question.selectedChoices.splice(choiceIndex, choiceIndex+1)
                     }
                 })
             }
@@ -149,7 +148,7 @@ function NewSearchQuestions() {
         let tempQuestions = questions
         tempQuestions.data.map((question, index) => {
             if(question.id == questionID) {
-                question.selectedChoices.splice(0, 1)
+                question.selectedChoices.splice(0, question.selectedChoices.length)
             }
         });
         setQuestions(tempQuestions)
@@ -169,10 +168,10 @@ function NewSearchQuestions() {
             body: JSON.stringify(questions)
         }
 
-        const response = fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/submit/search/", requestOption)   
+        const response = fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/submit/profile/", requestOption)   
             .then(response => {
                 if (response.ok) {
-                    navigate("/restaurantsearch") 
+                    navigate("/dashboard")
                 } else {
                     console.log("Error Posting!")
                 }
@@ -188,12 +187,12 @@ function NewSearchQuestions() {
         return (<LoadingAnimation />)
     } else {
         return (
-            <div className="container-fluid search-component">
+            <div className="container-fluid profile-component">
                 <DashboardNavbar />
                 <div className="d-flex flex-column">
                     <div className="d-flex align-items-center justify-content-center">
                         <div className="col-md-8 mt-5">
-                            <div className="search-main-block">
+                            <div className="profile-main-block">
                                 <h1 className="move-medium">Question {questionIndex + 1} / {questions.data.length}</h1>
                                     {
                                         questionIndex == 4 ? 
@@ -205,7 +204,7 @@ function NewSearchQuestions() {
                                             <CreateQuestion 
                                                 question={questions.data[questionIndex]} 
                                                 questionNumber={questionIndex} 
-                                                radioAnswerClicked={radioAnswerClicked}
+                                                radioAnswerClicked={answerClicked}
                                                 flexStylingOption={flexStylingOption}
                                             />
                                     }
@@ -262,4 +261,4 @@ function NewSearchQuestions() {
     }
 }
 
-export default NewSearchQuestions
+export default NewProfileQuestions

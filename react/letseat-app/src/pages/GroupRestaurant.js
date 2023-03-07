@@ -9,7 +9,7 @@ import LoadingAnimation from '../components/LoadingAnimation';
 
 import '../css/Restaurant.css';
 
-function Restaurant() {
+function GroupRestaurant() {
 
     const navigate = useNavigate()
     const [ restaurantList, setRestaurantList ] = useState([])
@@ -31,7 +31,7 @@ function Restaurant() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/getRecommendations/", requestOption)
+        await fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/getGroupRestaurants/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -111,4 +111,4 @@ function Restaurant() {
 }
   
 
-export default Restaurant
+export default GroupRestaurant
