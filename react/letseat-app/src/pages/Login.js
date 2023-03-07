@@ -29,7 +29,7 @@ function CreateAccount() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/questionnaire/login/", requestOption)
+        await fetch("http://ec2-3-84-237-203.compute-1.amazonaws.com:8000/questionnaire/login/", requestOption)
             .then(async response => {
                 if (response.ok) {
                     const message = await response.json()
@@ -82,7 +82,7 @@ function CreateAccount() {
                 body: JSON.stringify(questions),
             }
 
-            await fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/checkLogin", requestOption)
+            await fetch("http://ec2-3-84-237-203.compute-1.amazonaws.com:8000/checkLogin", requestOption)
                 .then(async response => {
                     const data = await response.json()
 
@@ -115,7 +115,7 @@ function CreateAccount() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/isNewUser/", requestOption)
+        await fetch("http://ec2-3-84-237-203.compute-1.amazonaws.com:8000/isNewUser/", requestOption)
             .then(async response => {
                 const data = await response.json()
 

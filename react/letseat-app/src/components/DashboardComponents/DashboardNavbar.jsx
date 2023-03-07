@@ -24,7 +24,7 @@ const DashboardNavbar = () => {
             credentials: "include"
         }
 
-        const response = await fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/logout", requestOption)
+        const response = await fetch("http://ec2-3-84-237-203.compute-1.amazonaws.com:8000/logout", requestOption)
         //const data = await response.json()
         localStorage.removeItem("token")
         navigate("/")

@@ -31,7 +31,7 @@ function Restaurant() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://ec2-52-86-251-227.compute-1.amazonaws.com:8000/getRecommendations/", requestOption)
+        await fetch("http://ec2-3-84-237-203.compute-1.amazonaws.com:8000/getRecommendations/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
