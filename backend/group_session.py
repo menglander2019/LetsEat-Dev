@@ -11,7 +11,7 @@ def generateGroupPreferences(hostID, groupMembers):
         for memberPositive in memberPositives:
             # makes sure that the preference is not already in the list so that repeats are avoided
             print("checking that " + str(memberPositive) + " not in the positives list already...")
-            if positives.count(memberPositive) == 0:
+            if memberPositive not in positives:
                 print(str(memberPositive) + " is not in the list! adding...")
                 positives.append(memberPositive)
 
@@ -36,6 +36,8 @@ def generateGroupPreferences(hostID, groupMembers):
                 print("removing from a member: " + str(memberNegative))
                 positives.remove(memberNegative)
 
+    # final step to prevent duplicates that may have snuck in (strange behavior)
+    positives = list(set(positives))
     print("final positives list: " + str(positives))
 
     return positives
@@ -53,6 +55,7 @@ def generateGroupNegatives(hostID, groupMembers):
             if memberNegative not in negatives:
                 negatives.append(memberNegative)
 
+    negatives = list(set(negatives))
     print("final group negatives: " + str(negatives))
 
     return negatives
@@ -71,6 +74,7 @@ def generateGroupRestrictions(hostID, groupMembers):
             if memberRestriction not in restrictions:
                 restrictions.append(memberRestriction)
 
+    restrictions = list(set(restrictions))
     print("final group restrictions: " + str(restrictions))
 
     return restrictions
