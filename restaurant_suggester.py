@@ -137,6 +137,8 @@ def make_prediction(restaurant, user_features, encoder, dec_tree, restrictions):
 
 
     for j in restrictions:
+        if j == '':
+            continue
         c.execute("SELECT "+j+" FROM attributes WHERE restaurant_id = (?)", (rest_id,))
         result = c.fetchall()
         if result != []:
@@ -250,7 +252,7 @@ def get_group_predictions(positives, negatives, restrictions, occasion, num_peop
     suggestions_list = []
     start_time = time.time()
     for restaurant in restaurants:
-        suggestion = make_prediction(restaurant, user_features, encoder, dec_tree)
+        suggestion = make_prediction(restaurant, user_features, encoder, dec_tree, restrictions)
         # if the model predicts a suggestion, then append it to the unordered dictionary as a key-value pair
         if suggestion > 0:
             suggestions_list.append([restaurant, suggestion])
