@@ -22,7 +22,7 @@ const Group = () => {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/createdGroupStatus", requestOption)
+        const response = await fetch("http://ec2-54-165-70-250.compute-1.amazonaws.com:8000/createdGroupStatus", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -48,7 +48,7 @@ const Group = () => {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/createGroupSession", requestOption)
+        const response = await fetch("http://ec2-54-165-70-250.compute-1.amazonaws.com:8000/createGroupSession", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -81,7 +81,7 @@ const Group = () => {
                                                 Create Group {'>'}
                                             </button>
                                             :
-                                            <p className="move-medium black-theme mt-3">Invite your friends: localhost:3000/join/group/{groupCreationStatus}</p>
+                                            <p className="move-medium black-theme mt-3">Invite your friends: http://ec2-54-165-70-250.compute-1.amazonaws.com:3000/join/group/{groupCreationStatus}</p>
                                     }
                                 </div>
                             </div>

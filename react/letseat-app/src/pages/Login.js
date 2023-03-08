@@ -29,7 +29,7 @@ function CreateAccount() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://localhost:8000/questionnaire/login/", requestOption)
+        await fetch("http://ec2-54-165-70-250.compute-1.amazonaws.com:8000/questionnaire/login/", requestOption)
             .then(async response => {
                 if (response.ok) {
                     const message = await response.json()
@@ -82,9 +82,7 @@ function CreateAccount() {
                 body: JSON.stringify(questions),
             }
 
-            console.log(questions)
-
-            await fetch("http://localhost:8000/checkLogin", requestOption)
+            await fetch("http://ec2-54-165-70-250.compute-1.amazonaws.com:8000/checkLogin", requestOption)
                 .then(async response => {
                     const data = await response.json()
 
@@ -117,7 +115,7 @@ function CreateAccount() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://localhost:8000/isNewUser/", requestOption)
+        await fetch("http://ec2-54-165-70-250.compute-1.amazonaws.com:8000/isNewUser/", requestOption)
             .then(async response => {
                 const data = await response.json()
 

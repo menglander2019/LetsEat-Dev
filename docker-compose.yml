@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  backend:
+    image: letseatdev1
+    build: .
+    ports:
+      - '8000:8000'
+    environment:
+      DB_HOST: letseatusersaws.cvfx18xhuald.us-east-1.rds.amazonaws.com
+      DB_PORT: 3306
+      DB_NAME: users
+      DB_USER: admin
+      DB_PASSWORD: $Cornucopia20037
+  frontend:
+    build: ./react/letseat-app
+    ports:
+      - '3000:3000'
+    command: npm start
+    depends_on:
+      - backend
+    
