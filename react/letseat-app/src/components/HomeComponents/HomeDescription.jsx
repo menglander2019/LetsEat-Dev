@@ -14,7 +14,7 @@ const HomeDescription = () => {
                             <p className="font-size-sm black-theme move-medium mt-4">
                                 Free to use platform that saves you time deciding on where <br /> to eat next by yourself or with a group.
                             </p>
-                            <div className="mt-3">
+                            <div className="mt-1">
                             <Link to="/login">
                                 <button className="btn home-description-button">
                                     <span className="move-bold">Try it now</span>

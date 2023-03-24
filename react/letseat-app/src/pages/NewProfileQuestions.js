@@ -23,7 +23,7 @@ function NewProfileQuestions() {
     const [ questions, setQuestions ] = useState([])
     const [ answerSelected, setAnswerSelected ] = useState(0)
 
-    var flexStylingOption = "flex-styling-50"
+    var flexStylingOption = "flex-styling-33"
 
     useEffect(() => {
         fetchQuestions()
@@ -188,7 +188,6 @@ function NewProfileQuestions() {
     } else {
         return (
             <div className="container-fluid profile-component">
-                <DashboardNavbar />
                 <div className="d-flex flex-column">
                     <div className="d-flex align-items-center justify-content-center">
                         <div className="col-md-8 mt-5">
@@ -220,17 +219,9 @@ function NewProfileQuestions() {
                                     }
                                     {
                                         questionIndex >= questions.data.length - 1 ? 
-                                            answerSelected == 1 ? 
                                                 <button 
                                                     id="submit" 
                                                     className="btn search-navigation move-medium" 
-                                                    onClick={submitSelections}>
-                                                    Submit
-                                                </button>
-                                                :
-                                                <button 
-                                                    id="submit" 
-                                                    className="btn search-navigation move-medium disabled" 
                                                     onClick={submitSelections}>
                                                     Submit
                                                 </button>

@@ -1,10 +1,9 @@
 .profile-component {
     position: relative;
-    min-height: 800px;
+    min-height: 1050px;
     min-width: 1300px;
     overflow:visible;
     background-size:cover;
-    background-repeat: no-repeat;
     background-image: url('../design-resources/restaurant-dashboard.png');
     z-index: 1;
 }
@@ -12,7 +11,7 @@
 .profile-main-block {
     background-color: white;
     padding: 80px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .hidden-element {

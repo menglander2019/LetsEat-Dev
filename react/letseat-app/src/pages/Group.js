@@ -64,31 +64,40 @@ const Group = () => {
     }
 
     return (
-        <div className="container-fluid group-component">
-            <DashboardNavbar />
+        <div className="container-fluid dashboard-component">
             <div className="d-flex flex-column">
-                    <div className="d-flex align-items-center justify-content-center">
-                        <div className="col-md-6 mt-5">
-                            <div className="group-main-block">
-                                <div className="d-flex flex-column">
-                                    <h1 className="move-bold">Group Settings</h1>
+                <DashboardNavbar />
+                <div className="dashboard-banner">
+                    <div className="d-flex">
+                        <div className="col-md-6">
+                            <div className="d-flex justify-content-center">
+                                <div className="col-md-8 padding-style-7">
+                                    <div className="d-flex flex-column">
+                                    <h3 className="move-medium black-theme">Group Settings</h3>
+                                    <p className="move-medium grey-theme">Create a group and invite your friends to join your search with their own preferences</p>
                                     {
                                         groupCreationStatus == 0 ?
                                             <button 
                                                 id="submit"
-                                                className="btn dashboard-large-login move-medium w-50 mt-3"
+                                                className="btn dashboard-large-login move-medium w-100 mt-2"
                                                 onClick={createGroup}>
                                                 Create Group {'>'}
                                             </button>
                                             :
-                                            <p className="move-medium black-theme mt-3">Invite your friends: localhost:3000/join/group/{groupCreationStatus}</p>
+                                            <p className="move-medium black-theme mt-2">Invite Link: localhost:3000/join/group/{groupCreationStatus}</p>
                                     }
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div className="col-md-6">
+                            <div className="group-image"></div>
+                        </div>
                     </div>
                 </div>
+            </div>
         </div>
+            
     )
 }
 

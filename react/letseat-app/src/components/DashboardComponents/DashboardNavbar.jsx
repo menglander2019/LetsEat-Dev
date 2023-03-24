@@ -31,7 +31,7 @@ const DashboardNavbar = () => {
     } 
 
     return (
-        <div className="home-navbar-white">
+        <div className="home-navbar-black">
             <div className="navbar align-items-center padding-style-1">
                 <div className="d-flex justify-content-start">
                     <Link to="/dashboard">
@@ -50,7 +50,7 @@ const DashboardNavbar = () => {
                                 <span className="move-medium white-theme">Profile</span>
                             </Link>
                             <Link to="/">
-                                <button onClick={logOut} className="btn navbar-signup-white-v2">
+                                <button onClick={logOut} className="btn navbar-signup-white">
                                     <span className="move-medium">Sign Out</span>
                                 </button>
                             </Link>

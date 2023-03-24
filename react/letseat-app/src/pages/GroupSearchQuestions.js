@@ -195,7 +195,6 @@ function GroupSearchQuestions() {
                 <div className="d-flex flex-column">
                     <div className="d-flex align-items-center justify-content-center">
                         <div className="col-md-8 mt-5">
-                            <h1 className="white-theme">Group Search Questions</h1>
                             <div className="search-main-block">
                                 <h1 className="move-medium">Question {questionIndex + 1} / {questions.data.length}</h1>
                                     {

@@ -20,6 +20,7 @@ function SearchQuestions() {
     const navigate = useNavigate()
     const [ questionIndex, setQuestionIndex ] = useState(0)
     const [ questions, setQuestions ] = useState([])
+    const [ submissionStatus, setSubmissionStatus ] = useState(0)
     var flexStylingOption = "flex-styling-50"
 
     useEffect(() => {
@@ -134,6 +135,9 @@ function SearchQuestions() {
 
         console.log(questions)
 
+        // Set to loading screen
+        setSubmissionStatus(1)
+
         const requestOption = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -144,6 +148,7 @@ function SearchQuestions() {
         const response = fetch("http://localhost:8000/submit/search/", requestOption)   
             .then(response => {
                 if (response.ok) {
+                    setSubmissionStatus(0)
                     navigate("/restaurantsearch") 
                 } else {
                     console.log("Error Posting!")
@@ -158,7 +163,10 @@ function SearchQuestions() {
         return navigate("/")
     } else if (questions.length == 0) {
         return (<LoadingAnimation />)
-    } else {
+    } else if (submissionStatus == 1) {
+        return (<LoadingAnimation />)
+    }
+        else {
         return (
             <div className="container-fluid">
                 <DashboardNavbar />
