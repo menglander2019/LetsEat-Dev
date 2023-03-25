@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
+import url from '../../WebsiteURL'
+
 // Takes in JSON data of a restaurant and parses the data
 const DashboardBanner = () => {
 
@@ -19,7 +21,7 @@ const DashboardBanner = () => {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/createdGroupStatus", requestOption)
+        const response = await fetch(url + "createdGroupStatus", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {

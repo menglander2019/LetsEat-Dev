@@ -16,6 +16,8 @@ import CreateQuestion from '../components/CreateQuestion'
 
 import '../css/SearchQuestions.css';
 
+import url from '../WebsiteURL'
+
 function GroupSearchQuestions() {
 
     const navigate = useNavigate()
@@ -39,7 +41,7 @@ function GroupSearchQuestions() {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/questionnaire/search/", requestOption)
+        const response = await fetch(url + "questionnaire/search/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -169,7 +171,7 @@ function GroupSearchQuestions() {
             body: JSON.stringify(questions)
         }
 
-        const response = fetch("http://localhost:8000/getGroupRecommendations", requestOption)   
+        const response = fetch(url + "getGroupRecommendations", requestOption)   
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {

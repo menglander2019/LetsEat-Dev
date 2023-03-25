@@ -6,7 +6,7 @@ import bcrypt
 mydb = mysql.connector.connect(host='localhost',
                                         database='Users',
                                         user='root',
-                                        password='password')
+                                        password='$outhKorea23')
 
 def get_db():
     return mydb

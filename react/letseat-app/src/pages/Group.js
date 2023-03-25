@@ -6,6 +6,8 @@ import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
 
 import '../css/Group.css';
 
+import url from '../WebsiteURL'
+
 const Group = () => {
 
     const [ groupCreationStatus, setGroupCreationStatus ] = useState(0)
@@ -22,7 +24,7 @@ const Group = () => {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/createdGroupStatus", requestOption)
+        const response = await fetch(url + "createdGroupStatus", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -48,7 +50,7 @@ const Group = () => {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/createGroupSession", requestOption)
+        const response = await fetch(url + "createGroupSession", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -60,6 +62,28 @@ const Group = () => {
             })
             .catch(error => {
                 console.log("Error!")
+            })
+    }
+
+    const deleteGroup = (e) => {
+
+        const requestOption = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+        }
+
+        const response = fetch(url + "deleteGroupSession", requestOption)   
+            .then(response => {
+                if (response.ok) {
+                    console.log("Deleted Group!")
+                    checkGroupCreation()
+                } else {
+                    console.log("Error Deleting Group!")
+                }
+            })
+            .catch(error => {
+                console.log("Error deleteGroup!")
             })
     }
 
@@ -81,11 +105,28 @@ const Group = () => {
                                                 id="submit"
                                                 className="btn dashboard-large-login move-medium w-100 mt-2"
                                                 onClick={createGroup}>
-                                                Create Group {'>'}
+                                                Create Group
                                             </button>
                                             :
-                                            <p className="move-medium black-theme mt-2">Invite Link: localhost:3000/join/group/{groupCreationStatus}</p>
+                                            <h5 className="move-medium black-theme mt-2">Invite Link: localhost:3000/join/group/{groupCreationStatus}</h5>
                                     }
+                                    {
+                                        groupCreationStatus != 0 ?
+                                            <button 
+                                                id="submit"
+                                                className="btn dashboard-large-login-red move-medium w-100 mt-2"
+                                                onClick={deleteGroup}>
+                                                Delete Group
+                                            </button>
+                                            :
+                                            <button 
+                                                id="submit"
+                                                className="btn dashboard-large-login move-medium disabled w-100 mt-2"
+                                                onClick={deleteGroup}>
+                                                Delete Group
+                                            </button>
+
+                                }
                                     </div>
                                 </div>
                             </div>

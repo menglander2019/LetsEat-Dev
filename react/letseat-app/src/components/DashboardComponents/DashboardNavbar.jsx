@@ -9,8 +9,9 @@ import * as BsIcons from "react-icons/bs"
 import * as Ionicons from "react-icons/io";
 import * as Heroicons from "react-icons/hi";
 
-
 import logoPath from "../../design-resources/logo/letseat-banner-white.png"
+
+import url from '../../WebsiteURL'
 
 // Takes in JSON data of a restaurant and parses the data
 const DashboardNavbar = () => {
@@ -24,7 +25,7 @@ const DashboardNavbar = () => {
             credentials: "include"
         }
 
-        const response = await fetch("http://localhost:8000/logout", requestOption)
+        const response = await fetch(url + "logout", requestOption)
         //const data = await response.json()
         localStorage.removeItem("token")
         navigate("/")

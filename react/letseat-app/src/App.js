@@ -15,7 +15,6 @@ import JoinGroup  from './pages/JoinGroup';
 import GroupSearchQuestions  from './pages/GroupSearchQuestions';
 import GroupRestaurant  from './pages/GroupRestaurant';
 
-
 function App() {
   return (
     <>

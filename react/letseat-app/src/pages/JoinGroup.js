@@ -17,6 +17,8 @@ import CreateQuestion from '../components/CreateQuestion'
 
 import '../css/ProfileQuestions.css';
 
+import url from '../WebsiteURL'
+
 const JoinGroup = () => {
 
     const { host } = useParams()
@@ -47,7 +49,7 @@ const JoinGroup = () => {
             body: JSON.stringify(hostID[0])
         }
 
-        const response = await fetch("http://localhost:8000/getGroupHostName", requestOption)
+        const response = await fetch(url + "getGroupHostName", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -69,7 +71,7 @@ const JoinGroup = () => {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/questionnaire/profile/", requestOption)
+        const response = await fetch(url + "questionnaire/profile/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -200,7 +202,7 @@ const JoinGroup = () => {
             body: JSON.stringify(questions)
         }
 
-        const response = fetch("http://localhost:8000/joinGroup/", requestOption)   
+        const response = fetch(url + "joinGroup/", requestOption)   
             .then(response => {
                 if (response.ok) {
                     console.log("Submitted Response!")

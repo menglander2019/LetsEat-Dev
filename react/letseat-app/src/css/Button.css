@@ -87,6 +87,19 @@
     transform: scale(0.9);
 }
 
+.btn.dashboard-large-login-red {
+    background-color: maroon !important;
+    color: white !important;
+    border-radius: 2px;
+    font-size:1.2rem;
+    padding: 1.5%;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn.dashboard-large-login-red:active {
+    transform: scale(0.9);
+}
+
 .btn.search-navigation {
     background-color: black !important;
     color: white !important;

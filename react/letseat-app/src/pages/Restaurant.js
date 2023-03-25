@@ -9,6 +9,8 @@ import LoadingAnimation from '../components/LoadingAnimation';
 
 import '../css/Restaurant.css';
 
+import url from '../WebsiteURL'
+
 function Restaurant() {
 
     const navigate = useNavigate()
@@ -31,7 +33,7 @@ function Restaurant() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://localhost:8000/getRecommendations/", requestOption)
+        await fetch(url + "getRecommendations/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {

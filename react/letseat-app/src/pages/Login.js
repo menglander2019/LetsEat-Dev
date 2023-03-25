@@ -6,6 +6,8 @@ import HomeNavbar from '../components/HomeComponents/HomeNavbar';
 import LoadingAnimation from '../components/LoadingAnimation';
 import SearchQuestions from './SearchQuestions';
 
+import url from '../WebsiteURL'
+
 function CreateAccount() {
     const navigate = useNavigate()
     const [ questions, setQuestions ] = useState([])
@@ -29,7 +31,7 @@ function CreateAccount() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://localhost:8000/questionnaire/login/", requestOption)
+        await fetch(url + "questionnaire/login/", requestOption)
             .then(async response => {
                 if (response.ok) {
                     const message = await response.json()
@@ -84,7 +86,7 @@ function CreateAccount() {
 
             console.log(questions)
 
-            await fetch("http://localhost:8000/checkLogin", requestOption)
+            await fetch(url + "checkLogin", requestOption)
                 .then(async response => {
                     const data = await response.json()
 
@@ -117,7 +119,7 @@ function CreateAccount() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://localhost:8000/isNewUser/", requestOption)
+        await fetch(url + "isNewUser/", requestOption)
             .then(async response => {
                 const data = await response.json()
 

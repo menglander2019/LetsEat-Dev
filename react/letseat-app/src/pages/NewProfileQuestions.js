@@ -16,6 +16,8 @@ import CreateQuestion from '../components/CreateQuestion'
 
 import '../css/ProfileQuestions.css';
 
+import url from '../WebsiteURL'
+
 function NewProfileQuestions() {
 
     const navigate = useNavigate()
@@ -39,7 +41,7 @@ function NewProfileQuestions() {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/questionnaire/profile/", requestOption)
+        const response = await fetch(url + "questionnaire/profile/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -168,7 +170,7 @@ function NewProfileQuestions() {
             body: JSON.stringify(questions)
         }
 
-        const response = fetch("http://localhost:8000/submit/profile/", requestOption)   
+        const response = fetch(url + "submit/profile/", requestOption)   
             .then(response => {
                 if (response.ok) {
                     navigate("/dashboard")
