@@ -108,7 +108,7 @@ const Group = () => {
                                                 Create Group
                                             </button>
                                             :
-                                            <h5 className="move-medium black-theme mt-2">Invite Link: localhost:3000/join/group/{groupCreationStatus}</h5>
+                                            <h5 className="move-medium black-theme mt-2">Invite Link: http://localhost:3000/join/group/{groupCreationStatus}</h5>
                                     }
                                     {
                                         groupCreationStatus != 0 ?

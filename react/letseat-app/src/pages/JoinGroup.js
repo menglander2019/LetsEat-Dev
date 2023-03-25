@@ -30,7 +30,7 @@ const JoinGroup = () => {
     const [ questions, setQuestions ] = useState([])
     const [ answerSelected, setAnswerSelected ] = useState(0)
 
-    var flexStylingOption = "flex-styling-50"
+    var flexStylingOption = "flex-styling-33"
 
     useEffect(() => {
         setHostID([])
@@ -219,69 +219,61 @@ const JoinGroup = () => {
         return (<LoadingAnimation />)
     } else {
         return (
-            <div className="container-fluid profile-component">
-            <div className="d-flex flex-column">
-                <div className="d-flex align-items-center justify-content-center">
-                    <div className="col-md-8 mt-5">
-                        <h1 className="white-theme">{hostName}'s Group</h1>
-                        <div className="profile-main-block">
-                            <h1 className="move-medium">Question {questionIndex + 1} / {questions.data.length}</h1>
-                                {
-                                    questionIndex == 4 ? 
-                                        <div id="q5" className="question mt-3" onChange={textSubmission}>
-                                            <label for="answerOptions">{questions.data[4].question}</label>
-                                            <input type="text" id="distance" className="input-box form-control mt-2 w-100" placeholder="Enter your zipcode"></input>
-                                        </div> 
-                                        : 
-                                        <CreateQuestion 
-                                            question={questions.data[questionIndex]} 
-                                            questionNumber={questionIndex} 
-                                            radioAnswerClicked={answerClicked}
-                                            flexStylingOption={flexStylingOption}
-                                        />
-                                }
-                            <div className="d-flex align-items-center justify-content-around mt-5">
-                                {
-                                    questionIndex == 0 ? null: 
-                                        <button 
-                                            id="previousQuestion"
-                                            className="btn search-navigation move-medium"
-                                            onClick={previousQuestion}>
-                                            {"<"}
-                                        </button>
-                                }
-                                {
-                                    questionIndex >= questions.data.length - 1 ? 
-                                        answerSelected == 1 ? 
-                                            <button 
-                                                id="submit" 
-                                                className="btn search-navigation move-medium" 
-                                                onClick={submitSelections}>
-                                                Submit
-                                            </button>
-                                            :
-                                            <button 
-                                                id="submit" 
-                                                className="btn search-navigation move-medium disabled" 
-                                                onClick={submitSelections}>
-                                                Submit
-                                            </button>
-
-                                    :
-                                        questionIndex < questions.data.length - 1 && answerSelected == 1 ? 
-                                            <button 
-                                                id="nextQuestion"
-                                                className="btn search-navigation move-medium"
-                                                onClick={nextQuestion}>
-                                                {">"}
-                                            </button>
+            <div className="container-fluid group-profile-component">
+                <div className="d-flex flex-column">
+                    <div className="d-flex align-items-center justify-content-center">
+                        <div className="col-md-8 mt-5">
+                        <h1 className="move-medium white-theme">{hostName}'s Group Search</h1>
+                            <div className="profile-main-block">
+                                <h1 className="move-medium">Question {questionIndex + 1} / {questions.data.length}</h1>
+                                    {
+                                        questionIndex == 4 ? 
+                                            <div id="q5" className="question mt-3" onChange={textSubmission}>
+                                                <label for="answerOptions">{questions.data[4].question}</label>
+                                                <input type="text" id="distance" className="input-box form-control mt-2 w-100" placeholder="Enter your zipcode"></input>
+                                            </div> 
                                             : 
+                                            <CreateQuestion 
+                                                question={questions.data[questionIndex]} 
+                                                questionNumber={questionIndex} 
+                                                radioAnswerClicked={answerClicked}
+                                                flexStylingOption={flexStylingOption}
+                                            />
+                                    }
+                                <div className="d-flex align-items-center justify-content-around mt-5">
+                                    {
+                                        questionIndex == 0 ? null: 
                                             <button 
-                                                id="nextQuestion"
-                                                className="btn search-navigation move-medium disabled"
-                                                onClick={nextQuestion}>
-                                                {">"}
+                                                id="previousQuestion"
+                                                className="btn search-navigation move-medium"
+                                                onClick={previousQuestion}>
+                                                {"<"}
                                             </button>
+                                    }
+                                    {
+                                        questionIndex >= questions.data.length - 1 ? 
+                                                <button 
+                                                    id="submit" 
+                                                    className="btn search-navigation move-medium" 
+                                                    onClick={submitSelections}>
+                                                    Submit
+                                                </button>
+
+                                        :
+                                            questionIndex < questions.data.length - 1 && answerSelected == 1 ? 
+                                                <button 
+                                                    id="nextQuestion"
+                                                    className="btn search-navigation move-medium"
+                                                    onClick={nextQuestion}>
+                                                    {">"}
+                                                </button>
+                                                : 
+                                                <button 
+                                                    id="nextQuestion"
+                                                    className="btn search-navigation move-medium disabled"
+                                                    onClick={nextQuestion}>
+                                                    {">"}
+                                                </button>
                                     }
                                 </div>
                             </div>

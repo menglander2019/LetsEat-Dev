@@ -175,7 +175,7 @@ function NewSearchQuestions() {
         const response = fetch(url + "submit/search/", requestOption)   
             .then(response => {
                 if (response.ok) {
-                    navigate("/restaurantsearch") 
+                    navigate("/restaurant/results") 
                 } else {
                     console.log("Error Posting!")
                 }

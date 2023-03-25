@@ -192,7 +192,7 @@ function GroupSearchQuestions() {
         return (<LoadingAnimation />)
     } else {
         return (
-            <div className="container-fluid search-component">
+            <div className="container-fluid group-search-component">
                 <DashboardNavbar />
                 <div className="d-flex flex-column">
                     <div className="d-flex align-items-center justify-content-center">
