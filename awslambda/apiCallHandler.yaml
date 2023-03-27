@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  apiCallHandler:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: .
+      Description: ''
+      MemorySize: 1024
+      Timeout: 300
+      Role: 'arn:aws:iam::043309718722:role/service-role/apiCallHandler-role-9dkrc0ku'
+      Layers:
+        - 'arn:aws:lambda:us-east-1:043309718722:layer:SeleniumChrome:1'
+      RuntimePolicy:
+        UpdateRuntimeOn: Auto
