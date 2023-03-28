@@ -13,6 +13,7 @@ import '../css/Color.css';
 import '../css/Font.css';
 import '../css/Home.css';
 import '../css/Padding.css';
+import '../css/Dashboard.css';
 
 function Dashboard() {
     const navigate = useNavigate()
@@ -28,16 +29,11 @@ function Dashboard() {
         }
     }
 
-    const searchButtonClicked = async (e) => {
-        e.preventDefault()
-        navigate("/searchquestions")
-    }
-
     return (
-        <div className="container-fluid">
+        <div className="container-fluid dashboard-component">
             <div className="d-flex flex-column">
                 <DashboardNavbar />
-                <DashboardBanner searchFunction={searchButtonClicked}/>
+                <DashboardBanner />
             </div>
         </div>
     );

@@ -4,9 +4,10 @@ from datetime import datetime
 import time
 from . import UserYelpWebScraping, YelpWebscraping, constants
 
+API_KEY= "Ajp2BpBwSZg-y5gYRXLeX_4eF3NHCzVC-nn_M__OmLgIPjXGGp4Z6ou4MgICshQZVUwbbXW1cyzZVZqMPkMskXdqLjU2-_r3rFgUquoSb2Y28ih96GtMVSiY4Q_rY3Yx"
+
 headers = {
-    "accept": "application/json",
-    "Authorization": "Bearer Ajp2BpBwSZg-y5gYRXLeX_4eF3NHCzVC-nn_M__OmLgIPjXGGp4Z6ou4MgICshQZVUwbbXW1cyzZVZqMPkMskXdqLjU2-_r3rFgUquoSb2Y28ih96GtMVSiY4Q_rY3Yx"
+    'Authorization': 'Bearer %s' % API_KEY,
 }
 API_URL = "https://api.yelp.com/v3/businesses/search?"
  

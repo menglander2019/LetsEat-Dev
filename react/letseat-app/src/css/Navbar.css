@@ -32,7 +32,7 @@
     background-color: black !important;
     border-width: 0px !important;
     color: white !important;
-    border-radius: 20px;
+    border-radius: 18px;
     font-size: 0.8rem;
     padding-left: 20px;
     padding-right: 20px;
@@ -44,6 +44,16 @@
     color: black !important;
     border-radius: 20px;
     font-size: 0.8rem;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navbar-signup-white-v2 {
+    background-color: black !important;
+    border-width: 0px !important;
+    color: white !important;
+    border-radius: 20px;
+    font-size: 0.9rem;
     padding-left: 20px;
     padding-right: 20px;
 }

@@ -1,0 +1,20 @@
+.search-component {
+    position: relative;
+    min-height: 800px;
+    min-width: 1300px;
+    overflow: hidden;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-image: url('../design-resources/restaurant-dashboard.png');
+    z-index: 1;
+}
+
+.search-main-block {
+    background-color: white;
+    padding: 80px;
+    border-radius: 10px;
+}
+
+.hidden-element {
+    visibility: hidden;
+}

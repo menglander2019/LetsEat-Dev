@@ -13,10 +13,30 @@
 }
 
 .padding-style-3 {
-    padding-top: 40px;
+    padding-top: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 20px;
+}
+
+.padding-style-4 {
+    padding-top: 50px;
     padding-right: 80px;
     padding-left: 80px;
-    padding-bottom: 10px;
+    padding-bottom: 50px;
+}
+
+.padding-style-5 {
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 40px;
+    margin-left: 100px;
+}
+
+.padding-style-6 {
+    margin-right: 140px;
+    margin-left: 140px;
 }
 
 .flex-styling-75 {

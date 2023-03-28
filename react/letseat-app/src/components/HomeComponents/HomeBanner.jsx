@@ -6,25 +6,14 @@ const HomeBanner = () => {
 
     return (
         <div className="home-banner">
-            <div className="d-flex align-items-center justify-content-center">
+            <div className="home-main-block padding-style-5">
+                <h3 className="white-theme sf-pro-bold ">Discover your new favorite restaurants.</h3>
+                <br /><br /><br /><br /><br /><br />
+                <h3 className="white-theme sf-pro-bold ">Discover Now {' >'}</h3>
+            </div>
+            <div className="d-flex align-items-right justify-content-center">
                 <div className="col-md-10">
-                    <div className="home-main-block">
-                        <div className="d-flex flex-column">
-                            <p className="font-size-banner yellow-theme druk-bold">DISCOVER RESTAURANTS</p>
-                            <div className="d-flex justify-content-start mt-1">
-                                <Link to="/login" className="flex-styling-33">
-                                    <button 
-                                        id="submit"
-                                        className="btn home-large-login sf-pro-bold w-100">
-                                        DISCOVER NOW
-                                    </button>
-                                </Link>
-                            </div>
-                            <div className="d-flex justify-content-center">
-                                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-                            </div>
-                        </div>
-                    </div>
+                    <div className="home-image-banner"></div>
                 </div>
             </div>
         </div>

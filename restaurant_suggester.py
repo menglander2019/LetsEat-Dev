@@ -1,7 +1,7 @@
 from backend.dec_tree_trainer import train_dec_tree
 from yelp.YelpApiCalls import get_restaurant_list
 from yelp.YelpWebscraping import scrape, DATABASE
-from backend.data_generation.data_gen_constants import header, num_umbrella_terms, restaurant_types, days
+from backend.data_generation.data_gen_constants import header, num_umbrella_terms, restaurant_types, days, PREDICTION_BAR
 from backend.db.db_management import get_db
 from datetime import datetime
 import numpy
@@ -122,7 +122,7 @@ def build_restaurant_features(restaurant):
 
     return [rating] + category_features + kosher_and_gluten_free + rest_prices + pickup_delivery_reservation
     
-def make_prediction(restaurant, user_features, encoder, dec_tree):
+def make_prediction(restaurant, user_features, encoder, dec_tree, restrictions):
     print("Making prediction for:", restaurant.get('name'))
     temp_user_features = copy.copy(user_features)
     rest_features = build_restaurant_features(restaurant)
@@ -134,6 +134,18 @@ def make_prediction(restaurant, user_features, encoder, dec_tree):
     # opens up the scraped restaurant info database
     conn = sqlite3.connect("./yelp/OfficialRestaurantScraping.db")
     c = conn.cursor()
+
+
+    for j in restrictions:
+        if j == '':
+            continue
+        c.execute("SELECT "+j+" FROM attributes WHERE restaurant_id = (?)", (rest_id,))
+        result = c.fetchall()
+        if result != []:
+            if result[0][0] != 1:
+                return 0
+        else:
+            return 0
 
     c.execute("SELECT * FROM attributes WHERE restaurant_id = (?)", (rest_id,))
     result = c.fetchall()
@@ -160,8 +172,8 @@ def make_prediction(restaurant, user_features, encoder, dec_tree):
     # makes a prediction as to whether the user would attend this restaurant or not
     prediction_prob = dec_tree.predict_proba(total_features_encoded)[0]
     print("Prediction prob for " + str(restaurant.get('name')) + " is= " + str(prediction_prob))
-    # if the model has an above 75% confidence score that the restaurant should be suggested, return the value
-    if prediction_prob[1] > 0.75:
+    # if the model has an above 50% confidence score that the restaurant should be suggested, return the value
+    if prediction_prob[1] > PREDICTION_BAR:
         return prediction_prob[1]
     # if the confidence score is too low, return 0 to indicate that the restaurant shouldn't be suggested
     return 0
@@ -184,17 +196,20 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
     positives = user_info[0].split(',')
     negatives = user_info[1].split(',')
     restrictions = user_info[2].split(',')
-
+    
     # gets the user input for profile information (used for testing)
     user_features = build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions)
     cuisines = user_info[0]
+    print("zip: " + str(zip))
+    print("prices: " + str(price_ranges))
+    print("cuisines: " + str(cuisines))
     restaurants = get_restaurant_list(zip, '4000', price_ranges, cuisines)
     print(f"FOUND {len(restaurants)} restaurants!")
     # iterates through each restaurant, scraping data and making predictions
     suggestions_list = []
     start_time = time.time()
     for restaurant in restaurants:
-        suggestion = make_prediction(restaurant, user_features, encoder, dec_tree)
+        suggestion = make_prediction(restaurant, user_features, encoder, dec_tree, restrictions)
         # if the model predicts a suggestion, then append it to the unordered dictionary as a key-value pair
         if suggestion > 0:
             suggestions_list.append([restaurant, suggestion])
@@ -207,6 +222,49 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
     suggestions_sorted = sorted(suggestions_list, key=lambda x: x[1])
     suggestions_sorted_list = list(numpy.array(suggestions_sorted)[:,0])
     print("Total prediction time:", time.time() - start_time)
+
+    # returns the list of restaurants sorted by their IDs
+    id_list_sorted = []
+    for suggestion in suggestions_sorted_list:
+        id_list_sorted.append(suggestion.get('id'))
+
+    return id_list_sorted
+
+def get_group_predictions(positives, negatives, restrictions, occasion, num_people, meal, price_ranges, zip):
+    # trains the decision tree and returns the tree along with the proper encoder
+    start_time = time.time()
+    dec_tree_info = train_dec_tree()
+    print("Group training time:", time.time() - start_time)
+
+    dec_tree = dec_tree_info[0]
+    encoder = dec_tree_info[1]
+
+    # gets the user input for profile information (used for testing)
+    user_features = build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions)
+    cuisines = ','.join(positives)
+
+    print("group zip: " + str(zip))
+    print("group prices: " + str(price_ranges))
+    print("group cuisines: " + str(cuisines))
+    restaurants = get_restaurant_list(zip, '4000', price_ranges, cuisines)
+    print(f"FOUND {len(restaurants)} restaurants!")
+    # iterates through each restaurant, scraping data and making predictions
+    suggestions_list = []
+    start_time = time.time()
+    for restaurant in restaurants:
+        suggestion = make_prediction(restaurant, user_features, encoder, dec_tree, restrictions)
+        # if the model predicts a suggestion, then append it to the unordered dictionary as a key-value pair
+        if suggestion > 0:
+            suggestions_list.append([restaurant, suggestion])
+    
+    # edge-case: no restaurants are found, so an empty list is returned
+    if len(suggestions_list) == 0:
+        return []
+
+    # sorts the restaurants based on the 1st column of each row which contains the confidence score of that rejection
+    suggestions_sorted = sorted(suggestions_list, key=lambda x: x[1])
+    suggestions_sorted_list = list(numpy.array(suggestions_sorted)[:,0])
+    print("Group total prediction time:", time.time() - start_time)
 
     # returns the list of restaurants sorted by their IDs
     id_list_sorted = []
