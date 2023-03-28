@@ -75,7 +75,7 @@ function GroupRestaurant() {
             <div className="container-fluid restaurant-component">
                 <DashboardNavbar />
                 <div className="d-flex justify-content-center h-100">
-                    <div className="col-md-6">
+                    <div className="col-md-6 mt-5">
                         <div className="restaurant-main-block">
                             <div className="d-flex flex-column">
                                 {   displayRestaurant == 0

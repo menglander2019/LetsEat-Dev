@@ -3,7 +3,7 @@
     min-height: 700px;
     min-width: 1300px;
     overflow: hidden;
-    background-color: black;
+    background-color: white;
     z-index: 1;
 }
 
@@ -19,7 +19,7 @@
 
 .dashboard-banner {
     background-color: white;
-    min-height: 700px;
+    min-height: 500px;
     min-width: 1300px;
 }
 

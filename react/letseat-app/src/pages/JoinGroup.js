@@ -22,6 +22,8 @@ import url from '../WebsiteURL'
 const JoinGroup = () => {
 
     const { host } = useParams()
+    
+    const navigate = useNavigate()
 
     const [ hostID, setHostID ] = useState([])
     const [ hostName, setHostName ] = useState("")
@@ -206,6 +208,7 @@ const JoinGroup = () => {
             .then(response => {
                 if (response.ok) {
                     console.log("Submitted Response!")
+                    navigate("/group/submission")
                 } else {
                     console.log("Error Posting!")
                 }
