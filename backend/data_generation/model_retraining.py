@@ -1,11 +1,14 @@
 # Import writer class from csv module
 from csv import writer
 from backend.db.db_management import get_db
-from restaurant_suggester import build_user_features, build_restaurant_features
+from backend.data_generation.data_gen_constants import days
 from yelp.YelpApiCalls import return_business
+from datetime import datetime
 import sqlite3
  
 def create_new_row(userID, search_submission, restID, attended):
+    dt = datetime.now()
+    current_day = days[dt.weekday()]
     # sets up database variables
     mydb = get_db()
     c = mydb.cursor()
@@ -15,35 +18,86 @@ def create_new_row(userID, search_submission, restID, attended):
     positives = user_info[0].split(',')
     negatives = user_info[1].split(',')
     restrictions = user_info[2].split(',')
-    user_cols = build_user_features(search_submission[0], search_submission[1], search_submission[2], search_submission[3], positives, negatives, restrictions)
 
-    restaurant = return_business(restID)
-    rest_cols = build_restaurant_features(restaurant)
+    c.execute('SELECT name from userProfiles WHERE userID = %s', (userID,))
+    user_name = c.fetchone()[0]
 
-    # opens up the scraped restaurant info database
-    conn = sqlite3.connect("./yelp/OfficialRestaurantScraping.db")
-    c = conn.cursor()
+    c.close()
 
-    c.execute("SELECT * FROM attributes WHERE restaurant_id = (?)", (restID,))
-    result = c.fetchall()
-    # if the restaurant is not found in the db, then something terribly wrong has happened (to get to this point the restaurant must have been found before in the ML code)
-    if len(result) == 0:
-        raise Exception("FATAL ERROR: Restaurant not found when re-training... this error should never occur...")
+    user_retraining_dict = {
+        "name": user_name,
+        "current_day": current_day,
+        "middle_eastern": 0,
+        "african": 0,
+        "american": 0,
+        "mexican": 0,
+        "latin_american": 0,
+        "italian": 0,
+        "chinese": 0,
+        "japanese": 0,
+        "southern_central_asian": 0,
+        "french": 0,
+        "eastern_europe": 0,
+        "central_europe": 0,
+        "caribbean": 0,
+        "mediterranean": 0,
+        "indian": 0,
+        "spanish": 0,
+        "kosher": 0,
+        "gluten_free": 0,
+        "wheelchair": 0,
+        "vegan": 0,
+        "vegetarian": 0,
+        "pescatarian": 0,
+        "keto": 0,
+        "soy": 0,
+        "dog": 0,
+        "covid": 0,
+        "occasion": search_submission[0],
+        "num_people": search_submission[1],
+        "meal": search_submission[2],
+        "oneDollar": 0,
+        "twoDollar": 0,
+        "threeDollar": 0,
+        "fourDollar": 0,
+        "rest_id": restID,
+        "going": attended,
+    }
 
-    scraped_info = list(result[0])[28:]
+    for positive in positives:
+        if positive not in user_retraining_dict:
+            raise Exception("FATAL ERROR: user cuisine preference not found in retraining headers...")
+        user_retraining_dict[positive] = 1
+    for negative in negatives:
+        if negative not in user_retraining_dict:
+            raise Exception("FATAL ERROR: user cuisine dislike not found in retraining headers...")
+        user_retraining_dict[negative] = -1
+    for restriction in restrictions:
+        if restriction == '':
+            continue
+        if restriction not in user_retraining_dict:
+            raise Exception("FATAL ERROR: user dietary restriction not found in retraining headers...")
+        user_retraining_dict[restriction] = 1
 
-    # closes the connection to the sqlite3 db
-    conn.close() 
-    
-    # appends the collected values based on the user profile, restaurant features (rating/price/cuisine), and the scraped restaurant values (and whether the user will attend)
-    total_features = user_cols + rest_cols + scraped_info + [attended]
-    return total_features
+    price_ranges = search_submission[3]
+    print("TESTING IN RETRAINING: " + str(price_ranges))
+    for price in price_ranges:
+        if price == 1:
+            user_retraining_dict["oneDollar"] = 1
+        elif price == 2:
+            user_retraining_dict["twoDollar"] = 1
+        elif price == 3: 
+            user_retraining_dict["threeDollar"] = 1
+        elif price == 4:
+            user_retraining_dict["fourDollar"] = 1
+
+    return user_retraining_dict.values()
 
 def append_user_input(row):
     # Open our existing CSV file in append mode
     # Create a file object for this file
-    with open('./backend/data_generation/random_data.csv', 'a', encoding='UTF8') as f:
-        writer = writer(f)
-        writer.writerow(row)
+    with open('./yelp/scrapedUsers.csv', 'a', encoding='UTF8') as f:
+        f_writer = writer(f)
+        f_writer.writerow(row)
     
         f.close()

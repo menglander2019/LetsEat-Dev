@@ -24,3 +24,5 @@ yarn-error.log*
 *pyc*
 *pycache*
 *.pyc
+**/__pycache__/
+/pycache/*

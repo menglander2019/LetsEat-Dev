@@ -69,7 +69,7 @@ with open('./backend/data_generation/random_data.csv', 'w', encoding='UTF8') as 
     writer = csv.writer(f)
 
     # write the header
-    writer.writerow(header)
+    writer.writerow(header + ['going'])
 
     # write the data
     for i in range(num_rows):
