@@ -13,9 +13,9 @@ import bcrypt
 
 origins = [
     "http://54-165-70-250:3000",
-    "http://ec2-54-165-70-250.compute-1.amazonaws.com:3000",
+    "http://localhost:3000",
     "54-165-70-250:3000",
-    "ec2-54-165-70-250.compute-1.amazonaws.com:3000"
+    "localhost:3000"
 ]
 
 user_middlewares = []
@@ -77,6 +77,10 @@ def questionnaire_createProfile():
 @app.get("/questionnaire/search/")
 def questionnaire_search():
     return {"data": search_questions}
+
+@app.get("/questionnaire/groupsearch/")
+def questionnaire_groupsearch():
+    return {"data": group_search_questions}
 
 @app.post("/submit/profile/")
 async def submit_questionnaire(request: Request):
@@ -237,10 +241,10 @@ async def getGroupRecommendations(request: Request):
 
     # uses the request body to get the search preferences
     occasion = group_search_data["data"][0]["selectedChoices"][0]
-    num_people = int(group_search_data["data"][1]["selectedChoices"][0])
-    meal = group_search_data["data"][2]["selectedChoices"][0]
-    price_ranges = group_search_data["data"][3]["selectedChoices"]
-    zip = group_search_data["data"][4]["selectedChoices"][0]
+    num_people = 1 + len(groupMembers)
+    meal = group_search_data["data"][1]["selectedChoices"][0]
+    price_ranges = group_search_data["data"][2]["selectedChoices"]
+    zip = group_search_data["data"][3]["selectedChoices"][0]
     # converts the $$$'s selected into numbers
     actual_price_ranges = []
     for price in price_ranges:

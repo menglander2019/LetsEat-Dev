@@ -35,7 +35,7 @@ function ProfileQuestions() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://ec2-54-165-70-250.compute-1.amazonaws.com:8000/questionnaire/profile/", requestOption)
+        await fetch("http://localhost:8000/questionnaire/profile/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -111,7 +111,7 @@ function ProfileQuestions() {
             body: JSON.stringify(questions)
         }
 
-        await fetch("http://ec2-54-165-70-250.compute-1.amazonaws.com:8000/submit/profile/", requestOption)
+        await fetch("http://localhost:8000/submit/profile/", requestOption)
             .then(async response => {
                 const data = await response.json()
 
