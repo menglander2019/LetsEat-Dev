@@ -13,9 +13,9 @@ import bcrypt
 
 origins = [
     "http://54-165-70-250:3000",
-    "http://ec2-54-165-70-250.compute-1.amazonaws.com:3000",
+    "http://localhost:3000",
     "54-165-70-250:3000",
-    "ec2-54-165-70-250.compute-1.amazonaws.com:3000"
+    "localhost:3000"
 ]
 
 user_middlewares = []
@@ -127,7 +127,11 @@ async def submit_search(request: Request):
     # extracts all the search criteria from the selected answers
     id = request.session["id"]
     occasion = search_data["data"][0]["selectedChoices"][0]
-    num_people = int(search_data["data"][1]["selectedChoices"][0])
+    num_people_str = search_data["data"][1]["selectedChoices"][0]
+    if num_people_str == "4+":
+        num_people = 4
+    else:
+        num_people = int(num_people_str)
     meal = search_data["data"][2]["selectedChoices"][0]
     price_ranges = search_data["data"][3]["selectedChoices"]
     zip = search_data["data"][4]["selectedChoices"][0]
@@ -237,7 +241,11 @@ async def getGroupRecommendations(request: Request):
 
     # uses the request body to get the search preferences
     occasion = group_search_data["data"][0]["selectedChoices"][0]
-    num_people = int(group_search_data["data"][1]["selectedChoices"][0])
+    num_people_str = group_search_data["data"][1]["selectedChoices"][0]
+    if num_people_str == "4+":
+        num_people = 4
+    else:
+        num_people = int(num_people_str)
     meal = group_search_data["data"][2]["selectedChoices"][0]
     price_ranges = group_search_data["data"][3]["selectedChoices"]
     zip = group_search_data["data"][4]["selectedChoices"][0]
