@@ -16,8 +16,6 @@ total_input = pd.merge(user_raw_data, rest_raw_data, on='rest_id')
 total_input_cleaned = total_input.drop(['name', 'rest_id', 'website', 'going'], axis='columns')
 output = total_input['going']
 
-total_input_cleaned.to_csv('test.csv')
-
 # trains the decision tree with randomly generated data and returns it along with its encoder
 def train_dec_tree():
     # utilizes OneHotEncoder to convert categorical values
