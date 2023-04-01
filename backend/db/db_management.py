@@ -43,7 +43,7 @@ mydb = mysql.connector.connect(**config)
 #         mydb.close()
 #         print("MySQL Connection is closed")
 
-# mydb = mysql.connector.connect(host='ec2-54-165-70-250.compute-1.amazonaws.com',
+# mydb = mysql.connector.connect(host='localhost',
 #                                         database='Users',
 #                                         user='root',
 #                                         password='Password')
@@ -173,7 +173,10 @@ def retrieveRestrictions(id):
 
     result = c.fetchone()
     # returns the list of restrictions for a given user's ID
-    return result[0].split(',')
+    restrictions = result[0].split(',')
+    if len(restrictions) == 1 and restrictions[0] == '':
+        return []
+    return restrictions
 
 def getNameByID(id):
     c = mydb.cursor()

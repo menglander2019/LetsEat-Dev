@@ -13,9 +13,9 @@ import bcrypt
 
 origins = [
     "http://54-165-70-250:3000",
-    "http://ec2-54-165-70-250.compute-1.amazonaws.com:3000",
+    "http://localhost:3000",
     "54-165-70-250:3000",
-    "ec2-54-165-70-250.compute-1.amazonaws.com:3000"
+    "localhost:3000"
 ]
 
 user_middlewares = []
@@ -117,7 +117,7 @@ async def submit_questionnaire(request: Request):
     updatePositives(id, positives_list)
     updateNegatives(id, negatives_list)
     # checks if the N/A option is selected
-    if len(restrictions) != 1 or restrictions[0] != 'N/A':
+    if "N/A" not in restrictions:
         updateRestrictions(id, restrictions_list)
     return {"message": "submitted"}
 
