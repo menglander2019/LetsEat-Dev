@@ -101,36 +101,49 @@
 
 			<!-- Article main content -->
 			<article class="col-sm-8 maincontent">
-				<h2 id="future">Ideas for Future Projects</h2>
-					<ul>
-						<li>Partnership with a company like Yelp that collects this data so it is applicable to more restaurants</a></li>
-						<li>Pipeline/Scheduled SQS of AWS lambda scraping to EC2 instance so we are automatically updating restaurant information </a></li>
-						<li>Functionality for users to rate restaurants they indicate they are attending and use this data to retrain the machine learning model</a></li>
-						<li>Use REACT Native to create a mobile-friendly app for the Apple App Store and/or Google Play Store</li>
-						<li>During the restaurant recommendation process, ask the user more specific questions to get more specific recommendations. Example questions include parking information, travel information, and more details about allergies/restrictions. </li>
-					</ul>
-<!--
-				<h2 id="working">What Does and Doesn't Work</h2>
-				<ul>
-					<li></li>
-				</ul>
--->
-				<h2>What to be Aware of</h2>
-				<ul>
-					<li>The restaurant database does not have every available restaurant.</li>
-					<li>This is only applicable to DC (20037 restaurants)</li>
-					<li>If someone is very allergic, this can greatly limit the number of possible places they go. We will not recommend something that does not satisfy their allergy needs, so they could get no results because their allergies cannot be accommodated</li>
-					<li>We will not recommend a restaurant that is not open at the time of the search. If there are no nearby restaurants that satisfy their requirements and are open, there will be no results. </li>
-				</ul>
-				<h2 id="ideas">Ideas for Next Steps</h2>
-				<ul>
-					<li>Partner with reservation company (like OpenTable or Resy), so after users get a recommendation, they can make a reservation for that restaurant at their selected time.</li>
-					<li>Distribute a LetsEat Newsletter to promote new restaurants and features. This can also allow for ads as a revenue method.</li>
-					<li>Partner with restaurants to have a featured restaurants section. This can act as a revenue method. </li>
-				</ul>
+				<h2>All Necessary Software</h2>
+					<a href="https://github.com/menglander2019/LetsEat-Dev/blob/main/requirements.txt">requirements.txt</a>
+			
+				<h2 id="toolsandlibraries">Necessary Tools and Libraries</h2>
+					<h5>Frontend</h5>
+					<h6>REACT <a href="https://reactjs.org/docs/getting-started.html"><i class="fa fa-link fa-2"></i></a></h6>				
+					<p >REACT is the frontend framework used to build the web application for our project. This framework allows for intuitive and dynamic front facing web pages that can change based on user input and the device the user is utilizing to access the web application. REACT was chosen for its ease of use and simplicity; allowing for development of a website that can be simple to use and navigate.</p>
+					<h6>Bootstrap <a href="https://getbootstrap.com/"><i class="fa fa-link fa-2"></i></a></h6>				
+					<p >Boostrap is a popular open source web development framework our project utlizes to create more professional, dynamic visuals for better user interactions. The templates and classes allow for a more responsive and easier user experience. </p>
 
+					<h5>Backend</h5>
+					<h6>FastAPI <a href="https://fastapi.tiangolo.com/"><i class="fa fa-link fa-2"></i></a></h6>				
+					<p >This API allows for the infrastructure and setup of the web server for our project. By using this API, prebuilt HTTPS functions can be used to set up API endpoints that the frontend application can ping to send/receive information quickly. FastAPI is just that, fast, and works particularly well with machine learning models so it is a perfect fit for our project which utilizes machine learning to make suggestions.</p>				
 
-			</article>
+					<h6>AWS EC2 <a href="https://aws.amazon.com/ec2/"><i class="fa fa-link fa-2"></i></a></h6>				
+					<p >Amazon Web Services Elastic Compute Cloud is the cloud service we have chosen to host our application so it is publically accessible. </p>				
+
+					<h6>Docker <a href="https://www.docker.com/"><i class="fa fa-link fa-2"></i></a></h6>				
+					<p >Docker is a software that allows for virtualization for our project. We use Docker to containerize our project and allows us to run all of our endpoints synchronously with the most correct packages and seamless communication between our images when hosting our project in a cloud service.</p>				
+					
+					<h6>AWS RDS <a href="https://aws.amazon.com/rds/"><i class="fa fa-link fa-2"></i></a></h6>				
+					<p >Amazon Web Services Relational Database is the cloud service we have chosen to host our user data in a SQL database. </p>				
+
+					<h6>Yelp Fusion API <a href="https://docs.developer.yelp.com/docs/fusion-intro"><i class="fa fa-link fa-2"></i></a></h6>				
+					<p >This API gives access to relevant information about restaurants. After the user inputs their dining preferences, data like location, distance, and price range. The API will return the top most relevant 50 or less restaurants and data about them, such as their yelp website, cuisine types, and location. The outputted website will then be scraped to get more information about the restaurant. These restaurants and their data will then go to the machine learning algorithm. This API was chosen because it has the most extensive, detailed list of restaurants and is free to use. </p>		
+
+					<h6>AWS Lambda <a href="https://aws.amazon.com/lambda/"><i class="fa fa-link fa-2"></i></a></h6>				
+					<p >Amazon Web Services Lambda is the cloud service we have chosen to host an automated version of the Selenium Webscraping, so it does not have to take up space locally and can automatically occur at a set interval, so our project is consistently using the most up-to-date restaurant data and user reviews.  </p>				
+
+					<h6>Selenium Webdriver <a href="https://www.selenium.dev/documentation/webdriver/"><i class="fa fa-link fa-2"></i></a></h6>				
+					<p >This framework is used to collect the necessary data to be fed to the machine learning algorithm. The data collection occurs in development, not during user interactions. Using the json data from an API call, Selenium opens a Chrome browser to that restaurant’s Yelp webpage. Selenium searches for predefined keywords on that webpage and updates our restaurant database to indicate whether keywords were found. This helps to determine the atmosphere of the website. The Selenium Webdriver also searches the reviews for each restaurant. The search terms include the occasions and allergies a user can enter. The webdriver finds reviews with those keywords, then does sentiment analysis (see Vader) on the review to determine if the user would return to the restaurant. This information is stored in a database and used as training data for the machine learning algorithm. </p>		
+
+					<h6>Vader Sentiment Analysis <a href="https://github.com/cjhutto/vaderSentiment"><i class="fa fa-link fa-2"></i></a></h6>				
+					<p >The reviews that are scraped (see above) are analyzed and receive a score. This score determines whether the user would return to the restaurant, based on keywords. </p>		
+					
+					<h6>AWS Comprehend <a href="https://aws.amazon.com/ec2/"><i class="fa fa-link fa-2"></i></a></h6>				
+					<p >Amazon Web Services Comprehend is the sentiment analysis framework we have chosen to do the same as Vader, but when the scraping occurs on Lambda instead of locally.  </p>				
+
+					<h5>Machine Learning</h5>
+					<h6>XGBoost <a href="https://xgboost.readthedocs.io/en/stable/"><i class="fa fa-link fa-2"></i></a></h6>				
+					<p >XGBoost is used to import the decision tree portion of our machine learning algorithm. This API allows for easy setup and use of machine learning models by having them prebuilt and ready to go after import. All that needs to be done once the model is imported is to load it in and fit it with the correct data formatted and encoded. XGBoost was picked for the decision tree model due to its efficiency and speed in training/returning predictions based on user input.</p>
+					
+				</article>
 			<!-- /Article -->			
 
 		</div>
