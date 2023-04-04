@@ -43,7 +43,7 @@ mydb = mysql.connector.connect(**config)
 #         mydb.close()
 #         print("MySQL Connection is closed")
 
-# mydb = mysql.connector.connect(host='ec2-54-165-70-250.compute-1.amazonaws.com',
+# mydb = mysql.connector.connect(host='localhost',
 #                                         database='Users',
 #                                         user='root',
 #                                         password='Password')

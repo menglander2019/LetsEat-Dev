@@ -31,7 +31,7 @@ function Restaurant() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://ec2-54-165-70-250.compute-1.amazonaws.com:8000/getRecommendations/", requestOption)
+        await fetch("http://localhost:8000/getRecommendations/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -46,12 +46,53 @@ function Restaurant() {
             })
     }
 
-    const nextRestaurant = () => {
+    // displays the next restaurant and also sends the denied restaurant to FastAPI to save the user's decision
+    const nextRestaurant = async (e) => {
         setRestaurantIndex((restaurantIndex) => restaurantIndex + 1)
+        const requestOption = {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(restaurantList[restaurantIndex])
+        }
+
+        await fetch("http://localhost:8000/restaurantDenied/", requestOption)
+            .then(async response => {
+                const data = await response.json()
+                if (response.ok) {
+                    console.log("Successful sent denial of:")
+                    console.log(restaurantList[restaurantIndex])
+                } else {
+                    console.log("Error!")
+                }
+            })
+            .catch(error => {
+                console.log("Error!")
+            })
     }
 
-    const confirmRestaurant = () => {
+    const confirmRestaurant = async (e) => {
         setDisplayRestaurant(0)
+        const requestOption = {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(restaurantList[restaurantIndex])
+        }
+
+        await fetch("http://localhost:8000/restaurantAccepted/", requestOption)
+            .then(async response => {
+                const data = await response.json()
+                if (response.ok) {
+                    console.log("Successful sent acceptance of:")
+                    console.log(restaurantList[restaurantIndex])
+                } else {
+                    console.log("Error!")
+                }
+            })
+            .catch(error => {
+                console.log("Error!")
+            })
     }
 
     // Accesses JSON data (implement error or null checks later on)

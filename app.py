@@ -7,15 +7,16 @@ from backend.questions_data import *
 from restaurant_suggester import get_predictions, get_group_predictions
 from yelp.YelpApiCalls import return_business
 from backend.group_session import *
+from backend.data_generation.model_retraining import *
 import os
 import jwt
 import bcrypt
 
 origins = [
     "http://54-165-70-250:3000",
-    "http://ec2-54-165-70-250.compute-1.amazonaws.com:3000",
+    "http://localhost:3000",
     "54-165-70-250:3000",
-    "ec2-54-165-70-250.compute-1.amazonaws.com:3000"
+    "localhost:3000"
 ]
 
 user_middlewares = []
@@ -135,7 +136,11 @@ async def submit_search(request: Request):
     actual_price_ranges = []
     for price in price_ranges:
         actual_price_ranges.append(price_ranges_groups[price])
+    # stores the search questions in a session variable for future retraining use
+    request.session.update({"search_submission": [occasion, num_people, meal, actual_price_ranges, zip]})
+
     suggestions_list = get_predictions(id, occasion, num_people, meal, actual_price_ranges, zip)
+    # saves the final suggestion list (as restaurant IDs) in a session variable
     request.session.update({"rest_id_list": suggestions_list})
     return {"message": "submitted"}
 
@@ -152,6 +157,26 @@ def getRecommendations(request: Request):
         for id in request.session['rest_id_list']:
             rest_list.append(return_business(id))
     return {"restaurants": rest_list}
+
+@app.post("/restaurantDenied")
+async def restaurantDenied(request: Request):
+    rest_data = await request.json()
+    rest_id = rest_data["id"]
+
+    denied_row = create_new_row(request.session["id"], request.session["search_submission"], rest_id, 0)
+    append_user_input(denied_row)
+    
+    return {"message": "restaurant denied"}
+
+@app.post("/restaurantAccepted")
+async def restaurantAccepted(request: Request):
+    rest_data = await request.json()
+    rest_id = rest_data["id"]
+
+    accepted_row = create_new_row(request.session["id"], request.session["search_submission"], rest_id, 1)
+    append_user_input(accepted_row)
+    
+    return {"message": "restaurant accepted"}
 
 @app.post("/createGroupSession")
 def createGroupSession(request: Request):

@@ -34,7 +34,7 @@ function SearchQuestions() {
             credentials: "include",
             headers: { "Content-Type": "application/json"}
         }
-        const response = await fetch("http://ec2-54-165-70-250.compute-1.amazonaws.com:8000/questionnaire/search/", requestOption)
+        const response = await fetch("http://localhost:8000/questionnaire/search/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -141,7 +141,7 @@ function SearchQuestions() {
             body: JSON.stringify(questions)
         }
 
-        const response = fetch("http://ec2-54-165-70-250.compute-1.amazonaws.com:8000/submit/search/", requestOption)   
+        const response = fetch("http://localhost:8000/submit/search/", requestOption)   
             .then(response => {
                 if (response.ok) {
                     navigate("/restaurantsearch") 

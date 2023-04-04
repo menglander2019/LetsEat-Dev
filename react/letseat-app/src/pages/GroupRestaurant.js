@@ -31,7 +31,7 @@ function GroupRestaurant() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://ec2-54-165-70-250.compute-1.amazonaws.com:8000/getGroupRestaurants/", requestOption)
+        await fetch("http://localhost:8000/getGroupRestaurants/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
