@@ -118,7 +118,7 @@ async def submit_questionnaire(request: Request):
     updatePositives(id, positives_list)
     updateNegatives(id, negatives_list)
     # checks if the N/A option is selected
-    if len(restrictions) != 1 or restrictions[0] != 'N/A':
+    if "N/A" not in restrictions:
         updateRestrictions(id, restrictions_list)
     return {"message": "submitted"}
 

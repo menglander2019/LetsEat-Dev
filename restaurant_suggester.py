@@ -60,7 +60,7 @@ def build_user_features(occasion, num_people, meal, price_ranges, positives, neg
         'covid': 0
     }
     # iterates through the restrictions the user chose and assigns a value of 1 to it
-    print(restrictions)
+    print("restrictions: " + str(restrictions))
     for restriction in restrictions:
         if restriction == '':
             continue
@@ -196,6 +196,8 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
     positives = user_info[0].split(',')
     negatives = user_info[1].split(',')
     restrictions = user_info[2].split(',')
+    if len(restrictions) == 1 and restrictions[0] == '':
+        restrictions = []
     
     # gets the user input for profile information (used for testing)
     user_features = build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions)

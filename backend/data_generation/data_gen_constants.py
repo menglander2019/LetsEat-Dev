@@ -127,7 +127,6 @@ restrictions_dict = {
     'Vegan': 'vegan',
     'Vegetarian': 'vegetarian',
     'Gluten Free': 'gluten_free',
-    'Kosher': 'kosher',
     'N/A': 'none'
 }
 
