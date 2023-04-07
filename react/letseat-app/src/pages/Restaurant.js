@@ -81,7 +81,7 @@ function Restaurant() {
                                 {   displayRestaurant == 0
                                     ? (
                                         <>
-                                            <h1 className="text-center">Confirmed!</h1>
+                                            <h1 className="move-medium black-theme text-center">Confirmed!</h1>
                                             <div className="d-flex justify-content-center mt-2">
                                                 <div className="flex-styling-33">
                                                     <button 

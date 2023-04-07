@@ -26,7 +26,8 @@ function NoResults() {
                 <div className="col-md-6 mt-5">
                     <div className="restaurant-main-block">
                         <div className="d-flex flex-column">
-                            <h1 className="text-center">No Results</h1>
+                            <h1 className="move-medium text-center mt-2">Sorry, we're out of results!</h1>
+                            <p className="move-medium black-theme text-center mt-2">We are always trying to improve LetsEat to give you the best recommendations. Try editing your preferences to receive more results</p>
                             <div className="d-flex justify-content-center mt-2">
                                 <div className="flex-styling-33">
                                     <button 

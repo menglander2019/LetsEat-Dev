@@ -184,8 +184,8 @@ function CreateAccount() {
                                 </button>
                             </div>
                             { 
-                                accountCreateStatus == 1 ? <p className="successMessage text-center">Account Created!</p> : 
-                                accountCreateStatus == 2 ? <p className="failMessage text-center">Account Creation Failed!</p> : null 
+                                accountCreateStatus == 1 ? <p className="successMessage move-medium text-center">Account Created!</p> : 
+                                accountCreateStatus == 2 ? <p className="failMessage move-medium text-center">Account Creation Failed!</p> : null 
                             }
                         </div>
                     </form>

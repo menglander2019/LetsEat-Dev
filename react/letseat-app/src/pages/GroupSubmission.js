@@ -7,6 +7,8 @@ import RestaurantCard from '../components/RestaurantCard'
 import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
 import LoadingAnimation from '../components/LoadingAnimation';
 
+import LogoNavbar from '../components/LogoNavbar';
+
 import '../css/Restaurant.css';
 
 import url from '../WebsiteURL'
@@ -17,6 +19,7 @@ function GroupSubmission() {
 
     return (
         <div className="container-fluid dashboard-component">
+            <LogoNavbar />
             <div className="d-flex flex-column">
                 <div className="dashboard-banner">
                     <div className="d-flex">
