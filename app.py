@@ -15,7 +15,9 @@ import bcrypt
 origins = [
     "http://54-165-70-250:3000",
     "http://localhost:3000",
+    "http://localhost:3000",
     "54-165-70-250:3000",
+    "localhost:3000"
     "localhost:3000"
 ]
 
@@ -78,6 +80,10 @@ def questionnaire_createProfile():
 @app.get("/questionnaire/search/")
 def questionnaire_search():
     return {"data": search_questions}
+
+@app.get("/questionnaire/groupsearch/")
+def questionnaire_groupsearch():
+    return {"data": group_search_questions}
 
 @app.post("/submit/profile/")
 async def submit_questionnaire(request: Request):
@@ -266,14 +272,10 @@ async def getGroupRecommendations(request: Request):
 
     # uses the request body to get the search preferences
     occasion = group_search_data["data"][0]["selectedChoices"][0]
-    num_people_str = group_search_data["data"][1]["selectedChoices"][0]
-    if num_people_str == "4+":
-        num_people = 4
-    else:
-        num_people = int(num_people_str)
-    meal = group_search_data["data"][2]["selectedChoices"][0]
-    price_ranges = group_search_data["data"][3]["selectedChoices"]
-    zip = group_search_data["data"][4]["selectedChoices"][0]
+    num_people = 1 + len(groupMembers)
+    meal = group_search_data["data"][1]["selectedChoices"][0]
+    price_ranges = group_search_data["data"][2]["selectedChoices"]
+    zip = group_search_data["data"][3]["selectedChoices"][0]
     # converts the $$$'s selected into numbers
     actual_price_ranges = []
     for price in price_ranges:

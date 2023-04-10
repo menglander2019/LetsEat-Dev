@@ -39,7 +39,7 @@ function GroupSearchQuestions() {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/questionnaire/search/", requestOption)
+        const response = await fetch("http://localhost:8000/questionnaire/groupsearch/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -199,9 +199,9 @@ function GroupSearchQuestions() {
                             <div className="search-main-block">
                                 <h1 className="move-medium">Question {questionIndex + 1} / {questions.data.length}</h1>
                                     {
-                                        questionIndex == 4 ? 
-                                            <div id="q5" className="question mt-3" onChange={textSubmission}>
-                                                <label for="answerOptions">{questions.data[4].question}</label>
+                                        questionIndex == 3 ? 
+                                            <div id="q4" className="question mt-3" onChange={textSubmission}>
+                                                <label for="answerOptions">{questions.data[3].question}</label>
                                                 <input type="text" id="distance" className="input-box form-control mt-2 w-100" placeholder="Enter your zipcode"></input>
                                             </div> 
                                             : 
