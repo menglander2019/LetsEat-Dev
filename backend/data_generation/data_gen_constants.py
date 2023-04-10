@@ -127,13 +127,12 @@ restrictions_dict = {
     'Vegan': 'vegan',
     'Vegetarian': 'vegetarian',
     'Gluten Free': 'gluten_free',
-    'Kosher': 'kosher',
     'N/A': 'none'
 }
 
 occasions = ['Myself', 'Friend', 'Date', 'Family', 'Work']
 
-days = ['M', 'T', 'W', 'R', 'F', 'SA', 'SU']
+days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 num_people = ['1', '2', '3', '4+']
 
