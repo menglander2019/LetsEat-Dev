@@ -21,12 +21,11 @@
 
 	<!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
 </head>
-<body class="home">
+<body>
 
 <header id="header">
-	<div id="head" class="parallax" parallax-speed="2">
+	<div id="head" class="parallax" parallax-speed="1">
 		<h1 id="logo" class="text-center">
-			<img class="img-circle" src="assets/cornimages/cornkid.jpg" alt="">
 			<span class="title">LetsEat</span>
 			<span class="tagline">Food Recommendation Application - GW CS Senior Design Project 2022-2023<br>
 				<a href="mailto:cornzmds@gmail.com">cornzmds@gmail.com</a></span>
@@ -44,22 +43,16 @@
 				
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="index.html">Home</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Technical Details <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="frameworks.html">Tools and Frameworks</a></li>
-							<li><a href="architecture.html">Architecture</a></li>
-						</ul>
-					</li>	
+					<li><a href="howtouse.html">Using LetsEat</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Presentations <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="Presentations/Elevator Pitch Presentation.pdf">Presentation 1 - Elevator Pitch</a></li>
 							<li><a href="Presentations/Technical Design Presentation.pptx.pdf">Presentation 2 - Technical Design</a></li>
 							<li><a href="Presentations/Alpha Presentation.pptx.pdf">Presentation 3 - Alpha Prototype</a></li>
-							<li><a href="Presentations/Promotional Presentation.pptx.pdf">Presentation 4 - Promotional Presentation</a></li>
-							<li><a href="#">Presentation 5 - Final Presentation</a></li>
-							<li><a href="#">SEAS Senior Design Showcase Poster</a></li>
+							<li><a href="#">Presentation 4 - Beta Prototype (coming 2/7/23)</a></li>
+							<li><a href="#">Presentation 5 - Prelim Prototype (coming 3/7/23)</a></li>
+							<li><a href="#">Presentation 6 - Final Demo (coming 4/25/23)</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -75,8 +68,8 @@
 							<li><a href="salespitch.html">Sales Pitch</a></li>
 							<li><a href="finalpresvid.html">Final Presentation</a></li>
 						</ul>
-					</li>		
-					<li><a href="howtouse.html">More Considerations</a></li>
+					</li>	
+					<li><a href="#">Poster</a></li>				
 				</ul>
 			
 			</div><!--/.nav-collapse -->			
@@ -87,77 +80,64 @@
 <main id="main">
 
 	<div class="container">
-		
-		<div class="row section topspace">
-			<div class="col-md-12">
-				<p class="lead text-center text-muted"> Our product, LetsEat, is a restaurant recommendation application that aims to provide personalized recommendations to users based on food preferences and various questions about the occasion on which the user is going to eat. By using a machine learning model, this recommendation system will provide users with restaurants that have been good matches for similar users in the past. In short, users will receive the best possible restaurant recommendation given their preferences and circumstances. Instead of scrolling through a seemingly endless supply of restaurants on Yelp or OpenTable, this application will give a single restaurant that best fits the situation and group of people. </p>
-			</div>
-		</div> <!-- / section -->
 
-		<div class="row section topspace">
-			<h2 class="section-title"><span>Use LetsEat</span></h2>
-			<div class="panel panel-cta"><div class="panel-body">
-				<div class="col-lg-4 text-left">
-					<a href="https://github.com/menglander2019/LetsEat-Dev" class="btn btn-primary btn-lg">LetsEat Live</a>
-				</div>
-				<div class="col-lg-4 text-right">
-					<a href="https://github.com/menglander2019/LetsEat-Dev" class="btn btn-primary btn-lg">Github Code</a>
-				</div>
-			</div></div>
-		</div> <!-- /section -->
-
-		<div class="row section featured topspace">
-			<h2 class="section-title"><span>Developers</span></h2>
-			<div class="row">
-				<div class="col-sm-6 col-md-3">
-					<h3 class="text-center">Zach Bloomstein</h3>
-					<p class="text-center"><a href="zach.html" class="btn btn-action">More about Zach</a></p>
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<h3 class="text-center">Max Englander</h3>
-					<p class="text-center"><a href="max.html" class="btn btn-action">More About Max</a></p>
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<h3 class="text-center">Don Kim</h3>
-					<p class="text-center"><a href="don.html" class="btn btn-action">More About Don</a></p>
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<h3 class="text-center">Sarah Stevens</h3>
-					<p class="text-center"><a href="sarah.html" class="btn btn-action">More About Sarah</a></p>
-				</div>
-			</div>
-		</div> <!-- / section -->
-	
-<!-- 
-		<div class="row section recentworks topspace">
+		<div class="row topspace">
 			
-			<h2 class="section-title"><span>Video Demo</span></h2>
-			
-			<div class="thumbnails recentworks row">
-				
-				<div class="details">
-						<span class="img">
-							<video controls width="400" src="Presentations/alpha-prototype.mov" type="video/mov" alt=""></video>
-					<span class="details"><p>Alpha Demo - 12/7</p></span>
-					<h4></h4>
-					<p></p>
-				</div>
+			<!-- Sidebar -->
+			<!--
+			<aside class="col-sm-4 sidebar sidebar-right">
 
-		</div> 
-	-->
+				<ul class="nav text-right nav-side">
+					<li><a href="#future">For Future Projects</a></li>
+					<li><a href="#use">How to Use LetsEat</a></li>
+					<li><a href="#toolsandlibraries">Necessary Tools and Libraries</a></li>
+					<li><a href="#working">What Does and Doesn't Work</a></li>
+					<li><a href="#ideas">Ideas for Next Steps</a></li>
+				</ul>
+
+			</aside>
+			-->
+			<!-- /Sidebar -->
+
+			<!-- Article main content -->
+			<article class="col-sm-8 maincontent">
+				<h2 id="future">Ideas for Future Projects</h2>
+					<ul>
+						<li>Partnership with a company like Yelp that collects this data so it is applicable to more restaurants</a></li>
+						<li>Pipeline/Scheduled SQS of AWS lambda scraping to EC2 instance so we are automatically updating restaurant information </a></li>
+						<li>Functionality for users to rate restaurants they indicate they are attending and use this data to retrain the machine learning model</a></li>
+						<li>Use REACT Native to create a mobile-friendly app for the Apple App Store and/or Google Play Store</li>
+						<li>During the restaurant recommendation process, ask the user more specific questions to get more specific recommendations. Example questions include parking information, travel information, and more details about allergies/restrictions. </li>
+					</ul>
 <!--
-		<div class="row section clients topspace">
-			<h2 class="section-title"><span>Clients</span></h2>
-			<div class="col-lg-12">
-				<p>
-					<img src="assets/images/sample_clients.png" alt="">
-				</p>
-			</div>
-		</div> 
-	-->
-	</div>	<!-- /container -->
+				<h2 id="working">What Does and Doesn't Work</h2>
+				<ul>
+					<li></li>
+				</ul>
+-->
+				<h2>What to be Aware of</h2>
+				<ul>
+					<li>The restaurant database does not have every available restaurant.</li>
+					<li>This is only applicable to DC (20037 restaurants)</li>
+					<li>If someone is very allergic, this can greatly limit the number of possible places they go. We will not recommend something that does not satisfy their allergy needs, so they could get no results because their allergies cannot be accommodated</li>
+					<li>We will not recommend a restaurant that is not open at the time of the search. If there are no nearby restaurants that satisfy their requirements and are open, there will be no results. </li>
+				</ul>
+				<h2 id="ideas">Ideas for Next Steps</h2>
+				<ul>
+					<li>Partner with reservation company (like OpenTable or Resy), so after users get a recommendation, they can make a reservation for that restaurant at their selected time.</li>
+					<li>Distribute a LetsEat Newsletter to promote new restaurants and features. This can also allow for ads as a revenue method.</li>
+					<li>Partner with restaurants to have a featured restaurants section. This can act as a revenue method. </li>
+				</ul>
 
+
+			</article>
+			<!-- /Article -->			
+
+		</div>
+	</div>	<!-- /container -->
+	
 </main>
+
 
 <footer id="footer">
 	<div class="container">
@@ -246,6 +226,6 @@
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="https://menglander2019.github.io/LetsEat-Dev/website/assets/js/template.js"></script>
+<script src="assets/js/template.js"></script>
 </body>
 </html>
