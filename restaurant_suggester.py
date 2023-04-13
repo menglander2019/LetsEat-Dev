@@ -2,7 +2,7 @@ from backend.dec_tree_trainer import train_dec_tree
 from yelp.YelpApiCalls import get_restaurant_list
 from yelp.YelpWebscraping import scrape, DATABASE
 from backend.data_generation.data_gen_constants import header, num_umbrella_terms, restaurant_types, days
-from backend.db.db_management import get_db
+from backend.db.db_management import get_db, retrievePositives, retrieveNegatives, retrieveRestrictions
 from datetime import datetime
 import numpy
 import pandas as pd
@@ -41,7 +41,7 @@ def build_user_features(occasion, num_people, meal, price_ranges, positives, neg
         rest_preferences[positive] = 1
     for negative in negatives:
         if negative not in rest_preferences:
-            raise Exception("ERROR: Invalid cuisine preference for given user")
+            raise Exception("ERROR: Invalid cuisine dislike for given user")
         rest_preferences[negative] = -1
     # converts the restauraunt preferences to a list
     rest_preferences = list(rest_preferences.values())
@@ -175,19 +175,14 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
     dec_tree = dec_tree_info[0]
     encoder = dec_tree_info[1]
 
-    # sets up database variables
-    mydb = get_db()
-    c = mydb.cursor()
-    # fetch the user information from the database
-    c.execute('SELECT positivePreferences, negativePreferences, restrictions FROM userPreferences WHERE userID = %s', (id,))
-    user_info = c.fetchone()
-    positives = user_info[0].split(',')
-    negatives = user_info[1].split(',')
-    restrictions = user_info[2].split(',')
+    positives = retrievePositives(id)
+    negatives = retrieveNegatives(id)
+    restrictions = retrieveRestrictions(id)
     
     # gets the user input for profile information (used for testing)
+    print("***NEGATIVES***: " + str(negatives))
     user_features = build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions)
-    cuisines = user_info[0]
+    cuisines = ','.join(positives)
     print("zip: " + str(zip))
     print("prices: " + str(price_ranges))
     print("cuisines: " + str(cuisines))

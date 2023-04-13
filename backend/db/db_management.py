@@ -123,6 +123,8 @@ def retrieveNegatives(id):
     c.execute('SELECT negativePreferences FROM userPreferences WHERE userID = %s', (id,))
 
     result = c.fetchone()
+    if result is None or result[0] == '':
+        return []
     # returns the list of negative preferences for a given user's ID
     return result[0].split(',')
 
@@ -132,6 +134,8 @@ def retrieveRestrictions(id):
     c.execute('SELECT restrictions FROM userPreferences WHERE userID = %s', (id,))
 
     result = c.fetchone()
+    if result is None or result[0] == '':
+        return []
     # returns the list of restrictions for a given user's ID
     return result[0].split(',')
 
