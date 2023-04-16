@@ -39,6 +39,9 @@ function Restaurant() {
                 if (response.ok) {
                     console.log(data.restaurants)
                     setRestaurantList(data.restaurants)
+                    if (data.restaurants.length == 0) {
+                        navigate("/restaurant/results/none")
+                    }
                 } else {
                     console.log("Error!")
                 }

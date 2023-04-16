@@ -7,6 +7,7 @@ import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
 import '../css/Group.css';
 
 import url from '../WebsiteURL'
+import web_url from '../WebsiteURLFront'
 
 const Group = () => {
 
@@ -108,7 +109,7 @@ const Group = () => {
                                                 Create Group
                                             </button>
                                             :
-                                            <p className="move-medium black-theme mt-3">Invite your friends: http://localhost:3000/join/group/{groupCreationStatus}</p>
+                                            <p className="move-medium black-theme mt-3">Invite your friends: {web_url}join/group/{groupCreationStatus}</p>
                                     }
                                     {
                                         groupCreationStatus != 0 ?
