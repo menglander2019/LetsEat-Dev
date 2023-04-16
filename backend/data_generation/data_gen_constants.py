@@ -117,7 +117,7 @@ header = [
         "Gender"
 ]
 
-PREDICTION_BAR = 0.9 #set very high because msot predictions are very positive
+PREDICTION_BAR = 0.8 #set very high because msot predictions are very positive
         
 data = [['Bob', 'italian,mexican', 'indian,american', 'vegan', 'italian'],
         ['Chuck', 'chinese,american', 'mexican,vietnamese', '', 'mexican']]
@@ -131,6 +131,7 @@ restrictions_dict = {
 }
 
 occasions = ['Myself', 'Friend', 'Date', 'Family', 'Work']
+group_occasions = ['Friend', 'Date', 'Family', 'Work']
 
 days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
