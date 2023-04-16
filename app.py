@@ -13,12 +13,10 @@ import jwt
 import bcrypt
 
 origins = [
-    "http://54-165-70-250:3000",
-    "http://localhost:3000",
-    "http://localhost:3000",
-    "54-165-70-250:3000",
-    "localhost:3000"
-    "localhost:3000"
+    "http://54.144.138.136:3000",
+    "http://ec2-54-144-138-136.compute-1.amazonaws.com:3000",
+    "54.144.138.136:3000",
+    "ec2-54-144-138-136.compute-1.amazonaws.com:3000"
 ]
 
 user_middlewares = []
