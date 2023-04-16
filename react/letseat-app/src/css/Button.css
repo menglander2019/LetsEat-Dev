@@ -1,11 +1,10 @@
 .btn.answerOption {
     background-color: #f0f0f0;
-    font-family: 'Colfax-Regular';
     font-size: 0.9rem;
-    font-weight: 700;
     color: black;
     padding: 3%;
     margin: 4px;
+    border-radius: 3px;
     transition: .2s ease-in-out 0s;
 }
 
@@ -20,8 +19,8 @@
 }
 
 .btn.answerOption.selected {
-    background-color: #87ae73;
-    border-color: #87ae73;
+    background-color: black;
+    border-color: black;
     color: white;
 }
 
@@ -39,19 +38,19 @@
 }
 
 .btn.confirm {
-    color: white;
-    background-color: #87ae73;
-    border-radius: 14px;
-    padding: 2%;
-    font-size:1.1rem;
+    background-color: #0c5a8b !important;
+    color: white !important;
+    border-radius: 3px;
+    font-size:1.2rem;
+    min-width: 170px;
 }
 
 .btn.tryAgain {
-    color: white;
-    background-color: black;
-    border-radius: 14px;
-    padding: 2%;
-    font-size:1.1rem;
+    background-color: black !important;
+    color: white !important;
+    border-radius: 3px;
+    font-size:1.2rem;
+    min-width: 170px;
 }
 
 .btn.home-large-login {
@@ -65,4 +64,52 @@
 
 .btn.home-large-login:active {
     transform: scale(0.9);
+}
+
+.btn.home-description-button {
+    color: white;
+    background-color: black;
+    border-radius: 3px;
+    padding-left: 65px;
+    padding-right: 65px;
+}
+
+.btn.dashboard-large-login {
+    background-color: black !important;
+    color: white !important;
+    border-radius: 2px;
+    font-size:1.2rem;
+    padding: 1.5%;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn.dashboard-large-login:active {
+    transform: scale(0.9);
+}
+
+.btn.dashboard-large-login-red {
+    background-color: maroon !important;
+    color: white !important;
+    border-radius: 2px;
+    font-size:1.2rem;
+    padding: 1.5%;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn.dashboard-large-login-red:active {
+    transform: scale(0.9);
+}
+
+.btn.search-navigation {
+    background-color: black !important;
+    color: white !important;
+    border-radius: 3px;
+    font-size:1.3rem;
+    min-width: 170px;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn.search-navigation:hover {
+    transform: scale(1.08);
+    border-color: #0c5a8b;    
 }

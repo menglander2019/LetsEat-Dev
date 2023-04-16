@@ -7,6 +7,10 @@ import RestaurantCard from '../components/RestaurantCard'
 import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
 import LoadingAnimation from '../components/LoadingAnimation';
 
+import '../css/Restaurant.css';
+
+import url from '../WebsiteURL'
+
 function Restaurant() {
 
     const navigate = useNavigate()
@@ -29,12 +33,15 @@ function Restaurant() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://localhost:8000/getRecommendations/", requestOption)
+        await fetch(url + "getRecommendations/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
                     console.log(data.restaurants)
                     setRestaurantList(data.restaurants)
+                    if (data.restaurants.length == 0) {
+                        navigate("/restaurant/results/none")
+                    }
                 } else {
                     console.log("Error!")
                 }
@@ -44,12 +51,55 @@ function Restaurant() {
             })
     }
 
-    const nextRestaurant = () => {
+    const nextRestaurant = async (e) => {
+        if (restaurantIndex + 1 >= restaurantList.length) {
+            navigate("/restaurant/results/none")
+        }
         setRestaurantIndex((restaurantIndex) => restaurantIndex + 1)
+        const requestOption = {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(restaurantList[restaurantIndex])
+        }
+
+        await fetch(url + "restaurantDenied/", requestOption)
+            .then(async response => {
+                const data = await response.json()
+                if (response.ok) {
+                    console.log("Successful sent denial of:")
+                    console.log(restaurantList[restaurantIndex])
+                } else {
+                    console.log("Error!")
+                }
+            })
+            .catch(error => {
+                console.log("Error!")
+            })
     }
 
-    const confirmRestaurant = () => {
+    const confirmRestaurant = async (e) => {
         setDisplayRestaurant(0)
+        const requestOption = {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(restaurantList[restaurantIndex])
+        }
+
+        await fetch(url + "restaurantAccepted/", requestOption)
+            .then(async response => {
+                const data = await response.json()
+                if (response.ok) {
+                    console.log("Successful sent acceptance of:")
+                    console.log(restaurantList[restaurantIndex])
+                } else {
+                    console.log("Error!")
+                }
+            })
+            .catch(error => {
+                console.log("Error!")
+            })
     }
 
     // Accesses JSON data (implement error or null checks later on)
@@ -65,39 +115,41 @@ function Restaurant() {
         return ( <LoadingAnimation />)
     } else {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid restaurant-component">
                 <DashboardNavbar />
                 <div className="d-flex justify-content-center h-100">
-                    <div className="col-md-5 mt-4">
-                        <div className="d-flex flex-column">
-                        {   displayRestaurant == 0
-                            ? (
-                                <>
-                                    <h1 className="text-center">Confirmed!</h1>
-                                    <div className="d-flex justify-content-center mt-2">
-                                        <div className="flex-styling-33">
-                                            <button 
-                                                id="submit"
-                                                className="btn home-large-login colfax-regular w-100"
-                                                onClick={backButton}>
-                                                Back
-                                            </button>
-                                        </div>
-                                    </div>
-                                </>
-                            ) :
-                            (
-                                <>
-                                    <RestaurantCard jsonData={parseRestaurantData(restaurantIndex)} />
-                                    <div className="buttons mt-4">
-                                        <div className="d-flex flex-wrap justify-content-between">
-                                            <button type="button" className="btn tryAgain flex-styling-50" onClick={nextRestaurant}>Try Again</button>
-                                            <button type="button" className="btn confirm flex-styling-50" onClick={confirmRestaurant}>I'm Going!</button>
-                                        </div>
-                                    </div>
-                                </>
-                            )
-                        }
+                    <div className="col-md-6 mt-5">
+                        <div className="restaurant-main-block">
+                            <div className="d-flex flex-column">
+                                {   displayRestaurant == 0
+                                    ? (
+                                        <>
+                                            <h1 className="move-medium black-theme text-center">Confirmed!</h1>
+                                            <div className="d-flex justify-content-center mt-2">
+                                                <div className="flex-styling-33">
+                                                    <button 
+                                                        id="submit"
+                                                        className="btn search-navigation move-medium w-100"
+                                                        onClick={backButton}>
+                                                        Back
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </>
+                                    ) :
+                                    (
+                                        <>
+                                            <RestaurantCard jsonData={parseRestaurantData(restaurantIndex)} />
+                                            <div className="buttons mt-3">
+                                                <div className="d-flex flex-wrap justify-content-between">
+                                                    <button type="button" className="btn tryAgain flex-styling-50" onClick={nextRestaurant}>Try Again</button>
+                                                    <button type="button" className="btn confirm flex-styling-50" onClick={confirmRestaurant}>I'm Going!</button>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )
+                                }
+                                </div>
                         </div>
                     </div>
                 </div>

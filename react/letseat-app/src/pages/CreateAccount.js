@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 
 import SignUpNavbar from '../components/SignUpComponents/SignUpNavbar';
 
+import url from '../WebsiteURL'
+
 function CreateAccount() {
 
     const [ questions, setQuestions ] = useState([])
@@ -25,7 +27,7 @@ function CreateAccount() {
             credentials: "include",
             headers: { "Content-Type": "application/json"}
         }
-        const response = await fetch("http://localhost:8000/questionnaire/createprofile/", requestOption)
+        const response = await fetch(url + "questionnaire/createprofile/", requestOption)
         const message = await response.json()
         console.log(message)
         setQuestions(message)
@@ -102,7 +104,7 @@ function CreateAccount() {
                 body: JSON.stringify(questions)
             }
 
-            await fetch("http://localhost:8000/createprofile", requestOption)
+            await fetch(url + "createprofile", requestOption)
                 .then(async response => {
                     const data = await response.json()
                     if (response.ok) {
@@ -182,8 +184,8 @@ function CreateAccount() {
                                 </button>
                             </div>
                             { 
-                                accountCreateStatus == 1 ? <p className="successMessage text-center">Account Created!</p> : 
-                                accountCreateStatus == 2 ? <p className="failMessage text-center">Account Creation Failed!</p> : null 
+                                accountCreateStatus == 1 ? <p className="successMessage move-medium text-center">Account Created!</p> : 
+                                accountCreateStatus == 2 ? <p className="failMessage move-medium text-center">Account Creation Failed!</p> : null 
                             }
                         </div>
                     </form>

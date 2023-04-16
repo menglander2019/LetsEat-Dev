@@ -44,16 +44,22 @@
 				
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="index.html">Home</a></li>
-					<li><a href="about.html">Technical Design</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Technical Details <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="frameworks.html">Tools and Frameworks</a></li>
+							<li><a href="architecture.html">Architecture</a></li>
+						</ul>
+					</li>	
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Presentations <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="Presentations/Elevator Pitch Presentation.pdf">Presentation 1 - Elevator Pitch</a></li>
 							<li><a href="Presentations/Technical Design Presentation.pptx.pdf">Presentation 2 - Technical Design</a></li>
 							<li><a href="Presentations/Alpha Presentation.pptx.pdf">Presentation 3 - Alpha Prototype</a></li>
-							<li><a href="#">Presentation 4 - Beta Prototype (coming 2/7/23)</a></li>
-							<li><a href="#">Presentation 5 - Prelim Prototype (coming 3/7/23)</a></li>
-							<li><a href="#">Presentation 6 - Final Demo (coming 4/25/23)</a></li>
+							<li><a href="Presentations/Promotional Presentation.pptx.pdf">Presentation 4 - Promotional Presentation</a></li>
+							<li><a href="#">Presentation 5 - Final Presentation</a></li>
+							<li><a href="#">SEAS Senior Design Showcase Poster</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -63,7 +69,14 @@
 							<li><a href="Presentations/Writing 4.pdf">Writing 4 - Technical Design Document</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Use LetsEat</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Screencasts <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="salespitch.html">Sales Pitch</a></li>
+							<li><a href="finalpresvid.html">Final Presentation</a></li>
+						</ul>
+					</li>		
+					<li><a href="howtouse.html">More Considerations</a></li>
 				</ul>
 			
 			</div><!--/.nav-collapse -->			
@@ -80,34 +93,42 @@
 				<p class="lead text-center text-muted"> Our product, LetsEat, is a restaurant recommendation application that aims to provide personalized recommendations to users based on food preferences and various questions about the occasion on which the user is going to eat. By using a machine learning model, this recommendation system will provide users with restaurants that have been good matches for similar users in the past. In short, users will receive the best possible restaurant recommendation given their preferences and circumstances. Instead of scrolling through a seemingly endless supply of restaurants on Yelp or OpenTable, this application will give a single restaurant that best fits the situation and group of people. </p>
 			</div>
 		</div> <!-- / section -->
-		
+
+		<div class="row section topspace">
+			<h2 class="section-title"><span>Use LetsEat</span></h2>
+			<div class="panel panel-cta"><div class="panel-body">
+				<div class="col-lg-4 text-left">
+					<a href="https://github.com/menglander2019/LetsEat-Dev" class="btn btn-primary btn-lg">LetsEat Live</a>
+				</div>
+				<div class="col-lg-4 text-right">
+					<a href="https://github.com/menglander2019/LetsEat-Dev" class="btn btn-primary btn-lg">Github Code</a>
+				</div>
+			</div></div>
+		</div> <!-- /section -->
+
 		<div class="row section featured topspace">
 			<h2 class="section-title"><span>Developers</span></h2>
 			<div class="row">
 				<div class="col-sm-6 col-md-3">
 					<h3 class="text-center">Zach Bloomstein</h3>
-					<p>I focused on researching and developing the machine learning component to make predictions specifically, matrix factorization. </p>
-					<p class="text-center"><a href="" class="btn btn-action">Read more</a></p>
+					<p class="text-center"><a href="zach.html" class="btn btn-action">More about Zach</a></p>
 				</div>
 				<div class="col-sm-6 col-md-3">
 					<h3 class="text-center">Max Englander</h3>
-					<p>I focused on developing the backend web server with the FastAPI library so that data could be sent between the frontend and backend. Additionally, I developed the decision tree code which makes predictions on restaurants.</p>
-					<p class="text-center"><a href="" class="btn btn-action">Read more</a></p>
+					<p class="text-center"><a href="max.html" class="btn btn-action">More About Max</a></p>
 				</div>
 				<div class="col-sm-6 col-md-3">
 					<h3 class="text-center">Don Kim</h3>
-					<p>I focused on creating the front end of the project. This included all UI implementation with REACT.</p>
-					<p class="text-center"><a href="" class="btn btn-action">Read more</a></p>
+					<p class="text-center"><a href="don.html" class="btn btn-action">More About Don</a></p>
 				</div>
 				<div class="col-sm-6 col-md-3">
 					<h3 class="text-center">Sarah Stevens</h3>
-					<p>I focused on collecting relevant data for the algorithm. This includes API calls with Yelp Fusion and web scraping with Selenium WebDriver.</p>
-					<p class="text-center"><a href="" class="btn btn-action">Read more</a></p>
+					<p class="text-center"><a href="sarah.html" class="btn btn-action">More About Sarah</a></p>
 				</div>
 			</div>
 		</div> <!-- / section -->
 	
-
+<!-- 
 		<div class="row section recentworks topspace">
 			
 			<h2 class="section-title"><span>Video Demo</span></h2>
@@ -122,18 +143,8 @@
 					<p></p>
 				</div>
 
-		</div> <!-- /section -->
-
-		<div class="row section topspace">
-			<div class="panel panel-cta"><div class="panel-body">
-				<div class="col-lg-8">
-					<p>View the LetsEat code on Github </p>
-				</div>
-				<div class="col-lg-4 text-right">
-					<a href="https://github.com/menglander2019/LetsEat-Dev" class="btn btn-primary btn-lg">Github Code</a>
-				</div>
-			</div></div>
-		</div> <!-- /section -->
+		</div> 
+	-->
 <!--
 		<div class="row section clients topspace">
 			<h2 class="section-title"><span>Clients</span></h2>
@@ -157,6 +168,7 @@
 					<p>
 						<a href="https://www.linkedin.com/in/zachary-bloomstein/"><i class="fa fa-linkedin fa-2"></i></a>	
 						<a href="mailto:zbloomstein@gwmail.gwu.edu"><i class="fa fa-envelope fa-2"></i></a>	
+						<a href="zach.html"><i class="fa fa-link fa-2"></i></a>	
 						<br>
 						SEAS GWU 2023
 					</p>
@@ -169,6 +181,7 @@
 					<p>
 						<a href="https://www.linkedin.com/in/max-englander-250b74196/"><i class="fa fa-linkedin fa-2"></i></a>	
 						<a href="mailto:max_englander5@gwmail.gwu.edu"><i class="fa fa-envelope fa-2"></i></a>	
+						<a href="max.html"><i class="fa fa-link fa-2"></i></a>	
 						<br>
 						SEAS GWU 2023
 					</p>
@@ -181,6 +194,8 @@
 					<p>
 						<a href="https://www.linkedin.com/in/dongkun-kim/"><i class="fa fa-linkedin fa-2"></i></a>	
 						<a href="mailto:dkim114@gwu.edu"><i class="fa fa-envelope fa-2"></i></a>	
+						<a href="don.html"><i class="fa fa-link fa-2"></i></a>	
+
 						<br>
 						SEAS GWU 2023
 					</p>
@@ -193,6 +208,7 @@
 					<p>
 						<a href="https://www.linkedin.com/in/sarahstevens21/"><i class="fa fa-linkedin fa-2"></i></a>	
 						<a href="mailto:stevensse21@gmail.com"><i class="fa fa-envelope fa-2"></i></a>	
+						<a href="sarah.html"><i class="fa fa-link fa-2"></i></a>	
 						<br>
 						SEAS GWU 2023
 					</p>

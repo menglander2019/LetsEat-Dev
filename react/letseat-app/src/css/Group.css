@@ -1,0 +1,18 @@
+.group-component {
+    background-color: white;
+    min-height: 700px;
+    min-width: 1300px;
+}
+
+.group-main-block {
+    background-color: white;
+    padding: 95px;
+    border-radius: 10px;
+}
+
+.group-image {
+    background-image: url('../design-resources/restaurant-background-3.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+    min-height: 700px;
+}

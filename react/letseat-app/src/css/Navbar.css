@@ -32,9 +32,9 @@
     background-color: black !important;
     border-width: 0px !important;
     color: white !important;
-    border-radius: 20px;
+    border-radius: 18px;
     font-size: 0.8rem;
-    padding-left: 20px;
+    padding-left: 18px;
     padding-right: 20px;
 }
 
@@ -42,8 +42,18 @@
     background-color: white !important;
     border-width: 0px !important;
     color: black !important;
+    border-radius: 18px;
+    font-size: 0.9rem;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navbar-signup-white-v2 {
+    background-color: black !important;
+    border-width: 0px !important;
+    color: white !important;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     padding-left: 20px;
     padding-right: 20px;
 }

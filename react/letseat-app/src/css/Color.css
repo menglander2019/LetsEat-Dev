@@ -1,5 +1,5 @@
 .color-theme {
-    color: #6d8a5e;
+    color: #0c5a8b;
 }
 
 .white-theme {
@@ -8,6 +8,10 @@
 
 .black-theme {
     color: black;
+}
+
+.grey-theme {
+    color: #6a6e7a;
 }
 
 .yellow-theme {

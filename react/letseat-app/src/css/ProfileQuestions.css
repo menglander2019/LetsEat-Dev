@@ -1,0 +1,29 @@
+.profile-component {
+    position: relative;
+    min-height: 1050px;
+    min-width: 1300px;
+    overflow:visible;
+    background-size:cover;
+    background-image: url('../design-resources/restaurant-dashboard.png');
+    z-index: 1;
+}
+
+.group-profile-component {
+    position: relative;
+    min-height: 1050px;
+    min-width: 1300px;
+    overflow:visible;
+    background-size:cover;
+    background-image: url('../design-resources/restaurant-background-4.jpg');
+    z-index: 1;
+}
+
+.profile-main-block {
+    background-color: white;
+    padding: 80px;
+    border-radius: 5px;
+}
+
+.hidden-element {
+    visibility: hidden;
+}

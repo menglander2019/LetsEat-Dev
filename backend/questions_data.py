@@ -53,6 +53,32 @@ search_questions = [
     }
 ]
 
+group_search_questions = [
+    {
+        "id": "q1",
+        "question": "What is the occasion?",
+        "answerChoices": group_occasions,
+        "selectedChoices": []
+    },
+    {
+        "id": "q2",
+        "question": "What type of meal?",
+        "answerChoices": meals,
+        "selectedChoices": []
+    },
+    {
+        "id": "q3",
+        "question": "What is the price range?",
+        "answerChoices": price_ranges,
+        "selectedChoices": []
+    },
+    {
+        "id": "q4",
+        "question": "Zipcode",
+        "selectedChoices": []
+    }
+]
+
 createprofile_questions = [
     {
         "id": "q1",

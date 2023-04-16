@@ -4,14 +4,20 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
 from backend.db.db_management import *
 from backend.questions_data import *
-from restaurant_suggester import get_predictions
+from restaurant_suggester import get_predictions, get_group_predictions
 from yelp.YelpApiCalls import return_business
+from backend.group_session import *
+from backend.data_generation.model_retraining import *
 import os
 import jwt
 import bcrypt
 
 origins = [
+    "http://54-165-70-250:3000",
     "http://localhost:3000",
+    "http://localhost:3000",
+    "54-165-70-250:3000",
+    "localhost:3000"
     "localhost:3000"
 ]
 
@@ -22,9 +28,10 @@ user_middlewares.append(Middleware(SessionMiddleware, secret_key=os.environ.get(
 
 app = FastAPI(middleware=user_middlewares)
 
+groupHost_dict = {}
+
 @app.post("/checkLogin")
 async def checkLogin(request: Request):
-    print(request)
     login_data = await request.json()
     email = login_data["data"][0]["selectedChoices"][0]
     password = login_data["data"][1]["selectedChoices"][0]
@@ -74,6 +81,10 @@ def questionnaire_createProfile():
 def questionnaire_search():
     return {"data": search_questions}
 
+@app.get("/questionnaire/groupsearch/")
+def questionnaire_groupsearch():
+    return {"data": group_search_questions}
+
 @app.post("/submit/profile/")
 async def submit_questionnaire(request: Request):
     profile_data = await request.json()
@@ -113,7 +124,7 @@ async def submit_questionnaire(request: Request):
     updatePositives(id, positives_list)
     updateNegatives(id, negatives_list)
     # checks if the N/A option is selected
-    if len(restrictions) != 1 or restrictions[0] != 'N/A':
+    if "N/A" not in restrictions:
         updateRestrictions(id, restrictions_list)
     return {"message": "submitted"}
 
@@ -123,7 +134,11 @@ async def submit_search(request: Request):
     # extracts all the search criteria from the selected answers
     id = request.session["id"]
     occasion = search_data["data"][0]["selectedChoices"][0]
-    num_people = int(search_data["data"][1]["selectedChoices"][0])
+    num_people_str = search_data["data"][1]["selectedChoices"][0]
+    if num_people_str == "4+":
+        num_people = 4
+    else:
+        num_people = int(num_people_str)
     meal = search_data["data"][2]["selectedChoices"][0]
     price_ranges = search_data["data"][3]["selectedChoices"]
     zip = search_data["data"][4]["selectedChoices"][0]
@@ -131,7 +146,11 @@ async def submit_search(request: Request):
     actual_price_ranges = []
     for price in price_ranges:
         actual_price_ranges.append(price_ranges_groups[price])
+    # stores the search questions in a session variable for future retraining use
+    request.session.update({"search_submission": [occasion, num_people, meal, actual_price_ranges, zip]})
+
     suggestions_list = get_predictions(id, occasion, num_people, meal, actual_price_ranges, zip)
+    # saves the final suggestion list (as restaurant IDs) in a session variable
     request.session.update({"rest_id_list": suggestions_list})
     return {"message": "submitted"}
 
@@ -148,3 +167,130 @@ def getRecommendations(request: Request):
         for id in request.session['rest_id_list']:
             rest_list.append(return_business(id))
     return {"restaurants": rest_list}
+
+@app.post("/restaurantDenied")
+async def restaurantDenied(request: Request):
+    rest_data = await request.json()
+    rest_id = rest_data["id"]
+
+    denied_row = create_new_row(request.session["id"], request.session["search_submission"], rest_id, 0)
+    append_user_input(denied_row)
+    
+    return {"message": "restaurant denied"}
+
+@app.post("/restaurantAccepted")
+async def restaurantAccepted(request: Request):
+    rest_data = await request.json()
+    rest_id = rest_data["id"]
+
+    accepted_row = create_new_row(request.session["id"], request.session["search_submission"], rest_id, 1)
+    append_user_input(accepted_row)
+    
+    return {"message": "restaurant accepted"}
+
+@app.post("/createGroupSession")
+def createGroupSession(request: Request):
+    groupHost_dict[request.session["id"]] = []
+    return {"message": "group session created"}
+
+@app.post("/deleteGroupSession")
+def deleteGroupSession(request: Request):
+    hostID = request.session["id"]
+    if hostID in groupHost_dict:
+        del groupHost_dict[hostID]
+        response = "deleted host ID: " + str(hostID)
+    else:
+        response = "host ID: " + str(hostID) + " not found!"
+    return {"message": response}
+
+@app.post("/getGroupHostName")
+async def getGroupHostName(request: Request):
+    print(request)
+    group_page_data = await request.json()
+    print(group_page_data)
+    id = group_page_data["id"]
+    return {"host_name": getNameByID(id)}
+
+@app.get("/createdGroupStatus")
+async def createdGroupStatus(request: Request):
+    id = request.session["id"]
+    response = 0
+    print(id)
+    if id in groupHost_dict:
+        response = id
+    return {"created_status": response}
+
+@app.post("/joinGroup")
+async def joinGroupSession(request: Request):
+    member_data = await request.json()
+    # obtain all the necessary info from the request object
+    hostID = int(member_data["data"][3]["hostID"])
+    positives = member_data["data"][0]["selectedChoices"]
+    restrictions = member_data["data"][1]["selectedChoices"]
+    negatives = member_data["data"][2]["selectedChoices"]
+
+    # convert the tuples of positives, restrictions, and negatives into lists in their proper formats
+    positives_list = []
+    negatives_list = []
+    restrictions_list = []
+    for positive in positives:
+        if positive not in cuisine_groups:
+            raise Exception("ERROR: Positive value (" + str(positive) + ") gotten from REACT app does not match cuisine groups!")
+        positives_list.append(cuisine_groups[positive])
+    for negative in negatives:
+        if negative not in cuisine_groups:
+            raise Exception("ERROR: Negative value (" + str(negative) + ") gotten from REACT app does not match cuisine groups!")
+        negatives_list.append(cuisine_groups[negative])
+    for restriction in restrictions:
+        if restriction not in restrictions_dict:
+            raise Exception("ERROR: Value (" + str(restriction) + ") gotten from REACT app does not match restriction groups!")
+        if restriction != 'N/A': # extra check to prevent problems later on when building user features
+            restrictions_list.append(restrictions_dict[restriction])
+
+    response = 0
+    # checks to make sure the host exists
+    if hostID in groupHost_dict:
+        print("found host!")
+        # creates a new GroupMember
+        newGroupMember = GroupMember(positives_list, negatives_list, restrictions_list)
+        groupHost_dict[hostID].append(newGroupMember)
+        response = 1
+        print(groupHost_dict)
+    # returns 1 on successful join and 0 on failure
+    return {"message": response}
+
+@app.post("/getGroupRecommendations")
+async def getGroupRecommendations(request: Request):
+    group_search_data = await request.json()
+    # retrieves group ID based on the host's ID
+    hostID = request.session["id"]
+    groupMembers = groupHost_dict[hostID]
+    # generates the list of positives, negatives, and restrictions based on the group
+    positives = generateGroupPreferences(hostID, groupMembers)
+    negatives = generateGroupNegatives(hostID, groupMembers)
+    restrictions = generateGroupRestrictions(hostID, groupMembers)
+
+    # uses the request body to get the search preferences
+    occasion = group_search_data["data"][0]["selectedChoices"][0]
+    num_people = 1 + len(groupMembers)
+    meal = group_search_data["data"][1]["selectedChoices"][0]
+    price_ranges = group_search_data["data"][2]["selectedChoices"]
+    zip = group_search_data["data"][3]["selectedChoices"][0]
+    # converts the $$$'s selected into numbers
+    actual_price_ranges = []
+    for price in price_ranges:
+        actual_price_ranges.append(price_ranges_groups[price])
+
+    # uses a new group prediction function to generate the list of suggested restaurants
+    group_suggestions_list = get_group_predictions(positives, negatives, restrictions, occasion, num_people, meal, actual_price_ranges, zip)
+
+    request.session.update({"group_rest_id_list": group_suggestions_list})
+    return {"restaurants": "group search submitted"}
+
+@app.get("/getGroupRestaurants")
+def getGroupRestaurants(request: Request):
+    group_rest_list = []
+    if "group_rest_id_list" in request.session:
+        for id in request.session['group_rest_id_list']:
+            group_rest_list.append(return_business(id))
+    return {"restaurants": group_rest_list}

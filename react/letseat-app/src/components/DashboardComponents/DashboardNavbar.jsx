@@ -6,9 +6,12 @@ import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import * as BoxIcons from 'react-icons/bi'
 import * as BsIcons from "react-icons/bs"
-import * as IconName from "react-icons/io";
+import * as Ionicons from "react-icons/io";
+import * as Heroicons from "react-icons/hi";
 
 import logoPath from "../../design-resources/logo/letseat-banner-white.png"
+
+import url from '../../WebsiteURL'
 
 // Takes in JSON data of a restaurant and parses the data
 const DashboardNavbar = () => {
@@ -22,7 +25,7 @@ const DashboardNavbar = () => {
             credentials: "include"
         }
 
-        const response = await fetch("http://localhost:8000/logout", requestOption)
+        const response = await fetch(url + "logout", requestOption)
         //const data = await response.json()
         localStorage.removeItem("token")
         navigate("/")
@@ -36,20 +39,22 @@ const DashboardNavbar = () => {
                         <img src={logoPath} className="letseat-logo-navbar" />
                     </Link>
                 </div>
-                <div className="d-flex justify-content-end">
-                    <div className="d-flex flex-wrap align-items-center justify-content-between">
-                        <Link to="/edit/preferences/">  
-                            <IconContext.Provider value={{ color: "white", size: 25 }}>
-                                <button className="btn">
-                                    <FaIcons.FaUser />
+                <div className="col-md-4">
+                    <div className="d-flex flex-wrap justify-content-between align-items-center">
+                            <Link to="/dashboard/">  
+                                <span className="move-medium white-theme">Dashboard</span>
+                            </Link>
+                            <Link to="/group/">  
+                                <span className="move-medium white-theme">Group</span>
+                            </Link>
+                            <Link to="/edit/preferences/">  
+                                <span className="move-medium white-theme">Profile</span>
+                            </Link>
+                            <Link to="/">
+                                <button onClick={logOut} className="btn navbar-signup-white">
+                                    <span className="move-medium">Sign Out</span>
                                 </button>
-                            </IconContext.Provider>
-                        </Link>
-                        <Link to="/">
-                            <button onClick={logOut} className="btn navbar-signup-white">
-                                <span>Log Out</span>
-                            </button>
-                        </Link>
+                            </Link>
                     </div>
                 </div>
             </div>
