@@ -41,7 +41,7 @@ function GroupSearchQuestions() {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch(url + "questionnaire/search/", requestOption)
+        const response = await fetch(url + "questionnaire/groupsearch/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {

@@ -48,7 +48,7 @@ function Restaurant() {
             })
     }
 
-    const nextRestaurant = () => {
+    const nextRestaurant = async (e) => {
         if (restaurantList.length - 1 >= restaurantIndex + 1) {
             navigate("/restaurant/results/none")
         }
@@ -60,7 +60,7 @@ function Restaurant() {
             body: JSON.stringify(restaurantList[restaurantIndex])
         }
 
-        await fetch("http://localhost:8000/restaurantDenied/", requestOption)
+        await fetch(url + "restaurantDenied/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -84,7 +84,7 @@ function Restaurant() {
             body: JSON.stringify(restaurantList[restaurantIndex])
         }
 
-        await fetch("http://localhost:8000/restaurantAccepted/", requestOption)
+        await fetch(url + "restaurantAccepted/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {

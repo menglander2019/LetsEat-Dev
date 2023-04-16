@@ -1,7 +1,7 @@
 from backend.dec_tree_trainer import train_dec_tree
 from yelp.YelpApiCalls import get_restaurant_list
 from yelp.YelpWebscraping import scrape, DATABASE
-from backend.data_generation.data_gen_constants import header, num_umbrella_terms, restaurant_types, days
+from backend.data_generation.data_gen_constants import header, num_umbrella_terms, restaurant_types, days, PREDICTION_BAR
 from backend.db.db_management import get_db, retrievePositives, retrieveNegatives, retrieveRestrictions
 from datetime import datetime
 import numpy
