@@ -180,7 +180,6 @@ def get_predictions(id, occasion, num_people, meal, price_ranges, zip):
     restrictions = retrieveRestrictions(id)
     
     # gets the user input for profile information (used for testing)
-    print("***NEGATIVES***: " + str(negatives))
     user_features = build_user_features(occasion, num_people, meal, price_ranges, positives, negatives, restrictions)
     cuisines = ','.join(positives)
     print("zip: " + str(zip))
