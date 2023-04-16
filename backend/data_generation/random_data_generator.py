@@ -69,7 +69,7 @@ with open('./backend/data_generation/random_data.csv', 'w', encoding='UTF8') as 
     writer = csv.writer(f)
 
     # write the header
-    writer.writerow(header)
+    writer.writerow(header + ['going'])
 
     # write the data
     for i in range(num_rows):
@@ -121,7 +121,7 @@ with open('./backend/data_generation/random_data.csv', 'w', encoding='UTF8') as 
 
         
         row = [
-            names.get_full_name(), day, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1,
+            day, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1,
             int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, 
             int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 3) - 1, 
             int(random.random() * 3) - 1, int(random.random() * 3) - 1, int(random.random() * 2), int(random.random() * 2), int(random.random() * 2), int(random.random() * 2), int(random.random() * 2), int(random.random() * 2), int(random.random() * 2), int(random.random() * 2), int(random.random() * 2), int(random.random() * 2), occasion, num_people, meal, int(random.random() * 2), int(random.random() * 2), 

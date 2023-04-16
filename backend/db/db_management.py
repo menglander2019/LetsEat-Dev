@@ -1,12 +1,52 @@
 import mysql.connector
+from mysql.connector import Error
 import random
 import os
 import bcrypt
 
-mydb = mysql.connector.connect(host='localhost',
-                                        database='Users',
-                                        user='root',
-                                        password='password')
+
+config = {
+    'host': 'letseatusersaws.cvfx18xhuald.us-east-1.rds.amazonaws.com',
+    'database': 'users',
+    'user': 'admin',
+    'password':'$Cornucopia20037'
+    # 'host':os.environ['DB_HOST'],
+    # 'database':os.environ['DB_NAME'],
+    # 'user':os.environ['DB_USER'],
+    # 'password':os.environ['DB_PASSWORD'],
+    # 'port':os.environ['DB_PORT']
+}
+# try:
+mydb = mysql.connector.connect(**config)
+#     cursor = cnx.cursor()
+#     cursor.execute("SELECT * FROM userProfiles")
+#     result = cursor.fetchall()
+#     cursor.close()
+#     cnx.close()
+#     print(result)
+# except mysql.connector.Error as err:
+#     print(err)
+# try:
+#     if mydb.is_connected():
+#         db_info = mydb.get_server_info()
+#         print("Connected to MySQL Server Version ", db_info)
+#         cursor = mydb.cursor()
+#         cursor.execute("select database();")
+#         record = cursor.fetchone()
+#         print("You're connected to database: ", record)
+
+# except Error as e:
+#     print("Error connecting to MySQL", e)
+# finally:
+#     if mydb.is_connected():
+#         cursor.close()
+#         mydb.close()
+#         print("MySQL Connection is closed")
+
+# mydb = mysql.connector.connect(host='localhost',
+#                                         database='Users',
+#                                         user='root',
+#                                         password='Password')
 
 def get_db():
     return mydb
@@ -50,7 +90,7 @@ def updatePositives(id, positives_list):
     positives = ','.join(positives_list)
     print(positives)
     c.execute('UPDATE userPreferences SET positivePreferences = %s WHERE userID = %s', (positives, id))
-
+    
     mydb.commit()
     c.close()
 
@@ -137,7 +177,10 @@ def retrieveRestrictions(id):
     if result is None or result[0] == '':
         return []
     # returns the list of restrictions for a given user's ID
-    return result[0].split(',')
+    restrictions = result[0].split(',')
+    if len(restrictions) == 1 and restrictions[0] == '':
+        return []
+    return restrictions
 
 def getNameByID(id):
     c = mydb.cursor()

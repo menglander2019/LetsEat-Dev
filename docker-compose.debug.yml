@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  letseatdev1:
+    image: letseatdev1
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: ["sh", "-c", "pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 -m uvicorn app:app --host 0.0.0.0 --port 3000"]
+    ports:
+      - 3000:3000
+      - 5678:5678
