@@ -9,8 +9,9 @@ import * as BsIcons from "react-icons/bs"
 import * as Ionicons from "react-icons/io";
 import * as Heroicons from "react-icons/hi";
 
-
 import logoPath from "../../design-resources/logo/letseat-banner-white.png"
+
+import url from '../../WebsiteURL'
 
 // Takes in JSON data of a restaurant and parses the data
 const DashboardNavbar = () => {
@@ -24,14 +25,14 @@ const DashboardNavbar = () => {
             credentials: "include"
         }
 
-        const response = await fetch("http://localhost:8000/logout", requestOption)
+        const response = await fetch(url + "logout", requestOption)
         //const data = await response.json()
         localStorage.removeItem("token")
         navigate("/")
     } 
 
     return (
-        <div className="home-navbar-white">
+        <div className="home-navbar-black">
             <div className="navbar align-items-center padding-style-1">
                 <div className="d-flex justify-content-start">
                     <Link to="/dashboard">
@@ -50,7 +51,7 @@ const DashboardNavbar = () => {
                                 <span className="move-medium white-theme">Profile</span>
                             </Link>
                             <Link to="/">
-                                <button onClick={logOut} className="btn navbar-signup-white-v2">
+                                <button onClick={logOut} className="btn navbar-signup-white">
                                     <span className="move-medium">Sign Out</span>
                                 </button>
                             </Link>

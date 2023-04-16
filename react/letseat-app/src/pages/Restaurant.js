@@ -9,6 +9,8 @@ import LoadingAnimation from '../components/LoadingAnimation';
 
 import '../css/Restaurant.css';
 
+import url from '../WebsiteURL'
+
 function Restaurant() {
 
     const navigate = useNavigate()
@@ -31,12 +33,15 @@ function Restaurant() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://localhost:8000/getRecommendations/", requestOption)
+        await fetch(url + "getRecommendations/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
                     console.log(data.restaurants)
                     setRestaurantList(data.restaurants)
+                    if (data.restaurants.length == 0) {
+                        navigate("/restaurant/results/none")
+                    }
                 } else {
                     console.log("Error!")
                 }
@@ -46,8 +51,10 @@ function Restaurant() {
             })
     }
 
-    // displays the next restaurant and also sends the denied restaurant to FastAPI to save the user's decision
     const nextRestaurant = async (e) => {
+        if (restaurantList.length - 1 >= restaurantIndex + 1) {
+            navigate("/restaurant/results/none")
+        }
         setRestaurantIndex((restaurantIndex) => restaurantIndex + 1)
         const requestOption = {
             method: "POST",
@@ -56,7 +63,7 @@ function Restaurant() {
             body: JSON.stringify(restaurantList[restaurantIndex])
         }
 
-        await fetch("http://localhost:8000/restaurantDenied/", requestOption)
+        await fetch(url + "restaurantDenied/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -80,7 +87,7 @@ function Restaurant() {
             body: JSON.stringify(restaurantList[restaurantIndex])
         }
 
-        await fetch("http://localhost:8000/restaurantAccepted/", requestOption)
+        await fetch(url + "restaurantAccepted/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -111,13 +118,13 @@ function Restaurant() {
             <div className="container-fluid restaurant-component">
                 <DashboardNavbar />
                 <div className="d-flex justify-content-center h-100">
-                    <div className="col-md-6">
+                    <div className="col-md-6 mt-5">
                         <div className="restaurant-main-block">
                             <div className="d-flex flex-column">
                                 {   displayRestaurant == 0
                                     ? (
                                         <>
-                                            <h1 className="text-center">Confirmed!</h1>
+                                            <h1 className="move-medium black-theme text-center">Confirmed!</h1>
                                             <div className="d-flex justify-content-center mt-2">
                                                 <div className="flex-styling-33">
                                                     <button 

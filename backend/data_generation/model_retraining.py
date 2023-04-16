@@ -3,6 +3,7 @@ from csv import writer
 from backend.db.db_management import get_db
 from backend.data_generation.data_gen_constants import days
 from yelp.YelpApiCalls import return_business
+from ..db.db_management import retrievePositives, retrieveNegatives, retrieveRestrictions
 from datetime import datetime
 import sqlite3
  
@@ -13,11 +14,9 @@ def create_new_row(userID, search_submission, restID, attended):
     mydb = get_db()
     c = mydb.cursor()
     # fetch the user information from the database
-    c.execute('SELECT positivePreferences, negativePreferences, restrictions FROM userPreferences WHERE userID = %s', (userID,))
-    user_info = c.fetchone()
-    positives = user_info[0].split(',')
-    negatives = user_info[1].split(',')
-    restrictions = user_info[2].split(',')
+    positives = retrievePositives(userID)
+    negatives = retrieveNegatives(userID)
+    restrictions = retrieveRestrictions(userID)
 
     c.execute('SELECT name from userProfiles WHERE userID = %s', (userID,))
     user_name = c.fetchone()[0]
@@ -80,7 +79,6 @@ def create_new_row(userID, search_submission, restID, attended):
         user_retraining_dict[restriction] = 1
 
     price_ranges = search_submission[3]
-    print("TESTING IN RETRAINING: " + str(price_ranges))
     for price in price_ranges:
         if price == 1:
             user_retraining_dict["oneDollar"] = 1

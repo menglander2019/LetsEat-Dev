@@ -16,6 +16,8 @@ import CreateQuestion from '../components/CreateQuestion'
 
 import '../css/ProfileQuestions.css';
 
+import url from '../WebsiteURL'
+
 function NewProfileQuestions() {
 
     const navigate = useNavigate()
@@ -23,7 +25,7 @@ function NewProfileQuestions() {
     const [ questions, setQuestions ] = useState([])
     const [ answerSelected, setAnswerSelected ] = useState(0)
 
-    var flexStylingOption = "flex-styling-50"
+    var flexStylingOption = "flex-styling-33"
 
     useEffect(() => {
         fetchQuestions()
@@ -39,7 +41,7 @@ function NewProfileQuestions() {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/questionnaire/profile/", requestOption)
+        const response = await fetch(url + "questionnaire/profile/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -168,7 +170,7 @@ function NewProfileQuestions() {
             body: JSON.stringify(questions)
         }
 
-        const response = fetch("http://localhost:8000/submit/profile/", requestOption)   
+        const response = fetch(url + "submit/profile/", requestOption)   
             .then(response => {
                 if (response.ok) {
                     navigate("/dashboard")
@@ -188,7 +190,6 @@ function NewProfileQuestions() {
     } else {
         return (
             <div className="container-fluid profile-component">
-                <DashboardNavbar />
                 <div className="d-flex flex-column">
                     <div className="d-flex align-items-center justify-content-center">
                         <div className="col-md-8 mt-5">
@@ -220,17 +221,9 @@ function NewProfileQuestions() {
                                     }
                                     {
                                         questionIndex >= questions.data.length - 1 ? 
-                                            answerSelected == 1 ? 
                                                 <button 
                                                     id="submit" 
                                                     className="btn search-navigation move-medium" 
-                                                    onClick={submitSelections}>
-                                                    Submit
-                                                </button>
-                                                :
-                                                <button 
-                                                    id="submit" 
-                                                    className="btn search-navigation move-medium disabled" 
                                                     onClick={submitSelections}>
                                                     Submit
                                                 </button>

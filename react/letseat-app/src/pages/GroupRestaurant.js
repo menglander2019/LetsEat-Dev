@@ -9,6 +9,8 @@ import LoadingAnimation from '../components/LoadingAnimation';
 
 import '../css/Restaurant.css';
 
+import url from '../WebsiteURL'
+
 function GroupRestaurant() {
 
     const navigate = useNavigate()
@@ -31,12 +33,15 @@ function GroupRestaurant() {
             headers: { "Content-Type": "application/json"}
         }
 
-        await fetch("http://localhost:8000/getGroupRestaurants/", requestOption)
+        await fetch(url + "getGroupRestaurants/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
                     console.log(data.restaurants)
                     setRestaurantList(data.restaurants)
+                    if (data.restaurants.length == 0) {
+                        navigate("/restaurant/results/none")
+                    }
                 } else {
                     console.log("Error!")
                 }
@@ -47,6 +52,9 @@ function GroupRestaurant() {
     }
 
     const nextRestaurant = () => {
+        if (restaurantList.length - 1 >= restaurantIndex + 1) {
+            navigate("/restaurant/results/none")
+        }
         setRestaurantIndex((restaurantIndex) => restaurantIndex + 1)
     }
 
@@ -70,7 +78,7 @@ function GroupRestaurant() {
             <div className="container-fluid restaurant-component">
                 <DashboardNavbar />
                 <div className="d-flex justify-content-center h-100">
-                    <div className="col-md-6">
+                    <div className="col-md-6 mt-5">
                         <div className="restaurant-main-block">
                             <div className="d-flex flex-column">
                                 {   displayRestaurant == 0

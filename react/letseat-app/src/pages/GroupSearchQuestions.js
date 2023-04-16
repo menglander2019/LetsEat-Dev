@@ -16,6 +16,8 @@ import CreateQuestion from '../components/CreateQuestion'
 
 import '../css/SearchQuestions.css';
 
+import url from '../WebsiteURL'
+
 function GroupSearchQuestions() {
 
     const navigate = useNavigate()
@@ -39,7 +41,7 @@ function GroupSearchQuestions() {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/questionnaire/groupsearch/", requestOption)
+        const response = await fetch(url + "questionnaire/groupsearch/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -169,7 +171,7 @@ function GroupSearchQuestions() {
             body: JSON.stringify(questions)
         }
 
-        const response = fetch("http://localhost:8000/getGroupRecommendations", requestOption)   
+        const response = fetch(url + "getGroupRecommendations", requestOption)   
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -190,12 +192,11 @@ function GroupSearchQuestions() {
         return (<LoadingAnimation />)
     } else {
         return (
-            <div className="container-fluid search-component">
+            <div className="container-fluid group-search-component">
                 <DashboardNavbar />
                 <div className="d-flex flex-column">
                     <div className="d-flex align-items-center justify-content-center">
                         <div className="col-md-8 mt-5">
-                            <h1 className="white-theme">Group Search Questions</h1>
                             <div className="search-main-block">
                                 <h1 className="move-medium">Question {questionIndex + 1} / {questions.data.length}</h1>
                                     {

@@ -57,7 +57,7 @@ group_search_questions = [
     {
         "id": "q1",
         "question": "What is the occasion?",
-        "answerChoices": occasions,
+        "answerChoices": group_occasions,
         "selectedChoices": []
     },
     {

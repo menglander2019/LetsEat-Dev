@@ -16,6 +16,9 @@ import CreateQuestion from '../components/CreateQuestion'
 
 import '../css/SearchQuestions.css';
 
+import url from '../WebsiteURL'
+
+
 function NewSearchQuestions() {
 
     const navigate = useNavigate()
@@ -39,7 +42,7 @@ function NewSearchQuestions() {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/questionnaire/search/", requestOption)
+        const response = await fetch(url + "questionnaire/search/", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -169,10 +172,10 @@ function NewSearchQuestions() {
             body: JSON.stringify(questions)
         }
 
-        const response = fetch("http://localhost:8000/submit/search/", requestOption)   
+        const response = fetch(url + "submit/search/", requestOption)   
             .then(response => {
                 if (response.ok) {
-                    navigate("/restaurantsearch") 
+                    navigate("/restaurant/results") 
                 } else {
                     console.log("Error Posting!")
                 }

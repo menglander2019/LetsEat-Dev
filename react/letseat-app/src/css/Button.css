@@ -4,6 +4,7 @@
     color: black;
     padding: 3%;
     margin: 4px;
+    border-radius: 3px;
     transition: .2s ease-in-out 0s;
 }
 
@@ -39,16 +40,16 @@
 .btn.confirm {
     background-color: #0c5a8b !important;
     color: white !important;
-    border-radius: 5px;
-    font-size:1.3rem;
+    border-radius: 3px;
+    font-size:1.2rem;
     min-width: 170px;
 }
 
 .btn.tryAgain {
     background-color: black !important;
     color: white !important;
-    border-radius: 5px;
-    font-size:1.3rem;
+    border-radius: 3px;
+    font-size:1.2rem;
     min-width: 170px;
 }
 
@@ -68,17 +69,17 @@
 .btn.home-description-button {
     color: white;
     background-color: black;
-    border-radius: 5px;
-    padding-left: 50px;
-    padding-right: 50px;
+    border-radius: 3px;
+    padding-left: 65px;
+    padding-right: 65px;
 }
 
 .btn.dashboard-large-login {
-    background-color: #0c5a8b !important;
+    background-color: black !important;
     color: white !important;
-    border-radius: 5px;
-    font-size:1.3rem;
-    padding: 2%;
+    border-radius: 2px;
+    font-size:1.2rem;
+    padding: 1.5%;
     transition: all 0.1s ease-in-out;
 }
 
@@ -86,10 +87,23 @@
     transform: scale(0.9);
 }
 
+.btn.dashboard-large-login-red {
+    background-color: maroon !important;
+    color: white !important;
+    border-radius: 2px;
+    font-size:1.2rem;
+    padding: 1.5%;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn.dashboard-large-login-red:active {
+    transform: scale(0.9);
+}
+
 .btn.search-navigation {
     background-color: black !important;
     color: white !important;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size:1.3rem;
     min-width: 170px;
     transition: all 0.1s ease-in-out;

@@ -6,6 +6,9 @@ import DashboardNavbar from '../components/DashboardComponents/DashboardNavbar';
 
 import '../css/Group.css';
 
+import url from '../WebsiteURL'
+import web_url from '../WebsiteURLFront'
+
 const Group = () => {
 
     const [ groupCreationStatus, setGroupCreationStatus ] = useState(0)
@@ -22,7 +25,7 @@ const Group = () => {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/createdGroupStatus", requestOption)
+        const response = await fetch(url + "createdGroupStatus", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -48,7 +51,7 @@ const Group = () => {
             headers: { "Content-Type": "application/json"}
         }
 
-        const response = await fetch("http://localhost:8000/createGroupSession", requestOption)
+        const response = await fetch(url + "createGroupSession", requestOption)
             .then(async response => {
                 const data = await response.json()
                 if (response.ok) {
@@ -63,32 +66,80 @@ const Group = () => {
             })
     }
 
+    const deleteGroup = (e) => {
+
+        const requestOption = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+        }
+
+        const response = fetch(url + "deleteGroupSession", requestOption)   
+            .then(response => {
+                if (response.ok) {
+                    console.log("Deleted Group!")
+                    checkGroupCreation()
+                } else {
+                    console.log("Error Deleting Group!")
+                }
+            })
+            .catch(error => {
+                console.log("Error deleteGroup!")
+            })
+    }
+
     return (
-        <div className="container-fluid group-component">
-            <DashboardNavbar />
+        <div className="container-fluid dashboard-component">
             <div className="d-flex flex-column">
-                    <div className="d-flex align-items-center justify-content-center">
-                        <div className="col-md-6 mt-5">
-                            <div className="group-main-block">
-                                <div className="d-flex flex-column">
-                                    <h1 className="move-bold">Group Settings</h1>
+                <DashboardNavbar />
+                <div className="dashboard-banner">
+                    <div className="d-flex">
+                        <div className="col-md-6">
+                            <div className="d-flex justify-content-center">
+                                <div className="col-md-8 padding-style-7">
+                                    <div className="d-flex flex-column">
+                                    <h3 className="move-medium black-theme">Group Settings</h3>
+                                    <p className="move-medium grey-theme">Create a group and invite your friends to join your search with their own preferences</p>
                                     {
                                         groupCreationStatus == 0 ?
                                             <button 
                                                 id="submit"
-                                                className="btn dashboard-large-login move-medium w-50 mt-3"
+                                                className="btn dashboard-large-login move-medium w-100 mt-2"
                                                 onClick={createGroup}>
-                                                Create Group {'>'}
+                                                Create Group
                                             </button>
                                             :
-                                            <p className="move-medium black-theme mt-3">Invite your friends: http://localhost:3000/join/group/{groupCreationStatus}</p>
+                                            <p className="move-medium black-theme mt-3">Invite your friends: {web_url}join/group/{groupCreationStatus}</p>
                                     }
+                                    {
+                                        groupCreationStatus != 0 ?
+                                            <button 
+                                                id="submit"
+                                                className="btn dashboard-large-login-red move-medium w-100 mt-2"
+                                                onClick={deleteGroup}>
+                                                Delete Group
+                                            </button>
+                                            :
+                                            <button 
+                                                id="submit"
+                                                className="btn dashboard-large-login move-medium disabled w-100 mt-2"
+                                                onClick={deleteGroup}>
+                                                Delete Group
+                                            </button>
+
+                                }
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div className="col-md-6">
+                            <div className="group-image"></div>
+                        </div>
                     </div>
                 </div>
+            </div>
         </div>
+            
     )
 }
 

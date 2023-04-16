@@ -1,23 +1,23 @@
 .restaurant-component {
     position: relative;
-    min-height: 800px;
+    min-height: 900px;
     min-width: 1300px;
     overflow: hidden;
     background-size:cover;
     background-repeat: no-repeat;
-    background-image: url('../design-resources/restaurant-dashboard.png');
+    background-image: url('../design-resources/restaurant-background-2.jpg');
     z-index: 1;
 }
 
 .restaurant-main-block {
     background-color: white;
     padding: 60px;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 .restaurant-image {
-    height: 300px;
-    object-fit: cover;
+    height: 350px;
+    object-fit:cover;
     object-position: center;
-    border-radius: 10px;
+    border-radius: 6px;
 }
