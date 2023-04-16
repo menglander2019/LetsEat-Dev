@@ -52,7 +52,7 @@ function Restaurant() {
     }
 
     const nextRestaurant = async (e) => {
-        if (restaurantList.length - 1 >= restaurantIndex + 1) {
+        if (restaurantIndex + 1 >= restaurantList.length) {
             navigate("/restaurant/results/none")
         }
         setRestaurantIndex((restaurantIndex) => restaurantIndex + 1)
