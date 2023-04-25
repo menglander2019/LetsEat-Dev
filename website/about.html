@@ -32,7 +32,7 @@
 		</h1>
 	</div>
 
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-sticky">
 		<div class="container-fluid">
 			
 			<div class="navbar-header">
@@ -43,17 +43,21 @@
 				
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="index.html">Home</a></li>
-					<li><a href="about.html">Technical Design</a></li>
-					<li><a href="howtouse.html">Using LetsEat</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Technical Details <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="frameworks.html">Tools and Frameworks</a></li>
+							<li><a href="architecture.html">Architecture</a></li>
+						</ul>
+					</li>	
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Presentations <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="Presentations/Elevator Pitch Presentation.pdf">Presentation 1 - Elevator Pitch</a></li>
 							<li><a href="Presentations/Technical Design Presentation.pptx.pdf">Presentation 2 - Technical Design</a></li>
-							<li><a href="Presentations/Alpha Presentation.pptx.pdf">Presentation 3</a></li>
-							<li><a href="#">Presentation 4 - Beta Prototype (coming 2/7/23)</a></li>
-							<li><a href="#">Presentation 5 - Prelim Prototype (coming 3/7/23)</a></li>
-							<li><a href="#">Presentation 6 - Final Demo (coming 4/25/23)</a></li>
+							<li><a href="Presentations/Alpha Presentation.pptx.pdf">Presentation 3 - Alpha Prototype</a></li>
+							<li><a href="Presentations/Promotional Presentation.pptx.pdf">Presentation 4 - Promotional Presentation</a></li>
+							<li><a href="Presentations/Final Presentation.pptx.pdf">Presentation 5 - Final Presentation</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -63,8 +67,16 @@
 							<li><a href="Presentations/Writing 4.pdf">Writing 4 - Technical Design Document</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Use LetsEat</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Screencasts <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="https://drive.google.com/file/d/1odmjugINvAQddRrKh7tTvNVkGOrU3tmT/view?usp=sharing">Promotional Video</a></li>
+							<li><a href="https://drive.google.com/file/d/1l_qSJWryx9TMfCr23RzfhRKWgwlqHe24/view?usp=sharing">Project Description Video</a></li>
+						</ul>
+					</li>		
+					<li><a href="howtouse.html">More Considerations</a></li>
 				</ul>
+			
 			</div><!--/.nav-collapse -->			
 		</div>	
 	</nav>
